@@ -1,0 +1,81 @@
+---
+import { getHreflangUrls } from "../utils/hreflang";
+
+interface Props {
+  title: string;
+  description: string;
+  robots?: string;
+  lang?: "es" | "en";
+  canonical?: string;
+	jsonLd?: Record<string, any> | null;
+  image?: string;
+}
+
+const { title, description, robots, canonical, image, jsonLd } = Astro.props;
+
+// Se infiere automáticamente desde la URL
+const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
+const hreflang = getHreflangUrls(Astro.url.pathname);
+
+const ogLocale = lang === "es" ? "es_US" : "en_US";
+const ogLocaleAlternate = lang === "es" ? "en_US" : "es_US";
+
+const htmlLang = {
+  en: "en-US",
+  es: "es-419", // o 'es' si tu contenido es neutro
+} as const;
+
+const url = canonical ?? Astro.url?.href ?? "";
+const siteName = "NOMBRE_SITIO";
+const ogImage = image ?? "https://NOMBRE_SITIO/default-og.webp";
+---
+
+<!doctype html>
+<html lang={htmlLang[lang]}>
+  <head>
+    <meta name="google-site-verification" content="" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="alternate" hreflang="es" href={hreflang.es} />
+    <link rel="alternate" hreflang="en" href={hreflang.en} />
+    <link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
+
+    {robots && <meta name="robots" content={robots} />}
+
+    <link rel="canonical" href={url} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlternate} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <title>{title}</title>
+
+    {
+      jsonLd && (
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+      )
+    }
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
