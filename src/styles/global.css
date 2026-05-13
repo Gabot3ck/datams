@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/*
+  The CSS in this style tag is based off of Bear Blog's default CSS.
+  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
+  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ */
+
+@theme {
+  /* C O L O R S */
+  --color-brand-extralight: #1d8ce7;
+  --color-brand-light: #036dc4;
+  --color-brand: #000000;
+  /* --color-brand: #0462AB; */
+  --color-brand-dark: #044274;
+  --color-accent: #faba02;
+  --color-accent-light: #fdd762;
+  --color-accent-dark: #e3ab02;
+  --color-neutral-dark: #1a261a;
+  --color-neutral-grey: #575756;
+  --color-background-light: #f9f9f9;
+  --color-background: #f4f4f4;
+  --color-background-muted: #e0e0e0;
+  --color-background-dark: #706f6f;
+
+  /* S I Z E S */
+  --width-xs: 425px;
+  --width-sm: 640px;
+  --width-md: 768px;
+  --width-lg: 990px;
+  --width-xl: 1280px;
+  --width-2xl: 1536px;
+  --width-3xl: 1920px;
+
+  --max-width-xs: 425px;
+  --max-width-sm: 640px;
+  --max-width-md: 768px;
+  --max-width-lg: 990px;
+  --max-width-xl: 1280px;
+  --max-width-2xl: 1536px;
+  --max-width-3xl: 1920px;
+
+  /* B R E A K P O I N T S */
+  --breakpoint-xs: 425px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 990px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1920px;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/roboto/roboto-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/roboto/roboto-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+/* CONTENEDOR */
+.container-custom {
+  @apply w-full max-w-7xl  mx-auto px-6 sm:px-8 lg:px-8 xl:px-12;
+}
+@media (min-width: 1520px) {
+  .container-custom {
+    @apply w-[80dvw] max-w-[1920px];
+  }
+}
+
+.title {
+  @apply text-[1.6rem] sm:text-3xl md:text-4xl;
+}
+.subtitle {
+  @apply mx-auto text-[1rem] sm:text-[1.1rem] lg:text-[1.2rem] font-extralight my-4 sm:my-5 sm:max-w-[82%] xl:max-w-[800px];
+}
+
+/* FORMULARIO DE CONTACTO */
+#contactForm .block {
+  @apply w-full md:w-1/2 xl:w-full;
+}
+.form-label {
+  @apply block mb-1 text-sm font-medium text-neutral-dark;
+}
+/* Contenedor del campo: envuelve icono + control */
+.form-field {
+  @apply relative mb-2 lg:mb-0  rounded-md border bg-white
+             border-background-muted transition-shadow;
+}
+
+/* Estado foco → azul solo mientras escribes */
+.form-field:focus-within {
+  @apply ring-2 ring-accent border-accent;
+}
+
+/* Estado error persistente (gana a focus-within) */
+.form-field[data-invalid="true"] {
+  @apply !ring-2 !ring-red-500 !border-red-500;
+}
+
+.form-field[data-invalid="true"]:focus-within {
+  @apply !ring-red-500 !border-red-500;
+}
+
+/* Control (input/textarea/select) */
+.form-control {
+  @apply w-full bg-transparent border-0 outline-none
+             text-sm/6 text-neutral-dark placeholder:text-neutral-grey/70
+             py-3 pr-3 pl-10 rounded-md focus:outline-none;
+}
+
+/* Icono dentro del wrapper */
+.form-icon {
+  @apply pointer-events-none absolute left-3 top-3 flex items-start text-neutral-grey/80;
+}
+
+/* Mensaje de error unificado */
+.form-error {
+  @apply mt-1 text-[13px] text-red-600;
+}
+
+
+/* FOOTER */
+.footer-title {
+  @apply text-xs 2xl:text-sm font-semibold text-background uppercase tracking-wider mb-1 lg:mb-2 2xl:mb-3
+}
+.footer-link, .footer-subtitle {
+  @apply text-gray-400 hover:text-gray-300 hover:underline text-[.7rem] 2xl:text-[.8rem] transition-colors duration-200;
+}
+.footer-copyright {
+  @apply text-gray-400 text-[.7rem] 3xl:text-xs text-center
+}
+.footer-branchOffice-text {
+  @apply text-accent  transition-colors duration-200 underline
+}
+
+/* Oculta scrollbar pero mantiene scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

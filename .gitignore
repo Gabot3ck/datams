@@ -7,6 +7,9 @@ dist/
 # dependencies
 node_modules/
 
+# editor settings VSCode
+.vscode/
+
 # logs
 npm-debug.log*
 yarn-debug.log*
