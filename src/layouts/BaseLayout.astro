@@ -1,5 +1,8 @@
 ---
 import { getHreflangUrls } from "../utils/hreflang";
+import Navbar from "../components/Navbar.astro";
+
+import '../styles/global.css';
 
 interface Props {
   title: string;
@@ -22,7 +25,7 @@ const ogLocaleAlternate = lang === "es" ? "en_US" : "es_US";
 
 const htmlLang = {
   en: "en-US",
-  es: "es-419", // o 'es' si tu contenido es neutro
+  es: "es-US", // o 'es' si tu contenido es neutro
 } as const;
 
 const url = canonical ?? Astro.url?.href ?? "";
@@ -76,6 +79,7 @@ const ogImage = image ?? "https://NOMBRE_SITIO/default-og.webp";
     }
   </head>
   <body>
+    <Navbar />
     <slot />
   </body>
 </html>

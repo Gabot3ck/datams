@@ -8,13 +8,12 @@
 
 @theme {
   /* C O L O R S */
-  --color-brand-extralight: #1d8ce7;
-  --color-brand-light: #036dc4;
-  --color-brand: #000000;
-  /* --color-brand: #0462AB; */
-  --color-brand-dark: #044274;
-  --color-accent: #faba02;
-  --color-accent-light: #fdd762;
+  --color-brand-extralight: #DF5E51;
+  --color-brand-light: #CA3626;
+  --color-brand: #a41e11;
+  --color-brand-dark: #810C00;
+  --color-accent: #4d4e4a;
+  --color-accent-light: #7C7E78;
   --color-accent-dark: #e3ab02;
   --color-neutral-dark: #1a261a;
   --color-neutral-grey: #575756;
@@ -143,6 +142,33 @@ body {
 }
 .footer-branchOffice-text {
   @apply text-accent  transition-colors duration-200 underline
+}
+
+/* Animación de apertura del mega menú — fade puro para suavizar el cambio entre categorías */
+@keyframes mega-open {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-mega-open {
+  animation: mega-open 0.18s ease-out both;
+}
+
+/* Animación de cierre del mega menú */
+@keyframes mega-close {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+.animate-mega-close {
+  animation: mega-close 0.15s ease-in both;
+}
+
+/* Animación de fade para el backdrop del mega menú */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 0.18s ease-out both;
 }
 
 /* Oculta scrollbar pero mantiene scroll */
