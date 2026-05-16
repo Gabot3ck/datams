@@ -1,10 +1,24 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import HomePage from '../components/HomePage.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-
 ---
 
-<BaseLayout>
-	<Welcome />
+<BaseLayout
+	title="Tax & Notaría | Impuestos y trámites notariales para la comunidad hispana en EE.UU."
+	description="Ofrecemos servicios profesionales de preparación de taxes, notaría y servicios corporativos para la comunidad hispana en Estados Unidos. Atención 100% en español."
+	image="/assets/og-image.png"
+	jsonLd={{
+		"@context": "https://schema.org",
+		"@type": "LocalBusiness",
+		"name": "Tax & Notaría",
+		"description": "Servicios de impuestos, notaría y servicios corporativos para la comunidad hispana en EE.UU.",
+		"url": Astro.url.href,
+		"inLanguage": "es-US",
+		"serviceArea": {
+			"@type": "Country",
+			"name": "United States"
+		}
+	}}
+>
+	<HomePage lang="es" />
 </BaseLayout>

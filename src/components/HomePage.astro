@@ -1,0 +1,351 @@
+---
+interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = {
+  es: {
+    hero: {
+      badge: "Servicio bilingüe · Español & English",
+      heading: "Impuestos y notaría para la comunidad hispana en EE.UU.",
+      subheading: "Ayudamos a familias y negocios hispanos a cumplir con sus obligaciones fiscales y documentales con confianza, profesionalismo y atención 100% en español.",
+      cta: "Agendar cita gratis",
+      ctaHref: "/contacto",
+      secondary: "Ver servicios",
+      secondaryHref: "#servicios",
+      trust: ["Más de 10 años de experiencia", "5,000+ clientes atendidos", "Servicio 100% en español"]
+    },
+    services: {
+      sectionLabel: "Nuestros servicios",
+      heading: "Todo lo que necesitas en un solo lugar",
+      subheading: "Soluciones integrales para tu situación fiscal, notarial y empresarial",
+      items: [
+        {
+          label: "Impuestos",
+          description: "Preparación de declaraciones federales y estatales, ITIN, enmiendas y asesoría fiscal para individuos y familias hispanas.",
+          href: "#",
+          cta: "Conocer más"
+        },
+        {
+          label: "Notaría",
+          description: "Apostille, certificación de documentos, poderes notariales y traducción oficial de documentos para trámites en EE.UU. y el extranjero.",
+          href: "#",
+          cta: "Conocer más"
+        },
+        {
+          label: "Servicios corporativos",
+          description: "Apertura de LLC, obtención de EIN, registro de negocios y asesoría integral para emprendedores hispanos.",
+          href: "#",
+          cta: "Conocer más"
+        }
+      ]
+    },
+    stats: [
+      { value: "10+", label: "Años de experiencia" },
+      { value: "5,000+", label: "Clientes atendidos" },
+      { value: "100%", label: "Servicio en español" },
+      { value: "3", label: "Oficinas disponibles" }
+    ],
+    whyUs: {
+      sectionLabel: "Por qué elegirnos",
+      heading: "El aliado de confianza de la comunidad hispana",
+      description: "Entendemos los desafíos únicos que enfrentan las familias y negocios hispanos en Estados Unidos. Por eso ofrecemos un servicio cálido, profesional y completamente en tu idioma.",
+      items: [
+        "Atención 100% en español e inglés",
+        "Profesionales certificados y licenciados",
+        "Precios transparentes sin sorpresas",
+        "Horarios flexibles incluyendo fines de semana",
+        "Manejo seguro y confidencial de tus datos",
+        "Más de 10 años sirviendo a la comunidad"
+      ]
+    },
+    cta: {
+      heading: "¿Tienes preguntas? Estamos aquí para ayudarte",
+      subheading: "Agenda una consulta sin costo y descubre cómo podemos ayudarte con tus trámites fiscales y notariales.",
+      button: "Agendar cita gratis",
+      href: "/contacto"
+    }
+  },
+  en: {
+    hero: {
+      badge: "Bilingual service · Español & English",
+      heading: "Tax and notary services for the Hispanic community in the U.S.",
+      subheading: "We help Hispanic families and businesses meet their tax and document needs with confidence, professionalism, and full bilingual support.",
+      cta: "Book free appointment",
+      ctaHref: "/en/contact",
+      secondary: "View services",
+      secondaryHref: "#services",
+      trust: ["Over 10 years of experience", "5,000+ clients served", "100% bilingual service"]
+    },
+    services: {
+      sectionLabel: "Our services",
+      heading: "Everything you need in one place",
+      subheading: "Comprehensive solutions for your tax, notary, and business needs",
+      items: [
+        {
+          label: "Taxes",
+          description: "Federal and state tax return preparation, ITIN applications, amendments, and tax advice for Hispanic individuals and families.",
+          href: "#",
+          cta: "Learn more"
+        },
+        {
+          label: "Notary",
+          description: "Apostille, document certification, notarial powers of attorney, and official document translation for U.S. and international use.",
+          href: "#",
+          cta: "Learn more"
+        },
+        {
+          label: "Business Services",
+          description: "LLC formation, EIN registration, business registration, and comprehensive advisory services for Hispanic entrepreneurs.",
+          href: "#",
+          cta: "Learn more"
+        }
+      ]
+    },
+    stats: [
+      { value: "10+", label: "Years of experience" },
+      { value: "5,000+", label: "Clients served" },
+      { value: "100%", label: "Bilingual service" },
+      { value: "3", label: "Office locations" }
+    ],
+    whyUs: {
+      sectionLabel: "Why choose us",
+      heading: "The trusted partner for the Hispanic community",
+      description: "We understand the unique challenges faced by Hispanic families and businesses in the United States. That's why we offer a warm, professional service fully in your language.",
+      items: [
+        "100% bilingual service in Spanish and English",
+        "Certified and licensed professionals",
+        "Transparent pricing with no surprises",
+        "Flexible hours including weekends",
+        "Secure and confidential data handling",
+        "Over 10 years serving the community"
+      ]
+    },
+    cta: {
+      heading: "Have questions? We're here to help",
+      subheading: "Schedule a free consultation and discover how we can help with your tax and notary needs.",
+      button: "Book free appointment",
+      href: "/en/contact"
+    }
+  }
+}[lang];
+
+const sectionId = lang === 'es' ? 'servicios' : 'services';
+---
+
+<main>
+  <!-- HERO -->
+  <section
+    class="relative overflow-hidden bg-gradient-to-br from-brand-dark via-brand-dark to-brand-light text-white"
+    aria-labelledby="hero-heading"
+  >
+    <!-- Decorative background circles -->
+    <div class="pointer-events-none absolute -right-24 -top-24 size-96 rounded-full bg-white/5" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -bottom-16 right-1/3 size-64 rounded-full bg-white/5" aria-hidden="true"></div>
+
+    <div class="container-custom py-20 lg:py-28">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+        <!-- Left: Content -->
+        <div class="flex-1 max-w-2xl text-center lg:text-left">
+          <!-- Badge -->
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium backdrop-blur-sm">
+            <span class="size-2 rounded-full bg-accent animate-pulse" aria-hidden="true"></span>
+            {t.hero.badge}
+          </div>
+
+          <h1 id="hero-heading" class="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6">
+            {t.hero.heading}
+          </h1>
+
+          <p class="text-lg lg:text-xl text-white/80 leading-relaxed mb-8">
+            {t.hero.subheading}
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
+            <a
+              href={t.hero.ctaHref}
+              class="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-neutral-dark hover:bg-accent-dark transition-colors shadow-lg shadow-accent/20"
+            >
+              {t.hero.cta}
+            </a>
+            <a
+              href={t.hero.secondaryHref}
+              class="rounded-full border border-white/30 px-8 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-colors"
+            >
+              {t.hero.secondary}
+            </a>
+          </div>
+
+          <!-- Trust indicators -->
+          <ul class="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2" role="list">
+            {t.hero.trust.map(item => (
+              <li class="flex items-center gap-2 text-sm text-white/70">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4 text-accent shrink-0" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Right: Visual card -->
+        <div class="hidden lg:block w-80 xl:w-96 shrink-0">
+          <div class="relative">
+            <!-- Main card -->
+            <div class="rounded-2xl bg-white shadow-2xl overflow-hidden">
+              <img
+                src="/assets/images/test/thumb_servicios_90c45b98c0.jpg"
+                alt=""
+                width="384"
+                height="220"
+                class="w-full h-52 object-cover"
+                aria-hidden="true"
+                loading="eager"
+              />
+              <div class="p-6 space-y-3">
+                <div class="h-3 bg-gray-100 rounded-full w-3/4"></div>
+                <div class="h-3 bg-gray-100 rounded-full w-full"></div>
+                <div class="h-3 bg-gray-100 rounded-full w-5/6"></div>
+                <div class="pt-2">
+                  <div class="h-9 bg-brand-light/10 rounded-full w-1/2 flex items-center justify-center">
+                    <div class="h-2.5 bg-brand-light/30 rounded-full w-3/5"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Floating badge -->
+            <div class="absolute -bottom-4 -left-4 rounded-xl bg-accent px-4 py-2.5 shadow-lg">
+              <p class="text-xs font-bold text-neutral-dark leading-none">5,000+</p>
+              <p class="text-xs text-neutral-dark/70 mt-0.5">{lang === 'es' ? 'Clientes satisfechos' : 'Happy clients'}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id={sectionId} class="py-20 bg-white" aria-labelledby="services-heading">
+    <div class="container-custom">
+      <div class="text-center mb-14">
+        <span class="text-xs font-semibold tracking-widest text-brand-light uppercase">{t.services.sectionLabel}</span>
+        <h2 id="services-heading" class="title mt-2 mb-4 text-neutral-dark">{t.services.heading}</h2>
+        <p class="subtitle text-neutral-grey mt-0">{t.services.subheading}</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {t.services.items.map((service, i) => (
+          <article class="group relative rounded-2xl border border-background-muted p-8 hover:border-brand-light hover:shadow-xl transition-all duration-300">
+            <!-- Icon -->
+            <div class="mb-6 size-14 rounded-2xl bg-brand-light/10 flex items-center justify-center text-brand-light group-hover:bg-brand-light group-hover:text-white transition-all duration-300">
+              {i === 0 && (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.638 4.5 4.718V19.5a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5V4.718c0-1.08-.807-2.018-1.907-2.146A48.424 48.424 0 0 0 12 2.25Z" />
+                </svg>
+              )}
+              {i === 1 && (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 0 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 0 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
+                </svg>
+              )}
+              {i === 2 && (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+                </svg>
+              )}
+            </div>
+
+            <h3 class="text-xl font-bold text-neutral-dark mb-3">{service.label}</h3>
+            <p class="text-sm text-neutral-grey leading-relaxed mb-6">{service.description}</p>
+
+            <a
+              href={service.href}
+              class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-light hover:text-brand-dark transition-colors"
+              aria-label={`${service.cta} — ${service.label}`}
+            >
+              {service.cta}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="bg-brand-dark py-16" aria-label={lang === 'es' ? 'Estadísticas' : 'Statistics'}>
+    <div class="container-custom">
+      <ul class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center" role="list">
+        {t.stats.map(stat => (
+          <li class="flex flex-col items-center">
+            <span class="text-4xl xl:text-5xl font-bold text-accent mb-2" aria-label={stat.value}>{stat.value}</span>
+            <span class="text-sm text-white/70 font-medium">{stat.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="py-20 bg-background-light" aria-labelledby="whyus-heading">
+    <div class="container-custom">
+      <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+
+        <!-- Left: Text -->
+        <div class="flex-1 max-w-lg text-center lg:text-left">
+          <span class="text-xs font-semibold tracking-widest text-brand-light uppercase">{t.whyUs.sectionLabel}</span>
+          <h2 id="whyus-heading" class="title mt-2 mb-4 text-neutral-dark">{t.whyUs.heading}</h2>
+          <p class="text-neutral-grey leading-relaxed">{t.whyUs.description}</p>
+          <a
+            href={t.cta.href}
+            class="mt-8 inline-flex rounded-full bg-brand-light px-7 py-3 text-sm font-semibold text-white hover:bg-brand-dark transition-colors"
+          >
+            {t.cta.button}
+          </a>
+        </div>
+
+        <!-- Right: Checklist -->
+        <div class="flex-1 w-full">
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4" role="list">
+            {t.whyUs.items.map(item => (
+              <li class="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm">
+                <span class="shrink-0 mt-0.5 size-5 rounded-full bg-brand-light flex items-center justify-center" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-3 text-white">
+                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+                <span class="text-sm text-neutral-dark font-medium leading-snug">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="py-16 bg-accent" aria-labelledby="cta-heading">
+    <div class="container-custom text-center">
+      <h2 id="cta-heading" class="text-2xl sm:text-3xl font-bold text-neutral-dark mb-4">
+        {t.cta.heading}
+      </h2>
+      <p class="text-neutral-dark/70 mb-8 max-w-xl mx-auto text-base leading-relaxed">
+        {t.cta.subheading}
+      </p>
+      <a
+        href={t.cta.href}
+        class="inline-flex rounded-full bg-brand-dark px-8 py-4 text-base font-semibold text-white hover:bg-neutral-dark transition-colors shadow-lg"
+      >
+        {t.cta.button}
+      </a>
+    </div>
+  </section>
+</main>
