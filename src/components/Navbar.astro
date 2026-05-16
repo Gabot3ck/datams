@@ -1,0 +1,606 @@
+---
+import MegaMenu from './MegaMenu.tsx';
+import type { MegaSubcategory } from './MegaMenu.tsx';
+
+const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
+const currentPath = Astro.url.pathname;
+
+const altLangUrl =
+  lang === "es"
+    ? `/en${currentPath === "/" ? "" : currentPath}`
+    : currentPath.replace(/^\/en/, "") || "/";
+
+interface DropdownItem {
+  label: string;
+  href: string;
+}
+interface NavItem {
+  label: string;
+  href: string;
+  dropdown?: DropdownItem[];
+  megaMenu?: MegaSubcategory[];
+}
+interface NavData {
+  items: NavItem[];
+  cta: string;
+  ctaHref: string;
+  logoHref: string;
+  altLangLabel: string;
+  altLangFlag: string;
+  currentFlag: string;
+  currentLangLabel: string;
+  mobileMenuLabel: string;
+}
+
+const data: Record<"es" | "en", NavData> = {
+  es: {
+    logoHref: "/",
+    cta: "Agendar cita",
+    ctaHref: "/contacto",
+    currentLangLabel: "ES",
+    currentFlag: "/assets/icons/flag_mexico.webp",
+    altLangLabel: "EN",
+    altLangFlag: "/assets/icons/flag_usa.webp",
+    mobileMenuLabel: "Menú",
+    items: [
+      {
+        label: "Servicios",
+        href: "/servicios",
+        dropdown: [
+          { label: "Taxes · Impuestos", href: "/servicios/taxes" },
+          { label: "Notaría", href: "/servicios/notaria" },
+          { label: "ITIN", href: "/servicios/itin" },
+          { label: "Nómina", href: "/servicios/nomina" },
+        ],
+      },
+      { label: "Nosotros", href: "/nosotros" },
+      { label: "Blog", href: "/blog" },
+      { label: "Contacto", href: "/contacto" },
+      {
+        label: "Categoría 2",
+        href: "#",
+        megaMenu: [
+          {
+            label: "Subcategoría 1",
+            items: [
+              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 3", href: "#" },
+              { label: "Item 4", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 5", href: "#" },
+              { label: "Item 6", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategoría 2",
+            items: [
+              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#" },
+              { label: "Item 4", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategoría 3",
+            items: [
+              { label: "Item 1", href: "#" },
+              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 3", href: "#" },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Categoría 3",
+        href: "#",
+        megaMenu: [
+          {
+            label: "Subcategoría 1",
+            items: [
+              { label: "Item 1", href: "#" },
+              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 3", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+            ],
+          },
+          {
+            label: "Subcategoría 2",
+            items: [
+              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#" },
+              { label: "Item 4", href: "#" },
+              { label: "Item 5", href: "#" },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Categoría 4",
+        href: "#",
+        megaMenu: [
+          {
+            label: "Subcategoría 1",
+            items: [
+              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 2", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategoría 2",
+            items: [
+              { label: "Item 1", href: "#" },
+              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 3", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategoría 3",
+            items: [
+              { label: "Item 1", href: "#" },
+              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 4", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategoría 4",
+            items: [
+              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 2", href: "#" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  en: {
+    logoHref: "/en",
+    cta: "Book appointment",
+    ctaHref: "/en/contact",
+    currentLangLabel: "EN",
+    currentFlag: "/assets/icons/flag_usa.webp",
+    altLangLabel: "ES",
+    altLangFlag: "/assets/icons/flag_mexico.webp",
+    mobileMenuLabel: "Menu",
+    items: [
+      {
+        label: "Services",
+        href: "/en/services",
+        dropdown: [
+          { label: "Tax Services", href: "/en/services/taxes" },
+          { label: "Notary", href: "/en/services/notary" },
+          { label: "ITIN", href: "/en/services/itin" },
+          { label: "Payroll", href: "/en/services/payroll" },
+        ],
+      },
+      { label: "About Us", href: "/en/about" },
+      { label: "Blog", href: "/en/blog" },
+      { label: "Contact", href: "/en/contact" },
+      {
+        label: "Category 2",
+        href: "#",
+        megaMenu: [
+          {
+            label: "Subcategory 1",
+            items: [
+              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 3", href: "#" },
+              { label: "Item 4", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 5", href: "#" },
+              { label: "Item 6", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategory 2",
+            items: [
+              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#" },
+              { label: "Item 4", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategory 3",
+            items: [
+              { label: "Item 1", href: "#" },
+              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 3", href: "#" },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Category 3",
+        href: "#",
+        megaMenu: [
+          {
+            label: "Subcategory 1",
+            items: [
+              { label: "Item 1", href: "#" },
+              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 3", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+            ],
+          },
+          {
+            label: "Subcategory 2",
+            items: [
+              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#" },
+              { label: "Item 4", href: "#" },
+              { label: "Item 5", href: "#" },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Category 4",
+        href: "#",
+        megaMenu: [
+          {
+            label: "Subcategory 1",
+            items: [
+              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 2", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategory 2",
+            items: [
+              { label: "Item 1", href: "#" },
+              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 3", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategory 3",
+            items: [
+              { label: "Item 1", href: "#" },
+              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 4", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategory 4",
+            items: [
+              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 2", href: "#" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+};
+
+const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, currentLangLabel, mobileMenuLabel } =
+  data[lang];
+---
+
+<header class="sticky top-0 z-50 bg-white">
+  <!-- Barra superior: idioma + CTA -->
+  <div class="border-b border-gray-100">
+    <div class="container-custom">
+      <div class="flex items-center justify-end gap-3 py-2">
+        <!-- Selector de idioma -->
+        <div class="relative" id="lang-switcher">
+          <button
+            id="lang-btn"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-label={`Idioma actual: ${currentLangLabel}. Cambiar idioma`}
+            class="flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-neutral-grey hover:bg-gray-100 transition-colors cursor-pointer"
+          >
+            <img src={currentFlag} alt="" aria-hidden="true" width="20" height="14" class="rounded-sm object-cover" />
+            <span>{currentLangLabel}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="size-3.5 transition-transform duration-200"
+              id="lang-chevron"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </button>
+
+          <div
+            id="lang-menu"
+            role="listbox"
+            aria-label="Seleccionar idioma"
+            class="absolute right-0 top-full mt-1 hidden min-w-[6rem] rounded-lg border border-gray-100 bg-white py-1 shadow-lg"
+          >
+            <a
+              href={altLangUrl}
+              role="option"
+              aria-selected="false"
+              class="flex items-center gap-2 px-3 py-2 text-sm text-neutral-grey hover:bg-gray-50 hover:text-brand-light transition-colors"
+            >
+              <img src={altLangFlag} alt="" aria-hidden="true" width="20" height="14" class="rounded-sm object-cover" />
+              <span>{altLangLabel}</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- CTA principal -->
+        <a
+          href={ctaHref}
+          class="rounded-full bg-brand-light px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-brand-light"
+        >
+          {cta}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de navegación principal -->
+  <nav aria-label={lang === "es" ? "Navegación principal" : "Main navigation"} class="bg-white shadow-sm">
+    <div class="container-custom">
+      <div class="flex h-16 items-center justify-between gap-6">
+        <!-- Logo -->
+        <a
+          href={logoHref}
+          aria-label={lang === "es" ? "Inicio — Tax & Notaría" : "Home — Tax & Notary"}
+          class="flex shrink-0 items-baseline gap-1 font-bold"
+        >
+          <span class="text-xl text-brand-light">TAX</span>
+          <span class="text-xs font-normal text-neutral-grey">&amp;</span>
+          <span class="text-xl text-brand-dark">NOTARÍA</span>
+        </a>
+
+        <!-- Navegación desktop -->
+        <ul class="hidden items-center gap-1 lg:flex" role="list">
+          {
+            items.map((item) => (
+              <li class="relative group">
+                {item.megaMenu ? (
+                  <MegaMenu
+                    client:load
+                    label={item.label}
+                    subcategories={item.megaMenu}
+                  />
+                ) : item.dropdown ? (
+                  <>
+                    <button
+                      class="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-neutral-grey transition-colors hover:bg-gray-50 hover:text-brand-light"
+                      aria-haspopup="true"
+                    >
+                      {item.label}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        class="size-3.5 transition-transform duration-200 group-hover:rotate-180"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </button>
+
+                    <div
+                      class="invisible absolute left-0 top-full min-w-[13rem] rounded-lg border border-gray-100 bg-white py-1 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:opacity-100"
+                      role="menu"
+                    >
+                      {item.dropdown.map((drop) => (
+                        <a
+                          href={drop.href}
+                          role="menuitem"
+                          class="block px-4 py-2.5 text-sm text-neutral-grey transition-colors hover:bg-gray-50 hover:text-brand-light"
+                        >
+                          {drop.label}
+                        </a>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <a
+                    href={item.href}
+                    class="block rounded-md px-3 py-2 text-sm font-medium text-neutral-grey transition-colors hover:bg-gray-50 hover:text-brand-light"
+                  >
+                    {item.label}
+                  </a>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+
+        <!-- Botón hamburguesa (mobile) -->
+        <button
+          id="mobile-menu-btn"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          aria-label={mobileMenuLabel}
+          class="flex size-10 items-center justify-center rounded-md text-neutral-grey hover:bg-gray-100 lg:hidden"
+        >
+          <svg
+            id="icon-open"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            ></path>
+          </svg>
+          <svg
+            id="icon-close"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="hidden size-6"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú mobile -->
+    <div
+      id="mobile-menu"
+      class="hidden border-t border-gray-100 bg-white lg:hidden"
+      aria-label={lang === "es" ? "Menú móvil" : "Mobile menu"}
+    >
+      <ul class="divide-y divide-gray-100 px-4 py-2" role="list">
+        {
+          items.map((item) => (
+            <li>
+              {item.megaMenu ? (
+                /* Mega menu item: acordeón de dos niveles */
+                <details class="group/mega">
+                  <summary class="flex cursor-pointer list-none items-center justify-between py-3.5 text-sm font-semibold text-neutral-dark">
+                    {item.label}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="size-4 transition-transform duration-200 group-open/mega:rotate-180"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </summary>
+                  <div class="bg-background-light rounded-lg mb-2">
+                    {item.megaMenu.map((sub) => (
+                      <details class="group/sub border-b border-gray-200 last:border-0">
+                        <summary class="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-sm text-neutral-grey">
+                          {sub.label}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            class="size-4 transition-transform duration-200 group-open/sub:rotate-45"
+                            aria-hidden="true"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                          </svg>
+                        </summary>
+                        <ul class="pb-2 px-4" role="list">
+                          {sub.items.map((subItem) => (
+                            <li>
+                              <a
+                                href={subItem.href}
+                                class="block py-2 text-sm text-neutral-grey hover:text-brand-light transition-colors pl-2 border-l-2 border-gray-200 hover:border-brand-light"
+                              >
+                                {subItem.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </details>
+                    ))}
+                  </div>
+                </details>
+              ) : item.dropdown ? (
+                <details class="group/detail">
+                  <summary class="flex cursor-pointer list-none items-center justify-between py-3 text-sm font-medium text-neutral-grey">
+                    {item.label}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="size-4 transition-transform duration-200 group-open/detail:rotate-180"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </summary>
+                  <ul class="mb-2 ml-3 border-l-2 border-gray-100 pl-3" role="list">
+                    {item.dropdown.map((drop) => (
+                      <li>
+                        <a
+                          href={drop.href}
+                          class="block py-2 text-sm text-neutral-grey hover:text-brand-light transition-colors"
+                        >
+                          {drop.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              ) : (
+                <a
+                  href={item.href}
+                  class="block py-3 text-sm font-medium text-neutral-grey hover:text-brand-light transition-colors"
+                >
+                  {item.label}
+                </a>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- CTA mobile -->
+      <div class="px-4 pb-4 pt-2">
+        <a
+          href={ctaHref}
+          class="block w-full rounded-full bg-brand-light py-3 text-center text-sm font-medium text-white hover:bg-brand-dark transition-colors"
+        >
+          {cta}
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("icon-open");
+  const iconClose = document.getElementById("icon-close");
+
+  mobileBtn?.addEventListener("click", () => {
+    const isOpen = mobileMenu?.classList.toggle("hidden") === false;
+    mobileBtn.setAttribute("aria-expanded", String(isOpen));
+    iconOpen?.classList.toggle("hidden", isOpen);
+    iconClose?.classList.toggle("hidden", !isOpen);
+  });
+
+  // Language switcher dropdown
+  const langBtn = document.getElementById("lang-btn");
+  const langMenu = document.getElementById("lang-menu");
+  const langChevron = document.getElementById("lang-chevron");
+
+  langBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = !langMenu?.classList.contains("hidden");
+    langMenu?.classList.toggle("hidden", isOpen);
+    langBtn.setAttribute("aria-expanded", String(!isOpen));
+    langChevron?.classList.toggle("rotate-180", !isOpen);
+  });
+
+  document.addEventListener("click", () => {
+    langMenu?.classList.add("hidden");
+    langBtn?.setAttribute("aria-expanded", "false");
+    langChevron?.classList.remove("rotate-180");
+  });
+</script>
