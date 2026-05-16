@@ -1,6 +1,6 @@
 ---
-import MegaMenu from './MegaMenu.tsx';
-import type { MegaSubcategory } from './MegaMenu.tsx';
+import MegaMenu from "./MegaMenu.tsx";
+import type { MegaSubcategory } from "./MegaMenu.tsx";
 
 const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
 const currentPath = Astro.url.pathname;
@@ -10,14 +10,9 @@ const altLangUrl =
     ? `/en${currentPath === "/" ? "" : currentPath}`
     : currentPath.replace(/^\/en/, "") || "/";
 
-interface DropdownItem {
-  label: string;
-  href: string;
-}
 interface NavItem {
   label: string;
   href: string;
-  dropdown?: DropdownItem[];
   megaMenu?: MegaSubcategory[];
 }
 interface NavData {
@@ -32,6 +27,11 @@ interface NavData {
   mobileMenuLabel: string;
 }
 
+const IMG_A = "/assets/images/test/thumb_servicios_90c45b98c0.jpg";
+const IMG_B = "/assets/images/test/thumb_empresas_4b46959dd7.avif";
+const IMG_C = "/assets/images/submenu.png";
+const IMG_D = "/assets/images/submenu2.png";
+
 const data: Record<"es" | "en", NavData> = {
   es: {
     logoHref: "/",
@@ -44,48 +44,83 @@ const data: Record<"es" | "en", NavData> = {
     mobileMenuLabel: "Menú",
     items: [
       {
-        label: "Servicios",
-        href: "/servicios",
-        dropdown: [
-          { label: "Taxes · Impuestos", href: "/servicios/taxes" },
-          { label: "Notaría", href: "/servicios/notaria" },
-          { label: "ITIN", href: "/servicios/itin" },
-          { label: "Nómina", href: "/servicios/nomina" },
+        label: "Categoría 1",
+        href: "#",
+        megaMenu: [
+          {
+            label: "Subcategoría 1",
+            image: IMG_A,
+            items: [
+              { label: "Item 1", href: "#", description: "Descripción breve del servicio o trámite disponible", image: IMG_C },
+              { label: "Item 2", href: "#", description: "Información adicional sobre esta opción del menú" },
+              { label: "Item 3", href: "#", description: "Detalle corto que acompaña al nombre del ítem", image: IMG_D },
+              { label: "Item 4", href: "#" },
+              { label: "Item 5", href: "#", description: "Texto descriptivo de apoyo para este servicio" },
+              { label: "Item 6", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategoría 2",
+            image: IMG_B,
+            items: [
+              { label: "Item 1", href: "#", description: "Descripción breve disponible para este ítem" },
+              { label: "Item 2", href: "#", description: "Información complementaria del servicio", image: IMG_C },
+              { label: "Item 3", href: "#" },
+              { label: "Item 4", href: "#", description: "Texto de apoyo para orientar al usuario" },
+              { label: "Item 5", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategoría 3",
+            items: [
+              { label: "Item 1", href: "#", description: "Detalle descriptivo del ítem seleccionado" },
+              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#", description: "Breve explicación del servicio ofrecido" },
+              { label: "Item 4", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategoría 4",
+            image: IMG_A,
+            items: [
+              { label: "Item 1", href: "#", description: "Descripción que complementa al título del ítem" },
+              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#", description: "Información adicional para el usuario" },
+            ],
+          },
         ],
       },
-      { label: "Nosotros", href: "/nosotros" },
-      { label: "Blog", href: "/blog" },
-      { label: "Contacto", href: "/contacto" },
       {
         label: "Categoría 2",
         href: "#",
         megaMenu: [
           {
             label: "Subcategoría 1",
+            image: IMG_A,
             items: [
-              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
-              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 1", href: "#", description: "Descripción breve del trámite o servicio" },
+              { label: "Item 2", href: "#", description: "Texto descriptivo de apoyo al usuario" },
               { label: "Item 3", href: "#" },
-              { label: "Item 4", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 4", href: "#", description: "Información adicional sobre esta opción" },
               { label: "Item 5", href: "#" },
-              { label: "Item 6", href: "#" },
             ],
           },
           {
             label: "Subcategoría 2",
+            image: IMG_B,
             items: [
-              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 1", href: "#", description: "Detalle corto que orienta al usuario" },
               { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#" },
+              { label: "Item 3", href: "#", description: "Explicación breve del servicio disponible" },
               { label: "Item 4", href: "#" },
             ],
           },
           {
             label: "Subcategoría 3",
             items: [
-              { label: "Item 1", href: "#" },
-              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
-              { label: "Item 3", href: "#" },
+              { label: "Item 1", href: "#", description: "Descripción de apoyo para este ítem del menú" },
+              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#", description: "Texto complementario del servicio ofrecido" },
             ],
           },
         ],
@@ -96,61 +131,38 @@ const data: Record<"es" | "en", NavData> = {
         megaMenu: [
           {
             label: "Subcategoría 1",
+            image: IMG_A,
             items: [
-              { label: "Item 1", href: "#" },
-              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
-              { label: "Item 3", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
-            ],
-          },
-          {
-            label: "Subcategoría 2",
-            items: [
-              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 1", href: "#", description: "Descripción breve que acompaña al título" },
               { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#" },
+              { label: "Item 3", href: "#", description: "Información de apoyo para orientar al usuario" },
               { label: "Item 4", href: "#" },
-              { label: "Item 5", href: "#" },
-            ],
-          },
-        ],
-      },
-      {
-        label: "Categoría 4",
-        href: "#",
-        megaMenu: [
-          {
-            label: "Subcategoría 1",
-            items: [
-              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
-              { label: "Item 2", href: "#" },
             ],
           },
           {
             label: "Subcategoría 2",
+            image: IMG_B,
             items: [
-              { label: "Item 1", href: "#" },
-              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 1", href: "#", description: "Detalle corto disponible para este servicio" },
+              { label: "Item 2", href: "#", description: "Texto descriptivo adicional del ítem" },
               { label: "Item 3", href: "#" },
+              { label: "Item 4", href: "#", description: "Explicación breve del trámite disponible" },
+              { label: "Item 5", href: "#" },
             ],
           },
           {
             label: "Subcategoría 3",
             items: [
-              { label: "Item 1", href: "#" },
+              { label: "Item 1", href: "#", description: "Descripción complementaria de este servicio" },
               { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
-              { label: "Item 4", href: "#" },
-            ],
-          },
-          {
-            label: "Subcategoría 4",
-            items: [
-              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
-              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#" },
             ],
           },
         ],
       },
+      { label: "Nosotros", href: "/nosotros" },
+      { label: "Blog", href: "/blog" },
+      { label: "Contacto", href: "/contacto" },
     ],
   },
   en: {
@@ -164,48 +176,83 @@ const data: Record<"es" | "en", NavData> = {
     mobileMenuLabel: "Menu",
     items: [
       {
-        label: "Services",
-        href: "/en/services",
-        dropdown: [
-          { label: "Tax Services", href: "/en/services/taxes" },
-          { label: "Notary", href: "/en/services/notary" },
-          { label: "ITIN", href: "/en/services/itin" },
-          { label: "Payroll", href: "/en/services/payroll" },
+        label: "Category 1",
+        href: "#",
+        megaMenu: [
+          {
+            label: "Subcategory 1",
+            image: IMG_A,
+            items: [
+              { label: "Item 1", href: "#", description: "Brief description of the available service or procedure", image: IMG_C },
+              { label: "Item 2", href: "#", description: "Additional information about this menu option" },
+              { label: "Item 3", href: "#", description: "Short detail that accompanies the item name", image: IMG_D },
+              { label: "Item 4", href: "#" },
+              { label: "Item 5", href: "#", description: "Descriptive text to support this service" },
+              { label: "Item 6", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategory 2",
+            image: IMG_B,
+            items: [
+              { label: "Item 1", href: "#", description: "Brief description available for this item" },
+              { label: "Item 2", href: "#", description: "Complementary information about the service", image: IMG_C },
+              { label: "Item 3", href: "#" },
+              { label: "Item 4", href: "#", description: "Supporting text to guide the user" },
+              { label: "Item 5", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategory 3",
+            items: [
+              { label: "Item 1", href: "#", description: "Descriptive detail of the selected item" },
+              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#", description: "Brief explanation of the service offered" },
+              { label: "Item 4", href: "#" },
+            ],
+          },
+          {
+            label: "Subcategory 4",
+            image: IMG_A,
+            items: [
+              { label: "Item 1", href: "#", description: "Description that complements the item title" },
+              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#", description: "Additional information for the user" },
+            ],
+          },
         ],
       },
-      { label: "About Us", href: "/en/about" },
-      { label: "Blog", href: "/en/blog" },
-      { label: "Contact", href: "/en/contact" },
       {
         label: "Category 2",
         href: "#",
         megaMenu: [
           {
             label: "Subcategory 1",
+            image: IMG_A,
             items: [
-              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
-              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 1", href: "#", description: "Brief description of the procedure or service" },
+              { label: "Item 2", href: "#", description: "Descriptive text to support the user" },
               { label: "Item 3", href: "#" },
-              { label: "Item 4", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
+              { label: "Item 4", href: "#", description: "Additional information about this option" },
               { label: "Item 5", href: "#" },
-              { label: "Item 6", href: "#" },
             ],
           },
           {
             label: "Subcategory 2",
+            image: IMG_B,
             items: [
-              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 1", href: "#", description: "Short detail to guide the user" },
               { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#" },
+              { label: "Item 3", href: "#", description: "Brief explanation of the available service" },
               { label: "Item 4", href: "#" },
             ],
           },
           {
             label: "Subcategory 3",
             items: [
-              { label: "Item 1", href: "#" },
-              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
-              { label: "Item 3", href: "#" },
+              { label: "Item 1", href: "#", description: "Supporting description for this menu item" },
+              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#", description: "Complementary text about the service offered" },
             ],
           },
         ],
@@ -216,72 +263,58 @@ const data: Record<"es" | "en", NavData> = {
         megaMenu: [
           {
             label: "Subcategory 1",
+            image: IMG_A,
             items: [
-              { label: "Item 1", href: "#" },
-              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
-              { label: "Item 3", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
-            ],
-          },
-          {
-            label: "Subcategory 2",
-            items: [
-              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 1", href: "#", description: "Brief description accompanying the title" },
               { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#" },
+              { label: "Item 3", href: "#", description: "Supporting information to guide the user" },
               { label: "Item 4", href: "#" },
-              { label: "Item 5", href: "#" },
-            ],
-          },
-        ],
-      },
-      {
-        label: "Category 4",
-        href: "#",
-        megaMenu: [
-          {
-            label: "Subcategory 1",
-            items: [
-              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
-              { label: "Item 2", href: "#" },
             ],
           },
           {
             label: "Subcategory 2",
+            image: IMG_B,
             items: [
-              { label: "Item 1", href: "#" },
-              { label: "Item 2", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
+              { label: "Item 1", href: "#", description: "Short detail available for this service" },
+              { label: "Item 2", href: "#", description: "Additional descriptive text for the item" },
               { label: "Item 3", href: "#" },
+              { label: "Item 4", href: "#", description: "Brief explanation of the available procedure" },
+              { label: "Item 5", href: "#" },
             ],
           },
           {
             label: "Subcategory 3",
             items: [
-              { label: "Item 1", href: "#" },
+              { label: "Item 1", href: "#", description: "Complementary description of this service" },
               { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#", image: "/assets/images/test/thumb_servicios_90c45b98c0.jpg" },
-              { label: "Item 4", href: "#" },
-            ],
-          },
-          {
-            label: "Subcategory 4",
-            items: [
-              { label: "Item 1", href: "#", image: "/assets/images/test/thumb_empresas_4b46959dd7.avif" },
-              { label: "Item 2", href: "#" },
+              { label: "Item 3", href: "#" },
             ],
           },
         ],
       },
+      { label: "About Us", href: "/en/about" },
+      { label: "Blog", href: "/en/blog" },
+      { label: "Contact", href: "/en/contact" },
     ],
   },
 };
 
-const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, currentLangLabel, mobileMenuLabel } =
-  data[lang];
+const {
+  items,
+  cta,
+  ctaHref,
+  logoHref,
+  altLangLabel,
+  altLangFlag,
+  currentFlag,
+  currentLangLabel,
+  mobileMenuLabel,
+} = data[lang];
 ---
 
 <header class="sticky top-0 z-50 bg-white">
-  <!-- Barra superior: idioma + CTA -->
-  <div class="border-b border-gray-100">
+  <!-- Barra superior: idioma + CTA (z-20 para quedar sobre el nav-overlay) -->
+  <div class="relative z-20 border-b border-gray-100">
     <div class="container-custom">
       <div class="flex items-center justify-end gap-3 py-2">
         <!-- Selector de idioma -->
@@ -293,7 +326,14 @@ const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, c
             aria-label={`Idioma actual: ${currentLangLabel}. Cambiar idioma`}
             class="flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-neutral-grey hover:bg-gray-100 transition-colors cursor-pointer"
           >
-            <img src={currentFlag} alt="" aria-hidden="true" width="20" height="14" class="rounded-sm object-cover" />
+            <img
+              src={currentFlag}
+              alt=""
+              aria-hidden="true"
+              width="24"
+              height="16"
+              class="object-cover"
+            />
             <span>{currentLangLabel}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -314,7 +354,7 @@ const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, c
             id="lang-menu"
             role="listbox"
             aria-label="Seleccionar idioma"
-            class="absolute right-0 top-full mt-1 hidden min-w-[6rem] rounded-lg border border-gray-100 bg-white py-1 shadow-lg"
+            class="absolute z-50 right-0 top-full mt-1 hidden min-w-[6rem] rounded-lg border border-gray-100 bg-white py-1 shadow-lg"
           >
             <a
               href={altLangUrl}
@@ -322,7 +362,14 @@ const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, c
               aria-selected="false"
               class="flex items-center gap-2 px-3 py-2 text-sm text-neutral-grey hover:bg-gray-50 hover:text-brand-light transition-colors"
             >
-              <img src={altLangFlag} alt="" aria-hidden="true" width="20" height="14" class="rounded-sm object-cover" />
+              <img
+                src={altLangFlag}
+                alt=""
+                aria-hidden="true"
+                width="24"
+                height="16"
+                class="object-cover"
+              />
               <span>{altLangLabel}</span>
             </a>
           </div>
@@ -340,13 +387,24 @@ const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, c
   </div>
 
   <!-- Barra de navegación principal -->
-  <nav aria-label={lang === "es" ? "Navegación principal" : "Main navigation"} class="bg-white shadow-sm">
+  <nav
+    aria-label={lang === "es" ? "Navegación principal" : "Main navigation"}
+    class="relative bg-white shadow-sm"
+  >
+    <!-- Overlay que cubre los enlaces cuando el selector de idioma está abierto -->
+    <div
+      id="nav-overlay"
+      class="absolute inset-0 z-10 bg-black/55 opacity-0 pointer-events-none transition-opacity duration-200"
+      aria-hidden="true"
+    ></div>
     <div class="container-custom">
       <div class="flex h-16 items-center justify-between gap-6">
         <!-- Logo -->
         <a
           href={logoHref}
-          aria-label={lang === "es" ? "Inicio — Tax & Notaría" : "Home — Tax & Notary"}
+          aria-label={lang === "es"
+            ? "Inicio — Tax & Notaría"
+            : "Home — Tax & Notary"}
           class="flex shrink-0 items-baseline gap-1 font-bold"
         >
           <span class="text-xl text-brand-light">TAX</span>
@@ -358,54 +416,17 @@ const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, c
         <ul class="hidden items-center gap-1 lg:flex" role="list">
           {
             items.map((item) => (
-              <li class="relative group">
+              <li class="relative">
                 {item.megaMenu ? (
                   <MegaMenu
                     client:load
                     label={item.label}
                     subcategories={item.megaMenu}
                   />
-                ) : item.dropdown ? (
-                  <>
-                    <button
-                      class="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-neutral-grey transition-colors hover:bg-gray-50 hover:text-brand-light"
-                      aria-haspopup="true"
-                    >
-                      {item.label}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        class="size-3.5 transition-transform duration-200 group-hover:rotate-180"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </button>
-
-                    <div
-                      class="invisible absolute left-0 top-full min-w-[13rem] rounded-lg border border-gray-100 bg-white py-1 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:opacity-100"
-                      role="menu"
-                    >
-                      {item.dropdown.map((drop) => (
-                        <a
-                          href={drop.href}
-                          role="menuitem"
-                          class="block px-4 py-2.5 text-sm text-neutral-grey transition-colors hover:bg-gray-50 hover:text-brand-light"
-                        >
-                          {drop.label}
-                        </a>
-                      ))}
-                    </div>
-                  </>
                 ) : (
                   <a
                     href={item.href}
-                    class="block rounded-md px-3 py-2 text-sm font-medium text-neutral-grey transition-colors hover:bg-gray-50 hover:text-brand-light"
+                    class="block rounded-md px-3 py-2 text-sm font-medium text-neutral-grey transition-colors hover:cursor-pointer hover:text-brand-light"
                   >
                     {item.label}
                   </a>
@@ -433,8 +454,10 @@ const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, c
             class="size-6"
             aria-hidden="true"
           >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            ></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
           </svg>
           <svg
             id="icon-close"
@@ -446,7 +469,10 @@ const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, c
             class="hidden size-6"
             aria-hidden="true"
           >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
@@ -463,7 +489,6 @@ const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, c
           items.map((item) => (
             <li>
               {item.megaMenu ? (
-                /* Mega menu item: acordeón de dos niveles */
                 <details class="group/mega">
                   <summary class="flex cursor-pointer list-none items-center justify-between py-3.5 text-sm font-semibold text-neutral-dark">
                     {item.label}
@@ -495,7 +520,11 @@ const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, c
                             class="size-4 transition-transform duration-200 group-open/sub:rotate-45"
                             aria-hidden="true"
                           >
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M12 4.5v15m7.5-7.5h-15"
+                            />
                           </svg>
                         </summary>
                         <ul class="pb-2 px-4" role="list">
@@ -513,37 +542,6 @@ const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, c
                       </details>
                     ))}
                   </div>
-                </details>
-              ) : item.dropdown ? (
-                <details class="group/detail">
-                  <summary class="flex cursor-pointer list-none items-center justify-between py-3 text-sm font-medium text-neutral-grey">
-                    {item.label}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      class="size-4 transition-transform duration-200 group-open/detail:rotate-180"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </summary>
-                  <ul class="mb-2 ml-3 border-l-2 border-gray-100 pl-3" role="list">
-                    {item.dropdown.map((drop) => (
-                      <li>
-                        <a
-                          href={drop.href}
-                          class="block py-2 text-sm text-neutral-grey hover:text-brand-light transition-colors"
-                        >
-                          {drop.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
                 </details>
               ) : (
                 <a
@@ -571,8 +569,14 @@ const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, c
   </nav>
 </header>
 
+<!-- Backdrop del selector de idioma -->
+<div
+  id="lang-backdrop"
+  class="fixed inset-0 z-40 bg-black/30 opacity-0 pointer-events-none transition-opacity duration-200"
+  aria-hidden="true"
+></div>
+
 <script>
-  // Mobile menu toggle
   const mobileBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
   const iconOpen = document.getElementById("icon-open");
@@ -585,22 +589,42 @@ const { items, cta, ctaHref, logoHref, altLangLabel, altLangFlag, currentFlag, c
     iconClose?.classList.toggle("hidden", !isOpen);
   });
 
-  // Language switcher dropdown
   const langBtn = document.getElementById("lang-btn");
   const langMenu = document.getElementById("lang-menu");
   const langChevron = document.getElementById("lang-chevron");
+  const langBackdrop = document.getElementById("lang-backdrop");
+  const navOverlay = document.getElementById("nav-overlay");
+
+  function openLang() {
+    langMenu?.classList.remove("hidden");
+    langBackdrop?.classList.remove("opacity-0", "pointer-events-none");
+    langBackdrop?.classList.add("opacity-100");
+    navOverlay?.classList.remove("opacity-0", "pointer-events-none");
+    navOverlay?.classList.add("opacity-100");
+    langBtn?.setAttribute("aria-expanded", "true");
+    langChevron?.classList.add("rotate-180");
+  }
+
+  function closeLang() {
+    langMenu?.classList.add("hidden");
+    langBackdrop?.classList.add("opacity-0", "pointer-events-none");
+    langBackdrop?.classList.remove("opacity-100");
+    navOverlay?.classList.add("opacity-0", "pointer-events-none");
+    navOverlay?.classList.remove("opacity-100");
+    langBtn?.setAttribute("aria-expanded", "false");
+    langChevron?.classList.remove("rotate-180");
+  }
 
   langBtn?.addEventListener("click", (e) => {
     e.stopPropagation();
-    const isOpen = !langMenu?.classList.contains("hidden");
-    langMenu?.classList.toggle("hidden", isOpen);
-    langBtn.setAttribute("aria-expanded", String(!isOpen));
-    langChevron?.classList.toggle("rotate-180", !isOpen);
+    langMenu?.classList.contains("hidden") ? openLang() : closeLang();
   });
 
-  document.addEventListener("click", () => {
-    langMenu?.classList.add("hidden");
-    langBtn?.setAttribute("aria-expanded", "false");
-    langChevron?.classList.remove("rotate-180");
+  langBackdrop?.addEventListener("click", closeLang);
+
+  document.addEventListener("click", (e) => {
+    if (!document.getElementById("lang-switcher")?.contains(e.target as Node)) {
+      closeLang();
+    }
   });
 </script>
