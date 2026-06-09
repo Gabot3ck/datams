@@ -1,226 +1,183 @@
 # DATA'S & MULTISERVICES — Tax Web
 
-Sitio web de servicios de taxes, notaría y corporativos para la comunidad hispana en EE.UU.
+Web de taxes, notaría y servicios corporativos para comunidad hispana en EE.UU.
 
-## Stack tecnológico
+## Stack
 
-- **Framework**: Astro 6 (SSG/SSR)
-- **UI interactiva**: React 19 (solo para MegaMenu via `client:load`)
-- **Estilos**: Tailwind CSS 4 (configurado via `@tailwindcss/vite` y bloque `@theme`)
+- **Framework**: Astro 6
+- **UI interactiva**: React 19 — solo `MegaMenu.tsx` usa `client:load`
+- **Estilos**: Tailwind CSS 4 vía `@tailwindcss/vite` + bloque `@theme` en `global.css`
 - **Animaciones**: GSAP 3 (hero slider)
 - **Tipado**: TypeScript 6 + `@astrojs/check`
-- **Fuente**: Roboto (woff2, self-hosted en `/public/fonts/roboto/`)
+- **Fuente**: Roboto woff2 self-hosted en `/public/fonts/roboto/`
 - **Node**: >=22.12.0
 
-## Arquitectura de i18n (bilingüe sin subdominio)
+## i18n — bilingüe sin subdominio
 
-El sitio sirve **español como idioma por defecto** e **inglés bajo el prefijo `/en/`**, todo dentro del mismo dominio. Esta es la estrategia SEO más robusta para mantener autoridad de dominio única.
-
-### Reglas de rutas
-
-| Idioma   | URL           | Archivo de página                 |
-|----------|---------------|-----------------------------------|
-| Español  | `/`           | `src/pages/index.astro`           |
-| Inglés   | `/en/`        | `src/pages/en/index.astro`        |
-| Español  | `/contacto`   | `src/pages/contacto.astro`        |
-| Inglés   | `/en/contact` | `src/pages/en/contact.astro`      |
-| Español  | `/nosotros`   | `src/pages/nosotros.astro`        |
-| Inglés   | `/en/about`   | `src/pages/en/about.astro`        |
-| Español  | `/blog`       | `src/pages/blog/index.astro`      |
-| Inglés   | `/en/blog`    | `src/pages/en/blog/index.astro`   |
-
-### Detección de idioma
-
-El idioma se infiere automáticamente del pathname de la URL:
+Español default en `/`, inglés bajo `/en/`. Mismo dominio. Sin Astro i18n middleware.
 
 ```ts
-// En cualquier componente Astro
+// Detección en cualquier componente
 const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
 ```
 
-No se usa ningún middleware de Astro i18n — la detección es por convención de rutas.
+- `x-default` → español (audiencia principal)
+- hreflang generado en `src/utils/hreflang.ts` — cambiar `SITE_URL` al dominio real
+- `BaseLayout.astro` inyecta hreflang, `og:locale`, `html lang` automáticamente
 
-### hreflang y SEO multiidioma
-
-Toda la lógica de hreflang vive en `src/utils/hreflang.ts`:
-
-```ts
-export const SITE_URL = 'https://tudominio.com'; // ← cambiar al dominio real
-
-export function getHreflangUrls(pathname: string) {
-  const cleanPath = pathname.replace('/en', '').replace(/\/$/, '') || '/';
-  return {
-    es: `${SITE_URL}${cleanPath}`,
-    en: `${SITE_URL}/en${cleanPath}`,
-    xDefault: `${SITE_URL}${cleanPath}` // Español como x-default
-  };
-}
-```
-
-`BaseLayout.astro` inyecta automáticamente:
-- `<link rel="alternate" hreflang="es" />` → versión en español
-- `<link rel="alternate" hreflang="en" />` → versión en inglés
-- `<link rel="alternate" hreflang="x-default" />` → español (audiencia principal)
-- `<html lang="es-US">` o `<html lang="en-US">` según el path
-- `og:locale` y `og:locale:alternate` correctos por idioma
-
-### Patrón de traducciones en componentes
-
-Las traducciones se manejan como objetos literales por componente, no con un sistema de archivos `.json` externo. El componente recibe `lang: 'es' | 'en'` como prop:
+### Patrón de traducciones (inline, no archivos JSON)
 
 ```astro
 ---
 interface Props { lang: 'es' | 'en'; }
 const { lang } = Astro.props;
-
-const t = {
-  es: { heading: "Título en español" },
-  en: { heading: "English heading" },
-}[lang];
+const t = { es: { heading: "Español" }, en: { heading: "English" } }[lang];
 ---
 <h1>{t.heading}</h1>
 ```
+
+### Rutas por crear
+
+| ES | EN |
+|----|----|
+| `/contacto` | `/en/contact` |
+| `/nosotros` | `/en/about` |
+| `/blog` | `/en/blog` |
+| `/taxes/*` | `/en/taxes/*` |
+| `/notaria/*` | `/en/notary/*` |
+| `/inmigracion/*` | `/en/immigration/*` |
+| `/itin-ein/*` | `/en/itin-ein/*` |
+| `/irs/*` | `/en/irs/*` |
+| `/negocio/*` | `/en/business/*` |
+| `/dmv/*` | `/en/dmv/*` |
+| `/corte/*` | `/en/court/*` |
+| `/otros/*` | `/en/other/*` |
 
 ## Estructura de archivos
 
 ```
 src/
-├── assets/
-│   └── images/banners/          # Imágenes del hero slider (mobile, tablet, desktop)
+├── assets/images/banners/    # Slides hero: slide_tax_1/2/3_d.png (misma img en m/t/d por ahora)
 ├── components/
-│   ├── BaseLayout.astro          # Layout raíz con todos los meta tags SEO
-│   ├── Hero.astro                # Slider responsivo con GSAP + imágenes optimizadas
-│   ├── HomePage.astro            # Secciones: Hero, Services, Stats, WhyUs, CTA
-│   ├── MegaMenu.tsx             # Mega menú (React, client:load, usa portal)
-│   ├── MegaMenuPanel.tsx        # Panel de contenido del mega menú
-│   └── Navbar.astro             # Header sticky: idioma switcher + nav desktop + mobile
+│   ├── Hero.astro            # Slider 3 slides, GSAP, responsive images via astro:assets
+│   ├── HomePage.astro        # Todas las secciones del home
+│   ├── Navbar.astro          # Header sticky: idioma + megamenú + mobile
+│   ├── MegaMenu.tsx          # React — portal a document.body, tabs por hover
+│   ├── MegaMenuPanel.tsx     # Panel del megamenú: grid 2 cols de items + imagen
+│   └── BaseLayout.astro      # Layout raíz con SEO completo
 ├── layouts/
-│   └── BaseLayout.astro         # Layout con SEO completo (OG, Twitter, JSON-LD)
+│   └── BaseLayout.astro
 ├── pages/
-│   ├── index.astro              # Home en español
-│   └── en/
-│       └── index.astro          # Home en inglés
-├── styles/
-│   └── global.css               # @theme Tailwind, fuentes, utilidades globales
-└── utils/
-    └── hreflang.ts              # Generador de URLs hreflang
+│   ├── index.astro           # Home ES
+│   └── en/index.astro        # Home EN
+├── styles/global.css         # @theme tokens, fuentes, .container-custom, .title, .subtitle
+└── utils/hreflang.ts         # getHreflangUrls(pathname)
 public/
-├── assets/
-│   ├── icons/                   # flag_mexico.webp, flag_usa.webp
-│   └── images/test/             # Imágenes de prueba del menú
-├── fonts/roboto/                # Roboto woff2 (self-hosted)
-├── scripts/
-│   └── hero-slider.js           # Script vanilla del slider (actualmente reemplazado por Hero.astro)
-├── favicon.ico / favicon.svg
+├── assets/icons/             # flag_mexico.webp, flag_usa.webp
+├── fonts/roboto/             # roboto-regular.woff2, roboto-bold.woff2
+└── scripts/
+    └── hero-slider.js        # Lógica real del slider (prev/next/dots/autoplay/keyboard/swipe)
 ```
 
-## Componentes clave
-
-### BaseLayout.astro
-Recibe: `title`, `description`, `robots?`, `canonical?`, `image?`, `jsonLd?`
-
-- Detecta `lang` automáticamente del pathname
-- Genera todos los meta tags: description, OG (og:title, og:description, og:image, og:locale), Twitter cards
-- Inyecta JSON-LD via `<script type="application/ld+json">`
-- Incluye `<Navbar />` antes del `<slot />`
-
-### Navbar.astro
-- Header sticky con `z-50`
-- Barra superior: selector de idioma (con banderas) + CTA "Agendar cita"
-- Al abrir el selector de idioma: overlay oscuro cubre el nav (z-10) y backdrop fijo (z-40)
-- Nav desktop: items con `MegaMenu` (React) o links simples
-- Menú mobile: `<details>/<summary>` nativo para categorías y subcategorías
-- El switcher de idioma construye la URL alternativa dinámicamente:
-  ```astro
-  // ES → EN: añade /en al path actual
-  // EN → ES: quita /en del path actual
-  const altLangUrl = lang === "es"
-    ? `/en${currentPath === "/" ? "" : currentPath}`
-    : currentPath.replace(/^\/en/, "") || "/";
-  ```
-
-### MegaMenu.tsx (React)
-- Renderiza el panel via `createPortal` en `document.body` para evitar problemas de `overflow:hidden`
-- Calcula `panelTop` desde el `getBoundingClientRect()` del `<header>` para posicionarlo debajo
-- Cierre con delay de 150ms (`CLOSE_MS`) para permitir mover el cursor al panel sin que se cierre
-- Animaciones CSS: `animate-mega-open` / `animate-mega-close` (definidas en global.css)
+## Componentes — notas críticas
 
 ### Hero.astro
-- Slider de 3 slides con imágenes responsivas (mobile/tablet/desktop) en WebP
-- Usa `astro:assets` `getImage()` con múltiples widths para srcset automático
-- Animaciones con GSAP: título, subtítulo y CTA aparecen en secuencia al cambiar slide
-- `MutationObserver` detecta cambios de clase `opacity-100` en los paneles para disparar la animación
-- Soporte completo: autoplay, intervalo configurable, swipe (touch), controles prev/next, dots
+- Props: `lang`, `autoplay`, `interval`, `classSection`, `id`
+- Dos `<script>` blocks: `is:inline src="/scripts/hero-slider.js"` (lógica del slider) + GSAP (animaciones panel)
+- **IMPORTANTE**: `hero-slider.js` cargado con `<script is:inline src="/scripts/hero-slider.js">` — sin esto los botones no funcionan
+- `public/scripts/hero-slider.js` maneja: prev/next/dots/autoplay/keyboard/swipe/WeakMap state
+- GSAP anima title → subtitle → cta en secuencia via `MutationObserver` en `opacity-100`
+- Imágenes: actualmente misma PNG para m/t/d. Reemplazar con versiones reales responsive
 
-### HomePage.astro
-Secciones en orden:
-1. **Hero** — heading principal + CTAs + trust indicators + tarjeta visual
-2. **Services** — 3 tarjetas: Impuestos, Notaría, Servicios Corporativos
-3. **Stats** — 4 números: 10+ años, 5000+ clientes, 100% español, 3 oficinas
-4. **Why Us** — checklist de 6 puntos en grid 2 columnas
-5. **CTA Banner** — banner con fondo accent para conversión final
+### HomePage.astro — secciones en orden
 
-## Sistema de diseño (Tailwind @theme)
+```
+1. <Hero lang={lang} />                    ← slider de imágenes
+2. Community & Stats                        ← 2 cols: copy + grid 2×2 stats  ← NUEVO
+3. Services                                 ← 3 tarjetas (Taxes, Notaría, Business)
+4. Stats bar                                ← fondo accent, 4 números horizontales
+5. Why Us                                   ← checklist 2 cols
+6. CTA Banner                              ← fondo accent-dark, conversión final
+```
+
+La sección **Community & Stats** (nueva, después del hero):
+- Izquierda: label con punto rojo, H2 bicolor (`t.community.heading.pre + accent + post`), descripción, CTA, trust indicators con checkmarks
+- Derecha: `<dl>` grid 2×2 con bordes via `class:list` condicional por índice (`i===1||3` → `border-l`, `i===2||3` → `border-t`)
+- Hover en cada celda: número cambia a `brand-light`
+- Bilingüe: traducciones en `t.community` dentro de `HomePage.astro`
+
+### Navbar.astro — menú de servicios reales
+
+5 items con mega menú + 3 links simples:
+
+| Label | Tabs del mega menú |
+|-------|--------------------|
+| Taxes | Taxes Personales · Taxes de Negocio · IRS & Resolución Fiscal |
+| ITIN / EIN | ITIN & EIN (3 items) |
+| Notary Public | Poderes · Declaraciones · Propiedad · Apostillas |
+| Inmigración | Trámites Migratorios · Documentos y Apoyo |
+| Más Servicios | Business · DMV · Formularios Corte · Otros |
+| Nosotros / Blog / Contacto | — links simples |
+
+URLs siguen patrón SEO semántico: `/taxes/declaracion-personal`, `/notaria/power-of-attorney`, etc. Páginas aún no existen — links listos cuando se creen.
+
+### MegaMenu.tsx (React)
+- Portal a `document.body` — evita `overflow:hidden` del header
+- `panelTop` calculado desde `header.getBoundingClientRect().bottom`
+- Cierre con delay 150ms (`CLOSE_MS`) — permite mover cursor al panel
+- Animaciones: `animate-mega-open` / `animate-mega-close` en `global.css`
+
+### MegaMenuPanel.tsx
+- Tabs: `onMouseEnter` cambia tab activo
+- Grid 2 columnas para items
+- Imagen a la derecha: hover sobre item → muestra `item.image`, fallback → `subcategory.image`, si nada → div gris
+- `min-h-[400px]` — soporta muchos items sin romper layout
+
+## Sistema de diseño
 
 ```css
-/* Colores principales */
---color-brand-extralight: #DF5E51
---color-brand-light: #CA3626   /* rojo principal — CTAs, hovers */
---color-brand: #a41e11
---color-brand-dark: #810C00    /* rojo oscuro — fondos hero, hover secundario */
---color-accent: #4d4e4a        /* gris carbón — stats background */
---color-accent-dark: #e3ab02   /* amarillo dorado — badge hero, CTA banner */
---color-neutral-dark: #1a261a  /* casi negro verdoso — textos principales */
---color-neutral-grey: #575756  /* gris medio — textos secundarios */
+--color-brand-light:   #CA3626  /* rojo — CTAs, hovers, acentos heading */
+--color-brand-dark:    #810C00  /* rojo oscuro — fondos, hover secundario */
+--color-accent:        #4d4e4a  /* gris carbón — stats bar bg */
+--color-accent-dark:   #e3ab02  /* dorado — badge hero, CTA banner bg */
+--color-neutral-dark:  #1a261a  /* casi negro — textos principales, stat numbers */
+--color-neutral-grey:  #575756  /* gris medio — textos secundarios */
 --color-background-light: #f9f9f9
 --color-background-muted: #e0e0e0
 
-/* Breakpoints */
-xs: 425px | sm: 640px | md: 768px | lg: 990px | xl: 1280px | 2xl: 1536px | 3xl: 1920px
+/* Breakpoints custom */
+lg: 990px  /* ← NO es 1024px estándar de Tailwind */
 ```
 
-### Utilidades globales
-- `.container-custom` — max-w-7xl, centrado, padding responsivo; en >1520px cambia a 80dvw
-- `.title` — tamaño de heading responsivo (1.6rem → 3rem → 4rem)
+Utilidades globales:
+- `.container-custom` — max-w-7xl + padding; >1520px → 80dvw
+- `.title` — heading responsivo 1.6rem → 4rem
 - `.subtitle` — texto secundario con max-width centrado
 
-## Variables pendientes de configurar
+## Variables pendientes para producción
 
-Antes de ir a producción, actualizar:
+| Archivo | Variable | Acción |
+|---------|----------|--------|
+| `src/utils/hreflang.ts` | `SITE_URL = 'https://tudominio.com'` | Dominio real |
+| `src/layouts/BaseLayout.astro` | `siteName = "NOMBRE_SITIO"` | Nombre negocio |
+| `src/layouts/BaseLayout.astro` | `ogImage` | URL imagen OG real |
+| `src/layouts/BaseLayout.astro` | `google-site-verification` | GSC code |
+| `src/pages/index.astro` | `image="/assets/og-image.png"` | Crear OG 1200×675 |
 
-| Archivo | Variable | Valor actual | Acción requerida |
-|---------|----------|-------------|-----------------|
-| `src/utils/hreflang.ts` | `SITE_URL` | `'https://tudominio.com'` | Cambiar al dominio real |
-| `src/layouts/BaseLayout.astro` | `siteName` | `"NOMBRE_SITIO"` | Nombre real del negocio |
-| `src/layouts/BaseLayout.astro` | `ogImage` | `"https://NOMBRE_SITIO/default-og.webp"` | URL de la imagen OG real |
-| `src/layouts/BaseLayout.astro` | `google-site-verification` | `""` | Código de Google Search Console |
-| `src/pages/index.astro` | `image` | `"/assets/og-image.png"` | Crear imagen OG real (1200x675) |
-| `Navbar.astro` | Logo text | "DATA'S & MULTISERVICES" | Verificar nombre final |
+## Pendientes
 
-## Páginas por crear
-
-- [ ] `src/pages/contacto.astro` + `src/pages/en/contact.astro`
-- [ ] `src/pages/nosotros.astro` + `src/pages/en/about.astro`
-- [ ] `src/pages/blog/index.astro` + `src/pages/en/blog/index.astro`
-- [ ] Páginas de servicios individuales (taxes, notaría, corporativos)
-- [ ] `public/sitemap.xml` o configurar `@astrojs/sitemap`
+- [ ] Crear páginas de servicios (ver tabla de rutas)
+- [ ] `@astrojs/sitemap` o `public/sitemap.xml`
 - [ ] `public/robots.txt`
-- [ ] Imagen OG por defecto (`/public/assets/og-image.webp`, 1200×675)
-
-## Convenciones del proyecto
-
-- **Idioma como prop**: todos los componentes reciben `lang: 'es' | 'en'`
-- **Traducciones inline**: objeto `t = { es: {...}, en: {...} }[lang]` dentro del componente
-- **Rutas EN**: siempre con prefijo `/en/` — no usar parámetros Astro i18n
-- **Imágenes**: WebP optimizadas via `astro:assets`, siempre con `alt`, lazy loading en below-the-fold
-- **Accesibilidad**: ARIA labels en español o inglés según `lang`, roles semánticos en listas de nav
-- **React solo donde hay interactividad**: MegaMenu usa `client:load`; el resto es Astro puro
-- **JSON-LD**: cada página define su propio Schema.org en la prop `jsonLd` de `BaseLayout`
+- [ ] Imagen OG real (`public/assets/og-image.webp`, 1200×675)
+- [ ] Imágenes hero responsive reales (mobile/tablet/desktop separadas)
+- [ ] Imágenes reales en subcategorías del mega menú (actualmente sin imagen → fondo gris)
+- [ ] Contenido real en secciones Services, WhyUs (URLs son `#` placeholder)
 
 ## Comandos
 
 ```bash
-npm run dev      # servidor de desarrollo
-npm run build    # build de producción
-npm run preview  # preview del build
+npm run dev      # desarrollo
+npm run build    # producción
+npm run preview  # preview build
 ```
