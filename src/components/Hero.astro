@@ -1,0 +1,395 @@
+---
+import { getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+import s1m from '../assets/images/banners/slide_tax_2_d.png';
+import s1t from '../assets/images/banners/slide_tax_2_d.png';
+import s1d from '../assets/images/banners/slide_tax_2_d.png';
+
+import s2m from '../assets/images/banners/slide_tax_1_d.png';
+import s2t from '../assets/images/banners/slide_tax_1_d.png';
+import s2d from '../assets/images/banners/slide_tax_1_d.png';
+
+import s3m from '../assets/images/banners/slide_tax_3_d.png';
+import s3t from '../assets/images/banners/slide_tax_3_d.png';
+import s3d from '../assets/images/banners/slide_tax_3_d.png';
+
+interface Props {
+  lang?: 'es' | 'en';
+  autoplay?: boolean;
+  interval?: number;
+  ClassSection?: string;
+  classSection?: string;
+  id?: string;
+}
+
+type SlideContent = {
+  title: string;
+  subtitle: string;
+  placement: 'left' | 'right';
+  ctaText?: string;
+  ctaHref?: string;
+  alt?: string;
+  btnClass?: string;
+};
+
+type SlideImage = {
+  mobile: ImageMetadata;
+  tablet: ImageMetadata;
+  desktop: ImageMetadata;
+};
+
+const {
+  lang = 'es',
+  autoplay = true,
+  interval = 6500,
+  ClassSection,
+  classSection,
+  id,
+} = Astro.props;
+
+const sectionClass = ClassSection ?? classSection ?? "min-h-[500px] sm:min-h-[400px] md:min-h-[500px] xl:min-h-[70vh]";
+const uid = id ?? `hero-${Math.random().toString(36).slice(2)}`;
+
+const gridMap: Record<SlideContent['placement'], string> = {
+  left:  "sm:left-20 sm:right-auto",
+  right: "sm:right-20 sm:left-auto",
+};
+
+const slidesContent: Record<'es' | 'en', SlideContent[]> = {
+  es: [
+    {
+      title: "Haz tus taxes sin estrés y con confianza",
+      subtitle: "Te ayudamos a declarar correctamente y acceder a servicios notariales",
+      placement: "left",
+      ctaText: "Contáctanos",
+      ctaHref: "#",
+      alt: "",
+    },
+    {
+      title: "Tu aliado latino para taxes y notaría en EE.UU.",
+      subtitle: "Simplificamos tus trámites fiscales y legales con asesoría experta, rápida y 100% confiable.",
+      placement: "left",
+      ctaText: "Contáctanos",
+      ctaHref: "#",
+      alt: "",
+      btnClass: "bg-background-light text-brand-dark",
+    },
+    {
+      title: "Cumple con tus taxes y trámites legales sin errores",
+      subtitle: "Notaría diseñados para latinos que buscan seguridad y resultados",
+      placement: "right",
+      ctaText: "Contáctanos",
+      ctaHref: "#",
+      alt: "",
+    },
+  ],
+  en: [
+    {
+      title: "File your taxes with confidence and ease",
+      subtitle: "We help you file accurately and access notary services with expert guidance",
+      placement: "left",
+      ctaText: "Contact Us",
+      ctaHref: "/en/#",
+      alt: "",
+    },
+    {
+      title: "Your Latino ally for taxes and notary services in the U.S.",
+      subtitle: "We simplify your tax and legal processes with expert, fast, and 100% reliable advice.",
+      placement: "left",
+      ctaText: "Contact Us",
+      ctaHref: "/en/#",
+      alt: "",
+      btnClass: "bg-background-light text-brand-dark",
+    },
+    {
+      title: "Stay compliant with your taxes and legal paperwork without mistakes",
+      subtitle: "Notary services designed for Latinos seeking security and results",
+      placement: "right",
+      ctaText: "Contact Us",
+      ctaHref: "/en/#",
+      alt: "",
+    },
+  ],
+};
+
+const ui = {
+  es: {
+    prevLabel: "Slide anterior",
+    nextLabel: "Slide siguiente",
+    dotLabel: (i: number) => `Ir al slide ${i + 1}`,
+    dotsLabel: "Navegación del slider",
+  },
+  en: {
+    prevLabel: "Previous slide",
+    nextLabel: "Next slide",
+    dotLabel: (i: number) => `Go to slide ${i + 1}`,
+    dotsLabel: "Slider navigation",
+  },
+}[lang];
+
+const slideImages: SlideImage[] = [
+  { mobile: s1m, tablet: s1t, desktop: s1d },
+  { mobile: s2m, tablet: s2t, desktop: s2d },
+  { mobile: s3m, tablet: s3t, desktop: s3d },
+];
+
+const W_MOBILE = [375, 480, 540, 640, 720, 900];
+const W_TABLET = [768, 990, 1200, 1280];
+const W_DESKTOP = [1280, 1530, 1920];
+
+const content = slidesContent[lang];
+
+const slides = await Promise.all(
+  slideImages.map(async (imgs, i) => {
+    const [m, t, d] = await Promise.all([
+      getImage({ src: imgs.mobile, format: "webp", quality: 80, widths: W_MOBILE, sizes: "100vw" }),
+      getImage({ src: imgs.tablet, format: "webp", quality: 80, widths: W_TABLET, sizes: "100vw" }),
+      getImage({ src: imgs.desktop, format: "webp", quality: 80, widths: W_DESKTOP, sizes: "100vw" }),
+    ]);
+    return { ...content[i], img: { m, t, d } };
+  })
+);
+---
+
+<section
+  id={uid}
+  data-hero
+  data-autoplay={autoplay ? "true" : "false"}
+  data-interval={String(interval)}
+  tabindex={slides.length > 1 ? 0 : undefined}
+  class:list={[
+    "group relative isolate w-full overflow-hidden mb-16 ",
+    "flex items-stretch",
+    "touch-pan-y select-none",
+    sectionClass,
+  ]}
+>
+  <!-- Slides -->
+  <div class="absolute inset-0" aria-hidden="true">
+    {slides.map((s, i) => (
+      <div
+        class:list={[
+          "absolute inset-0 h-full w-full",
+          "transition-opacity duration-700 ease-in-out",
+          i === 0 ? "opacity-100" : "opacity-0",
+        ]}
+        data-hero-slide
+        data-index={i}
+      >
+        <!-- MOBILE (<640) -->
+        <img
+          class="h-full w-full object-cover object-center sm:hidden"
+          src={s.img.m.src}
+          srcset={s.img.m.srcSet.attribute}
+          sizes="100vw"
+          alt={s.alt ?? "Banner"}
+          loading={i === 0 ? "eager" : "lazy"}
+          decoding="async"
+          fetchpriority={i === 0 ? "high" : undefined}
+        />
+
+        <!-- TABLET (640–959) -->
+        <img
+          class="hidden h-full w-full object-cover object-center sm:block lg:hidden"
+          src={s.img.t.src}
+          srcset={s.img.t.srcSet.attribute}
+          sizes="100vw"
+          alt={s.alt ?? "Banner"}
+          loading={i === 0 ? "eager" : "lazy"}
+          decoding="async"
+          fetchpriority={i === 0 ? "high" : undefined}
+        />
+
+        <!-- DESKTOP (>=960) -->
+        <img
+          class="hidden h-full w-full object-cover object-center lg:block"
+          src={s.img.d.src}
+          srcset={s.img.d.srcSet.attribute}
+          sizes="100vw"
+          alt={s.alt ?? "Banner"}
+          loading={i === 0 ? "eager" : "lazy"}
+          decoding="async"
+          fetchpriority={i === 0 ? "high" : undefined}
+        />
+      </div>
+    ))}
+  </div>
+
+  <!-- Paneles -->
+  <div class="relative z-10 w-full">
+    <div class="container-custom h-full px-6">
+      {slides.map((s, i) => (
+        <div
+          class:list={[
+            "left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2",
+            "sm:translate-x-0",
+            gridMap[s.placement],
+            "hero-panel w-[300px] sm:w-[380px] lg:w-[650px] absolute ",
+            "bg-black/35 backdrop-blur-sm ring-1 ring-white/10 rounded",
+            "p-4 sm:p-6 md:p-8 lg:p-10",
+            "text-center sm:text-left",
+            "transition-opacity duration-500 ease-in-out",
+            i === 0 ? "opacity-100" : "opacity-0 pointer-events-none",
+          ]}
+          data-hero-panel
+          data-index={i}
+        >
+          <h1
+            class="font-bold leading-tight text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl"
+            data-hero-title
+          >
+            {s.title}
+          </h1>
+
+          <p
+            class="mt-1 sm:mt-2 md:mt-4 lg:w-[410px] text-sm md:text-[1rem] lg:text-[1.15rem] xl:text-2xl text-white/90"
+            data-hero-subtitle
+          >
+            {s.subtitle}
+          </p>
+
+          {s.ctaHref && s.ctaText && (
+            <div
+              class="mt-3 sm:mt-5 md:mt-8 flex flex-wrap items-center gap-4"
+              data-hero-cta
+            >
+              <a
+                href={s.ctaHref}
+                class={` ${s.btnClass || "bg-brand hover:bg-brand-dark text-background-light"} text-[12px] lg:text-sm px-6 py-4 mx-auto sm:mx-0 rounded-md transition-colors ease-in duration-300`}
+              >
+                {s.ctaText}
+              </a>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Controles -->
+  {slides.length > 1 && (
+    <>
+      <button
+        type="button"
+        class:list={[
+          "hero-prev absolute left-4 bottom-2 sm:bottom-3 md:top-[50%] -translate-y-1/2 z-10",
+          "h-12 w-12 rounded-full bg-white shadow border border-gray-400 text-3xl",
+          "grid place-items-center",
+          "hover:cursor-pointer hover:scale-110 transition-transform duration-200",
+        ]}
+        aria-label={ui.prevLabel}
+        data-hero-prev
+      >
+        <span aria-hidden="true">‹</span>
+      </button>
+
+      <button
+        type="button"
+        class:list={[
+          "hero-next absolute right-4 bottom-2 sm:bottom-3 md:top-[50%] -translate-y-1/2 z-10",
+          "h-12 w-12 rounded-full bg-white shadow border border-gray-400 text-3xl",
+          "grid place-items-center",
+          "hover:cursor-pointer hover:scale-110 transition-transform duration-200",
+        ]}
+        aria-label={ui.nextLabel}
+        data-hero-next
+      >
+        <span aria-hidden="true">›</span>
+      </button>
+
+      <div
+        class="absolute bottom-5 left-1/2 z-20 w-20 h-5 flex justify-center -translate-x-1/2 items-center gap-2"
+        role="tablist"
+        aria-label={ui.dotsLabel}
+        data-hero-dots
+      >
+        {slides.map((_, i) => (
+          <button
+            type="button"
+            class:list={[
+              "hero-dot h-2.5 w-2.5 rounded-full ring-1 ring-white/40 transition-transform",
+              i === 0 ? "bg-white scale-110" : "bg-white/40 hover:bg-white/70",
+            ]}
+            aria-label={ui.dotLabel(i)}
+            aria-selected={i === 0 ? "true" : "false"}
+            role="tab"
+            data-hero-dot
+            data-index={i}
+          />
+        ))}
+      </div>
+    </>
+  )}
+</section>
+
+<script is:inline src="/scripts/hero-slider.js"></script>
+
+<script>
+  import { gsap } from "gsap";
+
+  let activeTl: gsap.core.Timeline | null = null;
+  let sliderObserver: MutationObserver | null = null;
+
+  function animatePanel(panelEl: Element, delay = 0.1) {
+    const title = panelEl.querySelector("[data-hero-title]");
+    if (!title) return;
+
+    activeTl?.kill();
+
+    const tl = gsap.timeline({ delay });
+
+    tl.fromTo(title,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" }
+    );
+
+    const subtitle = panelEl.querySelector("[data-hero-subtitle]");
+    if (subtitle) tl.fromTo(subtitle,
+      { y: 14, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+      "-=0.4"
+    );
+
+    const cta = panelEl.querySelector("[data-hero-cta]");
+    if (cta) tl.fromTo(cta,
+      { y: 10, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.55, ease: "power2.out" },
+      "-=0.35"
+    );
+
+    activeTl = tl;
+  }
+
+  function initHeroAnimations() {
+    sliderObserver?.disconnect();
+
+    const firstPanel = document.querySelector('[data-hero-panel][data-index="0"]');
+    if (!firstPanel) return;
+    animatePanel(firstPanel, 0.1);
+
+    const panels = document.querySelectorAll("[data-hero-panel]");
+    sliderObserver = new MutationObserver((mutations) => {
+      for (const mut of mutations) {
+        if (mut.attributeName !== "class") continue;
+        const panel = mut.target as Element;
+        const wasHidden = (mut.oldValue ?? "").includes("opacity-0");
+        const isVisible = panel.classList.contains("opacity-100");
+        if (wasHidden && isVisible) {
+          animatePanel(panel, 0.15);
+        }
+      }
+    });
+
+    panels.forEach((p) =>
+      sliderObserver!.observe(p, {
+        attributes: true,
+        attributeFilter: ["class"],
+        attributeOldValue: true,
+      })
+    );
+  }
+
+  initHeroAnimations();
+  document.addEventListener("astro:page-load", initHeroAnimations);
+</script>
