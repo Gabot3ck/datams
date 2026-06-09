@@ -18,6 +18,20 @@ const t = {
       secondaryHref: "#servicios",
       trust: ["Más de 10 años de experiencia", "5,000+ clientes atendidos", "Servicio 100% en español"]
     },
+    community: {
+      label: "Nuestra comunidad",
+      heading: { pre: "Somos el aliado de confianza de la", accent: "comunidad hispana", post: "en EE.UU." },
+      description: "Ayudamos a familias, negocios e inmigrantes con sus trámites de taxes, notaría e inmigración. Profesionalismo, experiencia y atención 100% en español.",
+      cta: "Agendar cita gratis",
+      ctaHref: "/contacto",
+      trust: ["IRS Authorized CAA", "Notary Public Certificada", "Servicio bilingüe"],
+      stats: [
+        { value: "10+", label: "Años de experiencia" },
+        { value: "5,000+", label: "Familias atendidas" },
+        { value: "50+", label: "Servicios disponibles" },
+        { value: "100%", label: "Atención en español e inglés" },
+      ],
+    },
     services: {
       sectionLabel: "Nuestros servicios",
       heading: "Todo lo que necesitas en un solo lugar",
@@ -80,6 +94,20 @@ const t = {
       secondaryHref: "#services",
       trust: ["Over 10 years of experience", "5,000+ clients served", "100% bilingual service"]
     },
+    community: {
+      label: "Our community",
+      heading: { pre: "The trusted partner of the", accent: "Hispanic community", post: "in the U.S." },
+      description: "We help families, businesses, and immigrants with their tax, notary, and immigration needs. Professional service, fully bilingual in Spanish and English.",
+      cta: "Book free appointment",
+      ctaHref: "/en/contact",
+      trust: ["IRS Authorized CAA", "Certified Notary Public", "Fully bilingual service"],
+      stats: [
+        { value: "10+", label: "Years of experience" },
+        { value: "5,000+", label: "Families served" },
+        { value: "50+", label: "Services available" },
+        { value: "100%", label: "Spanish & English service" },
+      ],
+    },
     services: {
       sectionLabel: "Our services",
       heading: "Everything you need in one place",
@@ -139,6 +167,86 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
 <main>
   <!-- HERO SLIDER -->
   <Hero lang={lang} />
+
+  <!-- COMMUNITY & STATS -->
+  <section class="py-16 lg:py-24 bg-white border-b border-gray-100" aria-labelledby="community-heading">
+    <div class="container-custom">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 xl:gap-24">
+
+        <!-- Columna izquierda: copy -->
+        <div class="flex-1 text-center lg:text-left">
+
+          <!-- Label con punto -->
+          <div class="inline-flex items-center gap-2 mb-5">
+            <span class="size-2.5 rounded-full bg-brand-light shrink-0" aria-hidden="true"></span>
+            <span class="text-xs font-bold tracking-widest text-neutral-grey uppercase">
+              {t.community.label}
+            </span>
+          </div>
+
+          <!-- Heading bicolor -->
+          <h2 id="community-heading" class="title font-bold text-neutral-dark leading-tight mb-5">
+            {t.community.heading.pre}{' '}
+            <span class="text-brand-light">{t.community.heading.accent}</span>
+            {t.community.heading.post && ` ${t.community.heading.post}`}
+          </h2>
+
+          <!-- Descripción -->
+          <p class="text-neutral-grey leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
+            {t.community.description}
+          </p>
+
+          <!-- CTA -->
+          <a
+            href={t.community.ctaHref}
+            class="inline-flex items-center gap-2 rounded-full bg-brand-light px-7 py-3.5 text-sm font-semibold text-white hover:bg-brand-dark transition-colors focus-visible:outline-2 focus-visible:outline-brand-light"
+          >
+            {t.community.cta}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+            </svg>
+          </a>
+
+          <!-- Trust indicators -->
+          <div class="mt-10 pt-8 border-t border-gray-100">
+            <ul class="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2" role="list">
+              {t.community.trust.map(item => (
+                <li class="flex items-center gap-1.5 text-xs font-medium text-neutral-grey">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-3.5 text-brand-light shrink-0" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Columna derecha: grid 2×2 de estadísticas -->
+        <div class="w-full lg:w-auto lg:flex-1 max-w-md lg:max-w-lg">
+          <dl class="grid grid-cols-2 rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+            {t.community.stats.map((stat, i) => (
+              <div
+                class:list={[
+                  "flex flex-col items-center justify-center text-center py-10 px-6 bg-white hover:bg-gray-50 transition-colors duration-200 group",
+                  (i === 1 || i === 3) && "border-l border-gray-200",
+                  (i === 2 || i === 3) && "border-t border-gray-200",
+                ]}
+              >
+                <dt class="text-4xl sm:text-5xl xl:text-6xl font-bold text-neutral-dark tracking-tight leading-none group-hover:text-brand-light transition-colors duration-200">
+                  {stat.value}
+                </dt>
+                <dd class="text-xs sm:text-sm text-neutral-grey mt-3 leading-snug max-w-[130px]">
+                  {stat.label}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- SERVICES -->
   <section id={sectionId} class="py-20 bg-white" aria-labelledby="services-heading">
