@@ -27,11 +27,6 @@ interface NavData {
   mobileMenuLabel: string;
 }
 
-const IMG_A = "/assets/images/test/thumb_servicios_90c45b98c0.jpg";
-const IMG_B = "/assets/images/test/thumb_empresas_4b46959dd7.avif";
-const IMG_C = "/assets/images/submenu.png";
-const IMG_D = "/assets/images/submenu2.png";
-
 const data: Record<"es" | "en", NavData> = {
   es: {
     logoHref: "/",
@@ -44,124 +39,169 @@ const data: Record<"es" | "en", NavData> = {
     mobileMenuLabel: "Menú",
     items: [
       {
-        label: "Categoría 1",
-        href: "#",
+        label: "Taxes",
+        href: "/taxes",
         megaMenu: [
           {
-            label: "Subcategoría 1",
-            image: IMG_A,
+            label: "Taxes Personales",
             items: [
-              { label: "Item 1", href: "#", description: "Descripción breve del servicio o trámite disponible", image: IMG_C },
-              { label: "Item 2", href: "#", description: "Información adicional sobre esta opción del menú" },
-              { label: "Item 3", href: "#", description: "Detalle corto que acompaña al nombre del ítem", image: IMG_D },
-              { label: "Item 4", href: "#" },
-              { label: "Item 5", href: "#", description: "Texto descriptivo de apoyo para este servicio" },
-              { label: "Item 6", href: "#" },
+              { label: "Declaración de impuestos personales", href: "/taxes/declaracion-personal", description: "Declaración federal y estatal para individuos y familias" },
+              { label: "Declaraciones en todos los estados", href: "/taxes/todos-los-estados", description: "Para quienes trabajan en múltiples estados" },
+              { label: "Enmiendas de impuestos", href: "/taxes/enmiendas", description: "Corregimos errores en declaraciones ya presentadas" },
+              { label: "Seguimiento de impuestos", href: "/taxes/seguimiento", description: "Rastreamos el estado de tu reembolso pendiente" },
+              { label: "Transcripciones IRS", href: "/taxes/transcripciones-irs", description: "Copias oficiales de tus declaraciones anteriores" },
             ],
           },
           {
-            label: "Subcategoría 2",
-            image: IMG_B,
+            label: "Taxes de Negocio",
             items: [
-              { label: "Item 1", href: "#", description: "Descripción breve disponible para este ítem" },
-              { label: "Item 2", href: "#", description: "Información complementaria del servicio", image: IMG_C },
-              { label: "Item 3", href: "#" },
-              { label: "Item 4", href: "#", description: "Texto de apoyo para orientar al usuario" },
-              { label: "Item 5", href: "#" },
+              { label: "Declaración de impuestos de negocio", href: "/taxes/declaracion-negocio", description: "Para LLC, Sole Proprietor y corporaciones" },
+              { label: "Asesoría de impuestos de negocio", href: "/taxes/asesoria-negocio", description: "Planificación fiscal para maximizar deducciones" },
+              { label: "Formularios 1099-NEC", href: "/taxes/formularios-1099", description: "Formularios para contratistas independientes" },
             ],
           },
           {
-            label: "Subcategoría 3",
+            label: "IRS & Resolución Fiscal",
             items: [
-              { label: "Item 1", href: "#", description: "Detalle descriptivo del ítem seleccionado" },
-              { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#", description: "Breve explicación del servicio ofrecido" },
-              { label: "Item 4", href: "#" },
-            ],
-          },
-          {
-            label: "Subcategoría 4",
-            image: IMG_A,
-            items: [
-              { label: "Item 1", href: "#", description: "Descripción que complementa al título del ítem" },
-              { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#", description: "Información adicional para el usuario" },
+              { label: "Auditorías con el IRS", href: "/irs/auditorias", description: "Representación profesional ante cualquier auditoría" },
+              { label: "Resolución de cartas del IRS", href: "/irs/cartas-irs", description: "Interpretamos y respondemos las cartas del IRS" },
+              { label: "Solución de deudas con el IRS", href: "/irs/deudas-irs", description: "Negociamos tu deuda para reducirla o pagarla en cuotas" },
+              { label: "Pagos al IRS", href: "/irs/pagos-irs" },
+              { label: "Acuerdos de pago con IRS", href: "/irs/acuerdos-pago", description: "Installment Agreement y Offer in Compromise" },
             ],
           },
         ],
       },
       {
-        label: "Categoría 2",
-        href: "#",
+        label: "ITIN / EIN",
+        href: "/itin-ein",
         megaMenu: [
           {
-            label: "Subcategoría 1",
-            image: IMG_A,
+            label: "ITIN & EIN",
             items: [
-              { label: "Item 1", href: "#", description: "Descripción breve del trámite o servicio" },
-              { label: "Item 2", href: "#", description: "Texto descriptivo de apoyo al usuario" },
-              { label: "Item 3", href: "#" },
-              { label: "Item 4", href: "#", description: "Información adicional sobre esta opción" },
-              { label: "Item 5", href: "#" },
-            ],
-          },
-          {
-            label: "Subcategoría 2",
-            image: IMG_B,
-            items: [
-              { label: "Item 1", href: "#", description: "Detalle corto que orienta al usuario" },
-              { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#", description: "Explicación breve del servicio disponible" },
-              { label: "Item 4", href: "#" },
-            ],
-          },
-          {
-            label: "Subcategoría 3",
-            items: [
-              { label: "Item 1", href: "#", description: "Descripción de apoyo para este ítem del menú" },
-              { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#", description: "Texto complementario del servicio ofrecido" },
+              { label: "Solicitud de ITIN Number", href: "/itin-ein/solicitud-itin", description: "Número de identificación fiscal para extranjeros" },
+              { label: "Renovación de ITIN Number", href: "/itin-ein/renovacion-itin", description: "Renovamos tu ITIN antes de que expire" },
+              { label: "Solicitud de EIN para negocio", href: "/itin-ein/solicitud-ein", description: "Número de identificación del empleador para tu negocio" },
             ],
           },
         ],
       },
       {
-        label: "Categoría 3",
+        label: "Notaría Pública",
+        href: "/notaria",
+        megaMenu: [
+          {
+            label: "Poderes y Autorizaciones",
+            items: [
+              { label: "Power of Attorney", href: "/notaria/power-of-attorney", description: "Poder notarial para actuar en nombre de otra persona" },
+              { label: "Carta poder", href: "/notaria/carta-poder", description: "Para trámites dentro y fuera de EE.UU." },
+              { label: "Permiso de salida para menores", href: "/notaria/permiso-salida-menores", description: "Autorización para viajar con menores de edad" },
+              { label: "Autorización retiro de vehículo", href: "/notaria/autorizacion-vehiculo-corralon", description: "Carta para retirar vehículo en corralón" },
+            ],
+          },
+          {
+            label: "Declaraciones y Documentos",
+            items: [
+              { label: "Affidavit", href: "/notaria/affidavit", description: "Declaración jurada ante notario" },
+              { label: "Contrato de renta", href: "/notaria/contrato-renta", description: "Contratos de arrendamiento notarizados" },
+              { label: "Contrato de acuerdo de pago", href: "/notaria/contrato-pago", description: "Acuerdos de pago con validez legal" },
+              { label: "Testamentos", href: "/notaria/testamentos", description: "Redacción y notarización de testamentos" },
+            ],
+          },
+          {
+            label: "Propiedad y Documentos Legales",
+            items: [
+              { label: "Quit Claim Deed", href: "/notaria/quit-claim-deed", description: "Transferencia de propiedad entre personas" },
+              { label: "Títulos de casas móviles", href: "/notaria/titulos-casas-moviles", description: "Titulación para mobile homes" },
+              { label: "Corrección de nombre en acta", href: "/notaria/correccion-nombre", description: "Corrección de errores en certificado de nacimiento" },
+            ],
+          },
+          {
+            label: "Apostillas",
+            items: [
+              { label: "Apostillas de actas de nacimiento", href: "/notaria/apostillas-actas", description: "Legalización internacional de actas de nacimiento" },
+              { label: "Apostillas de cartas y documentos", href: "/notaria/apostillas-documentos", description: "Apostilla para cualquier documento oficial" },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Inmigración",
+        href: "/inmigracion",
+        megaMenu: [
+          {
+            label: "Trámites Migratorios",
+            items: [
+              { label: "Peticiones familiares", href: "/inmigracion/peticiones-familiares", description: "Peticiones para reunificación familiar" },
+              { label: "Ciudadanía americana", href: "/inmigracion/ciudadania-americana", description: "Proceso de naturalización paso a paso" },
+              { label: "Renovación de DACA", href: "/inmigracion/renovacion-daca", description: "Renovamos tu permiso DACA a tiempo" },
+              { label: "Solicitud de residencia permanente", href: "/inmigracion/residencia-permanente", description: "Green Card — solicitud inicial" },
+              { label: "Renovación de residencia permanente", href: "/inmigracion/renovacion-residencia" },
+              { label: "Solicitud de permiso de trabajo", href: "/inmigracion/permiso-trabajo", description: "Employment Authorization Document (EAD)" },
+              { label: "Renovación de permiso de trabajo", href: "/inmigracion/renovacion-permiso-trabajo" },
+              { label: "Solicitud de asilo", href: "/inmigracion/asilo", description: "Asistencia en solicitudes de asilo político" },
+            ],
+          },
+          {
+            label: "Documentos y Apoyo Migratorio",
+            items: [
+              { label: "Pasaporte americano", href: "/inmigracion/pasaporte-americano", description: "Solicitud para ciudadanos estadounidenses" },
+              { label: "Pasaporte para otros países", href: "/inmigracion/pasaporte-otros-paises", description: "Asistencia para pasaportes extranjeros" },
+              { label: "Cartas de buena moral", href: "/inmigracion/cartas-buena-moral", description: "Cartas de buena conducta para trámites migratorios" },
+              { label: "Traducciones certificadas", href: "/inmigracion/traducciones-certificadas", description: "Traducciones oficiales para inmigración" },
+              { label: "Otros formularios migratorios", href: "/inmigracion/formularios-inmigracion", description: "Asistencia con formularios USCIS y otros" },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Más Servicios",
         href: "#",
         megaMenu: [
           {
-            label: "Subcategoría 1",
-            image: IMG_A,
+            label: "Business Services",
             items: [
-              { label: "Item 1", href: "#", description: "Descripción breve que acompaña al título" },
-              { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#", description: "Información de apoyo para orientar al usuario" },
-              { label: "Item 4", href: "#" },
+              { label: "Creación de licencia LLC / Sole Proprietor", href: "/negocio/creacion-licencia", description: "Constituimos tu negocio legalmente" },
+              { label: "Renovación de licencia de negocio", href: "/negocio/renovacion-licencia" },
+              { label: "Permisos del condado y la ciudad", href: "/negocio/permisos-ciudad-condado", description: "Licencias y permisos locales para operar tu negocio" },
             ],
           },
           {
-            label: "Subcategoría 2",
-            image: IMG_B,
+            label: "DMV",
             items: [
-              { label: "Item 1", href: "#", description: "Detalle corto disponible para este servicio" },
-              { label: "Item 2", href: "#", description: "Texto descriptivo adicional del ítem" },
-              { label: "Item 3", href: "#" },
-              { label: "Item 4", href: "#", description: "Explicación breve del trámite disponible" },
-              { label: "Item 5", href: "#" },
+              { label: "Citas y preparación DMV", href: "/dmv/citas-dmv", description: "Agendamos y preparamos tu cita en el DMV" },
+              { label: "Formularios DMV", href: "/dmv/formularios-dmv" },
+              { label: "Registración de vehículo", href: "/dmv/registracion-vehiculo", description: "Registramos tu vehículo ante el DMV" },
+              { label: "Duplicado de título", href: "/dmv/duplicado-titulo" },
+              { label: "Permisos de conducir", href: "/dmv/permiso-conducir" },
+              { label: "Traducciones para DMV", href: "/dmv/traducciones-dmv", description: "Traducciones certificadas de documentos para el DMV" },
             ],
           },
           {
-            label: "Subcategoría 3",
+            label: "Formularios para la Corte",
             items: [
-              { label: "Item 1", href: "#", description: "Descripción complementaria de este servicio" },
-              { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#" },
+              { label: "Divorcios", href: "/corte/divorcios", description: "Llenado de formularios de divorcio" },
+              { label: "Custodia de niños", href: "/corte/custodia-ninos", description: "Solicitud de custodia y acuerdos parentales" },
+              { label: "Órdenes de protección", href: "/corte/ordenes-proteccion" },
+              { label: "Small Claims", href: "/corte/small-claims", description: "Formularios para la corte de reclamos menores" },
+              { label: "Traducciones para la corte", href: "/corte/traducciones-corte", description: "Traducciones certificadas para procesos judiciales" },
+            ],
+          },
+          {
+            label: "Otros Servicios",
+            items: [
+              { label: "Rompetiket / Papeletas", href: "/otros/rompetiket", description: "Asistencia para pelear multas y citaciones" },
+              { label: "Pago de tickets de tráfico", href: "/otros/pago-tickets-trafico" },
+              { label: "Aplicaciones de empleo", href: "/otros/aplicacion-empleo", description: "Ayudamos a completar solicitudes de trabajo" },
+              { label: "Licencias ciudad y condado", href: "/otros/licencias-ciudad" },
+              { label: "Aplicación de desempleo", href: "/otros/desempleo", description: "Solicitud de beneficios de desempleo" },
+              { label: "Duplicado de actas americanas", href: "/otros/duplicado-actas" },
+              { label: "Citas de consulado", href: "/otros/citas-consulado", description: "Agendamiento de citas en consulados" },
             ],
           },
         ],
       },
       { label: "Nosotros", href: "/nosotros" },
-      { label: "Blog", href: "/blog" },
       { label: "Contacto", href: "/contacto" },
     ],
   },
@@ -176,124 +216,169 @@ const data: Record<"es" | "en", NavData> = {
     mobileMenuLabel: "Menu",
     items: [
       {
-        label: "Category 1",
-        href: "#",
+        label: "Taxes",
+        href: "/en/taxes",
         megaMenu: [
           {
-            label: "Subcategory 1",
-            image: IMG_A,
+            label: "Personal Taxes",
             items: [
-              { label: "Item 1", href: "#", description: "Brief description of the available service or procedure", image: IMG_C },
-              { label: "Item 2", href: "#", description: "Additional information about this menu option" },
-              { label: "Item 3", href: "#", description: "Short detail that accompanies the item name", image: IMG_D },
-              { label: "Item 4", href: "#" },
-              { label: "Item 5", href: "#", description: "Descriptive text to support this service" },
-              { label: "Item 6", href: "#" },
+              { label: "Personal tax return", href: "/en/taxes/personal-tax-return", description: "Federal and state returns for individuals and families" },
+              { label: "Multi-state tax returns", href: "/en/taxes/all-states", description: "Returns for those working across multiple states" },
+              { label: "Tax amendments", href: "/en/taxes/amendments", description: "Correct errors in previously filed returns" },
+              { label: "Refund tracking", href: "/en/taxes/refund-tracking", description: "We track the status of your pending refund" },
+              { label: "IRS transcripts", href: "/en/taxes/irs-transcripts", description: "Official copies of your past tax returns" },
             ],
           },
           {
-            label: "Subcategory 2",
-            image: IMG_B,
+            label: "Business Taxes",
             items: [
-              { label: "Item 1", href: "#", description: "Brief description available for this item" },
-              { label: "Item 2", href: "#", description: "Complementary information about the service", image: IMG_C },
-              { label: "Item 3", href: "#" },
-              { label: "Item 4", href: "#", description: "Supporting text to guide the user" },
-              { label: "Item 5", href: "#" },
+              { label: "Business tax return", href: "/en/taxes/business-tax-return", description: "Returns for LLCs, Sole Proprietors and corporations" },
+              { label: "Business tax advisory", href: "/en/taxes/business-tax-advice", description: "Tax planning to maximize your business deductions" },
+              { label: "1099-NEC forms", href: "/en/taxes/1099-forms", description: "1099-NEC forms for your independent contractors" },
             ],
           },
           {
-            label: "Subcategory 3",
+            label: "IRS & Tax Resolution",
             items: [
-              { label: "Item 1", href: "#", description: "Descriptive detail of the selected item" },
-              { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#", description: "Brief explanation of the service offered" },
-              { label: "Item 4", href: "#" },
-            ],
-          },
-          {
-            label: "Subcategory 4",
-            image: IMG_A,
-            items: [
-              { label: "Item 1", href: "#", description: "Description that complements the item title" },
-              { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#", description: "Additional information for the user" },
+              { label: "IRS audit representation", href: "/en/irs/audits", description: "Professional representation in any IRS audit" },
+              { label: "IRS letter resolution", href: "/en/irs/irs-letters", description: "We interpret and respond to IRS letters for you" },
+              { label: "Tax debt resolution", href: "/en/irs/tax-debt-resolution", description: "We negotiate your tax debt to reduce or settle it" },
+              { label: "IRS payments", href: "/en/irs/irs-payments" },
+              { label: "IRS payment plans", href: "/en/irs/payment-plans", description: "Installment Agreement and Offer in Compromise" },
             ],
           },
         ],
       },
       {
-        label: "Category 2",
-        href: "#",
+        label: "ITIN / EIN",
+        href: "/en/itin-ein",
         megaMenu: [
           {
-            label: "Subcategory 1",
-            image: IMG_A,
+            label: "ITIN & EIN",
             items: [
-              { label: "Item 1", href: "#", description: "Brief description of the procedure or service" },
-              { label: "Item 2", href: "#", description: "Descriptive text to support the user" },
-              { label: "Item 3", href: "#" },
-              { label: "Item 4", href: "#", description: "Additional information about this option" },
-              { label: "Item 5", href: "#" },
-            ],
-          },
-          {
-            label: "Subcategory 2",
-            image: IMG_B,
-            items: [
-              { label: "Item 1", href: "#", description: "Short detail to guide the user" },
-              { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#", description: "Brief explanation of the available service" },
-              { label: "Item 4", href: "#" },
-            ],
-          },
-          {
-            label: "Subcategory 3",
-            items: [
-              { label: "Item 1", href: "#", description: "Supporting description for this menu item" },
-              { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#", description: "Complementary text about the service offered" },
+              { label: "ITIN Number application", href: "/en/itin-ein/itin-application", description: "Get your Individual Taxpayer Identification Number" },
+              { label: "ITIN Number renewal", href: "/en/itin-ein/itin-renewal", description: "Renew your ITIN before it expires" },
+              { label: "EIN for business", href: "/en/itin-ein/ein-application", description: "Employer Identification Number for your business" },
             ],
           },
         ],
       },
       {
-        label: "Category 3",
+        label: "Notary Public",
+        href: "/en/notary",
+        megaMenu: [
+          {
+            label: "Powers & Authorizations",
+            items: [
+              { label: "Power of Attorney", href: "/en/notary/power-of-attorney", description: "Legal authority to act on behalf of another person" },
+              { label: "Letter of attorney", href: "/en/notary/letter-of-attorney", description: "For transactions inside and outside the U.S." },
+              { label: "Minor travel permit", href: "/en/notary/minor-travel-permit", description: "Notarized authorization for minors to travel" },
+              { label: "Vehicle release authorization", href: "/en/notary/vehicle-release-authorization", description: "Authorization to retrieve a vehicle from impound" },
+            ],
+          },
+          {
+            label: "Statements & Documents",
+            items: [
+              { label: "Affidavit", href: "/en/notary/affidavit", description: "Sworn written statement before a notary" },
+              { label: "Rental agreement", href: "/en/notary/rental-agreement", description: "Notarized lease and rental contracts" },
+              { label: "Payment agreement", href: "/en/notary/payment-agreement", description: "Legally binding payment agreements" },
+              { label: "Wills", href: "/en/notary/wills", description: "Drafting and notarization of last will and testament" },
+            ],
+          },
+          {
+            label: "Property & Legal Documents",
+            items: [
+              { label: "Quit Claim Deed", href: "/en/notary/quit-claim-deed", description: "Transfer of property between parties" },
+              { label: "Mobile home titles", href: "/en/notary/mobile-home-titles", description: "Title procedures for mobile homes" },
+              { label: "Birth certificate name correction", href: "/en/notary/name-correction", description: "Correcting errors on birth certificates" },
+            ],
+          },
+          {
+            label: "Apostilles",
+            items: [
+              { label: "Apostille — birth certificates", href: "/en/notary/apostille-birth-certificate", description: "International legalization of birth certificates" },
+              { label: "Apostille — letters & documents", href: "/en/notary/apostille-documents", description: "Apostille for any official document" },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Immigration",
+        href: "/en/immigration",
+        megaMenu: [
+          {
+            label: "Immigration Procedures",
+            items: [
+              { label: "Family petitions", href: "/en/immigration/family-petitions", description: "Petitions for family reunification" },
+              { label: "U.S. citizenship", href: "/en/immigration/us-citizenship", description: "Naturalization process step by step" },
+              { label: "DACA renewal", href: "/en/immigration/daca-renewal", description: "We renew your DACA permit on time" },
+              { label: "Permanent residency", href: "/en/immigration/permanent-residency", description: "Green Card — initial application" },
+              { label: "Residency renewal", href: "/en/immigration/residency-renewal" },
+              { label: "Work permit application", href: "/en/immigration/work-permit", description: "Employment Authorization Document (EAD)" },
+              { label: "Work permit renewal", href: "/en/immigration/work-permit-renewal" },
+              { label: "Asylum application", href: "/en/immigration/asylum", description: "Assistance with political asylum applications" },
+            ],
+          },
+          {
+            label: "Documents & Immigration Support",
+            items: [
+              { label: "U.S. passport", href: "/en/immigration/us-passport", description: "U.S. passport application for citizens" },
+              { label: "Foreign passport", href: "/en/immigration/foreign-passport", description: "Assistance applying for foreign passports" },
+              { label: "Good moral character letters", href: "/en/immigration/good-moral-letter", description: "Character reference letters for immigration" },
+              { label: "Certified translations", href: "/en/immigration/certified-translations", description: "Official translations for immigration use" },
+              { label: "Other immigration forms", href: "/en/immigration/immigration-forms", description: "Help with USCIS forms and more" },
+            ],
+          },
+        ],
+      },
+      {
+        label: "More Services",
         href: "#",
         megaMenu: [
           {
-            label: "Subcategory 1",
-            image: IMG_A,
+            label: "Business Services",
             items: [
-              { label: "Item 1", href: "#", description: "Brief description accompanying the title" },
-              { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#", description: "Supporting information to guide the user" },
-              { label: "Item 4", href: "#" },
+              { label: "LLC / Sole Proprietor formation", href: "/en/business/llc-formation", description: "We form your business legally" },
+              { label: "Business license renewal", href: "/en/business/llc-renewal" },
+              { label: "County & city permits", href: "/en/business/business-permits", description: "Local licenses and permits to operate your business" },
             ],
           },
           {
-            label: "Subcategory 2",
-            image: IMG_B,
+            label: "DMV",
             items: [
-              { label: "Item 1", href: "#", description: "Short detail available for this service" },
-              { label: "Item 2", href: "#", description: "Additional descriptive text for the item" },
-              { label: "Item 3", href: "#" },
-              { label: "Item 4", href: "#", description: "Brief explanation of the available procedure" },
-              { label: "Item 5", href: "#" },
+              { label: "DMV appointments & prep", href: "/en/dmv/dmv-appointments", description: "We schedule and prepare you for your DMV appointment" },
+              { label: "DMV forms", href: "/en/dmv/dmv-forms" },
+              { label: "Vehicle registration", href: "/en/dmv/vehicle-registration", description: "We register your vehicle with the DMV" },
+              { label: "Title duplicate", href: "/en/dmv/title-duplicate" },
+              { label: "Driver's permit", href: "/en/dmv/drivers-permit" },
+              { label: "DMV certified translations", href: "/en/dmv/dmv-translations", description: "Certified document translations for the DMV" },
             ],
           },
           {
-            label: "Subcategory 3",
+            label: "Court Forms",
             items: [
-              { label: "Item 1", href: "#", description: "Complementary description of this service" },
-              { label: "Item 2", href: "#" },
-              { label: "Item 3", href: "#" },
+              { label: "Divorce", href: "/en/court/divorce", description: "Divorce form preparation" },
+              { label: "Child custody", href: "/en/court/child-custody", description: "Custody petitions and parenting agreements" },
+              { label: "Restraining orders", href: "/en/court/restraining-orders" },
+              { label: "Small Claims", href: "/en/court/small-claims", description: "Forms for small claims court" },
+              { label: "Court certified translations", href: "/en/court/court-translations", description: "Certified translations for legal proceedings" },
+            ],
+          },
+          {
+            label: "Other Services",
+            items: [
+              { label: "Ticket dismissal (Rompetiket)", href: "/en/other/ticket-dismissal", description: "Help fighting fines and citations" },
+              { label: "Traffic ticket payment", href: "/en/other/traffic-tickets" },
+              { label: "Job applications", href: "/en/other/job-applications", description: "Help completing employment applications" },
+              { label: "City & county licenses", href: "/en/other/city-licenses" },
+              { label: "Unemployment application", href: "/en/other/unemployment", description: "Help applying for unemployment benefits" },
+              { label: "Birth certificate duplicate", href: "/en/other/birth-certificate-copy" },
+              { label: "Consulate appointments", href: "/en/other/consulate-appointments", description: "Schedule appointments at consulates" },
             ],
           },
         ],
       },
       { label: "About Us", href: "/en/about" },
-      { label: "Blog", href: "/en/blog" },
       { label: "Contact", href: "/en/contact" },
     ],
   },
