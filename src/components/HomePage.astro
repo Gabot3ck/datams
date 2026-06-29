@@ -8,19 +8,9 @@ const { lang } = Astro.props;
 
 const t = {
   es: {
-    hero: {
-      badge: "Servicio bilingüe · Español & English",
-      heading: "Impuestos y notaría para la comunidad hispana en EE.UU.",
-      subheading: "Ayudamos a familias y negocios hispanos a cumplir con sus obligaciones fiscales y documentales con confianza, profesionalismo y atención 100% en español.",
-      cta: "Agendar cita gratis",
-      ctaHref: "/contacto",
-      secondary: "Ver servicios",
-      secondaryHref: "#servicios",
-      trust: ["Más de 10 años de experiencia", "5,000+ clientes atendidos", "Servicio 100% en español"]
-    },
     community: {
       label: "Nuestra comunidad",
-      heading: { pre: "Somos el aliado de confianza de la", accent: "comunidad hispana", post: "en EE.UU." },
+      heading: { pre: "El aliado de confianza de la", accent: "comunidad hispana", post: "en EE.UU." },
       description: "Ayudamos a familias, negocios e inmigrantes con sus trámites de taxes, notaría e inmigración. Profesionalismo, experiencia y atención 100% en español.",
       cta: "Agendar cita gratis",
       ctaHref: "/contacto",
@@ -34,23 +24,26 @@ const t = {
     },
     services: {
       sectionLabel: "Nuestros servicios",
-      heading: "Todo lo que necesitas en un solo lugar",
+      heading: "Todo lo que necesitas, en un solo lugar",
       subheading: "Soluciones integrales para tu situación fiscal, notarial y empresarial",
       items: [
         {
+          num: "01",
           label: "Impuestos",
           description: "Preparación de declaraciones federales y estatales, ITIN, enmiendas y asesoría fiscal para individuos y familias hispanas.",
           href: "#",
           cta: "Conocer más"
         },
         {
+          num: "02",
           label: "Notaría",
           description: "Apostille, certificación de documentos, poderes notariales y traducción oficial de documentos para trámites en EE.UU. y el extranjero.",
           href: "#",
           cta: "Conocer más"
         },
         {
-          label: "Servicios corporativos",
+          num: "03",
+          label: "Servicios Corporativos",
           description: "Apertura de LLC, obtención de EIN, registro de negocios y asesoría integral para emprendedores hispanos.",
           href: "#",
           cta: "Conocer más"
@@ -65,7 +58,7 @@ const t = {
     ],
     whyUs: {
       sectionLabel: "Por qué elegirnos",
-      heading: "El aliado de confianza de la comunidad hispana",
+      heading: "El profesionalismo que la comunidad hispana merece",
       description: "Entendemos los desafíos únicos que enfrentan las familias y negocios hispanos en Estados Unidos. Por eso ofrecemos un servicio cálido, profesional y completamente en tu idioma.",
       items: [
         "Atención 100% en español e inglés",
@@ -77,23 +70,17 @@ const t = {
       ]
     },
     cta: {
-      heading: "¿Tienes preguntas? Estamos aquí para ayudarte",
-      subheading: "Agenda una consulta sin costo y descubre cómo podemos ayudarte con tus trámites fiscales y notariales.",
+      eyebrow: "Resolving your pathway to success",
+      heading: "¿Listo para resolver tu situación fiscal?",
+      subheading: "Agenda una consulta sin costo y descubre cómo podemos ayudarte con tus trámites fiscales, notariales y corporativos.",
       button: "Agendar cita gratis",
-      href: "/contacto"
+      href: "/contacto",
+      phone: "(702) 640-0088",
+      address: "235 N Eastern Ave. Suite 130, Las Vegas, NV. 89101",
+      hours: "Lun–Sáb 9AM–9PM · Dom 10AM–5PM"
     }
   },
   en: {
-    hero: {
-      badge: "Bilingual service · Español & English",
-      heading: "Tax and notary services for the Hispanic community in the U.S.",
-      subheading: "We help Hispanic families and businesses meet their tax and document needs with confidence, professionalism, and full bilingual support.",
-      cta: "Book free appointment",
-      ctaHref: "/en/contact",
-      secondary: "View services",
-      secondaryHref: "#services",
-      trust: ["Over 10 years of experience", "5,000+ clients served", "100% bilingual service"]
-    },
     community: {
       label: "Our community",
       heading: { pre: "The trusted partner of the", accent: "Hispanic community", post: "in the U.S." },
@@ -110,22 +97,25 @@ const t = {
     },
     services: {
       sectionLabel: "Our services",
-      heading: "Everything you need in one place",
+      heading: "Everything you need, all in one place",
       subheading: "Comprehensive solutions for your tax, notary, and business needs",
       items: [
         {
+          num: "01",
           label: "Taxes",
           description: "Federal and state tax return preparation, ITIN applications, amendments, and tax advice for Hispanic individuals and families.",
           href: "#",
           cta: "Learn more"
         },
         {
+          num: "02",
           label: "Notary",
           description: "Apostille, document certification, notarial powers of attorney, and official document translation for U.S. and international use.",
           href: "#",
           cta: "Learn more"
         },
         {
+          num: "03",
           label: "Business Services",
           description: "LLC formation, EIN registration, business registration, and comprehensive advisory services for Hispanic entrepreneurs.",
           href: "#",
@@ -141,7 +131,7 @@ const t = {
     ],
     whyUs: {
       sectionLabel: "Why choose us",
-      heading: "The trusted partner for the Hispanic community",
+      heading: "The professionalism the Hispanic community deserves",
       description: "We understand the unique challenges faced by Hispanic families and businesses in the United States. That's why we offer a warm, professional service fully in your language.",
       items: [
         "100% bilingual service in Spanish and English",
@@ -153,10 +143,14 @@ const t = {
       ]
     },
     cta: {
-      heading: "Have questions? We're here to help",
-      subheading: "Schedule a free consultation and discover how we can help with your tax and notary needs.",
+      eyebrow: "Resolving your pathway to success",
+      heading: "Ready to resolve your tax situation?",
+      subheading: "Schedule a free consultation and discover how we can help with your tax, notary, and business needs.",
       button: "Book free appointment",
-      href: "/en/contact"
+      href: "/en/contact",
+      phone: "(702) 640-0088",
+      address: "235 N Eastern Ave. Suite 130, Las Vegas, NV. 89101",
+      hours: "Mon–Sat 9AM–9PM · Sun 10AM–5PM"
     }
   }
 }[lang];
@@ -168,38 +162,43 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
   <!-- HERO SLIDER -->
   <Hero lang={lang} />
 
-  <!-- COMMUNITY & STATS -->
-  <section class="py-16 lg:py-24 bg-white border-b border-gray-100" aria-labelledby="community-heading">
+  <!-- ─── COMMUNITY & STATS ─────────────────────────────────────────── -->
+  <section class="bg-white" aria-labelledby="community-heading">
     <div class="container-custom">
-      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 xl:gap-24">
+      <div class="flex flex-col lg:flex-row items-stretch">
 
-        <!-- Columna izquierda: copy -->
-        <div class="flex-1 text-center lg:text-left">
-
-          <!-- Label con punto -->
-          <div class="inline-flex items-center gap-2 mb-5">
-            <span class="size-2.5 rounded-full bg-brand-light shrink-0" aria-hidden="true"></span>
-            <span class="text-xs font-bold tracking-widest text-neutral-grey uppercase">
+        <!-- LEFT: copy panel -->
+        <div
+          class="flex-1 py-20 lg:py-28 lg:pr-16 xl:pr-24 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-background-muted"
+          data-reveal
+        >
+          <!-- Label -->
+          <div class="flex items-center gap-3 mb-6">
+            <span class="h-px w-10 bg-brand-light shrink-0" aria-hidden="true"></span>
+            <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
               {t.community.label}
             </span>
           </div>
 
-          <!-- Heading bicolor -->
-          <h2 id="community-heading" class="title font-bold text-neutral-dark leading-tight mb-5">
+          <!-- Heading -->
+          <h2
+            id="community-heading"
+            class="font-display text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-neutral-dark leading-[1.1] mb-6"
+          >
             {t.community.heading.pre}{' '}
-            <span class="text-brand-light">{t.community.heading.accent}</span>
-            {t.community.heading.post && ` ${t.community.heading.post}`}
+            <em class="not-italic text-brand-light">{t.community.heading.accent}</em>
+            {t.community.heading.post && <>{' '}{t.community.heading.post}</>}
           </h2>
 
-          <!-- Descripción -->
-          <p class="text-neutral-grey leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
+          <!-- Description -->
+          <p class="text-neutral-grey leading-relaxed mb-8 max-w-[480px]">
             {t.community.description}
           </p>
 
           <!-- CTA -->
           <a
             href={t.community.ctaHref}
-            class="inline-flex items-center gap-2 rounded-full bg-brand-light px-7 py-3.5 text-sm font-semibold text-white hover:bg-brand-dark transition-colors focus-visible:outline-2 focus-visible:outline-brand-light"
+            class="self-start inline-flex items-center gap-2 rounded-full bg-brand-light px-7 py-3.5 text-sm font-semibold text-white hover:bg-brand-dark transition-colors focus-visible:outline-2 focus-visible:outline-brand-light mb-10"
           >
             {t.community.cta}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true">
@@ -208,32 +207,32 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
           </a>
 
           <!-- Trust indicators -->
-          <div class="mt-10 pt-8 border-t border-gray-100">
-            <ul class="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2" role="list">
-              {t.community.trust.map(item => (
-                <li class="flex items-center gap-1.5 text-xs font-medium text-neutral-grey">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-3.5 text-brand-light shrink-0" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul class="flex flex-wrap gap-x-5 gap-y-2" role="list">
+            {t.community.trust.map(item => (
+              <li class="flex items-center gap-1.5 text-xs font-medium text-neutral-grey">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-3.5 text-brand-light shrink-0" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <!-- Columna derecha: grid 2×2 de estadísticas -->
-        <div class="w-full lg:w-auto lg:flex-1 max-w-md lg:max-w-lg">
-          <dl class="grid grid-cols-2 rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+        <!-- RIGHT: stats en fondo claro -->
+        <div class="lg:w-[45%] flex-shrink-0 bg-background-light flex items-center">
+          <dl class="grid grid-cols-2 w-full h-full">
             {t.community.stats.map((stat, i) => (
               <div
                 class:list={[
-                  "flex flex-col items-center justify-center text-center py-10 px-6 bg-white hover:bg-gray-50 transition-colors duration-200 group",
-                  (i === 1 || i === 3) && "border-l border-gray-200",
-                  (i === 2 || i === 3) && "border-t border-gray-200",
+                  "flex flex-col items-center justify-center text-center py-12 px-6 group cursor-default",
+                  (i === 1 || i === 3) && "border-l border-background-muted",
+                  (i === 2 || i === 3) && "border-t border-background-muted",
                 ]}
+                data-reveal
+                data-reveal-delay={String(i)}
               >
-                <dt class="text-4xl sm:text-5xl xl:text-6xl font-bold text-neutral-dark tracking-tight leading-none group-hover:text-brand-light transition-colors duration-200">
+                <dt class="font-display text-5xl lg:text-6xl font-bold text-brand-light leading-none group-hover:text-brand-dark transition-colors duration-300">
                   {stat.value}
                 </dt>
                 <dd class="text-xs sm:text-sm text-neutral-grey mt-3 leading-snug max-w-[130px]">
@@ -248,47 +247,97 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id={sectionId} class="py-20 bg-white" aria-labelledby="services-heading">
+  <!-- ─── SERVICES ──────────────────────────────────────────────────── -->
+  <section id={sectionId} class="py-24 bg-background-light" aria-labelledby="services-heading">
     <div class="container-custom">
-      <div class="text-center mb-14">
-        <span class="text-xs font-semibold tracking-widest text-brand-light uppercase">{t.services.sectionLabel}</span>
-        <h2 id="services-heading" class="title mt-2 mb-4 text-neutral-dark">{t.services.heading}</h2>
-        <p class="subtitle text-neutral-grey mt-0">{t.services.subheading}</p>
+
+      <!-- Header -->
+      <div class="text-center mb-16" data-reveal>
+        <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
+          {t.services.sectionLabel}
+        </span>
+        <h2
+          id="services-heading"
+          class="font-display text-4xl md:text-5xl font-bold text-neutral-dark mt-3 mb-4 leading-tight"
+        >
+          {t.services.heading}
+        </h2>
+        <p class="text-neutral-grey max-w-xl mx-auto leading-relaxed">
+          {t.services.subheading}
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
         {t.services.items.map((service, i) => (
-          <article class="group relative rounded-2xl border border-background-muted p-8 hover:border-brand-light hover:shadow-xl transition-all duration-300">
-            <!-- Icon -->
-            <div class="mb-6 size-14 rounded-2xl bg-brand-light/10 flex items-center justify-center text-brand-light group-hover:bg-brand-light group-hover:text-white transition-all duration-300">
-              {i === 0 && (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.638 4.5 4.718V19.5a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5V4.718c0-1.08-.807-2.018-1.907-2.146A48.424 48.424 0 0 0 12 2.25Z" />
-                </svg>
-              )}
-              {i === 1 && (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 0 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 0 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
-                </svg>
-              )}
-              {i === 2 && (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
-                </svg>
-              )}
+          <article
+            class="group relative bg-white rounded-2xl p-8 lg:p-10 shadow-sm
+                   hover:shadow-xl overflow-hidden transition-all duration-300"
+            data-reveal
+            data-reveal-delay={String(i + 1)}
+          >
+            <!-- Animated left accent bar -->
+            <span
+              class="absolute left-0 inset-y-0 w-[3px] bg-brand-light
+                     scale-y-0 group-hover:scale-y-100
+                     transition-transform duration-300 origin-bottom rounded-r-full"
+              aria-hidden="true"
+            ></span>
+
+            <!-- Decorative background number -->
+            <span
+              class="absolute top-4 right-5 font-display text-[6rem] font-bold
+                     text-neutral-dark/[0.035] leading-none select-none pointer-events-none"
+              aria-hidden="true"
+            >
+              {service.num}
+            </span>
+
+            <!-- Top row: num badge + icon -->
+            <div class="flex items-center justify-between mb-7 relative">
+              <span class="font-display text-xs font-bold tracking-widest text-brand-light/40">
+                {service.num}
+              </span>
+              <div
+                class="size-11 rounded-xl bg-brand-light/10 flex items-center justify-center
+                       text-brand-light group-hover:bg-brand-light group-hover:text-white
+                       transition-all duration-300"
+              >
+                {i === 0 && (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.638 4.5 4.718V19.5a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5V4.718c0-1.08-.807-2.018-1.907-2.146A48.424 48.424 0 0 0 12 2.25Z" />
+                  </svg>
+                )}
+                {i === 1 && (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 0 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 0 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
+                  </svg>
+                )}
+                {i === 2 && (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+                  </svg>
+                )}
+              </div>
             </div>
 
-            <h3 class="text-xl font-bold text-neutral-dark mb-3">{service.label}</h3>
-            <p class="text-sm text-neutral-grey leading-relaxed mb-6">{service.description}</p>
+            <!-- Content -->
+            <h3 class="font-display text-2xl font-bold text-neutral-dark mb-3 relative">
+              {service.label}
+            </h3>
+            <span class="block w-8 h-0.5 bg-brand-light mb-4" aria-hidden="true"></span>
+            <p class="text-sm text-neutral-grey leading-relaxed mb-7 relative">
+              {service.description}
+            </p>
 
             <a
               href={service.href}
-              class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-light hover:text-brand-dark transition-colors"
+              class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-light
+                     hover:text-brand-dark transition-colors relative group/link"
               aria-label={`${service.cta} — ${service.label}`}
             >
               {service.cta}
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4 group-hover/link:translate-x-0.5 transition-transform" aria-hidden="true">
                 <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
               </svg>
             </a>
@@ -298,45 +347,78 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
     </div>
   </section>
 
-  <!-- STATS -->
-  <section class="bg-brand-dark py-16" aria-label={lang === 'es' ? 'Estadísticas' : 'Statistics'}>
+  <!-- ─── STATS BAR ─────────────────────────────────────────────────── -->
+  <section class="bg-accent py-16 lg:py-20" aria-label={lang === 'es' ? 'Estadísticas' : 'Statistics'}>
     <div class="container-custom">
-      <ul class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center" role="list">
-        {t.stats.map(stat => (
-          <li class="flex flex-col items-center">
-            <span class="text-4xl xl:text-5xl font-bold text-accent mb-2" aria-label={stat.value}>{stat.value}</span>
-            <span class="text-sm text-white/70 font-medium">{stat.label}</span>
+      <ul class="grid grid-cols-2 lg:grid-cols-4" role="list">
+        {t.stats.map((stat, i) => (
+          <li
+            class:list={[
+              "flex flex-col items-center py-10 px-6 text-center group cursor-default",
+              i > 0 && "border-l border-white/10"
+            ]}
+            data-reveal
+            data-reveal-delay={String(i)}
+          >
+            <span
+              class="font-display text-5xl xl:text-6xl font-bold text-white
+                     group-hover:text-brand-light transition-colors duration-300"
+              aria-label={stat.value}
+            >
+              {stat.value}
+            </span>
+            <span class="text-xs text-white/50 font-medium mt-3 tracking-wide leading-snug max-w-[100px]">
+              {stat.label}
+            </span>
           </li>
         ))}
       </ul>
     </div>
   </section>
 
-  <!-- WHY US -->
-  <section class="py-20 bg-background-light" aria-labelledby="whyus-heading">
+  <!-- ─── WHY US ────────────────────────────────────────────────────── -->
+  <section class="py-24 bg-cream" aria-labelledby="whyus-heading">
     <div class="container-custom">
-      <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+      <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
 
         <!-- Left: Text -->
-        <div class="flex-1 max-w-lg text-center lg:text-left">
-          <span class="text-xs font-semibold tracking-widest text-brand-light uppercase">{t.whyUs.sectionLabel}</span>
-          <h2 id="whyus-heading" class="title mt-2 mb-4 text-neutral-dark">{t.whyUs.heading}</h2>
-          <p class="text-neutral-grey leading-relaxed">{t.whyUs.description}</p>
+        <div class="flex-1 max-w-lg text-center lg:text-left" data-reveal>
+          <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
+            {t.whyUs.sectionLabel}
+          </span>
+          <h2
+            id="whyus-heading"
+            class="font-display text-4xl md:text-5xl font-bold text-neutral-dark mt-4 mb-6 leading-tight"
+          >
+            {t.whyUs.heading}
+          </h2>
+          <p class="text-neutral-grey leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
+            {t.whyUs.description}
+          </p>
           <a
             href={t.cta.href}
-            class="mt-8 inline-flex rounded-full bg-brand-light px-7 py-3 text-sm font-semibold text-white hover:bg-brand-dark transition-colors"
+            class="inline-flex items-center gap-2 rounded-full bg-brand-light
+                   px-7 py-3.5 text-sm font-semibold text-white
+                   hover:bg-brand-dark transition-colors"
           >
             {t.cta.button}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+            </svg>
           </a>
         </div>
 
         <!-- Right: Checklist -->
-        <div class="flex-1 w-full">
-          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4" role="list">
+        <div class="flex-1 w-full" data-reveal data-reveal-delay="1">
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3" role="list">
             {t.whyUs.items.map(item => (
-              <li class="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm">
-                <span class="shrink-0 mt-0.5 size-5 rounded-full bg-brand-light flex items-center justify-center" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-3 text-white">
+              <li class="flex items-start gap-3 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-200">
+                <span
+                  class="shrink-0 mt-0.5 size-6 rounded-full bg-brand-light
+                         flex items-center justify-center"
+                  aria-hidden="true"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-3.5 text-white">
                     <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
                   </svg>
                 </span>
@@ -350,21 +432,108 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
     </div>
   </section>
 
-  <!-- CTA BANNER -->
-  <section class="py-16 bg-accent" aria-labelledby="cta-heading">
-    <div class="container-custom text-center">
-      <h2 id="cta-heading" class="text-2xl sm:text-3xl font-bold text-neutral-dark mb-4">
+  <!-- ─── CTA BANNER ────────────────────────────────────────────────── -->
+  <section class="bg-midnight" aria-labelledby="cta-heading">
+
+    <!-- Main CTA -->
+    <div class="container-custom py-20 lg:py-28 text-center" data-reveal>
+
+      <!-- Eyebrow with decorative lines -->
+      <div class="flex items-center justify-center gap-4 mb-8">
+        <span class="h-px w-12 bg-brand-light/60" aria-hidden="true"></span>
+        <span class="text-xs font-bold tracking-widest text-brand-light/80 uppercase">
+          {t.cta.eyebrow}
+        </span>
+        <span class="h-px w-12 bg-brand-light/60" aria-hidden="true"></span>
+      </div>
+
+      <h2
+        id="cta-heading"
+        class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white
+               mb-6 leading-tight max-w-3xl mx-auto"
+      >
         {t.cta.heading}
       </h2>
-      <p class="text-neutral-dark/70 mb-8 max-w-xl mx-auto text-base leading-relaxed">
+
+      <p class="text-white/60 mb-10 max-w-xl mx-auto leading-relaxed">
         {t.cta.subheading}
       </p>
+
       <a
         href={t.cta.href}
-        class="inline-flex rounded-full bg-brand-dark px-8 py-4 text-base font-semibold text-white hover:bg-neutral-dark transition-colors shadow-lg"
+        class="inline-flex items-center gap-2 rounded-full bg-brand-light
+               px-8 py-4 text-base font-semibold text-white
+               hover:bg-brand-dark transition-colors shadow-lg
+               focus-visible:outline-2 focus-visible:outline-brand-light"
       >
         {t.cta.button}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
       </a>
     </div>
+
+    <!-- Contact info strip -->
+    <address class="not-italic border-t border-white/10">
+      <div class="container-custom py-5">
+        <ul
+          class="flex flex-col sm:flex-row flex-wrap items-center justify-center
+                 gap-3 sm:gap-6 text-center"
+          role="list"
+        >
+          <!-- Phone -->
+          <li>
+            <a
+              href="tel:7026400088"
+              class="inline-flex items-center gap-2 text-white/60 hover:text-white
+                     transition-colors text-sm font-medium"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 text-brand-light shrink-0" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 6.75Z" />
+              </svg>
+              {t.cta.phone}
+            </a>
+          </li>
+
+          <li class="hidden sm:block text-white/20" aria-hidden="true">·</li>
+
+          <!-- Address -->
+          <li class="flex items-center gap-2 text-white/60 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 text-brand-light shrink-0" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+            </svg>
+            {t.cta.address}
+          </li>
+
+          <li class="hidden sm:block text-white/20" aria-hidden="true">·</li>
+
+          <!-- Hours -->
+          <li class="flex items-center gap-2 text-white/60 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 text-brand-light shrink-0" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            {t.cta.hours}
+          </li>
+        </ul>
+      </div>
+    </address>
+
   </section>
 </main>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+</script>

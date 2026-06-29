@@ -21,6 +21,8 @@
   --color-background: #f4f4f4;
   --color-background-muted: #e0e0e0;
   --color-background-dark: #706f6f;
+  --color-midnight: #1A1A1D;
+  --color-cream: #FAF7F2;
 
   /* S I Z E S */
   --width-xs: 425px;
@@ -83,6 +85,35 @@ body {
 }
 .subtitle {
   @apply mx-auto text-[1rem] sm:text-[1.1rem] lg:text-[1.2rem] font-extralight my-4 sm:my-5 sm:max-w-[82%] xl:max-w-[800px];
+}
+
+/* Tipografía editorial display (Playfair Display) */
+.font-display {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+}
+
+/* Scroll reveal — fade + slide desde abajo */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-delay="1"] { transition-delay: 0.1s; }
+[data-reveal-delay="2"] { transition-delay: 0.2s; }
+[data-reveal-delay="3"] { transition-delay: 0.3s; }
+[data-reveal-delay="4"] { transition-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* FORMULARIO DE CONTACTO */

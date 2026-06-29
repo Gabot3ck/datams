@@ -1,6 +1,6 @@
 # DATA'S & MULTISERVICES — Tax Web
 
-Web de taxes, notaría y servicios corporativos para comunidad hispana en EE.UU.
+Web de taxes, notaría y servicios corporativos para comunidad hispana en EE.UU con oficina física en Las Vegas.
 
 ## Stack
 
