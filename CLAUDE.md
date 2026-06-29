@@ -62,16 +62,18 @@ src/
 │   ├── Hero.astro            # Slider 3 slides, GSAP, responsive images via astro:assets
 │   ├── HomePage.astro        # Todas las secciones del home
 │   ├── Navbar.astro          # Header sticky: idioma + megamenú + mobile
-│   ├── MegaMenu.tsx          # React — portal a document.body, tabs por hover
-│   ├── MegaMenuPanel.tsx     # Panel del megamenú: grid 2 cols de items + imagen
-│   └── BaseLayout.astro      # Layout raíz con SEO completo
+│   ├── MegaMenu.tsx          # React — portal a document.body, tabs por clic
+│   ├── MegaMenuPanel.tsx     # Panel del megamenú: grid 2 cols de items + imagen + footer link
+│   ├── Breadcrumb.astro      # Breadcrumb reutilizable con JSON-LD BreadcrumbList
+│   ├── Footer.astro          # Footer con 8 links de categorías + contacto (HTML estático)
+│   └── BaseLayout.astro      # Layout raíz con SEO completo — incluye Navbar + Footer
 ├── layouts/
 │   └── BaseLayout.astro
 ├── pages/
 │   ├── index.astro           # Home ES
 │   └── en/index.astro        # Home EN
 ├── styles/global.css         # @theme tokens, fuentes, .container-custom, .title, .subtitle
-└── utils/hreflang.ts         # getHreflangUrls(pathname)
+└── utils/hreflang.ts         # getHreflangUrls(pathname) + SITE_URL
 public/
 ├── assets/icons/             # flag_mexico.webp, flag_usa.webp
 ├── fonts/roboto/             # roboto-regular.woff2, roboto-bold.woff2
@@ -121,17 +123,51 @@ La sección **Community & Stats** (nueva, después del hero):
 
 URLs siguen patrón SEO semántico: `/taxes/declaracion-personal`, `/notaria/power-of-attorney`, etc. Páginas aún no existen — links listos cuando se creen.
 
+**Interface `NavItem`** — campos relevantes:
+```ts
+interface NavItem {
+  label: string;
+  href: string;           // '#' solo en "Más Servicios" (sin pilar único)
+  megaMenu?: MegaSubcategory[];
+  miniLinks?: MegaMiniLink[]; // solo en "Más Servicios": [Negocio, DMV, Corte, Otros]
+}
+```
+
+**Interlinking en mobile**: dentro de cada `<details>` de categoría, después del listado de sub-tabs:
+- Si `item.href !== '#'` → link "→ Ver todos los servicios de X" con `border-t`
+- Si `item.miniLinks` → los 4 mini-links separados por `·` con `border-t`
+
 ### MegaMenu.tsx (React)
 - Portal a `document.body` — evita `overflow:hidden` del header
 - `panelTop` calculado desde `header.getBoundingClientRect().bottom`
+- **Apertura por clic** (no hover) — no cambiar este comportamiento
 - Cierre con delay 150ms (`CLOSE_MS`) — permite mover cursor al panel
 - Animaciones: `animate-mega-open` / `animate-mega-close` en `global.css`
+- Props nuevas: `lang`, `pillarUrl` (`item.href` si no es `#`), `categoryLabel` (`item.label`), `miniLinks`
+- Exports: `MegaSubItem`, `MegaSubcategory`, `MegaMiniLink`
 
 ### MegaMenuPanel.tsx
 - Tabs: `onMouseEnter` cambia tab activo
-- Grid 2 columnas para items
+- Columna izquierda: `flex flex-col min-h-[400px]` — grid de items arriba + footer con `mt-auto`
 - Imagen a la derecha: hover sobre item → muestra `item.image`, fallback → `subcategory.image`, si nada → div gris
-- `min-h-[400px]` — soporta muchos items sin romper layout
+- **Footer del panel** (siempre pegado al fondo, independiente del número de items):
+  - Categorías con pilar (`pillarUrl`): text-link `"Ver todos los servicios de X →"` / `"See all services in X →"`
+  - "Más Servicios": 4 mini-links separados por `·` (Negocio · DMV · Formularios Corte · Otros)
+  - Estilo: `text-sm font-semibold text-brand-light hover:underline` — discreto, NO botón relleno
+
+### Breadcrumb.astro
+- Props: `lang: 'es' | 'en'`, `currentLabel: string` (el H1 exacto de la página)
+- Infiere categoría desde `Astro.url.pathname` (quita prefijo `/en`, toma primer segmento)
+- Caso especial: `/irs/*` se anida bajo Taxes → `Inicio > Taxes > IRS & Resolución Fiscal > {currentLabel}`
+- Emite JSON-LD `BreadcrumbList` usando `SITE_URL` de `hreflang.ts`
+- Uso: justo debajo del header en cada página de servicio, pasando el H1 como `currentLabel`
+
+### Footer.astro
+- HTML estático puro — sin JS, sin hidratación
+- Lang inferida desde `Astro.url.pathname` (mismo patrón que Navbar)
+- 4 columnas: marca/tagline · **Servicios** (8 links de categoría) · Empresa · Contacto
+- Los 8 links de categoría son el interlinking SEO principal — siempre visibles sin JS
+- Registrado en `BaseLayout.astro` — aparece en todas las páginas automáticamente
 
 ## Sistema de diseño
 
@@ -167,12 +203,13 @@ Utilidades globales:
 ## Pendientes
 
 - [ ] Crear páginas de servicios (ver tabla de rutas)
+- [ ] Usar `Breadcrumb.astro` en cada página de servicio (pasar H1 exacto como `currentLabel`)
 - [ ] `@astrojs/sitemap` o `public/sitemap.xml`
 - [ ] `public/robots.txt`
 - [ ] Imagen OG real (`public/assets/og-image.webp`, 1200×675)
 - [ ] Imágenes hero responsive reales (mobile/tablet/desktop separadas)
 - [ ] Imágenes reales en subcategorías del mega menú (actualmente sin imagen → fondo gris)
-- [ ] Contenido real en secciones Services, WhyUs (URLs son `#` placeholder)
+- [x] URLs reales en tarjetas de Services del Home (`/taxes`, `/notaria`, `/negocio`)
 
 ## Comandos
 
