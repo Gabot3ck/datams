@@ -15,14 +15,23 @@ export interface MegaSubcategory {
   items: MegaSubItem[];
 }
 
+export interface MegaMiniLink {
+  label: string;
+  href: string;
+}
+
 interface Props {
   label: string;
   subcategories: MegaSubcategory[];
+  lang: 'es' | 'en';
+  pillarUrl?: string;
+  categoryLabel?: string;
+  miniLinks?: MegaMiniLink[];
 }
 
 const CLOSE_MS = 150;
 
-export default function MegaMenu({ label, subcategories }: Props) {
+export default function MegaMenu({ label, subcategories, lang, pillarUrl, categoryLabel, miniLinks }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
@@ -81,6 +90,10 @@ export default function MegaMenu({ label, subcategories }: Props) {
       activeTab={activeTab}
       onTabChange={setActiveTab}
       isClosing={isClosing}
+      lang={lang}
+      pillarUrl={pillarUrl}
+      categoryLabel={categoryLabel}
+      miniLinks={miniLinks}
     />
   ) : null;
 

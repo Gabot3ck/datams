@@ -1,0 +1,163 @@
+---
+const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
+
+const t = {
+  es: {
+    tagline: 'Taxes · Notaría · Inmigración · Servicios Corporativos para la comunidad hispana en Las Vegas.',
+    services: {
+      heading: 'Servicios',
+      items: [
+        { label: 'Taxes',             href: '/taxes' },
+        { label: 'ITIN / EIN',        href: '/itin-ein' },
+        { label: 'Notaría Pública',   href: '/notaria' },
+        { label: 'Inmigración',       href: '/inmigracion' },
+        { label: 'Negocio',           href: '/negocio' },
+        { label: 'DMV',               href: '/dmv' },
+        { label: 'Formularios Corte', href: '/corte' },
+        { label: 'Otros Servicios',   href: '/otros' },
+      ],
+    },
+    contact: {
+      heading: 'Contacto',
+      phone: '(702) 640-0088',
+      address: '235 N Eastern Ave. Suite 130\nLas Vegas, NV 89101',
+      hours: 'Lun–Sáb 9AM–9PM\nDom 10AM–5PM',
+    },
+    nav: {
+      heading: 'Empresa',
+      items: [
+        { label: 'Nosotros',  href: '/nosotros' },
+        { label: 'Blog',      href: '/blog' },
+        { label: 'Contacto',  href: '/contacto' },
+      ],
+    },
+    copyright: `© ${new Date().getFullYear()} Data's & Multiservices. Todos los derechos reservados.`,
+    logoHref: '/',
+  },
+  en: {
+    tagline: 'Taxes · Notary · Immigration · Business Services for the Hispanic community in Las Vegas.',
+    services: {
+      heading: 'Services',
+      items: [
+        { label: 'Taxes',          href: '/en/taxes' },
+        { label: 'ITIN / EIN',     href: '/en/itin-ein' },
+        { label: 'Notary Public',  href: '/en/notary' },
+        { label: 'Immigration',    href: '/en/immigration' },
+        { label: 'Business',       href: '/en/business' },
+        { label: 'DMV',            href: '/en/dmv' },
+        { label: 'Court Forms',    href: '/en/court' },
+        { label: 'Other Services', href: '/en/other' },
+      ],
+    },
+    contact: {
+      heading: 'Contact',
+      phone: '(702) 640-0088',
+      address: '235 N Eastern Ave. Suite 130\nLas Vegas, NV 89101',
+      hours: 'Mon–Sat 9AM–9PM\nSun 10AM–5PM',
+    },
+    nav: {
+      heading: 'Company',
+      items: [
+        { label: 'About Us', href: '/en/about' },
+        { label: 'Blog',     href: '/en/blog' },
+        { label: 'Contact',  href: '/en/contact' },
+      ],
+    },
+    copyright: `© ${new Date().getFullYear()} Data's & Multiservices. All rights reserved.`,
+    logoHref: '/en',
+  },
+}[lang];
+---
+
+<footer class="bg-neutral-dark text-white/70">
+  <!-- Main footer grid -->
+  <div class="container-custom py-14 lg:py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+
+      <!-- Brand column -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a
+          href={t.logoHref}
+          aria-label={lang === 'es' ? 'Inicio' : 'Home'}
+          class="inline-flex items-baseline gap-1 font-bold mb-4"
+        >
+          <span class="text-xl text-brand-light">DATA'S</span>
+          <span class="text-xs font-normal text-white/40">&amp;</span>
+          <span class="text-xl text-white">MULTISERVICES</span>
+        </a>
+        <p class="text-sm leading-relaxed max-w-xs">
+          {t.tagline}
+        </p>
+      </div>
+
+      <!-- Services column — static HTML, no JS dependency -->
+      <nav aria-label={t.services.heading}>
+        <h2 class="text-xs font-bold tracking-widest text-white uppercase mb-4">
+          {t.services.heading}
+        </h2>
+        <ul class="space-y-2.5" role="list">
+          {t.services.items.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-sm hover:text-brand-light transition-colors"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Company nav -->
+      <nav aria-label={t.nav.heading}>
+        <h2 class="text-xs font-bold tracking-widest text-white uppercase mb-4">
+          {t.nav.heading}
+        </h2>
+        <ul class="space-y-2.5" role="list">
+          {t.nav.items.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-sm hover:text-brand-light transition-colors"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Contact column -->
+      <address class="not-italic">
+        <h2 class="text-xs font-bold tracking-widest text-white uppercase mb-4">
+          {t.contact.heading}
+        </h2>
+        <ul class="space-y-3 text-sm" role="list">
+          <li>
+            <a
+              href="tel:7026400088"
+              class="hover:text-brand-light transition-colors"
+            >
+              {t.contact.phone}
+            </a>
+          </li>
+          <li class="leading-relaxed whitespace-pre-line">
+            {t.contact.address}
+          </li>
+          <li class="leading-relaxed whitespace-pre-line">
+            {t.contact.hours}
+          </li>
+        </ul>
+      </address>
+
+    </div>
+  </div>
+
+  <!-- Copyright strip -->
+  <div class="border-t border-white/10">
+    <div class="container-custom py-4 text-center text-xs text-white/30">
+      {t.copyright}
+    </div>
+  </div>
+</footer>

@@ -1,6 +1,6 @@
 ---
 import MegaMenu from "./MegaMenu.tsx";
-import type { MegaSubcategory } from "./MegaMenu.tsx";
+import type { MegaSubcategory, MegaMiniLink } from "./MegaMenu.tsx";
 
 const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
 const currentPath = Astro.url.pathname;
@@ -14,6 +14,7 @@ interface NavItem {
   label: string;
   href: string;
   megaMenu?: MegaSubcategory[];
+  miniLinks?: MegaMiniLink[];
 }
 interface NavData {
   items: NavItem[];
@@ -157,6 +158,12 @@ const data: Record<"es" | "en", NavData> = {
       {
         label: "Más Servicios",
         href: "#",
+        miniLinks: [
+          { label: "Negocio", href: "/negocio" },
+          { label: "DMV", href: "/dmv" },
+          { label: "Formularios Corte", href: "/corte" },
+          { label: "Otros Servicios", href: "/otros" },
+        ],
         megaMenu: [
           {
             label: "Business Services",
@@ -334,6 +341,12 @@ const data: Record<"es" | "en", NavData> = {
       {
         label: "More Services",
         href: "#",
+        miniLinks: [
+          { label: "Business", href: "/en/business" },
+          { label: "DMV", href: "/en/dmv" },
+          { label: "Court Forms", href: "/en/court" },
+          { label: "Other Services", href: "/en/other" },
+        ],
         megaMenu: [
           {
             label: "Business Services",
@@ -507,6 +520,10 @@ const {
                     client:load
                     label={item.label}
                     subcategories={item.megaMenu}
+                    lang={lang}
+                    pillarUrl={item.href !== '#' ? item.href : undefined}
+                    categoryLabel={item.label}
+                    miniLinks={item.miniLinks}
                   />
                 ) : (
                   <a

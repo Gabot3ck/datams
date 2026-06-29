@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import type { RefObject } from 'react';
-import type { MegaSubcategory } from './MegaMenu';
+import type { MegaSubcategory, MegaMiniLink } from './MegaMenu';
 
 interface Props {
   panelRef: RefObject<HTMLDivElement | null>;
@@ -9,6 +9,10 @@ interface Props {
   activeTab: number;
   onTabChange: (i: number) => void;
   isClosing: boolean;
+  lang: 'es' | 'en';
+  pillarUrl?: string;
+  categoryLabel?: string;
+  miniLinks?: MegaMiniLink[];
 }
 
 const Icon = () => (
@@ -24,6 +28,10 @@ export default function MegaMenuPanel({
   activeTab,
   onTabChange,
   isClosing,
+  lang,
+  pillarUrl,
+  categoryLabel,
+  miniLinks,
 }: Props) {
   const activeSub = subcategories[activeTab];
 
@@ -69,29 +77,61 @@ export default function MegaMenuPanel({
           </div>
 
           {/* Items + imagen de la subcategoría */}
-          <div className="flex gap-10 min-h-[400px]">
-            {/* Lista de items — fade al cambiar tab, hover con fondo gris */}
-            <div key={activeTab} className="flex-1 grid grid-cols-2 gap-x-4 gap-y-0.5 content-start py-1 animate-fade-in">
-              {activeSub.items.map((item, i) => (
-                <a
-                  key={i}
-                  href={item.href}
-                  className="group flex items-start px-3 py-3 rounded-lg hover:bg-gray-100 transition-colors"
-                  onMouseEnter={() => setHoveredItemImage(item.image)}
-                  onMouseLeave={() => setHoveredItemImage(undefined)}
-                >
-                  <div className="min-w-0">
-                    <span className="block text-sm font-semibold text-neutral-dark group-hover:text-brand-light transition-colors leading-snug">
-                      {item.label}
-                    </span>
-                    {item.description && (
-                      <span className="block text-xs text-neutral-grey mt-1 leading-relaxed">
-                        {item.description}
+          <div className="flex gap-10">
+            {/* Columna izquierda: items + footer link pegado al fondo */}
+            <div key={activeTab} className="flex-1 flex flex-col min-h-[400px] animate-fade-in">
+              {/* Grid de servicios */}
+              <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 content-start py-1">
+                {activeSub.items.map((item, i) => (
+                  <a
+                    key={i}
+                    href={item.href}
+                    className="group flex items-start px-3 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+                    onMouseEnter={() => setHoveredItemImage(item.image)}
+                    onMouseLeave={() => setHoveredItemImage(undefined)}
+                  >
+                    <div className="min-w-0">
+                      <span className="block text-sm font-semibold text-neutral-dark group-hover:text-brand-light transition-colors leading-snug">
+                        {item.label}
                       </span>
-                    )}
-                  </div>
-                </a>
-              ))}
+                      {item.description && (
+                        <span className="block text-xs text-neutral-grey mt-1 leading-relaxed">
+                          {item.description}
+                        </span>
+                      )}
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              {/* Footer del panel: pillar link */}
+              {pillarUrl && (
+                <div className="mt-auto pt-4 border-t border-background-muted">
+                  <a
+                    href={pillarUrl}
+                    className="inline-flex items-center gap-1 text-sm font-semibold text-brand-light hover:underline"
+                  >
+                    {lang === 'es'
+                      ? `Ver todos los servicios de ${categoryLabel}`
+                      : `See all services in ${categoryLabel}`}
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              )}
+
+              {/* Footer del panel: mini-links de "Más Servicios" */}
+              {miniLinks && miniLinks.length > 0 && (
+                <div className="mt-auto pt-4 border-t border-background-muted flex items-center gap-4 flex-wrap">
+                  {miniLinks.map((link, i) => (
+                    <Fragment key={i}>
+                      {i > 0 && <span className="text-neutral-grey" aria-hidden="true">·</span>}
+                      <a href={link.href} className="text-sm font-semibold text-brand-light hover:underline">
+                        {link.label}
+                      </a>
+                    </Fragment>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Imagen: del item hovereado si tiene, o de la subcategoría como fallback */}

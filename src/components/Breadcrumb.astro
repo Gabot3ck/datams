@@ -1,0 +1,98 @@
+---
+import { SITE_URL } from '../utils/hreflang';
+
+interface Props {
+  lang: 'es' | 'en';
+  currentLabel: string;
+}
+
+const { lang, currentLabel } = Astro.props;
+
+type CategoryEntry = {
+  label: string;
+  url: string;
+  parent?: string;
+};
+
+const categoryMap: Record<'es' | 'en', Record<string, CategoryEntry>> = {
+  es: {
+    taxes:       { label: 'Taxes',                  url: '/taxes' },
+    irs:         { label: 'IRS & Resolución Fiscal', url: '/irs', parent: 'taxes' },
+    'itin-ein':  { label: 'ITIN / EIN',              url: '/itin-ein' },
+    notaria:     { label: 'Notaría Pública',         url: '/notaria' },
+    inmigracion: { label: 'Inmigración',             url: '/inmigracion' },
+    negocio:     { label: 'Negocio',                 url: '/negocio' },
+    dmv:         { label: 'DMV',                     url: '/dmv' },
+    corte:       { label: 'Formularios Corte',       url: '/corte' },
+    otros:       { label: 'Otros Servicios',         url: '/otros' },
+  },
+  en: {
+    taxes:       { label: 'Taxes',               url: '/en/taxes' },
+    irs:         { label: 'IRS & Tax Resolution', url: '/en/irs', parent: 'taxes' },
+    'itin-ein':  { label: 'ITIN / EIN',           url: '/en/itin-ein' },
+    notaria:     { label: 'Notary Public',        url: '/en/notary' },
+    inmigracion: { label: 'Immigration',          url: '/en/immigration' },
+    negocio:     { label: 'Business',             url: '/en/business' },
+    dmv:         { label: 'DMV',                  url: '/en/dmv' },
+    corte:       { label: 'Court Forms',          url: '/en/court' },
+    otros:       { label: 'Other Services',       url: '/en/other' },
+  },
+};
+
+const pathname = Astro.url.pathname;
+const cleanPath = pathname.replace(/^\/en/, '');
+const segment = cleanPath.split('/').filter(Boolean)[0] ?? '';
+
+const map = categoryMap[lang];
+const category: CategoryEntry | undefined = map[segment];
+
+const homeUrl = lang === 'en' ? '/en' : '/';
+const homeLabel = lang === 'en' ? 'Home' : 'Inicio';
+
+type Crumb = { label: string; url: string };
+const crumbs: Crumb[] = [{ label: homeLabel, url: homeUrl }];
+
+if (category) {
+  if (category.parent) {
+    const parentCat = map[category.parent];
+    if (parentCat) crumbs.push({ label: parentCat.label, url: parentCat.url });
+  }
+  crumbs.push({ label: category.label, url: category.url });
+}
+
+const allItems = [...crumbs, { label: currentLabel, url: pathname }];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: allItems.map((crumb, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: crumb.label,
+    item: SITE_URL + (crumb.url === '/' ? '/' : crumb.url),
+  })),
+};
+---
+
+<nav
+  aria-label={lang === 'en' ? 'Breadcrumb' : 'Ruta de navegación'}
+  class="text-sm text-neutral-grey mb-4"
+>
+  <ol class="flex gap-2 flex-wrap items-center">
+    {crumbs.map((crumb) => (
+      <>
+        <li>
+          <a href={crumb.url} class="hover:text-brand-light transition-colors">
+            {crumb.label}
+          </a>
+        </li>
+        <li aria-hidden="true" class="select-none text-neutral-grey/50">/</li>
+      </>
+    ))}
+    <li aria-current="page" class="text-neutral-dark font-medium">
+      {currentLabel}
+    </li>
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
