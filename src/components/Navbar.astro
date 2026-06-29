@@ -643,6 +643,30 @@ const {
                         </ul>
                       </details>
                     ))}
+                    {/* Pillar link — categorías con página propia */}
+                    {item.href !== '#' && (
+                      <a
+                        href={item.href}
+                        class="flex items-center gap-1.5 px-4 py-3 text-sm text-brand-light border-t border-gray-200 underline"
+                      >
+                        {lang === 'es'
+                          ? `Ver todos los servicios de ${item.label}`
+                          : `See all services in ${item.label}`
+                        }
+                        <span aria-hidden="true">→</span>
+                      </a>
+                    )}
+                    {/* Mini-links de "Más Servicios" / "More Services" */}
+                    {item.miniLinks && item.miniLinks.length > 0 && (
+                      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 px-4 py-3 text-sm font-semibold border-t border-gray-200">
+                        {item.miniLinks.map((link, i) => (
+                          <>
+                            {i > 0 && <span class="text-neutral-grey" aria-hidden="true">·</span>}
+                            <a href={link.href} class="text-brand-light hover:underline">{link.label}</a>
+                          </>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </details>
               ) : (
