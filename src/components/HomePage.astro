@@ -10,7 +10,7 @@ const t = {
   es: {
     community: {
       label: "Nuestra comunidad",
-      heading: { pre: "El aliado de confianza de la", accent: "comunidad hispana", post: "en EE.UU." },
+      heading: { pre: "El aliado de confianza de la", accent: "comunidad hispana", post: "en Las Vegas y EE.UU." },
       description: "Ayudamos a familias, negocios e inmigrantes con sus trámites de taxes, notaría e inmigración. Profesionalismo, experiencia y atención 100% en español.",
       cta: "Agendar cita gratis",
       ctaHref: "/contacto",
@@ -83,7 +83,7 @@ const t = {
   en: {
     community: {
       label: "Our community",
-      heading: { pre: "The trusted partner of the", accent: "Hispanic community", post: "in the U.S." },
+      heading: { pre: "The trusted partner of the", accent: "Hispanic community", post: "in the Las Vegas and U.S." },
       description: "We help families, businesses, and immigrants with their tax, notary, and immigration needs. Professional service, fully bilingual in Spanish and English.",
       cta: "Book free appointment",
       ctaHref: "/en/contact",
@@ -169,7 +169,7 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
 
         <!-- LEFT: copy panel -->
         <div
-          class="flex-1 py-20 lg:py-28 lg:pr-16 xl:pr-24 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-background-muted"
+          class="flex-1 py-20 lg:py-24 lg:pr-16 xl:pr-24 flex flex-col justify-center border-b lg:border-b-0 "
           data-reveal
         >
           <!-- Label -->
@@ -183,7 +183,7 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
           <!-- Heading -->
           <h2
             id="community-heading"
-            class="font-display text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-neutral-dark leading-[1.1] mb-6"
+            class="font-display text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-neutral-grey leading-[1.1] mb-6"
           >
             {t.community.heading.pre}{' '}
             <em class="not-italic text-brand-light">{t.community.heading.accent}</em>
@@ -219,23 +219,19 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
           </ul>
         </div>
 
-        <!-- RIGHT: stats en fondo claro -->
-        <div class="lg:w-[45%] flex-shrink-0 bg-background-light flex items-center">
-          <dl class="grid grid-cols-2 w-full h-full">
+        <!-- RIGHT: stats cards -->
+        <div class="lg:w-[45%] flex-shrink-0 flex items-center p-8 lg:p-12">
+          <dl class="grid grid-cols-2 gap-4 w-full">
             {t.community.stats.map((stat, i) => (
               <div
-                class:list={[
-                  "flex flex-col items-center justify-center text-center py-12 px-6 group cursor-default",
-                  (i === 1 || i === 3) && "border-l border-background-muted",
-                  (i === 2 || i === 3) && "border-t border-background-muted",
-                ]}
+                class="group flex flex-col items-start justify-between bg-white rounded-2xl border border-background-muted p-6 lg:p-7 shadow-sm hover:shadow-md transition-shadow duration-300 cursor-default"
                 data-reveal
                 data-reveal-delay={String(i)}
               >
-                <dt class="font-display text-5xl lg:text-6xl font-bold text-brand-light leading-none group-hover:text-brand-dark transition-colors duration-300">
+                <dt class="font-display text-4xl lg:text-5xl font-bold text-neutral-grey leading-none group-hover:text-brand-light transition-colors duration-300">
                   {stat.value}
                 </dt>
-                <dd class="text-xs sm:text-sm text-neutral-grey mt-3 leading-snug max-w-[130px]">
+                <dd class="text-xs sm:text-sm text-neutral-grey mt-4 leading-snug">
                   {stat.label}
                 </dd>
               </div>
