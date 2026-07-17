@@ -1,0 +1,439 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Taxes en Español en Las Vegas | Data's & Multiservices";
+const description =
+  "Declaramos tus impuestos en español en Las Vegas — precio fijo desde la primera consulta, sin sorpresas. Atención personal, W-2, 1099, ITIN, negocios y más.";
+
+const services = [
+  {
+    label: "Declaración de impuestos personales",
+    href: "/taxes/declaracion-personal",
+    description:
+      "Para individuos y familias, incluyendo declaración federal y estatal. Si trabajas con W-2, eres contratista 1099, o tienes ITIN en lugar de número de Social Security, aquí es donde empezamos.",
+  },
+  {
+    label: "Declaración de impuestos de negocio y LLC",
+    href: "/taxes/declaracion-negocio",
+    description:
+      "Si tienes tu propio negocio, eres Sole Proprietor o manejas una LLC, declaramos tus impuestos de negocio por separado, con la asesoría que evita que pagues de más.",
+  },
+  {
+    label: "IRS y Resolución Fiscal",
+    href: "/irs",
+    description:
+      "Si ya tienes una deuda, una carta del IRS sin responder, o te están auditando, este es el equipo que necesitas — antes de que el problema crezca.",
+  },
+  {
+    label: "Declaraciones en todos los estados",
+    href: "/taxes/todos-los-estados",
+    description:
+      "¿Trabajaste en más de un estado este año? Lo manejamos sin que tengas que ir a dos lugares distintos.",
+  },
+  {
+    label: "Enmiendas de impuestos",
+    href: "/taxes/enmiendas",
+    description:
+      "Si una declaración anterior (con nosotros o con otra persona) tuvo un error, la corregimos.",
+  },
+  {
+    label: "Seguimiento de tu reembolso",
+    href: "/taxes/seguimiento",
+    description:
+      "Si ya declaraste y tu reembolso no ha llegado, te ayudamos a rastrearlo directamente con el IRS.",
+  },
+];
+
+const whyUs = [
+  {
+    heading: "Precio claro antes de empezar",
+    body: 'Te decimos el precio antes de empezar, no "vamos viendo según avance".',
+  },
+  {
+    heading: "Revisamos contigo, en español",
+    body: "Revisamos tu declaración contigo, explicándote en español qué dice cada número, antes de enviarla.",
+  },
+  {
+    heading: "Seguimos contigo después",
+    body: "Si el IRS te escribe, si tu reembolso se retrasa, si necesitas una copia el próximo año — seguimos siendo tu punto de contacto.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Necesito cita o puedo llegar directo a la oficina?",
+    a: "Puedes agendar por WhatsApp o llegar en nuestro horario de atención, aunque agendar te garantiza que no esperes.",
+  },
+  {
+    q: "¿Puedo declarar taxes si tengo ITIN en vez de número de Social Security?",
+    a: "Sí. Trabajamos regularmente con personas que declaran usando ITIN Number, y si todavía no tienes uno, también te ayudamos a solicitarlo.",
+  },
+  {
+    q: "¿Cuánto cuesta hacer mis taxes?",
+    a: "El precio depende de tu situación (si tienes un solo empleo, varios, si eres contratista, si trabajaste en más de un estado). Te damos el precio exacto en tu primera consulta, antes de que decidas continuar.",
+  },
+  {
+    q: "¿Qué pasa si ya hice mis taxes con otra persona y tuvieron un error?",
+    a: "Revisamos tu declaración anterior y, si encontramos un error, preparamos la enmienda correspondiente.",
+  },
+];
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Preparación de Taxes en Las Vegas",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Data's & Multiservices",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "235 N Eastern Ave. Suite 130",
+      "addressLocality": "Las Vegas",
+      "addressRegion": "NV",
+      "postalCode": "89101",
+      "addressCountry": "US",
+    },
+    "telephone": "+17026400088",
+    "openingHours": ["Mo-Sa 09:00-21:00", "Su 10:00-17:00"],
+  },
+  "areaServed": { "@type": "City", "name": "Las Vegas" },
+  "inLanguage": "es",
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+  })),
+};
+---
+
+<BaseLayout {title} {description} jsonLd={serviceJsonLd}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} slot="head" />
+
+  <!-- ─── BREADCRUMB ─────────────────────────────────────────────────── -->
+  <div class="container-custom pt-6">
+    <nav aria-label="Ruta de navegación" class="text-sm text-neutral-grey">
+      <ol class="flex gap-2 flex-wrap items-center">
+        <li>
+          <a href="/" class="hover:text-brand-light transition-colors">Inicio</a>
+        </li>
+        <li aria-hidden="true" class="select-none text-neutral-grey/40">/</li>
+        <li aria-current="page" class="text-neutral-dark font-medium">Taxes</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- ─── HERO ──────────────────────────────────────────────────────── -->
+  <section class="bg-white pt-10 pb-16 lg:pt-14 lg:pb-24" aria-labelledby="taxes-h1">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <!-- Label -->
+        <div class="flex items-center gap-3 mb-6">
+          <span class="h-px w-10 bg-brand-light shrink-0" aria-hidden="true"></span>
+          <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
+            Preparación de impuestos
+          </span>
+        </div>
+
+        <h1
+          id="taxes-h1"
+          class="font-display text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-neutral-dark leading-[1.1] mb-6"
+        >
+          Taxes en Español en Las Vegas,{" "}
+          <em class="not-italic text-brand-light">Sin Sorpresas en el Precio</em>
+        </h1>
+
+        <p class="text-lg text-neutral-grey leading-relaxed mb-4 max-w-2xl">
+          Hacer tus taxes no debería sentirse como un riesgo. En Data's &amp; Multiservices te
+          ayudamos a declarar tus impuestos en español, de principio a fin, con un precio claro
+          desde la primera consulta — sin sorpresas, sin letras chiquitas y sin que tengas que
+          adivinar en inglés qué te están cobrando.
+        </p>
+        <p class="text-lg text-neutral-grey leading-relaxed mb-10 max-w-2xl">
+          Tenemos oficina física en Las Vegas, atendemos por WhatsApp, y agendamos citas en la
+          tarde y los sábados, porque sabemos que tu horario no siempre es de 9 a 5.
+        </p>
+
+        <a
+          href="/contacto"
+          class="inline-flex items-center gap-2 rounded-full bg-brand-light px-8 py-4 text-base font-semibold text-white hover:bg-brand-dark transition-colors shadow-sm focus-visible:outline-2 focus-visible:outline-brand-light"
+        >
+          Agendar mi cita
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="size-5"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TRUST BAR ─────────────────────────────────────────────────── -->
+  <section class="bg-accent py-6" aria-label="Por qué confiar en nosotros">
+    <div class="container-custom">
+      <ul
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
+        role="list"
+      >
+        {
+          [
+            "Atención 100% en español",
+            "Precio fijo, conocido antes de empezar",
+            "Oficina física en Las Vegas — no somos solo una página web",
+            "Preparadores con PTIN autorizado por el IRS",
+          ].map((item) => (
+            <li class="flex items-start gap-3 text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                class="size-5 text-accent-dark shrink-0 mt-0.5"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="text-sm font-medium leading-snug">{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ──────────────────────────────────────────────────── -->
+  <section
+    class="py-20 lg:py-28 bg-background-light"
+    aria-labelledby="services-heading"
+  >
+    <div class="container-custom">
+      <div class="text-center mb-14">
+        <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
+          Nuestros servicios de taxes
+        </span>
+        <h2
+          id="services-heading"
+          class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mt-3 leading-tight"
+        >
+          Todo lo que necesitas,{" "}
+          <br class="hidden md:block" />en un solo lugar
+        </h2>
+        <p class="text-neutral-grey mt-4 max-w-xl mx-auto leading-relaxed">
+          No importa si es tu primera vez declarando taxes en Estados Unidos o si ya tienes años
+          haciéndolo — tenemos el servicio que corresponde a tu situación.
+        </p>
+      </div>
+
+      <ul
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        role="list"
+      >
+        {
+          services.map((svc) => (
+            <li>
+              <a
+                href={svc.href}
+                class="group flex flex-col h-full bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden"
+              >
+                <span
+                  class="absolute left-0 inset-y-0 w-[3px] bg-brand-light scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom rounded-r-full"
+                  aria-hidden="true"
+                />
+                <h3 class="font-display text-lg font-bold text-neutral-dark group-hover:text-brand-light transition-colors leading-snug mb-3">
+                  {svc.label}
+                </h3>
+                <p class="text-sm text-neutral-grey leading-relaxed flex-1">
+                  {svc.description}
+                </p>
+                <span class="inline-flex items-center gap-1 mt-5 text-sm font-semibold text-brand-light group-hover:gap-2 transition-all">
+                  Ver más
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="size-4"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ─── POR QUÉ ELEGIRNOS ─────────────────────────────────────────── -->
+  <section class="py-20 lg:py-28 bg-white" aria-labelledby="whyus-heading">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
+            Cómo trabajamos
+          </span>
+          <h2
+            id="whyus-heading"
+            class="font-display text-3xl md:text-4xl font-bold text-neutral-dark mt-3 leading-tight"
+          >
+            Por qué las familias de Las Vegas nos eligen
+          </h2>
+          <p class="text-neutral-grey mt-4 leading-relaxed">
+            Sabemos que muchas personas han tenido una mala experiencia antes — con alguien que se
+            hizo pasar por experto, cobró de más, o desapareció cuando hubo un problema con el IRS.
+            Por eso trabajamos distinto.
+          </p>
+        </div>
+
+        <ul class="flex flex-col gap-5" role="list">
+          {
+            whyUs.map((item, i) => (
+              <li class="flex gap-5 items-start bg-background-light rounded-2xl p-6">
+                <span
+                  class="shrink-0 size-10 rounded-xl bg-brand-light flex items-center justify-center text-white font-bold text-sm"
+                  aria-hidden="true"
+                >
+                  {i + 1}
+                </span>
+                <div>
+                  <h3 class="font-semibold text-neutral-dark mb-1">{item.heading}</h3>
+                  <p class="text-sm text-neutral-grey leading-relaxed">{item.body}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ───────────────────────────────────────────────────────── -->
+  <section class="py-20 lg:py-28 bg-background-light" aria-labelledby="faq-heading">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
+            Preguntas frecuentes
+          </span>
+          <h2
+            id="faq-heading"
+            class="font-display text-3xl md:text-4xl font-bold text-neutral-dark mt-3 leading-tight"
+          >
+            Resolvemos tus dudas
+          </h2>
+        </div>
+
+        <dl class="flex flex-col gap-3">
+          {
+            faqs.map((faq) => (
+              <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                <details class="group">
+                  <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-sm font-semibold text-neutral-dark hover:text-brand-light transition-colors">
+                    <dt>{faq.q}</dt>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="size-5 shrink-0 text-brand-light transition-transform duration-200 group-open:rotate-180"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </summary>
+                  <dd class="px-6 pb-5 text-sm text-neutral-grey leading-relaxed border-t border-background-muted pt-4">
+                    {faq.a}
+                  </dd>
+                </details>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA FINAL ─────────────────────────────────────────────────── -->
+  <section class="bg-midnight py-20 lg:py-28 text-center" aria-labelledby="cta-taxes-heading">
+    <div class="container-custom">
+      <div class="flex items-center justify-center gap-4 mb-8">
+        <span class="h-px w-12 bg-brand-light/60" aria-hidden="true"></span>
+        <span class="text-xs font-bold tracking-widest text-brand-light/80 uppercase">
+          Sin compromiso, sin costo
+        </span>
+        <span class="h-px w-12 bg-brand-light/60" aria-hidden="true"></span>
+      </div>
+
+      <h2
+        id="cta-taxes-heading"
+        class="font-display text-3xl md:text-5xl font-bold text-white mb-5 leading-tight max-w-2xl mx-auto"
+      >
+        ¿Listo para declarar tus taxes sin estrés?
+      </h2>
+      <p class="text-white/60 mb-10 max-w-lg mx-auto leading-relaxed">
+        Agenda una consulta sin costo y te decimos exactamente qué necesitas y cuánto va a costar,
+        antes de que decidas continuar.
+      </p>
+
+      <a
+        href="/contacto"
+        class="inline-flex items-center gap-2 rounded-full bg-brand-light px-8 py-4 text-base font-semibold text-white hover:bg-brand-dark transition-colors shadow-lg focus-visible:outline-2 focus-visible:outline-brand-light"
+      >
+        Agendar mi cita gratis
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class="size-5"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </a>
+
+      <address class="not-italic mt-12 border-t border-white/10 pt-8">
+        <ul
+          class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-8 text-sm text-white/50"
+          role="list"
+        >
+          <li>
+            <a href="tel:7026400088" class="hover:text-white transition-colors">
+              (702) 640-0088
+            </a>
+          </li>
+          <li class="hidden sm:block text-white/20" aria-hidden="true">·</li>
+          <li>235 N Eastern Ave. Suite 130, Las Vegas, NV 89101</li>
+          <li class="hidden sm:block text-white/20" aria-hidden="true">·</li>
+          <li>Lun–Sáb 9AM–9PM · Dom 10AM–5PM</li>
+        </ul>
+      </address>
+    </div>
+  </section>
+</BaseLayout>

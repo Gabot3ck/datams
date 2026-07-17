@@ -83,6 +83,7 @@ const ogImage = image ?? "https://NOMBRE_SITIO/default-og.webp";
         <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
       )
     }
+    <slot name="head" />
   </head>
   <body>
     <Navbar />
