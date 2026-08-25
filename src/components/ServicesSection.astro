@@ -4,6 +4,8 @@ interface ServiceItem {
   description: string;
   href: string;
   cta: string;
+  icon: string;
+  width?: number;
 }
 
 interface Props {
@@ -28,36 +30,47 @@ const t: {
         description: "Declaramos tus taxes en español en Las Vegas: personal, negocio y enmiendas. Revisamos cada deducción para maximizar tu reembolso.",
         href: "/taxes",
         cta: "Conocer más",
+        icon: "taxes.svg",
       },
       {
         label: "IRS",
         description: "Te ayudamos con deudas, acuerdos de pago, cartas y auditorías del IRS en español, con representación real ante el IRS.",
         href: "/irs",
         cta: "Conocer más",
+        icon: "irs.png",
+        width: 90,
       },
       {
         label: "ITIN - EIN",
         description: "Solicitamos y renovamos tu ITIN number o EIN para negocio, aunque no tengas número de Social Security.",
         href: "/itin-ein",
         cta: "Conocer más",
+        icon: "itin.png",
+        width: 90,
       },
       {
         label: "Notary Public",
         description: "Notario público en Las Vegas: power of attorney, apostillas, contratos, permisos de viaje para menores y más.",
         href: "/notaria",
         cta: "Conocer más",
+        icon: "notary.png",
+        width: 80,
       },
       {
         label: "Inmigración",
         description: "Renovación de DACA, residencia permanente, ciudadanía, permisos de trabajo y peticiones familiares, todo en español.",
         href: "/inmigracion",
         cta: "Conocer más",
+        icon: "immigration.png",
+        width: 200,
       },
       {
         label: "DMV",
         description: "Citas DMV en español, registro de vehículo, permiso de conducir, placas, duplicado de título y traducciones certificadas.",
         href: "/dmv",
         cta: "Conocer más",
+        icon: "dmv.png",
+        width: 90,
       },
     ],
   },
@@ -71,45 +84,53 @@ const t: {
       description: "Personal and business tax preparation in Las Vegas, plus amended returns. We review every deduction to maximize your refund.",
       href: "/en/taxes",
       cta: "Learn more",
+      icon: "taxes.svg",
     },
     {
       label: "IRS",
       description: "We help with IRS debt, payment plans, notices, and audits — with real representation in Las Vegas.",
       href: "/en/irs",
       cta: "Learn more",
+      icon: "irs.png",
+      width: 90,
     },
     {
       label: "ITIN - EIN",
       description: "We file and renew your ITIN or business EIN in Las Vegas, even without a Social Security number.",
       href: "/en/itin-ein",
       cta: "Learn more",
+      icon: "itin.png",
+      width: 90,
     },
     {
       label: "Notary Public",
       description: "Notary public in Las Vegas: power of attorney, apostilles, contracts, travel consent for minors, and more.",
       href: "/en/notary",
       cta: "Learn more",
+      icon: "notary.png",
+      width: 90,
     },
     {
       label: "Immigration",
       description: "DACA renewal, green card, citizenship, work permits, and family petitions in Las Vegas.",
       href: "/en/immigration",
       cta: "Learn more",
+      icon: "immigration.png",
+      width: 90,
     },
     {
       label: "DMV",
       description: "DMV appointments, vehicle registration, driver's license, license plates, duplicate title, and certified translations in Las Vegas.",
       href: "/en/dmv",
       cta: "Learn more",
+      icon: "dmv.png",
+      width: 100,
     },
   ]
   },
 }[lang];
 
 const sectionId = lang === 'es' ? 'servicios' : 'services';
-
-// Temporary placeholder icon — replace per-item once real icons are defined
-const iconPath = `<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.638 4.5 4.718V19.5a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5V4.718c0-1.08-.807-2.018-1.907-2.146A48.424 48.424 0 0 0 12 2.25Z" />`;
 ---
 
 <section
@@ -147,19 +168,17 @@ const iconPath = `<path stroke-linecap="round" stroke-linejoin="round" d="M15.75
 
           <!-- Icon box -->
           <div
-            class="mb-4 flex items-center justify-start text-brand transition-all duration-300 shrink-0"
+            class="mb-4 flex items-center justify-start transition-all duration-300 shrink-0"
             aria-hidden="true"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-12"
-            >
-              <Fragment set:html={iconPath} />
-            </svg>
+            <img
+              src={`/assets/icons/${service.icon}`}
+              alt=""
+              width={ service.width ?? 48 }
+              height="48"
+              loading="lazy"
+              class="text-brand"
+            />
           </div>
 
           <!-- Card content -->
