@@ -1,0 +1,67 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { buildServiceJsonLd, canonicalURL } from '@config/site';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: 'es' | 'en';
+  breadcrumbLabel: string;
+  service: { name: string; serviceType: string };
+  faqs?: { q: string; a: string }[];
+  itemList?: { name: string; url: string }[];
+}
+
+const { title, description, lang = 'es', breadcrumbLabel, service, faqs, itemList } = Astro.props;
+
+const url = canonicalURL(Astro.url.pathname);
+
+const serviceJsonLd = buildServiceJsonLd({
+  name: service.name,
+  description,
+  serviceType: service.serviceType,
+  url,
+  lang,
+});
+
+const faqJsonLd = faqs && faqs.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    }
+  : null;
+
+const itemListJsonLd = itemList && itemList.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      itemListElement: itemList.map((it, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: it.name,
+        url: it.url,
+      })),
+    }
+  : null;
+---
+
+<BaseLayout {title} {description} {lang} jsonLd={serviceJsonLd}>
+  {faqJsonLd && (
+    <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqJsonLd)} />
+  )}
+  {itemListJsonLd && (
+    <script type="application/ld+json" slot="head" set:html={JSON.stringify(itemListJsonLd)} />
+  )}
+
+  <div class="container-custom pt-6">
+    <Breadcrumb {lang} currentLabel={breadcrumbLabel} />
+  </div>
+
+  <slot />
+</BaseLayout>
