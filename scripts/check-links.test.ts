@@ -28,7 +28,7 @@ describe('classifyLink', () => {
 describe('KNOWN_PENDING', () => {
   it('contiene las hijas de taxes que Plan 2 aún no construye', () => {
     for (const path of [
-      '/taxes/declaracion-personal', '/taxes/declaracion-negocio', '/taxes/todos-los-estados',
+      '/taxes/declaracion-negocio', '/taxes/todos-los-estados',
       '/taxes/enmiendas', '/taxes/seguimiento-reembolso', '/taxes/formularios-1099',
     ]) {
       expect(KNOWN_PENDING.has(path)).toBe(true);

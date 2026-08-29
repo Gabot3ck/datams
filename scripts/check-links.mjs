@@ -7,7 +7,7 @@ const DIST = 'dist';
 const GATE_PREFIXES = ['/taxes', '/irs', '/itin-ein', '/contacto'];
 
 export const KNOWN_PENDING = new Set([
-  '/taxes/declaracion-personal', '/taxes/declaracion-negocio', '/taxes/todos-los-estados',
+  '/taxes/declaracion-negocio', '/taxes/todos-los-estados',
   '/taxes/enmiendas', '/taxes/seguimiento-reembolso', '/taxes/formularios-1099',
   '/irs/solucion-deudas', '/irs/auditorias', '/irs/resolucion-cartas',
   '/irs/acuerdos-pago', '/irs/transcripciones',
