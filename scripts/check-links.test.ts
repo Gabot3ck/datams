@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { classifyLink } from './check-links.mjs';
+import { classifyLink, KNOWN_PENDING } from './check-links.mjs';
 
 describe('classifyLink', () => {
   it('ignora anclas, mailto, tel y externos', () => {
@@ -22,5 +22,21 @@ describe('classifyLink', () => {
     expect(classifyLink('/notaria/affidavit')).toBe('warn');
     expect(classifyLink('/nosotros')).toBe('warn');
     expect(classifyLink('/en/taxes')).toBe('warn');
+  });
+});
+
+describe('KNOWN_PENDING', () => {
+  it('contiene las hijas de taxes que Plan 2 aún no construye', () => {
+    for (const path of [
+      '/taxes/declaracion-personal', '/taxes/declaracion-negocio', '/taxes/todos-los-estados',
+      '/taxes/enmiendas', '/taxes/seguimiento-reembolso', '/taxes/formularios-1099',
+      '/contacto',
+    ]) {
+      expect(KNOWN_PENDING.has(path)).toBe(true);
+    }
+  });
+  it('classifyLink sigue devolviendo "gate" para esos paths (la degradación ocurre en main)', () => {
+    expect(classifyLink('/taxes/declaracion-negocio')).toBe('gate');
+    expect(classifyLink('/contacto')).toBe('gate');
   });
 });

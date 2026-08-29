@@ -5,6 +5,15 @@ import { pathToFileURL } from 'node:url';
 
 const DIST = 'dist';
 const GATE_PREFIXES = ['/taxes', '/irs', '/itin-ein', '/contacto'];
+
+export const KNOWN_PENDING = new Set([
+  '/taxes/declaracion-personal', '/taxes/declaracion-negocio', '/taxes/todos-los-estados',
+  '/taxes/enmiendas', '/taxes/seguimiento-reembolso', '/taxes/formularios-1099',
+  '/irs/solucion-deudas', '/irs/auditorias', '/irs/resolucion-cartas',
+  '/irs/acuerdos-pago', '/irs/transcripciones',
+  '/itin-ein/solicitar-itin', '/itin-ein/renovar-itin', '/itin-ein/solicitar-ein',
+  '/contacto',
+]); // Plan 2 / Tasks 17-18 los construyen; se van quitando a medida
 const ASSET_EXT = /\.(css|js|mjs|svg|ico|png|jpg|jpeg|gif|webp|avif|woff|woff2|xml|txt|json|pdf)$/i;
 
 export function classifyLink(href) {
@@ -54,7 +63,12 @@ async function main() {
       const kind = classifyLink(href);
       if (kind === 'ignore') continue;
       const path = href.split('#')[0].split('?')[0];
-      if (!resolves(path)) broken[kind].push({ file: file.replace(DIST, ''), href });
+      if (resolves(path)) continue;
+      if (kind === 'gate' && KNOWN_PENDING.has(path)) {
+        broken.warn.push({ file: file.replace(DIST, ''), href });
+        continue;
+      }
+      broken[kind].push({ file: file.replace(DIST, ''), href });
     }
   }
   if (broken.warn.length) {
