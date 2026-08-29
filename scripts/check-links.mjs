@@ -12,7 +12,6 @@ export const KNOWN_PENDING = new Set([
   '/irs/solucion-deudas', '/irs/auditorias', '/irs/resolucion-cartas',
   '/irs/acuerdos-pago', '/irs/transcripciones',
   '/itin-ein/solicitar-itin', '/itin-ein/renovar-itin', '/itin-ein/solicitar-ein',
-  '/contacto',
 ]); // Plan 2 / Tasks 17-18 los construyen; se van quitando a medida
 const ASSET_EXT = /\.(css|js|mjs|svg|ico|png|jpg|jpeg|gif|webp|avif|woff|woff2|xml|txt|json|pdf)$/i;
 

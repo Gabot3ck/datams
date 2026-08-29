@@ -30,7 +30,6 @@ describe('KNOWN_PENDING', () => {
     for (const path of [
       '/taxes/declaracion-personal', '/taxes/declaracion-negocio', '/taxes/todos-los-estados',
       '/taxes/enmiendas', '/taxes/seguimiento-reembolso', '/taxes/formularios-1099',
-      '/contacto',
     ]) {
       expect(KNOWN_PENDING.has(path)).toBe(true);
     }
