@@ -1,0 +1,86 @@
+---
+interface Props {
+  eyebrow?: string;
+  heading: string;
+  intro?: string;
+  items: { label: string; href: string; description: string }[];
+  lang?: 'es' | 'en';
+}
+
+const { eyebrow, heading, intro, items, lang = 'es' } = Astro.props;
+
+const moreText = lang === 'es' ? 'Ver más' : 'Learn more';
+---
+
+<section
+  class="py-20 lg:py-28 bg-background-light"
+  aria-labelledby="services-heading"
+>
+  <div class="container-custom">
+    <div class="text-center mb-14">
+      {
+        eyebrow && (
+          <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
+            {eyebrow}
+          </span>
+        )
+      }
+      <h2
+        id="services-heading"
+        class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mt-3 leading-tight"
+      >
+        {heading}
+      </h2>
+      {
+        intro && (
+          <p class="text-neutral-grey mt-4 max-w-xl mx-auto leading-relaxed">
+            {intro}
+          </p>
+        )
+      }
+    </div>
+
+    <ul
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      role="list"
+    >
+      {
+        items.map((svc) => (
+          <li>
+            <a
+              href={svc.href}
+              class="group flex flex-col h-full bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden"
+            >
+              <span
+                class="absolute left-0 inset-y-0 w-[3px] bg-brand-light scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom rounded-r-full"
+                aria-hidden="true"
+              />
+              <h3 class="font-display text-lg font-bold text-neutral-dark group-hover:text-brand-light transition-colors leading-snug mb-3">
+                {svc.label}
+              </h3>
+              <p class="text-sm text-neutral-grey leading-relaxed flex-1">
+                {svc.description}
+              </p>
+              <span class="inline-flex items-center gap-1 mt-5 text-sm font-semibold text-brand-light group-hover:gap-2 transition-all">
+                {moreText}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  class="size-4"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

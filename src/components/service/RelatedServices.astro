@@ -1,0 +1,23 @@
+---
+interface Props {
+  heading: string;
+  items: { label: string; href: string }[];
+}
+const { heading, items } = Astro.props;
+---
+<section class="py-14 bg-white border-t border-background-muted" aria-labelledby="related-heading">
+  <div class="container-custom">
+    <h2 id="related-heading" class="text-xs font-bold tracking-widest text-brand-light uppercase mb-4">
+      {heading}
+    </h2>
+    <ul class="flex flex-wrap gap-x-6 gap-y-2" role="list">
+      {items.map((it) => (
+        <li>
+          <a href={it.href} class="text-sm font-semibold text-neutral-dark hover:text-brand-light hover:underline transition-colors">
+            {it.label} <span aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
