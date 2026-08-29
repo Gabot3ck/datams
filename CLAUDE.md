@@ -22,7 +22,7 @@ const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
 ```
 
 - `x-default` → español (audiencia principal)
-- hreflang generado en `src/utils/hreflang.ts` — cambiar `SITE_URL` al dominio real
+- hreflang generado en `src/config/routes.ts` (`getAlternates`), `SITE_URL` centralizado en `src/config/site.ts`
 - `BaseLayout.astro` inyecta hreflang, `og:locale`, `html lang` automáticamente
 
 ### Patrón de traducciones (inline, no archivos JSON)
@@ -35,6 +35,14 @@ const t = { es: { heading: "Español" }, en: { heading: "English" } }[lang];
 ---
 <h1>{t.heading}</h1>
 ```
+
+### Registro de rutas (src/config/routes.ts)
+ROUTES mapea cada ruta ES a su gemela EN + flag `enBuilt`. getAlternates(pathname) alimenta:
+- hreflang en BaseLayout (solo emite `<link hreflang="en">` si enBuilt)
+- filtro del sitemap
+- switch de idioma del Navbar (cae a `/en` home si no hay gemela construida)
+
+Al crear una página EN: crear el archivo + poner `enBuilt: true` en su entrada.
 
 ### Rutas por crear
 
@@ -66,19 +74,28 @@ src/
 │   ├── MegaMenuPanel.tsx     # Panel del megamenú: grid 2 cols de items + imagen + footer link
 │   ├── Breadcrumb.astro      # Breadcrumb reutilizable con JSON-LD BreadcrumbList
 │   ├── Footer.astro          # Footer con 8 links de categorías + contacto (HTML estático)
-│   └── BaseLayout.astro      # Layout raíz con SEO completo — incluye Navbar + Footer
+│   ├── BaseLayout.astro      # Layout raíz con SEO completo — incluye Navbar + Footer
+│   └── service/              # ServiceHero, TrustBar, ServiceList, RelatedServices, ProcessSteps,
+│                              # DocsChecklist, InfoBlock, WhyUs, FaqSection, CtaBanner
+├── config/
+│   ├── site.ts               # SITE_URL (única var de prod), SITE_NAME, OG_IMAGE, GSC, BUSINESS, helpers JSON-LD, canonicalURL
+│   └── routes.ts             # registro ES↔EN + getAlternates() para hreflang/sitemap/switch de idioma
 ├── layouts/
-│   └── BaseLayout.astro
+│   ├── BaseLayout.astro
+│   └── ServiceLayout.astro   # BaseLayout + Breadcrumb + JSON-LD Service/FAQPage/ItemList + slot
 ├── pages/
 │   ├── index.astro           # Home ES
 │   └── en/index.astro        # Home EN
 ├── styles/global.css         # @theme tokens, fuentes, .container-custom, .title, .subtitle
-└── utils/hreflang.ts         # getHreflangUrls(pathname) + SITE_URL
 public/
 ├── assets/icons/             # flag_mexico.webp, flag_usa.webp
 ├── fonts/roboto/             # roboto-regular.woff2, roboto-bold.woff2
+├── robots.txt
 └── scripts/
     └── hero-slider.js        # Lógica real del slider (prev/next/dots/autoplay/keyboard/swipe)
+scripts/
+└── check-links.mjs           # verificador de enlaces internos post-build (+ check-links.test.ts)
+vitest.config.ts              # tests con Vitest + Container API de Astro
 ```
 
 ## Componentes — notas críticas
@@ -159,7 +176,7 @@ interface NavItem {
 - Props: `lang: 'es' | 'en'`, `currentLabel: string` (el H1 exacto de la página)
 - Infiere categoría desde `Astro.url.pathname` (quita prefijo `/en`, toma primer segmento)
 - Caso especial: `/irs/*` se anida bajo Taxes → `Inicio > Taxes > IRS & Resolución Fiscal > {currentLabel}`
-- Emite JSON-LD `BreadcrumbList` usando `SITE_URL` de `hreflang.ts`
+- Emite JSON-LD `BreadcrumbList` usando `SITE_URL` de `src/config/site.ts`
 - Uso: justo debajo del header en cada página de servicio, pasando el H1 como `currentLabel`
 
 ### Footer.astro
@@ -169,21 +186,37 @@ interface NavItem {
 - Los 8 links de categoría son el interlinking SEO principal — siempre visibles sin JS
 - Registrado en `BaseLayout.astro` — aparece en todas las páginas automáticamente
 
+### Páginas de servicio (src/components/service/ + ServiceLayout.astro)
+- Patrón: un `.astro` por página que compone componentes de sección dentro de `<ServiceLayout>`.
+- ServiceLayout props: `title`, `description`, `lang`, `breadcrumbLabel` (= H1 exacto), `service {name, serviceType}`, `faqs?`, `itemList?`.
+- El array `faqs` se pasa a la vez a `<ServiceLayout>` (para JSON-LD FAQPage) y a `<FaqSection>` (para render).
+- Los componentes son "tontos": todo el contenido entra por props/slot; `lang` solo cambia strings fijos de UI.
+- Estilos: derivados de la primera versión de `/taxes/index.astro`. No hardcodear hex — usar tokens.
+- URLs: pilares con barra final (`/taxes/`), hijas sin (`/taxes/enmiendas`). `canonicalURL()` lo normaliza.
+
 ## Sistema de diseño
 
 ```css
---color-brand-light:   #CA3626  /* rojo — CTAs, hovers, acentos heading */
---color-brand-dark:    #810C00  /* rojo oscuro — fondos, hover secundario */
---color-accent:        #4d4e4a  /* gris carbón — stats bar bg */
---color-accent-dark:   #e3ab02  /* dorado — badge hero, CTA banner bg */
---color-neutral-dark:  #1a261a  /* casi negro — textos principales, stat numbers */
---color-neutral-grey:  #575756  /* gris medio — textos secundarios */
+--color-brand-extralight: #FBCFD4
+--color-brand-light:      #DB757F  /* rosa — hovers, acentos de heading, borde animado */
+--color-brand:            #8b1d28  /* vino — CTAs principales, texto de marca */
+--color-brand-dark:       #63050E  /* vino oscuro — hover de CTA */
+--color-accent:           #5b5a5c  /* gris carbón — fondo trust bar */
+--color-accent-light:     #9A999B
+--color-accent-extralight:#c5c5c5
+--color-accent-dark:      #e3ab02  /* dorado — checks de trust bar */
+--color-neutral-dark:     #1a261a  /* textos principales */
+--color-neutral-grey:     #5b5a5c  /* textos secundarios */
+--color-midnight:         #1A1A1D  /* fondo de CtaBanner */
+--color-cream:            #FAF7F2  /* fondo de WhyUs */
 --color-background-light: #f9f9f9
 --color-background-muted: #e0e0e0
 
 /* Breakpoints custom */
 lg: 990px  /* ← NO es 1024px estándar de Tailwind */
 ```
+
+**Tipografía:** `font-display` (clase `.font-display`) = Playfair Display serif, cargada por Google Fonts en `BaseLayout.astro`. Cuerpo = Roboto self-hosted (`body` en `global.css`).
 
 Utilidades globales:
 - `.container-custom` — max-w-7xl + padding; >1520px → 80dvw
@@ -192,20 +225,26 @@ Utilidades globales:
 
 ## Variables pendientes para producción
 
-| Archivo | Variable | Acción |
-|---------|----------|--------|
-| `src/utils/hreflang.ts` | `SITE_URL = 'https://tudominio.com'` | Dominio real |
-| `src/layouts/BaseLayout.astro` | `siteName = "NOMBRE_SITIO"` | Nombre negocio |
-| `src/layouts/BaseLayout.astro` | `ogImage` | URL imagen OG real |
-| `src/layouts/BaseLayout.astro` | `google-site-verification` | GSC code |
-| `src/pages/index.astro` | `image="/assets/og-image.png"` | Crear OG 1200×675 |
+Todo centralizado en `src/config/site.ts`:
+
+| Constante          | Acción para producción                        |
+|--------------------|-----------------------------------------------|
+| `SITE_URL`         | Dominio real (propaga a canonical, og, sitemap, robots, hreflang) |
+| `OG_IMAGE`         | Crear `/public/assets/og-image.webp` 1200×675    |
+| `GSC_VERIFICATION` | Código de Google Search Console                |
+| `BUSINESS.email`   | Email de contacto real                         |
+| Placeholders de contenido | Buscar `[PLACEHOLDER:` en `src/` — precios, PTIN/EFIN, política de citas |
+
+También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto con `SITE_URL`.
 
 ## Pendientes
 
-- [ ] Crear páginas de servicios (ver tabla de rutas)
-- [ ] Usar `Breadcrumb.astro` en cada página de servicio (pasar H1 exacto como `currentLabel`)
-- [ ] `@astrojs/sitemap` o `public/sitemap.xml`
-- [ ] `public/robots.txt`
+- [x] Sistema de páginas de servicio + clúster Taxes/IRS/ITIN ES (pilar `/taxes/` + `/taxes/declaracion-personal` hechos; resto en Plan 2)
+- [x] `@astrojs/sitemap` y `public/robots.txt`
+- [ ] Resto de páginas del clúster Taxes/IRS/ITIN ES (Plan 2: `docs/superpowers/plans/`)
+- [ ] Tests unitarios de helpers con Vitest (`site.ts` / `routes.ts`) para coverage — hoy solo smoke tests
+- [ ] Páginas EN del clúster (arquitectura lista: poner `enBuilt: true` en `routes.ts` al crearlas)
+- [ ] Integrar componente de formulario real en `/contacto`
 - [ ] Imagen OG real (`public/assets/og-image.webp`, 1200×675)
 - [ ] Imágenes hero responsive reales (mobile/tablet/desktop separadas)
 - [ ] Imágenes reales en subcategorías del mega menú (actualmente sin imagen → fondo gris)
