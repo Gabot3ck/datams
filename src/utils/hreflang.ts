@@ -1,12 +1,17 @@
 // src/utils/hreflang.ts
-export const SITE_URL = 'https://tudominio.com';
+export { SITE_URL } from '../config/site';
 
+/** Devuelve las URLs es/en/x-default para una ruta dada.
+ *  Nota: para hreflang de <head> usar getAlternates() de config/routes.ts;
+ *  esta función queda como utilidad genérica. */
 export function getHreflangUrls(pathname: string) {
-  const cleanPath = pathname.replace('/en', '').replace(/\/$/, '') || '/';
-  
+  const clean = pathname.startsWith('/en')
+    ? pathname.slice(3).replace(/\/$/, '') || '/'
+    : pathname.replace(/\/$/, '') || '/';
+  const base = 'https://tudominio.com';
   return {
-    es: `${SITE_URL}${cleanPath}`,
-    en: `${SITE_URL}/en${cleanPath}`,
-    xDefault: `${SITE_URL}${cleanPath}` // Español como default
+    es: `${base}${clean}`,
+    en: `${base}/en${clean === '/' ? '' : clean}`,
+    xDefault: `${base}${clean}`,
   };
 }
