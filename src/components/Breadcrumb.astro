@@ -1,5 +1,5 @@
 ---
-import { SITE_URL } from '../utils/hreflang';
+import { SITE_URL } from '@config/site';
 
 interface Props {
   lang: 'es' | 'en';
@@ -16,26 +16,26 @@ type CategoryEntry = {
 
 const categoryMap: Record<'es' | 'en', Record<string, CategoryEntry>> = {
   es: {
-    taxes:       { label: 'Taxes',                  url: '/taxes' },
-    irs:         { label: 'IRS & Resolución Fiscal', url: '/irs', parent: 'taxes' },
-    'itin-ein':  { label: 'ITIN / EIN',              url: '/itin-ein' },
-    notaria:     { label: 'Notaría Pública',         url: '/notaria' },
-    inmigracion: { label: 'Inmigración',             url: '/inmigracion' },
-    negocio:     { label: 'Negocio',                 url: '/negocio' },
-    dmv:         { label: 'DMV',                     url: '/dmv' },
-    corte:       { label: 'Formularios Corte',       url: '/corte' },
-    otros:       { label: 'Otros Servicios',         url: '/otros' },
+    taxes:       { label: 'Taxes',                  url: '/taxes/' },
+    irs:         { label: 'IRS & Resolución Fiscal', url: '/irs/', parent: 'taxes' },
+    'itin-ein':  { label: 'ITIN / EIN',              url: '/itin-ein/' },
+    notaria:     { label: 'Notaría Pública',         url: '/notaria/' },
+    inmigracion: { label: 'Inmigración',             url: '/inmigracion/' },
+    negocio:     { label: 'Negocio',                 url: '/negocio/' },
+    dmv:         { label: 'DMV',                     url: '/dmv/' },
+    corte:       { label: 'Formularios Corte',       url: '/corte/' },
+    otros:       { label: 'Otros Servicios',         url: '/otros/' },
   },
   en: {
-    taxes:       { label: 'Taxes',               url: '/en/taxes' },
-    irs:         { label: 'IRS & Tax Resolution', url: '/en/irs', parent: 'taxes' },
-    'itin-ein':  { label: 'ITIN / EIN',           url: '/en/itin-ein' },
-    notaria:     { label: 'Notary Public',        url: '/en/notary' },
-    inmigracion: { label: 'Immigration',          url: '/en/immigration' },
-    negocio:     { label: 'Business',             url: '/en/business' },
-    dmv:         { label: 'DMV',                  url: '/en/dmv' },
-    corte:       { label: 'Court Forms',          url: '/en/court' },
-    otros:       { label: 'Other Services',       url: '/en/other' },
+    taxes:       { label: 'Taxes',               url: '/en/taxes/' },
+    irs:         { label: 'IRS & Tax Resolution', url: '/en/irs/', parent: 'taxes' },
+    'itin-ein':  { label: 'ITIN / EIN',           url: '/en/itin-ein/' },
+    notaria:     { label: 'Notary Public',        url: '/en/notary/' },
+    inmigracion: { label: 'Immigration',          url: '/en/immigration/' },
+    negocio:     { label: 'Business',             url: '/en/business/' },
+    dmv:         { label: 'DMV',                  url: '/en/dmv/' },
+    corte:       { label: 'Court Forms',          url: '/en/court/' },
+    otros:       { label: 'Other Services',       url: '/en/other/' },
   },
 };
 
