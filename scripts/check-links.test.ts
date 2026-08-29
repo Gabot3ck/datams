@@ -8,6 +8,10 @@ describe('classifyLink', () => {
     expect(classifyLink('tel:+1702')).toBe('ignore');
     expect(classifyLink('https://irs.gov')).toBe('ignore');
   });
+  it('ignora assets de build (no son páginas)', () => {
+    expect(classifyLink('/_astro/index.abc123.css')).toBe('ignore');
+    expect(classifyLink('/favicon.svg')).toBe('ignore');
+  });
   it('marca como "gate" los destinos dentro del alcance construido', () => {
     expect(classifyLink('/taxes/enmiendas')).toBe('gate');
     expect(classifyLink('/irs/')).toBe('gate');
@@ -17,5 +21,6 @@ describe('classifyLink', () => {
   it('marca como "warn" secciones aún no construidas', () => {
     expect(classifyLink('/notaria/affidavit')).toBe('warn');
     expect(classifyLink('/nosotros')).toBe('warn');
+    expect(classifyLink('/en/taxes')).toBe('warn');
   });
 });

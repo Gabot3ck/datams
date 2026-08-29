@@ -4,7 +4,8 @@ import { join, extname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const DIST = 'dist';
-const GATE_PREFIXES = ['/taxes', '/irs', '/itin-ein', '/contacto', '/en'];
+const GATE_PREFIXES = ['/taxes', '/irs', '/itin-ein', '/contacto'];
+const ASSET_EXT = /\.(css|js|mjs|svg|ico|png|jpg|jpeg|gif|webp|avif|woff|woff2|xml|txt|json|pdf)$/i;
 
 export function classifyLink(href) {
   if (!href || href.startsWith('#') || href.startsWith('mailto:') ||
@@ -12,6 +13,9 @@ export function classifyLink(href) {
     return 'ignore';
   }
   if (!href.startsWith('/')) return 'ignore';
+  if (href.startsWith('/_astro/') || ASSET_EXT.test(href.split('#')[0].split('?')[0])) {
+    return 'ignore';
+  }
   const path = href.split('#')[0].split('?')[0];
   if (path === '/' || GATE_PREFIXES.some((p) => path === p || path.startsWith(p + '/') || path === p + '/')) {
     return 'gate';
