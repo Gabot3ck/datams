@@ -28,3 +28,25 @@ describe('Navbar — hrefs alineados al CONTENT-STRATEGY', () => {
     expect(src).toMatch(/label:\s*"Taxes",\s*\n\s*href:\s*"\/taxes\/"/);
   });
 });
+
+describe('Navbar — slugs EN alineados a routes.ts', () => {
+  it('ya no contiene /en/taxes/amendments', () => {
+    expect(src).not.toContain('/en/taxes/amendments');
+  });
+  it('ya no contiene /en/irs/irs-payments', () => {
+    expect(src).not.toContain('/en/irs/irs-payments');
+  });
+  it('ya no contiene /en/taxes/irs-transcripts (movido a la pestaña IRS)', () => {
+    expect(src).not.toContain('/en/taxes/irs-transcripts');
+  });
+  it('contiene /en/taxes/amended-returns', () => {
+    expect(src).toContain('/en/taxes/amended-returns');
+  });
+  it('contiene /en/irs/irs-transcripts', () => {
+    expect(src).toContain('/en/irs/irs-transcripts');
+  });
+  it('mueve la asesoría de negocio bajo /en/business/', () => {
+    expect(src).toContain('/en/business/business-tax-advice');
+    expect(src).not.toContain('/en/taxes/business-tax-advice');
+  });
+});

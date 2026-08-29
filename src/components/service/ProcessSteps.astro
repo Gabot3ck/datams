@@ -8,7 +8,7 @@ const { heading, steps } = Astro.props;
       <h2 id="process-heading" class="font-display text-3xl md:text-4xl font-bold text-neutral-dark mb-10 leading-tight">
         {heading}
       </h2>
-      <ol class="flex flex-col gap-5">
+      <ol role="list" class="flex flex-col gap-5">
         {steps.map((step, i) => (
           <li class="flex gap-5 items-start bg-background-light rounded-2xl p-6">
             <span class="shrink-0 size-10 rounded-xl bg-brand-light flex items-center justify-center text-white font-bold text-sm" aria-hidden="true">

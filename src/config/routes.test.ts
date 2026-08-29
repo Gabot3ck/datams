@@ -19,9 +19,9 @@ describe('getAlternates', () => {
     expect(alt.es).toBe('https://tudominio.com/');
   });
 
-  it('home ES: en construido', () => {
+  it('home ES: en construido (forma normalizada por canonicalURL)', () => {
     const alt = getAlternates('/');
-    expect(alt.en).toBe('https://tudominio.com/en');
+    expect(alt.en).toBe('https://tudominio.com/en/');
   });
 
   it('ruta no registrada: fallback es = url, en = null', () => {

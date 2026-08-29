@@ -23,6 +23,12 @@ describe('canonicalURL', () => {
   it('trata /contacto como hija (sin barra)', () => {
     expect(canonicalURL('/contacto')).toBe(`${SITE_URL}/contacto`);
   });
+  it('normaliza la home EN a /en/ con barra', () => {
+    expect(canonicalURL('/en')).toBe(`${SITE_URL}/en/`);
+  });
+  it('no rebana una ruta top-level que empieza con "en" (prefijo laxo prohibido)', () => {
+    expect(canonicalURL('/enero-algo')).toBe(`${SITE_URL}/enero-algo`);
+  });
 });
 
 describe('constantes', () => {

@@ -18,7 +18,8 @@ interface Props {
 
 const { title, description, robots, canonical, image, jsonLd } = Astro.props;
 
-const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
+const lang =
+  Astro.props.lang ?? (Astro.url.pathname.startsWith("/en") ? "en" : "es");
 const alt = getAlternates(Astro.url.pathname);
 
 const ogLocale = lang === "es" ? "es_US" : "en_US";
@@ -78,7 +79,7 @@ const ogImage = image ?? OG_IMAGE;
 
     {
       jsonLd && (
-        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
       )
     }
     <slot name="head" />

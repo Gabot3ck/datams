@@ -1,4 +1,4 @@
-import { SITE_URL } from './site';
+import { canonicalURL, stripTrailingSlash } from './site';
 
 export interface RoutePair {
   es: string;
@@ -31,17 +31,14 @@ export const ROUTES: RoutePair[] = [
   { es: '/itin-ein/solicitar-ein',     en: '/en/itin-ein/ein-application',   enBuilt: false },
 ];
 
-/** Quita barras finales para comparar rutas, conservando '/' para la home. */
-function stripTrailing(path: string): string {
-  return path.replace(/\/+$/, '') || '/';
-}
-
 /**
  * Resuelve las URLs alternas (hreflang) para un pathname dado.
  *
  * - Acepta tanto el pathname ES como el EN (`/en`, `/en/...`).
- * - `es` / `xDefault`: siempre la URL absoluta ES (registrada o fallback normalizado).
- * - `en`: URL absoluta EN solo si la ruta está registrada y `enBuilt === true`; si no, `null`.
+ * - `es` / `xDefault`: siempre la URL absoluta ES (registrada o fallback), con la
+ *   forma de barra final que produce `canonicalURL` (pilares/home con barra, hijas sin).
+ * - `en`: URL absoluta EN (vía `canonicalURL`) solo si la ruta está registrada y
+ *   `enBuilt === true`; si no, `null`.
  * - No usa `.replace` sobre la subcadena "en" — detecta el prefijo `/en` de forma exacta
  *   para no destrozar rutas como `/taxes/enmiendas`.
  */
@@ -52,11 +49,11 @@ export function getAlternates(pathname: string): {
 } {
   const isEn = pathname === '/en' || pathname.startsWith('/en/');
   const esPathname = isEn ? (pathname === '/en' ? '/' : pathname.slice(3)) : pathname;
-  const key = stripTrailing(esPathname);
+  const key = stripTrailingSlash(esPathname);
 
-  const entry = ROUTES.find((r) => stripTrailing(r.es) === key);
-  const es = SITE_URL + (entry ? entry.es : key);
-  const en = entry && entry.enBuilt ? SITE_URL + entry.en : null;
+  const entry = ROUTES.find((r) => stripTrailingSlash(r.es) === key);
+  const es = canonicalURL(entry ? entry.es : key);
+  const en = entry && entry.enBuilt ? canonicalURL(entry.en) : null;
 
   return { es, en, xDefault: es };
 }

@@ -55,4 +55,12 @@ describe('ServiceLayout', () => {
     const html = await render({});
     expect(html).toContain('cuerpo de la página');
   });
+  it('reenvía robots a BaseLayout', async () => {
+    const html = await render({ robots: 'noindex,follow' });
+    expect(html).toContain('<meta name="robots" content="noindex,follow">');
+  });
+  it('envuelve breadcrumb + slot en un único <main>', async () => {
+    const html = await render({});
+    expect((html.match(/<main/g) ?? []).length).toBe(1);
+  });
 });

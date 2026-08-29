@@ -32,11 +32,18 @@ const PILLAR_PATHS = new Set([
   '/negocio', '/dmv', '/corte', '/otros',
 ]);
 
+/** Quita barras finales, conservando '/' para la home.
+ *  Normalizador compartido — lo usan `canonicalURL` y `routes.ts`. */
+export function stripTrailingSlash(path: string): string {
+  return path.replace(/\/+$/, '') || '/';
+}
+
 /** URL canónica absoluta con barra final normalizada:
  *  home y pilares de categoría → con barra; todo lo demás → sin barra. */
 export function canonicalURL(pathname: string): string {
-  let path = pathname.replace(/\/+$/, '') || '/';
-  const noEn = path.startsWith('/en') ? path.slice(3) || '/' : path;
+  let path = stripTrailingSlash(pathname);
+  const isEn = path === '/en' || path.startsWith('/en/');
+  const noEn = isEn ? path.slice(3) || '/' : path;
   const isPillar = noEn === '/' || PILLAR_PATHS.has(noEn);
   if (isPillar && path !== '/') path = `${path}/`;
   return SITE_URL + path;
