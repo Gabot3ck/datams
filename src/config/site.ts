@@ -41,3 +41,49 @@ export function canonicalURL(pathname: string): string {
   if (isPillar && path !== '/') path = `${path}/`;
   return SITE_URL + path;
 }
+
+function addressNode() {
+  return {
+    '@type': 'PostalAddress',
+    streetAddress: BUSINESS.address.street,
+    addressLocality: BUSINESS.address.city,
+    addressRegion: BUSINESS.address.region,
+    postalCode: BUSINESS.address.postalCode,
+    addressCountry: BUSINESS.address.country,
+  };
+}
+
+export function buildLocalBusinessJsonLd(lang: 'es' | 'en') {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: SITE_NAME,
+    telephone: BUSINESS.phone,
+    address: addressNode(),
+    openingHours: BUSINESS.openingHours,
+    areaServed: { '@type': 'City', name: 'Las Vegas' },
+    inLanguage: lang,
+  };
+}
+
+export function buildServiceJsonLd(opts: {
+  name: string; description: string; serviceType: string; url: string; lang: 'es' | 'en';
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: opts.name,
+    description: opts.description,
+    serviceType: opts.serviceType,
+    url: opts.url,
+    inLanguage: opts.lang,
+    areaServed: { '@type': 'City', name: 'Las Vegas' },
+    provider: {
+      '@type': 'LocalBusiness',
+      name: SITE_NAME,
+      telephone: BUSINESS.phone,
+      address: addressNode(),
+      openingHours: BUSINESS.openingHours,
+    },
+  };
+}

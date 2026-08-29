@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { canonicalURL, SITE_URL, SITE_NAME, BUSINESS, TRUST_BAR_DEFAULT_ES } from './site';
+import { canonicalURL, SITE_URL, SITE_NAME, BUSINESS, TRUST_BAR_DEFAULT_ES, buildServiceJsonLd, buildLocalBusinessJsonLd } from './site';
 
 describe('canonicalURL', () => {
   it('deja la home como raíz con barra', () => {
@@ -34,5 +34,42 @@ describe('constantes', () => {
   });
   it('trust bar tiene 4 ítems', () => {
     expect(TRUST_BAR_DEFAULT_ES).toHaveLength(4);
+  });
+});
+
+describe('buildServiceJsonLd', () => {
+  const jsonld = buildServiceJsonLd({
+    name: 'Declaración de Impuestos Personales',
+    description: 'Declaramos tus impuestos personales en español.',
+    serviceType: 'Tax preparation',
+    url: 'https://tudominio.com/taxes/declaracion-personal',
+    lang: 'es',
+  });
+  it('es un Service con contexto schema.org', () => {
+    expect(jsonld['@context']).toBe('https://schema.org');
+    expect(jsonld['@type']).toBe('Service');
+  });
+  it('incluye provider LocalBusiness con teléfono', () => {
+    const provider = jsonld.provider as Record<string, unknown>;
+    expect(provider['@type']).toBe('LocalBusiness');
+    expect(provider.telephone).toBe('+17026400088');
+  });
+  it('propaga url e inLanguage', () => {
+    expect(jsonld.url).toBe('https://tudominio.com/taxes/declaracion-personal');
+    expect(jsonld.inLanguage).toBe('es');
+  });
+  it('areaServed es Las Vegas', () => {
+    const area = jsonld.areaServed as Record<string, unknown>;
+    expect(area.name).toBe('Las Vegas');
+  });
+});
+
+describe('buildLocalBusinessJsonLd', () => {
+  it('arma NAP completo', () => {
+    const b = buildLocalBusinessJsonLd('es');
+    expect(b['@type']).toBe('LocalBusiness');
+    expect(b.name).toBe("Data's & Multiservices");
+    const addr = b.address as Record<string, unknown>;
+    expect(addr.postalCode).toBe('89101');
   });
 });
