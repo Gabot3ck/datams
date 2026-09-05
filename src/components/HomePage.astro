@@ -52,6 +52,22 @@ const t = {
       phone: "(702) 640-0088",
       address: "235 N Eastern Ave. Suite 130, Las Vegas, NV. 89101",
       hours: "Lun–Sáb 9AM–9PM · Dom 10AM–5PM"
+    },
+    office: {
+      kicker: "Taxes, notaría e inmigración, en un mismo lugar",
+      heading: { pre: "Conoce", accent: "nuestra oficina", post: "en Las Vegas" },
+      description:
+        "Ven a nuestra oficina en Las Vegas y resuelve en una sola visita lo que normalmente te tomaría ir a tres lugares distintos.",
+      cta: "Cómo llegar",
+      ctaHref: "https://www.google.com/maps/dir/?api=1&destination=235%20N%20Eastern%20Ave%20Suite%20130%2C%20Las%20Vegas%2C%20NV%2089101",
+      images: [
+        { src: "/assets/images/test/thumb_servicios_90c45b98c0.jpg", alt: "Atención a un cliente en la oficina" },
+        { src: "/assets/images/test/thumb_empresas_4b46959dd7.avif", alt: "Asesoría a un negocio local" },
+        { src: "/assets/images/test/thumb_servicios_90c45b98c0.jpg", alt: "Recepción de la oficina en Las Vegas" },
+      ],
+      videoPoster: "/assets/images/test/thumb_empresas_4b46959dd7.avif",
+      videoAlt: "Video: recorrido por nuestra oficina",
+      videoTime: "03:05 / 05:10",
     }
   },
   en: {
@@ -97,6 +113,22 @@ const t = {
       phone: "(702) 640-0088",
       address: "235 N Eastern Ave. Suite 130, Las Vegas, NV. 89101",
       hours: "Mon–Sat 9AM–9PM · Sun 10AM–5PM"
+    },
+    office: {
+      kicker: "Taxes, notary, and immigration help, all in one place",
+      heading: { pre: "Visit", accent: "Our Office", post: "in Las Vegas" },
+      description:
+        "Visit our Las Vegas office and handle in one trip what would normally mean three different stops.",
+      cta: "Get Directions",
+      ctaHref: "https://www.google.com/maps/dir/?api=1&destination=235%20N%20Eastern%20Ave%20Suite%20130%2C%20Las%20Vegas%2C%20NV%2089101",
+      images: [
+        { src: "/assets/images/test/thumb_servicios_90c45b98c0.jpg", alt: "Helping a client at the office" },
+        { src: "/assets/images/test/thumb_empresas_4b46959dd7.avif", alt: "Advising a local business" },
+        { src: "/assets/images/test/thumb_servicios_90c45b98c0.jpg", alt: "Front desk of the Las Vegas office" },
+      ],
+      videoPoster: "/assets/images/test/thumb_empresas_4b46959dd7.avif",
+      videoAlt: "Video: a tour of our office",
+      videoTime: "03:05 / 05:10",
     }
   }
 }[lang];
@@ -284,6 +316,109 @@ const t = {
           <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
         </svg>
       </a>
+    </div>
+  </section>
+
+  <!-- ─── OFICINA — GALERÍA IMÁGENES + VIDEO ────────────────────────── -->
+  <section class="py-24 bg-background-light" aria-labelledby="office-heading">
+    <div class="container-custom">
+
+      <!-- Cabecera -->
+      <div class="text-center mb-12" data-reveal>
+        <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
+          {t.office.kicker}
+        </span>
+        <h2
+          id="office-heading"
+          class="font-display text-4xl md:text-5xl font-bold text-neutral-dark mt-4 mb-5 leading-tight text-balance"
+        >
+          {t.office.heading.pre}{' '}
+          <span class="text-brand">{t.office.heading.accent}</span>{' '}
+          {t.office.heading.post}
+        </h2>
+        <p class="text-neutral-grey text-lg leading-relaxed max-w-xl mx-auto text-pretty">
+          {t.office.description}
+        </p>
+      </div>
+
+      <!-- Medios: 2 imágenes apiladas · 1 imagen vertical · video -->
+      <div
+        class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1.1fr_2fr] lg:grid-rows-1 lg:h-[460px]"
+        data-reveal
+        data-reveal-delay="1"
+      >
+        <!-- Columna 1: dos imágenes apiladas -->
+        <div class="flex flex-col gap-4 lg:h-full">
+          {t.office.images.slice(0, 2).map(img => (
+            <img
+              src={img.src}
+              alt={img.alt}
+              loading="lazy"
+              decoding="async"
+              class="w-full flex-1 min-h-0 aspect-[4/3] lg:aspect-auto object-cover rounded-xl"
+            />
+          ))}
+        </div>
+
+        <!-- Columna 2: imagen vertical -->
+        <img
+          src={t.office.images[2].src}
+          alt={t.office.images[2].alt}
+          loading="lazy"
+          decoding="async"
+          class="w-full aspect-[3/4] lg:aspect-auto lg:h-full object-cover rounded-xl"
+        />
+
+        <!-- Columna 3: video (placeholder de imagen + overlay decorativo de controles) -->
+        <figure class="relative sm:col-span-2 lg:col-span-1 lg:h-full overflow-hidden rounded-xl">
+          <img
+            src={t.office.videoPoster}
+            alt={t.office.videoAlt}
+            loading="lazy"
+            decoding="async"
+            class="w-full aspect-video lg:aspect-auto lg:h-full object-cover"
+          />
+          {/*
+            Video real: reemplazar el <img> de arriba por
+            <video class="w-full lg:h-full object-cover" controls preload="metadata"
+                   poster={t.office.videoPoster} aria-label={t.office.videoAlt}>
+              <source src="/assets/video/oficina.mp4" type="video/mp4" />
+            </video>
+            y eliminar el overlay decorativo de abajo.
+          */}
+          <div
+            class="pointer-events-none absolute inset-x-0 bottom-0 flex items-center gap-3
+                   bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-10 text-white"
+            aria-hidden="true"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0">
+              <path d="M6 4.75A.75.75 0 0 1 6.75 4h1.5a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1-.75-.75V4.75ZM11 4.75A.75.75 0 0 1 11.75 4h1.5a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1-.75-.75V4.75Z" />
+            </svg>
+            <span class="text-xs font-medium tabular-nums shrink-0">{t.office.videoTime}</span>
+            <span class="relative h-1 flex-1 rounded-full bg-white/30">
+              <span class="absolute inset-y-0 left-0 w-[60%] rounded-full bg-brand-light"></span>
+            </span>
+          </div>
+        </figure>
+
+      </div>
+
+      <!-- CTA: cómo llegar -->
+      <div class="mt-12 text-center" data-reveal>
+        <a
+          href={t.office.ctaHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5
+                 text-sm font-semibold text-white transition-colors hover:bg-brand-light
+                 focus-visible:outline-2 focus-visible:outline-brand-dark"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true">
+            <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
+          </svg>
+          {t.office.cta}
+        </a>
+      </div>
     </div>
   </section>
 </main>
