@@ -31,17 +31,17 @@ const t = {
       { value: "3", label: "Oficinas disponibles" }
     ],
     whyUs: {
-      sectionLabel: "Por qué elegirnos",
-      heading: "El profesionalismo que la comunidad hispana merece",
-      description: "Entendemos los desafíos únicos que enfrentan las familias y negocios hispanos en Estados Unidos. Por eso ofrecemos un servicio cálido, profesional y completamente en tu idioma.",
+      eyebrow: "¿Por qué elegirnos?",
+      heading: { pre: "No solo asesoramos,", accent: "resolvemos." },
+      description:
+        "Sabemos que detrás de cada trámite hay una familia que no quiere una carta del IRS ni vivir con incertidumbre. Resolvemos tus taxes, notaría e inmigración en un solo lugar de confianza, en español, con precio claro desde el inicio y un comprobante en tus manos de que todo quedó bien hecho.",
       items: [
-        "Atención 100% en español e inglés",
-        "Profesionales certificados y licenciados",
-        "Precios transparentes sin sorpresas",
-        "Horarios flexibles incluyendo fines de semana",
-        "Manejo seguro y confidencial de tus datos",
-        "Más de 10 años sirviendo a la comunidad"
-      ]
+        "Tus taxes completos y sin errores que después traigan cartas del IRS",
+        "El reembolso más alto que la ley permite, 100% legal",
+        "Taxes, ITIN, notaría e inmigración en una sola oficina",
+        "Precio exacto antes de empezar y comprobante de que quedó bien hecho",
+      ],
+      imageAlt: "David Takamura, notario público certificado",
     },
     cta: {
       eyebrow: "Resolving your pathway to success",
@@ -76,17 +76,17 @@ const t = {
       { value: "3", label: "Office locations" }
     ],
     whyUs: {
-      sectionLabel: "Why choose us",
-      heading: "The professionalism the Hispanic community deserves",
-      description: "We understand the unique challenges faced by Hispanic families and businesses in the United States. That's why we offer a warm, professional service fully in your language.",
+      eyebrow: "Why choose us?",
+      heading: { pre: "Not just paperwork,", accent: "done right." },
+      description:
+        "Notary and apostilles, tax preparation and business filings — handled correctly the first time, with a clear price before we start and a stamped record that it's done. Our team works primarily in Spanish, but we gladly assist English-speaking clients with these services.",
       items: [
-        "100% bilingual service in Spanish and English",
-        "Certified and licensed professionals",
-        "Transparent pricing with no surprises",
-        "Flexible hours including weekends",
-        "Secure and confidential data handling",
-        "Over 10 years serving the community"
-      ]
+        "Notarizations, apostilles and document legalization, done right",
+        "Tax preparation with no errors that bring an IRS letter later",
+        "Business filings in one place — LLC, EIN and corporate documents",
+        "An exact price before we start, and proof in hand that it's done",
+      ],
+      imageAlt: "David Takamura, certified notary public",
     },
     cta: {
       eyebrow: "Resolving your pathway to success",
@@ -100,22 +100,6 @@ const t = {
     }
   }
 }[lang];
-
-// TEMP: sección de comparación de diseño para WHY US — solo ES.
-// Cuando se decida el diseño, mover a t.es/t.en y añadir la data en inglés.
-const whyUsAlt = {
-  eyebrow: "Nuestra filosofía",
-  heading: { pre: "No solo asesoramos,", accent: "resolvemos." },
-  description:
-    "Sabemos que detrás de cada trámite hay una familia que no quiere una carta del IRS ni vivir con incertidumbre. Resolvemos tus taxes, notaría e inmigración en un solo lugar de confianza, en español, con precio claro desde el inicio y un comprobante en tus manos de que todo quedó bien hecho.",
-  items: [
-    "Tus taxes completos y sin errores que después traigan cartas del IRS",
-    "El reembolso más alto que la ley permite, 100% legal",
-    "Taxes, ITIN, notaría e inmigración en una sola oficina",
-    "Precio exacto antes de empezar y comprobante de que quedó bien hecho",
-  ],
-  imageAlt: "David Takamura, notario público certificado",
-};
 
 ---
 
@@ -207,45 +191,43 @@ const whyUsAlt = {
   <!-- ─── SERVICES ──────────────────────────────────────────────────── -->
   <ServicesSection lang={lang} />
 
-  
 
   <!-- ─── WHY US ────────────────────────────────────────────────────── -->
-  <section class="py-24 bg-white" aria-labelledby="whyus-heading">
+  <section class="py-32 bg-white" aria-labelledby="whyus-heading">
     <div class="container-custom">
       <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
 
-        <!-- Left: Text -->
-        <div class="flex-1 max-w-lg text-center lg:text-left" data-reveal>
+        <!-- Left: imagen vertical -->
+        <div class="w-full max-w-xs mx-auto lg:mx-0 lg:w-[34%] lg:shrink-0" data-reveal>
+          <img
+            src="/assets/images/david_takamura_notario.jpg"
+            alt={t.whyUs.imageAlt}
+            width="795"
+            height="1193"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto rounded-2xl shadow-xl"
+          />
+        </div>
+
+        <!-- Right: texto + checklist -->
+        <div class="flex-1 text-center lg:text-left" data-reveal data-reveal-delay="1">
           <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
-            {t.whyUs.sectionLabel}
+            {t.whyUs.eyebrow}
           </span>
           <h2
             id="whyus-heading"
             class="font-display text-4xl md:text-5xl font-bold text-neutral-dark mt-4 mb-6 leading-tight"
           >
-            {t.whyUs.heading}
+            {t.whyUs.heading.pre}
+            <span class="text-brand-light block">{t.whyUs.heading.accent}</span>
           </h2>
           <p class="text-neutral-grey leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
             {t.whyUs.description}
           </p>
-          <a
-            href={t.cta.href}
-            class="inline-flex items-center gap-2 rounded-full bg-brand-light
-                   px-7 py-3.5 text-sm font-semibold text-white
-                   hover:bg-brand-dark transition-colors"
-          >
-            {t.cta.button}
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true">
-              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- Right: Checklist -->
-        <div class="flex-1 w-full" data-reveal data-reveal-delay="1">
-          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3" role="list">
+          <ul class="space-y-4 text-left" role="list">
             {t.whyUs.items.map(item => (
-              <li class="flex items-start gap-3 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-200">
+              <li class="flex items-start gap-3">
                 <span
                   class="shrink-0 mt-0.5 size-6 rounded-full bg-brand-light
                          flex items-center justify-center"
@@ -255,7 +237,7 @@ const whyUsAlt = {
                     <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
                   </svg>
                 </span>
-                <span class="text-sm text-neutral-dark font-medium leading-snug">{item}</span>
+                <span class="text-base text-neutral-dark font-medium leading-snug">{item}</span>
               </li>
             ))}
           </ul>
@@ -264,65 +246,6 @@ const whyUsAlt = {
       </div>
     </div>
   </section>
-
-
-
-  <!-- ─── WHY US — DISEÑO ALTERNATIVO (comparación, eliminar tras decidir) ─── -->
-  {lang === 'es' && (
-    <section class="py-24 bg-white" aria-labelledby="whyus-alt-heading">
-      <div class="container-custom">
-        <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
-
-          <!-- Left: imagen vertical -->
-          <div class="w-full max-w-xs mx-auto lg:mx-0 lg:w-[34%] lg:shrink-0" data-reveal>
-            <img
-              src="/assets/images/david_takamura_notario.jpg"
-              alt={whyUsAlt.imageAlt}
-              width="795"
-              height="1193"
-              loading="lazy"
-              decoding="async"
-              class="w-full h-auto rounded-2xl shadow-xl"
-            />
-          </div>
-
-          <!-- Right: texto + checklist -->
-          <div class="flex-1 text-center lg:text-left" data-reveal data-reveal-delay="1">
-            <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
-              {whyUsAlt.eyebrow}
-            </span>
-            <h2
-              id="whyus-alt-heading"
-              class="font-display text-4xl md:text-5xl font-bold text-neutral-dark mt-4 mb-6 leading-tight"
-            >
-              {whyUsAlt.heading.pre}
-              <span class="text-brand-light block">{whyUsAlt.heading.accent}</span>
-            </h2>
-            <p class="text-neutral-grey leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
-              {whyUsAlt.description}
-            </p>
-            <ul class="space-y-4 text-left" role="list">
-              {whyUsAlt.items.map(item => (
-                <li class="flex items-start gap-3">
-                  <span
-                    class="shrink-0 mt-0.5 size-6 rounded-full bg-brand-light
-                           flex items-center justify-center"
-                    aria-hidden="true"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-3.5 text-white">
-                      <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                  <span class="text-base text-neutral-dark font-medium leading-snug">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  )}
 
 
 
