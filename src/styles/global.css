@@ -141,6 +141,15 @@ body {
 [data-reveal-delay="3"] { transition-delay: 0.3s; }
 [data-reveal-delay="4"] { transition-delay: 0.4s; }
 
+/* Card que se desvanece por abajo (testimonios: invita a ver más).
+   Solo en >=md; en móvil la card se ve completa. */
+@media (min-width: 768px) {
+  .fade-bottom {
+    -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 92%);
+    mask-image: linear-gradient(to bottom, #000 35%, transparent 92%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {
     opacity: 1 !important;

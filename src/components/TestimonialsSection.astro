@@ -1,0 +1,154 @@
+---
+import TestimonialCard from './TestimonialCard.astro';
+
+interface Review {
+  name: string;
+  avatar?: string;     // ruta de imagen; si no hay, se usa la inicial del nombre
+  rating: number;      // 1-5
+  text: string;
+  timeAgo: string;
+}
+
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+
+// TODO: reemplazar por la URL real de la ficha de Google Business / reseñas.
+// Ej: https://search.google.com/local/reviews?placeid=<PLACE_ID>
+const REVIEWS_URL =
+  "https://www.google.com/maps/search/?api=1&query=DATA%27S%20%26%20MULTISERVICES%20Las%20Vegas";
+
+// Reseñas placeholder — reemplazar por las reales de Google (mismas en ES y EN,
+// son de la comunidad hispana).
+const reviews: Review[] = [
+  {
+    name: "María G.",
+    rating: 5,
+    text: "Me hicieron los taxes en español y me explicaron todo con paciencia. Salí con un reembolso más alto que otros años.",
+    timeAgo: "hace 2 semanas",
+  },
+  {
+    name: "Jorge R.",
+    rating: 5,
+    text: "Necesitaba un poder notarial urgente y me atendieron el mismo día. Rápido y sin cobros escondidos.",
+    timeAgo: "hace 1 mes",
+  },
+  {
+    name: "Luz Elena M.",
+    rating: 5,
+    text: "Renové mi ITIN sin ningún problema y me mantuvieron al tanto de cada paso del proceso.",
+    timeAgo: "hace 3 semanas",
+  },
+  {
+    name: "Carlos T.",
+    rating: 5,
+    text: "Llevé una carta del IRS que no entendía y me la resolvieron. Por fin alguien que habla mi idioma.",
+    timeAgo: "hace 2 meses",
+  },
+  {
+    name: "Ana Sofía P.",
+    rating: 4,
+    text: "Abrí mi LLC y saqué el EIN con ellos. Todo claro, desde el precio hasta los papeles finales.",
+    timeAgo: "hace 1 semana",
+  },
+];
+
+const t = {
+  es: {
+    kicker: "TESTIMONIOS",
+    heading: "Lo que dice nuestra comunidad",
+    subheading: "Reseñas reales de clientes en Google.",
+    ctaMore: "Ver más comentarios en Google",
+    starsLabel: (n: number) => `${n} de 5 estrellas`,
+  },
+  en: {
+    kicker: "TESTIMONIALS",
+    heading: "What our community says",
+    subheading: "Real client reviews from Google.",
+    ctaMore: "See more reviews on Google",
+    starsLabel: (n: number) => `${n} out of 5 stars`,
+  },
+}[lang];
+
+const avatarColors = ["bg-brand", "bg-accent", "bg-brand-light"];
+
+// Columna izquierda: 3 cards (la última se desvanece). Columna derecha: 2 cards,
+// desplazada hacia abajo para intercalarse con la izquierda.
+const leftReviews = reviews.slice(0, 3);
+const rightReviews = reviews.slice(3);
+---
+
+<section class="py-24 bg-white" aria-labelledby="testimonials-heading">
+  <div class="container-custom">
+
+    <!-- Cabecera -->
+    <header class="text-center mb-14" data-reveal>
+      <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
+        {t.kicker}
+      </span>
+      <h2
+        id="testimonials-heading"
+        class="font-display text-4xl md:text-5xl font-bold text-neutral-dark mt-4 mb-4 leading-tight text-balance"
+      >
+        {t.heading}
+      </h2>
+      <p class="text-neutral-grey text-lg leading-relaxed max-w-xl mx-auto text-pretty">
+        {t.subheading}
+      </p>
+    </header>
+
+    <!-- Dos columnas: derecha desplazada hacia abajo -->
+    <div class="grid gap-6 md:grid-cols-2 md:gap-x-10 max-w-[880px] mx-auto">
+      <ul class="flex flex-col gap-6" role="list">
+        {leftReviews.map((review, i) => (
+          <TestimonialCard
+            {...review}
+            starsLabel={t.starsLabel(review.rating)}
+            avatarClass={avatarColors[i % avatarColors.length]}
+            align="left"
+            revealDelay={i + 1}
+            fade={i === leftReviews.length - 1}
+          />
+        ))}
+      </ul>
+
+      <ul class="flex flex-col gap-6 md:mt-24" role="list">
+        {rightReviews.map((review, i) => (
+          <TestimonialCard
+            {...review}
+            starsLabel={t.starsLabel(review.rating)}
+            avatarClass={avatarColors[(i + leftReviews.length) % avatarColors.length]}
+            align="right"
+            revealDelay={i + 2}
+          />
+        ))}
+      </ul>
+    </div>
+
+    <!-- Enlace a Google -->
+    <div class="mt-8 text-center" data-reveal>
+      <a
+        href={REVIEWS_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-2 text-sm font-semibold text-brand
+               transition-colors hover:text-brand-dark
+               focus-visible:outline-2 focus-visible:outline-brand-dark"
+      >
+        <svg class="size-4 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1Z" />
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z" />
+          <path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84Z" />
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.06l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38Z" />
+        </svg>
+        {t.ctaMore}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

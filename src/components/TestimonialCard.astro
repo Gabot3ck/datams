@@ -1,0 +1,101 @@
+---
+interface Props {
+  name: string;
+  avatar?: string;        // ruta de imagen; si no hay, se usa la inicial del nombre
+  rating: number;         // 1-5
+  text: string;
+  timeAgo: string;
+  starsLabel: string;
+  avatarClass: string;    // color de fondo del círculo cuando es letra
+  align?: 'left' | 'right';
+  fade?: boolean;         // se desvanece por abajo (invita a ver más)
+  revealDelay?: number;
+}
+
+const {
+  name,
+  avatar,
+  rating,
+  text,
+  timeAgo,
+  starsLabel,
+  avatarClass,
+  align = 'left',
+  fade = false,
+  revealDelay,
+} = Astro.props;
+
+// Google muestra la inicial del primer nombre cuando no hay foto.
+const letter = name.trim().charAt(0).toUpperCase();
+---
+
+<li
+  class:list={[
+    "flex items-end gap-3",
+    align === 'right' && "flex-row-reverse",
+    fade && "fade-bottom",
+  ]}
+  data-reveal
+  data-reveal-delay={revealDelay ? String(revealDelay) : undefined}
+>
+  <!-- Avatar: imagen o inicial -->
+  {avatar ? (
+    <img
+      src={avatar}
+      alt=""
+      width="40"
+      height="40"
+      loading="lazy"
+      decoding="async"
+      class="size-10 shrink-0 rounded-full object-cover"
+    />
+  ) : (
+    <span
+      class:list={[
+        "grid size-10 shrink-0 place-items-center rounded-full text-base font-bold text-white",
+        avatarClass,
+      ]}
+      aria-hidden="true"
+    >
+      {letter}
+    </span>
+  )}
+
+  <!-- Burbuja -->
+  <div
+    class:list={[
+      "flex-1 rounded-3xl border border-background-muted bg-white p-5 shadow-[0_6px_24px_rgba(0,0,0,0.06)]",
+      align === 'right' ? "rounded-br-md" : "rounded-bl-md",
+    ]}
+  >
+    <div class="flex items-center gap-0.5" role="img" aria-label={starsLabel}>
+      {Array.from({ length: 5 }).map((_, s) => (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class:list={["size-4", s < rating ? "text-accent-dark" : "text-background-muted"]}
+          aria-hidden="true"
+        >
+          <path d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" />
+        </svg>
+      ))}
+    </div>
+
+    <p class="mt-2 text-sm leading-relaxed text-neutral-dark">
+      {text}
+    </p>
+
+    <div class="mt-3 flex items-center gap-2 text-xs text-neutral-grey">
+      <span class="font-semibold text-neutral-dark">{name}</span>
+      <span aria-hidden="true">·</span>
+      <span>{timeAgo}</span>
+      <svg class="ml-auto size-4 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1Z" />
+        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z" />
+        <path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84Z" />
+        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.06l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38Z" />
+      </svg>
+    </div>
+  </div>
+</li>
