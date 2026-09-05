@@ -104,7 +104,16 @@ const t = {
 // TEMP: sección de comparación de diseño para WHY US — solo ES.
 // Cuando se decida el diseño, mover a t.es/t.en y añadir la data en inglés.
 const whyUsAlt = {
-  heading: { pre: "El profesionalismo que la comunidad hispana", accent: "merece" },
+  eyebrow: "Nuestra filosofía",
+  heading: { pre: "No solo asesoramos,", accent: "resolvemos." },
+  description:
+    "Sabemos que detrás de cada trámite hay una familia que no quiere una carta del IRS ni vivir con incertidumbre. Resolvemos tus taxes, notaría e inmigración en un solo lugar de confianza, en español, con precio claro desde el inicio y un comprobante en tus manos de que todo quedó bien hecho.",
+  items: [
+    "Tus taxes completos y sin errores que después traigan cartas del IRS",
+    "El reembolso más alto que la ley permite, 100% legal",
+    "Taxes, ITIN, notaría e inmigración en una sola oficina",
+    "Precio exacto antes de empezar y comprobante de que quedó bien hecho",
+  ],
   imageAlt: "David Takamura, notario público certificado",
 };
 
@@ -280,20 +289,20 @@ const whyUsAlt = {
           <!-- Right: texto + checklist -->
           <div class="flex-1 text-center lg:text-left" data-reveal data-reveal-delay="1">
             <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
-              {t.whyUs.sectionLabel}
+              {whyUsAlt.eyebrow}
             </span>
             <h2
               id="whyus-alt-heading"
               class="font-display text-4xl md:text-5xl font-bold text-neutral-dark mt-4 mb-6 leading-tight"
             >
-              {whyUsAlt.heading.pre}{' '}
-              <span class="text-brand-light">{whyUsAlt.heading.accent}</span>
+              {whyUsAlt.heading.pre}
+              <span class="text-brand-light block">{whyUsAlt.heading.accent}</span>
             </h2>
             <p class="text-neutral-grey leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
-              {t.whyUs.description}
+              {whyUsAlt.description}
             </p>
             <ul class="space-y-4 text-left" role="list">
-              {t.whyUs.items.slice(0, 4).map(item => (
+              {whyUsAlt.items.map(item => (
                 <li class="flex items-start gap-3">
                   <span
                     class="shrink-0 mt-0.5 size-6 rounded-full bg-brand-light
