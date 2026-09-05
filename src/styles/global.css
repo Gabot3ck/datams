@@ -53,22 +53,53 @@
   --breakpoint-3xl: 1920px;
 }
 
+
+/* Títulos — Merriweather Sans (self-hosted) */
 @font-face {
-  font-family: "Roboto";
-  src: url("/fonts/roboto/roboto-regular.woff2") format("woff2");
+  font-family: "Merriweather Sans";
+  src: url("/fonts/merriweather/MerriweatherSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Merriweather Sans";
+  src: url("/fonts/merriweather/MerriweatherSans-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Roboto";
-  src: url("/fonts/roboto/roboto-bold.woff2") format("woff2");
+  font-family: "Merriweather Sans";
+  src: url("/fonts/merriweather/MerriweatherSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Merriweather Sans";
+  src: url("/fonts/merriweather/MerriweatherSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Merriweather Sans";
+  src: url("/fonts/merriweather/MerriweatherSans-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "Merriweather Sans";
+  src: url("/fonts/merriweather/MerriweatherSans-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   text-rendering: optimizeLegibility;
 }
 
@@ -89,9 +120,9 @@ body {
   @apply mx-auto text-[1rem] sm:text-[1.1rem] lg:text-[1.2rem] font-extralight my-4 sm:my-5 sm:max-w-[82%] xl:max-w-[800px];
 }
 
-/* Tipografía editorial display (Playfair Display) */
+/* Tipografía de títulos (Merriweather Sans) */
 .font-display {
-  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-family: 'Merriweather Sans', 'Segoe UI', system-ui, sans-serif;
 }
 
 /* Scroll reveal — fade + slide desde abajo */
