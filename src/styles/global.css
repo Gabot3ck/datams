@@ -141,12 +141,13 @@ body {
 [data-reveal-delay="3"] { transition-delay: 0.3s; }
 [data-reveal-delay="4"] { transition-delay: 0.4s; }
 
-/* Card que se desvanece por abajo (testimonios: invita a ver más).
-   Solo en >=md; en móvil la card se ve completa. */
+/* Difuminado inferior del muro de testimonios: un solo gradiente sobre el
+   contenedor de las 2 columnas → las cards de abajo se desvanecen en la misma
+   línea horizontal, invitando a ver más. Solo en >=md; en móvil se ve completo. */
 @media (min-width: 768px) {
   .fade-bottom {
-    -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 92%);
-    mask-image: linear-gradient(to bottom, #000 35%, transparent 92%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 96%);
+    mask-image: linear-gradient(to bottom, #000 60%, transparent 96%);
   }
 }
 

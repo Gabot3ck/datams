@@ -8,7 +8,7 @@ interface Props {
   starsLabel: string;
   avatarClass: string;    // color de fondo del círculo cuando es letra
   align?: 'left' | 'right';
-  fade?: boolean;         // se desvanece por abajo (invita a ver más)
+  pushDown?: boolean;     // baja la card un poco en >=md (escalonado)
   revealDelay?: number;
 }
 
@@ -21,7 +21,7 @@ const {
   starsLabel,
   avatarClass,
   align = 'left',
-  fade = false,
+  pushDown = false,
   revealDelay,
 } = Astro.props;
 
@@ -33,7 +33,7 @@ const letter = name.trim().charAt(0).toUpperCase();
   class:list={[
     "flex items-end gap-3",
     align === 'right' && "flex-row-reverse",
-    fade && "fade-bottom",
+    pushDown && "md:mt-1",
   ]}
   data-reveal
   data-reveal-delay={revealDelay ? String(revealDelay) : undefined}

@@ -25,6 +25,8 @@ const REVIEWS_URL =
 const reviews: Review[] = [
   {
     name: "María G.",
+    // avatar: foto del cliente. Si se omite, se usa la inicial del nombre.
+    avatar: "/assets/images/test/thumb_empresas_4b46959dd7.avif", // TEMP: imagen de ejemplo
     rating: 5,
     text: "Me hicieron los taxes en español y me explicaron todo con paciencia. Salí con un reembolso más alto que otros años.",
     timeAgo: "hace 2 semanas",
@@ -37,7 +39,7 @@ const reviews: Review[] = [
   },
   {
     name: "Luz Elena M.",
-    rating: 5,
+    rating: 4,
     text: "Renové mi ITIN sin ningún problema y me mantuvieron al tanto de cada paso del proceso.",
     timeAgo: "hace 3 semanas",
   },
@@ -53,20 +55,26 @@ const reviews: Review[] = [
     text: "Abrí mi LLC y saqué el EIN con ellos. Todo claro, desde el precio hasta los papeles finales.",
     timeAgo: "hace 1 semana",
   },
+  {
+    name: "Miguel Ángel V.",
+    rating: 5,
+    text: "Atienden hasta los sábados, justo cuando yo puedo ir. Súper recomendados.",
+    timeAgo: "hace 1 mes",
+  },
 ];
 
 const t = {
   es: {
     kicker: "TESTIMONIOS",
     heading: "Lo que dice nuestra comunidad",
-    subheading: "Reseñas reales de clientes en Google.",
+    subheading: "Reseñas reales de nuestros clientes",
     ctaMore: "Ver más comentarios en Google",
     starsLabel: (n: number) => `${n} de 5 estrellas`,
   },
   en: {
     kicker: "TESTIMONIALS",
     heading: "What our community says",
-    subheading: "Real client reviews from Google.",
+    subheading: "Real reviews from our clients",
     ctaMore: "See more reviews on Google",
     starsLabel: (n: number) => `${n} out of 5 stars`,
   },
@@ -74,10 +82,12 @@ const t = {
 
 const avatarColors = ["bg-brand", "bg-accent", "bg-brand-light"];
 
-// Columna izquierda: 3 cards (la última se desvanece). Columna derecha: 2 cards,
-// desplazada hacia abajo para intercalarse con la izquierda.
+// Dos columnas de 3 cards. La derecha va un poco más abajo para intercalarse.
+// El contenedor lleva un difuminado inferior común (.fade-bottom) → las cards
+// de abajo de AMBAS columnas se desvanecen en la misma línea horizontal,
+// invitando a ver más en Google.
 const leftReviews = reviews.slice(0, 3);
-const rightReviews = reviews.slice(3);
+const rightReviews = reviews.slice(3, 6);
 ---
 
 <section class="py-24 bg-white" aria-labelledby="testimonials-heading">
@@ -99,8 +109,8 @@ const rightReviews = reviews.slice(3);
       </p>
     </header>
 
-    <!-- Dos columnas: derecha desplazada hacia abajo -->
-    <div class="grid gap-6 md:grid-cols-2 md:gap-x-10 max-w-[880px] mx-auto">
+    <!-- Dos columnas (derecha un poco más abajo) con difuminado inferior común -->
+    <div class="fade-bottom grid gap-6 md:grid-cols-2 md:gap-x-10 max-w-[880px] mx-auto">
       <ul class="flex flex-col gap-6" role="list">
         {leftReviews.map((review, i) => (
           <TestimonialCard
@@ -109,18 +119,18 @@ const rightReviews = reviews.slice(3);
             avatarClass={avatarColors[i % avatarColors.length]}
             align="left"
             revealDelay={i + 1}
-            fade={i === leftReviews.length - 1}
           />
         ))}
       </ul>
 
-      <ul class="flex flex-col gap-6 md:mt-24" role="list">
+      <ul class="flex flex-col gap-6 md:mt-14" role="list">
         {rightReviews.map((review, i) => (
           <TestimonialCard
             {...review}
             starsLabel={t.starsLabel(review.rating)}
             avatarClass={avatarColors[(i + leftReviews.length) % avatarColors.length]}
             align="right"
+            pushDown={i === rightReviews.length - 1}
             revealDelay={i + 2}
           />
         ))}
