@@ -18,51 +18,10 @@ const { lang } = Astro.props;
 // TODO: reemplazar por la URL real de la ficha de Google Business / reseñas.
 // Ej: https://search.google.com/local/reviews?placeid=<PLACE_ID>
 const REVIEWS_URL =
-  "https://www.google.com/maps/search/?api=1&query=DATA%27S%20%26%20MULTISERVICES%20Las%20Vegas";
+  "https://www.google.com/search?q=datamultiservices&ie=UTF-8#lrd=0x80c8c3e5c36f0a93:0xa7da2c626285ecf5,1,,,,";
 
-// Reseñas placeholder — reemplazar por las reales de Google (mismas en ES y EN,
-// son de la comunidad hispana).
-const reviews: Review[] = [
-  {
-    name: "María G.",
-    // avatar: foto del cliente. Si se omite, se usa la inicial del nombre.
-    avatar: "/assets/images/test/thumb_empresas_4b46959dd7.avif", // TEMP: imagen de ejemplo
-    rating: 5,
-    text: "Me hicieron los taxes en español y me explicaron todo con paciencia. Salí con un reembolso más alto que otros años.",
-    timeAgo: "hace 2 semanas",
-  },
-  {
-    name: "Jorge R.",
-    rating: 5,
-    text: "Necesitaba un poder notarial urgente y me atendieron el mismo día. Rápido y sin cobros escondidos.",
-    timeAgo: "hace 1 mes",
-  },
-  {
-    name: "Luz Elena M.",
-    rating: 4,
-    text: "Renové mi ITIN sin ningún problema y me mantuvieron al tanto de cada paso del proceso.",
-    timeAgo: "hace 3 semanas",
-  },
-  {
-    name: "Carlos T.",
-    rating: 5,
-    text: "Llevé una carta del IRS que no entendía y me la resolvieron. Por fin alguien que habla mi idioma.",
-    timeAgo: "hace 2 meses",
-  },
-  {
-    name: "Ana Sofía P.",
-    rating: 4,
-    text: "Abrí mi LLC y saqué el EIN con ellos. Todo claro, desde el precio hasta los papeles finales.",
-    timeAgo: "hace 1 semana",
-  },
-  {
-    name: "Miguel Ángel V.",
-    rating: 5,
-    text: "Atienden hasta los sábados, justo cuando yo puedo ir. Súper recomendados.",
-    timeAgo: "hace 1 mes",
-  },
-];
-
+// Reseñas placeholder por idioma — reemplazar por las reales de Google.
+// (avatar opcional: ruta de imagen; si se omite, se usa la inicial del nombre.)
 const t = {
   es: {
     kicker: "TESTIMONIOS",
@@ -70,6 +29,48 @@ const t = {
     subheading: "Reseñas reales de nuestros clientes",
     ctaMore: "Ver más comentarios en Google",
     starsLabel: (n: number) => `${n} de 5 estrellas`,
+    reviews: [
+      {
+        name: "Alexis L.",
+        avatar: "https://lh3.googleusercontent.com/a-/ALV-UjUln-M89bp6c9NYyCnPLIM0liv2YMkz-G9ehcQUonCOTFt7wjVZ=w90-h90-p-rp-mo-br100", // TEMP: imagen de ejemplo
+        rating: 5,
+        text: "¡Me encanta este sitio! Me hacen los taxes rapidísimo y hacen que todo el proceso sea increíblemente sencillo. Llevo años buscando a alguien en quien confiar, y Data’s Multi Services me ha salvado la vida de verdad. Han hecho que todo fuera muy sencillo y sin estrés. ¡Lo recomiendo encarecidamente!",
+        timeAgo: "hace 7 meses",
+      },
+      {
+        name: "Juan G.",
+        rating: 5,
+        text: "Estoy muy contento con la ayuda que me han prestado. La cuestión de los taxes me abrumaba, sobre todo sabiendo que tenía deudas y que nadie me ofrecía una ayuda adecuada, pero este sitio es excelente.",
+        timeAgo: "hace 1 mes",
+      },
+      {
+        name: "Irene C.",
+        rating: 5,
+        text: "Gracias, David, por tu ayuda con mis impuestos y los de mi familia; eres el mejor.",
+        timeAgo: "hace 5 meses",
+      },
+      {
+        name: "Blanca M.",
+        avatar:"https://lh3.googleusercontent.com/a-/ALV-UjWundnAWPs_mf2Su2npS5v3gsc7a8K_t_ylyIx2akHrJQnTJfeu=w90-h90-p-rp-mo-br100",
+        rating: 5,
+        text: "Siempre les encargo la declaración de la renta. Hace poco renové mi permiso de trabajo y estoy muy contenta porque me han ayudado mucho con la declaración. Me explican muy bien las desgravaciones. Recomiendo encarecidamente a Karol y a Anna; son muy buenas atendiendo al cliente.",
+        timeAgo: "hace 7 meses",
+      },
+      {
+        name: "Juan J.",
+        rating: 5,
+        text: "Llevo más de 10 años haciendo la declaración de la renta con David. Es muy bueno y lo recomiendo encarecidamente para la declaración de la renta de empresas. ¡Sí, lo recomiendo encarecidamente!",
+        timeAgo: "hace 1 año",
+      },
+      {
+        name: "Elizeth M.",
+        avatar: "https://lh3.googleusercontent.com/a-/ALV-UjWOOXL4mZTHedSdS9uC1Nb7VxD7zLWrGmWwyzDrIiNwKQkgY7M0=w90-h90-p-rp-mo-br100",
+        rating: 5,
+        text: "Me encanta este sitio y la gente que trabaja allí. Ana me ayudó a preparar mi declaración de la renta; me atendió de maravilla y fue muy profesional.",
+        timeAgo: "hace 7 meses",
+      },
+
+    ] satisfies Review[],
   },
   en: {
     kicker: "TESTIMONIALS",
@@ -77,9 +78,51 @@ const t = {
     subheading: "Real reviews from our clients",
     ctaMore: "See more reviews on Google",
     starsLabel: (n: number) => `${n} out of 5 stars`,
+    reviews: [
+      {
+        name: "Alexis L.",
+        avatar: "https://lh3.googleusercontent.com/a-/ALV-UjUln-M89bp6c9NYyCnPLIM0liv2YMkz-G9ehcQUonCOTFt7wjVZ=w90-h90-p-rp-mo-br100",
+        rating: 5,
+        text: "I love this place! They do my taxes so fast and make the whole process incredibly easy. I’ve struggled for years to find someone I trust, and Data’s Multi Services has truly been a lifesaver. They made everything smooth and stress-free. Highly recommend!",
+        timeAgo: "7 months ago",
+      },
+      {
+        name: "Juan G.",
+        rating: 5,
+        text: "I am very happy with their help. My taxes were overwhelming, knowing I had debts and no one was offering good help, but this place is excellent.",
+        timeAgo: "1 month ago",
+      },
+      {
+        name: "Irene C.",
+        rating: 5,
+        text: "Thanks David for helpful with my taxes and mi family taxes ever the best.",
+        timeAgo: "5 months ago",
+      },
+      {
+        name: "Blanca M.",
+        avatar:"https://lh3.googleusercontent.com/a-/ALV-UjWundnAWPs_mf2Su2npS5v3gsc7a8K_t_ylyIx2akHrJQnTJfeu=w90-h90-p-rp-mo-br100",
+        rating: 5,
+        text: "I always do my taxes with them. I recently renewed my work permit and I'm happy because they've helped me a lot with my taxes. They explain the credits well. I highly recommend Karol and Anna; they're very good at customer service.",
+        timeAgo: "7 months ago",
+      },
+      {
+        name: "Juan J.",
+        rating: 5,
+        text: "I've done my taxes with David for over 10 years. He's very good and highly recommended for business taxes. Yes, I highly recommend him!",
+        timeAgo: "1 year ago",
+      },
+      {
+        name: "Elizeth M.",
+        avatar: "https://lh3.googleusercontent.com/a-/ALV-UjWOOXL4mZTHedSdS9uC1Nb7VxD7zLWrGmWwyzDrIiNwKQkgY7M0=w90-h90-p-rp-mo-br100",
+        rating: 5,
+        text: "I love this place and the people who work there. Ana helped me prepare my taxes; she provided lovely service and was very professional.",
+        timeAgo: "7 months ago",
+      },
+    ] satisfies Review[],
   },
 }[lang];
 
+const reviews = t.reviews;
 const avatarColors = ["bg-brand", "bg-accent", "bg-brand-light"];
 
 // Dos columnas de 3 cards. La derecha va un poco más abajo para intercalarse.

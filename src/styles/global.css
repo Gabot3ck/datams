@@ -143,11 +143,13 @@ body {
 
 /* Difuminado inferior del muro de testimonios: un solo gradiente sobre el
    contenedor de las 2 columnas → las cards de abajo se desvanecen en la misma
-   línea horizontal, invitando a ver más. Solo en >=md; en móvil se ve completo. */
+   línea horizontal, invitando a ver más. Se difumina solo una franja fija
+   al final (independiente del alto de las cards) para que el resto de la
+   última card quede legible. Solo en >=md; en móvil se ve completo. */
 @media (min-width: 768px) {
   .fade-bottom {
-    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 96%);
-    mask-image: linear-gradient(to bottom, #000 60%, transparent 96%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 160px), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 160px), transparent);
   }
 }
 
