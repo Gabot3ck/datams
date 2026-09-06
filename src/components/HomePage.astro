@@ -2,6 +2,7 @@
 import Hero from './Hero.astro';
 import ServicesSection from './ServicesSection.astro';
 import TestimonialsSection from './TestimonialsSection.astro';
+import FaqSection from './FaqSection.astro';
 
 
 interface Props {
@@ -69,7 +70,33 @@ const t = {
       videoPoster: "/assets/images/test/thumb_empresas_4b46959dd7.avif",
       videoAlt: "Video: recorrido por nuestra oficina",
       videoTime: "03:05 / 05:10",
-    }
+    },
+    faq: [
+      {
+        q: "¿Necesito número de Social Security para hacer mis taxes o sacar el ITIN?",
+        a: "No. Preparamos tu declaración y solicitamos o renovamos tu ITIN aunque no tengas número de Social Security.",
+      },
+      {
+        q: "¿Cuánto cuesta preparar mis taxes?",
+        a: "Depende de tu situación, pero te decimos el precio exacto antes de empezar. Sin cobros escondidos.",
+      },
+      {
+        q: "¿Atienden en español?",
+        a: "Sí, todo el servicio es en español. También atendemos en inglés si lo prefieres.",
+      },
+      {
+        q: "¿Qué documentos debo llevar para mis taxes?",
+        a: "Tu identificación, ITIN o Social Security, formularios W-2 o 1099, y comprobantes de gastos o deducciones. Si tienes dudas, te enviamos la lista por WhatsApp.",
+      },
+      {
+        q: "¿Tienen horario de fin de semana?",
+        a: "Abrimos de lunes a sábado con horario extendido, y los domingos por la tarde.",
+      },
+      {
+        q: "¿Me pueden ayudar con una carta del IRS?",
+        a: "Sí. Revisamos la carta, te explicamos qué pide y te representamos ante el IRS para resolverla.",
+      },
+    ]
   },
   en: {
     community: {
@@ -130,7 +157,33 @@ const t = {
       videoPoster: "/assets/images/test/thumb_empresas_4b46959dd7.avif",
       videoAlt: "Video: a tour of our office",
       videoTime: "03:05 / 05:10",
-    }
+    },
+    faq: [
+      {
+        q: "Do I need a Social Security number to file taxes or get an ITIN?",
+        a: "No. We prepare your return and apply for or renew your ITIN even without a Social Security number.",
+      },
+      {
+        q: "How much does tax preparation cost?",
+        a: "It depends on your situation, but we give you the exact price before we start. No hidden fees.",
+      },
+      {
+        q: "What documents should I bring for my taxes?",
+        a: "Your ID, ITIN or Social Security number, W-2 or 1099 forms, and receipts for expenses or deductions. If you're not sure, we'll send you the list.",
+      },
+      {
+        q: "Do you have weekend hours?",
+        a: "We're open Monday through Saturday with extended hours, and Sunday afternoons.",
+      },
+      {
+        q: "Can you help with an IRS notice?",
+        a: "Yes. We review the notice, explain what it's asking for, and represent you before the IRS to resolve it.",
+      },
+      {
+        q: "Do you handle notary and apostille services?",
+        a: "Yes — power of attorney, apostilles, document legalization and more, in one visit.",
+      },
+    ]
   }
 }[lang];
 
@@ -280,8 +333,12 @@ const t = {
     </div>
   </section>
 
-    <!-- ─── OFICINA — GALERÍA IMÁGENES + VIDEO ────────────────────────── -->
-  <section class="py-24 bg-background-light" aria-labelledby="office-heading">
+  <!-- ─── TESTIMONIOS ───────────────────────────────────────────────── -->
+  <TestimonialsSection lang={lang} />
+
+
+  <!-- ─── OFICINA — GALERÍA IMÁGENES + VIDEO ────────────────────────── -->
+  <section class="py-24 bg-white" aria-labelledby="office-heading">
     <div class="container-custom">
 
       <!-- Cabecera -->
@@ -383,8 +440,17 @@ const t = {
     </div>
   </section>
 
-  <!-- ─── TESTIMONIOS ───────────────────────────────────────────────── -->
-  <TestimonialsSection lang={lang} />
+  <!-- ─── FAQ ──────────────────────────────────────────────────────── -->
+  <FaqSection
+    lang={lang}
+    faqs={t.faq}
+    image={{
+      src: "/assets/images/david_takamura_notario.jpg",
+      alt: lang === 'es'
+        ? "David Takamura, notario público certificado"
+        : "David Takamura, certified notary public",
+    }}
+  />
 
   <!-- ─── CTA BANNER ────────────────────────────────────────────────── -->
   <section class="bg-brand-dark" aria-labelledby="cta-heading">

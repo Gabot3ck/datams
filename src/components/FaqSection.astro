@@ -1,0 +1,212 @@
+---
+interface Faq {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  lang: 'es' | 'en';
+  faqs: Faq[];
+  image: { src: string; alt: string };
+  id?: string;            // prefijo de ids / anchor de la sección
+  kicker?: string;        // eyebrow opcional sobre el título
+  heading?: string;       // sobreescribe el título por defecto
+  emitSchema?: boolean;   // emitir JSON-LD FAQPage (default: true)
+}
+
+const {
+  lang,
+  faqs,
+  image,
+  id = 'faq',
+  kicker,
+  heading,
+  emitSchema = true,
+} = Astro.props;
+
+const defaultHeading = { es: 'Preguntas frecuentes', en: 'Frequently asked questions' }[lang];
+const title = heading ?? defaultHeading;
+
+const faqSchema =
+  emitSchema && faqs.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.q,
+          acceptedAnswer: { '@type': 'Answer', text: faq.a },
+        })),
+      }
+    : null;
+---
+
+<section id={id} class="py-24 bg-background-light" aria-labelledby={`${id}-heading`}>
+  <div class="container-custom">
+    <div class="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+
+      <!-- Imagen -->
+      <div data-reveal>
+        <img
+          src={image.src}
+          alt={image.alt}
+          width="795"
+          height="1193"
+          loading="lazy"
+          decoding="async"
+          class="w-full max-w-[360px] mx-auto lg:mx-0 rounded-3xl object-cover object-top aspect-[3/4]"
+        />
+      </div>
+
+      <!-- Acordeón -->
+      <div>
+        {kicker && (
+          <span class="text-xs font-bold tracking-widest text-brand-light uppercase" data-reveal>
+            {kicker}
+          </span>
+        )}
+        <h2
+          id={`${id}-heading`}
+          data-reveal
+          class:list={[
+            'font-display text-2xl md:text-3xl font-bold text-neutral-dark leading-tight',
+            kicker ? 'mt-3 mb-8' : 'mb-8',
+          ]}
+        >
+          {title}
+        </h2>
+
+        <noscript>
+          <style>.faq-panel { height: auto !important; }</style>
+        </noscript>
+
+        <div data-faq-group class="border-b border-background-muted">
+          {faqs.map((faq, i) => (
+            <div class="faq-item border-t border-background-muted" data-state="closed">
+              <h3>
+                <button
+                  type="button"
+                  id={`${id}-q-${i}`}
+                  aria-controls={`${id}-a-${i}`}
+                  aria-expanded="false"
+                  class="faq-trigger flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left
+                         text-base font-semibold text-neutral-dark
+                         focus-visible:outline-2 focus-visible:outline-brand-dark"
+                >
+                  <span class="min-w-0">{faq.q}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="faq-chevron size-5 shrink-0 text-neutral-grey"
+                    aria-hidden="true"
+                  >
+                    <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </h3>
+              <div id={`${id}-a-${i}`} role="region" aria-labelledby={`${id}-q-${i}`} class="faq-panel">
+                <p class="pb-5 pr-6 text-[15px] leading-relaxed text-neutral-grey">
+                  {faq.a}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {faqSchema && (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  )}
+</section>
+
+<style>
+  /* La altura del panel se anima por JS (bucle requestAnimationFrame): las
+     transiciones/animaciones CSS de tamaño se quedan pegadas en 0 en Chrome
+     dentro de este layout anidado. */
+  .faq-panel {
+    height: 0;
+    overflow: hidden;
+  }
+  .faq-chevron {
+    transition: transform 0.3s ease;
+  }
+  .faq-item[data-state='open'] .faq-chevron {
+    transform: rotate(180deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .faq-chevron { transition: none; }
+  }
+</style>
+
+<script>
+  const REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const EASE = (t: number) => 1 - Math.pow(1 - t, 3); // easeOutCubic
+
+  interface AnimEl extends HTMLElement { _faqRaf?: number }
+
+  // Anima `el.style.height` frame a frame hacia `to` px (o `null` = altura
+  // natural). Cada frame es un cambio instantáneo, así no depende del motor
+  // de transiciones.
+  const animateHeight = (el: AnimEl, to: number | null, duration: number, done?: () => void) => {
+    if (el._faqRaf) cancelAnimationFrame(el._faqRaf);
+    const from = el.getBoundingClientRect().height;
+    const target = to === null ? el.scrollHeight : to;
+
+    if (REDUCE.matches || duration === 0 || Math.abs(target - from) < 1) {
+      el.style.height = to === null ? 'auto' : to + 'px';
+      done?.();
+      return;
+    }
+
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / duration);
+      el.style.height = (from + (target - from) * EASE(p)) + 'px';
+      if (p < 1) {
+        el._faqRaf = requestAnimationFrame(tick);
+      } else {
+        el.style.height = to === null ? 'auto' : to + 'px';
+        el._faqRaf = 0;
+        done?.();
+      }
+    };
+    el._faqRaf = requestAnimationFrame(tick);
+  };
+
+  document.querySelectorAll('[data-faq-group]').forEach((group) => {
+    const items = Array.from(group.querySelectorAll<HTMLElement>('.faq-item'));
+
+    const setOpen = (item: HTMLElement, open: boolean) => {
+      const panel = item.querySelector<AnimEl>('.faq-panel');
+      if (!panel) return;
+      item.dataset.state = open ? 'open' : 'closed';
+      item.querySelector('.faq-trigger')?.setAttribute('aria-expanded', String(open));
+      animateHeight(panel, open ? null : 0, 360);
+    };
+
+    items.forEach((item) => {
+      item.querySelector<HTMLElement>('.faq-trigger')?.addEventListener('click', () => {
+        const isOpen = item.dataset.state === 'open';
+        if (isOpen) {
+          setOpen(item, false);
+        } else {
+          items.forEach((other) => {
+            if (other !== item && other.dataset.state === 'open') setOpen(other, false);
+          });
+          setOpen(item, true);
+        }
+      });
+    });
+
+    // El panel abierto queda en height:auto y se adapta solo al reflow.
+    window.addEventListener('resize', () => {
+      const open = items.find((it) => it.dataset.state === 'open');
+      const panel = open?.querySelector<HTMLElement>('.faq-panel');
+      if (panel) panel.style.height = 'auto';
+    });
+  });
+</script>
