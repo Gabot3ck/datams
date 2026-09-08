@@ -1,6 +1,6 @@
-# Tax & Notaría
+# Tax & Notary Public
 
-Sitio web bilingüe (español/inglés) para servicios de impuestos, notaría y servicios corporativos dirigido a la comunidad hispana en Estados Unidos.
+Sitio web bilingüe (español/inglés) para servicios de impuestos, notary public y servicios corporativos dirigido a la comunidad hispana en Estados Unidos.
 
 **Stack**: Astro 6 · Tailwind CSS v4 · React 18 · TypeScript (modo estricto)
 

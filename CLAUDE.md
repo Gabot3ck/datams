@@ -1,6 +1,8 @@
 # DATA'S & MULTISERVICES — Tax Web
 
-Web de taxes, notaría y servicios corporativos para comunidad hispana en EE.UU con oficina física en Las Vegas.
+Web de taxes, notary public y servicios corporativos para comunidad hispana en EE.UU con oficina física en Las Vegas.
+
+> **Cumplimiento legal (Nevada):** el negocio NO es despacho de abogados, por lo que en español está prohibido usar "notario", "notaría", "notarial" o "licenciado" en publicidad (incluye este sitio). Usar siempre **"Notary Public"** / "notary public". Ver NRS 240.085.
 
 ## Stack
 
@@ -44,7 +46,7 @@ const t = { es: { heading: "Español" }, en: { heading: "English" } }[lang];
 | `/nosotros` | `/en/about` |
 | `/blog` | `/en/blog` |
 | `/taxes/*` | `/en/taxes/*` |
-| `/notaria/*` | `/en/notary/*` |
+| `/notary-public/*` | `/en/notary-public/*` |
 | `/inmigracion/*` | `/en/immigration/*` |
 | `/itin-ein/*` | `/en/itin-ein/*` |
 | `/irs/*` | `/en/irs/*` |
@@ -96,7 +98,7 @@ public/
 ```
 1. <Hero lang={lang} />                    ← slider de imágenes
 2. Community & Stats                        ← 2 cols: copy + grid 2×2 stats  ← NUEVO
-3. Services                                 ← 3 tarjetas (Taxes, Notaría, Business)
+3. Services                                 ← 3 tarjetas (Taxes, Notary Public, Business)
 4. Stats bar                                ← fondo accent, 4 números horizontales
 5. Why Us                                   ← checklist 2 cols
 6. CTA Banner                              ← fondo accent-dark, conversión final
@@ -121,7 +123,7 @@ La sección **Community & Stats** (nueva, después del hero):
 | Más Servicios | Business · DMV · Formularios Corte · Otros |
 | Nosotros / Blog / Contacto | — links simples |
 
-URLs siguen patrón SEO semántico: `/taxes/declaracion-personal`, `/notaria/power-of-attorney`, etc. Páginas aún no existen — links listos cuando se creen.
+URLs siguen patrón SEO semántico: `/taxes/declaracion-personal`, `/notary-public/power-of-attorney`, etc. Páginas aún no existen — links listos cuando se creen.
 
 **Interface `NavItem`** — campos relevantes:
 ```ts
@@ -209,7 +211,7 @@ Utilidades globales:
 - [ ] Imagen OG real (`public/assets/og-image.webp`, 1200×675)
 - [ ] Imágenes hero responsive reales (mobile/tablet/desktop separadas)
 - [ ] Imágenes reales en subcategorías del mega menú (actualmente sin imagen → fondo gris)
-- [x] URLs reales en tarjetas de Services del Home (`/taxes`, `/notaria`, `/negocio`)
+- [x] URLs reales en tarjetas de Services del Home (`/taxes`, `/notary-public`, `/negocio`)
 
 ## Comandos
 
