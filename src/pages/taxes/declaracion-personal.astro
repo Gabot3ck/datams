@@ -1,0 +1,101 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import ServiceHero from '../../components/service/ServiceHero.astro';
+import TrustBar from '../../components/service/TrustBar.astro';
+import InfoBlock from '../../components/service/InfoBlock.astro';
+import ProcessSteps from '../../components/service/ProcessSteps.astro';
+import DocsChecklist from '../../components/service/DocsChecklist.astro';
+import WhyUs from '../../components/service/WhyUs.astro';
+import FaqSection from '../../components/service/FaqSection.astro';
+import RelatedServices from '../../components/service/RelatedServices.astro';
+import CtaBanner from '../../components/service/CtaBanner.astro';
+
+const title = "Declaración de Impuestos Personales | Las Vegas";
+const description =
+  "Declaramos tus impuestos personales en español, revisando cada deducción para tu reembolso máximo. Precio fijo, sin letras chiquitas. Agenda tu cita.";
+
+const incluye = [
+  'Declaración federal (IRS) y estatal, según donde hayas trabajado',
+  'Declaración para individuos, parejas (married filing jointly/separately) y familias con dependientes',
+  'Revisión de todas las deducciones y créditos que te correspondan según tu situación',
+  'Declaración para quienes usan ITIN Number en lugar de Social Security',
+  'Declaración para ingresos por contrato (1099) o trabajo independiente',
+];
+const pasos = [
+  { title: 'Agenda tu cita', body: 'Por WhatsApp, teléfono o en nuestra oficina.' },
+  { title: 'Trae tus documentos', body: 'Si no estás seguro de qué necesitas, te lo confirmamos antes de tu cita para que no hagas el viaje en falso.' },
+  { title: 'Preparamos y revisamos contigo', body: 'Preparamos tu declaración y la revisamos contigo, explicándote en español qué significa cada línea, antes de enviarla al IRS.' },
+  { title: 'Te damos tu comprobante', body: 'Recibes un comprobante de que quedó presentada, y si elegiste depósito directo, te explicamos cuándo esperar tu reembolso.' },
+];
+const docs = [
+  'Identificación oficial (tuya y de tu cónyuge si declaran juntos)',
+  'Social Security Number o ITIN Number (tuyo y de cada dependiente)',
+  'Formularios W-2 de cada trabajo, o 1099 si trabajaste por contrato',
+  'Declaración del año anterior (si la tienes)',
+  'Comprobante de gastos relacionados con deducciones (renta si trabajas desde casa, gastos médicos importantes, donaciones, etc., según aplique)',
+  'Información de cuenta bancaria si quieres tu reembolso por depósito directo',
+];
+const whyUs = [
+  { heading: 'Precio fijo según tu situación', body: 'No por hora ni "depende de cómo salga".' },
+  { heading: 'Revisión humana de cada declaración', body: 'Antes de enviarla — no es solo un software automático.' },
+  { heading: 'Te explicamos el resultado', body: 'No solo te entregamos un papel con números.' },
+];
+const faqs = [
+  { q: '¿Puedo declarar si trabajé en más de un estado este año?', a: 'Sí, preparamos declaraciones en todos los estados donde hayas trabajado, dentro de la misma cita.' },
+  { q: '¿Qué pasa si soy contratista independiente (1099) y no empleado?', a: 'También te ayudamos — la declaración de ingresos 1099 tiene reglas distintas a un W-2, y te explicamos qué te corresponde declarar.' },
+  { q: '¿Cuánto tiempo tarda mi reembolso después de declarar?', a: 'El tiempo lo determina el IRS, no nosotros, pero si pasa más tiempo del esperado, te ayudamos con el seguimiento de tu reembolso.' },
+  { q: '¿Necesito sacar mi ITIN antes de poder declarar?', a: 'Si no tienes Social Security ni ITIN todavía, podemos ayudarte a solicitar tu ITIN como parte del mismo proceso.' },
+];
+---
+<ServiceLayout
+  {title}
+  {description}
+  lang="es"
+  breadcrumbLabel="Declaración de Impuestos Personales en Las Vegas"
+  service={{ name: 'Declaración de impuestos personales', serviceType: 'Personal tax preparation' }}
+  {faqs}
+>
+  <ServiceHero
+    eyebrow="Taxes personales"
+    heading="Declaración de Impuestos Personales en Las Vegas"
+    ctaLabel="Agendar mi declaración"
+  >
+    <p>Tu declaración de impuestos personales es la base de todo lo demás: tu reembolso, tu historial con el IRS, e incluso documentación que más adelante puedes necesitar para otros trámites (como inmigración o un préstamo). Por eso la hacemos con calma, revisando cada detalle contigo, no como un formulario que se llena rápido y se manda.</p>
+    <p>Trabajamos con declaraciones federales y estatales, para individuos y familias — tengas W-2, seas contratista independiente (1099), o declares con ITIN Number.</p>
+  </ServiceHero>
+
+  <TrustBar />
+
+  <InfoBlock heading="Qué incluye este servicio">
+    <ul class="list-disc pl-5 flex flex-col gap-2">
+      {incluye.map((i) => <li>{i}</li>)}
+    </ul>
+  </InfoBlock>
+
+  <ProcessSteps heading="Cómo funciona el proceso" steps={pasos} />
+
+  <DocsChecklist
+    heading="Documentos que necesitas traer"
+    items={docs}
+    note="Si te falta algo de esta lista, dínoslo antes de tu cita — muchas veces hay alternativas."
+  />
+
+  <WhyUs heading="Por qué elegirnos para tu declaración personal" items={whyUs} />
+
+  <FaqSection items={faqs} />
+
+  <RelatedServices
+    heading="Servicios relacionados"
+    items={[
+      { label: 'Declaraciones en todos los estados', href: '/taxes/todos-los-estados' },
+      { label: 'Seguimiento de tu reembolso', href: '/taxes/seguimiento-reembolso' },
+      { label: 'Solicitar tu ITIN', href: '/itin-ein/solicitar-itin' },
+      { label: 'Ver todos los servicios de Taxes', href: '/taxes/' },
+    ]}
+  />
+
+  <CtaBanner
+    heading="Agenda tu declaración personal"
+    body="Te decimos qué necesitas traer y cuánto va a costar antes de empezar."
+  />
+</ServiceLayout>

@@ -1,0 +1,30 @@
+---
+interface Props { items: { q: string; a: string }[]; heading?: string; }
+const { items, heading = 'Preguntas frecuentes' } = Astro.props;
+---
+<section class="py-20 lg:py-28 bg-background-light" aria-labelledby="faq-heading">
+  <div class="container-custom">
+    <div class="max-w-2xl mx-auto">
+      <h2 id="faq-heading" class="font-display text-3xl md:text-4xl font-bold text-neutral-dark text-center mb-12 leading-tight">
+        {heading}
+      </h2>
+      <dl class="flex flex-col gap-3">
+        {items.map((faq) => (
+          <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+            <details class="group">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-sm font-semibold text-neutral-dark hover:text-brand-light transition-colors">
+                <dt>{faq.q}</dt>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0 text-brand-light transition-transform duration-200 group-open:rotate-180" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                </svg>
+              </summary>
+              <dd class="px-6 pb-5 text-sm text-neutral-grey leading-relaxed border-t border-background-muted pt-4">
+                {faq.a}
+              </dd>
+            </details>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BUSINESS, buildLocalBusinessJsonLd } from '@config/site';
+
+const title = "Contacto | Data's & Multiservices";
+const description =
+  "Visítanos en nuestra oficina de Las Vegas o escríbenos por WhatsApp. Atención en español, tardes y sábados.";
+
+const jsonLd = buildLocalBusinessJsonLd('es');
+const mapsQuery = encodeURIComponent(
+  `${BUSINESS.address.street}, ${BUSINESS.address.city}, ${BUSINESS.address.region} ${BUSINESS.address.postalCode}`
+);
+---
+<BaseLayout {title} {description} lang="es" {jsonLd}>
+  <main class="container-custom py-20 lg:py-28">
+    <h1 class="font-display text-4xl md:text-5xl font-bold text-neutral-dark leading-tight">Contacto</h1>
+    <p class="text-neutral-grey mt-4 max-w-xl leading-relaxed">
+      Estamos en Las Vegas y atendemos en español. Puedes escribirnos por WhatsApp, llamarnos o
+      visitarnos en la oficina.
+    </p>
+
+    <dl class="mt-10 grid gap-6 sm:grid-cols-2 max-w-2xl">
+      <div>
+        <dt class="text-xs font-bold tracking-widest text-brand-light uppercase mb-1">Teléfono</dt>
+        <dd><a href={`tel:${BUSINESS.phone.replace('+', '')}`} class="text-neutral-dark hover:text-brand-light">{BUSINESS.phoneDisplay}</a></dd>
+      </div>
+      <div>
+        <dt class="text-xs font-bold tracking-widest text-brand-light uppercase mb-1">WhatsApp</dt>
+        <dd><a href={BUSINESS.whatsapp} class="text-neutral-dark hover:text-brand-light">Escribir por WhatsApp</a></dd>
+      </div>
+      <div>
+        <dt class="text-xs font-bold tracking-widest text-brand-light uppercase mb-1">Oficina</dt>
+        <dd>
+          <address class="not-italic text-neutral-dark">
+            {BUSINESS.address.street}<br />
+            {BUSINESS.address.city}, {BUSINESS.address.region} {BUSINESS.address.postalCode}
+          </address>
+          <a href={`https://www.google.com/maps/search/?api=1&query=${mapsQuery}`} class="text-sm text-brand-light hover:underline">Ver en el mapa →</a>
+        </dd>
+      </div>
+      <div>
+        <dt class="text-xs font-bold tracking-widest text-brand-light uppercase mb-1">Horario</dt>
+        <dd class="text-neutral-dark">{BUSINESS.hoursDisplay}</dd>
+      </div>
+    </dl>
+
+    {/* TODO(usuario): integrar aquí el componente de formulario de contacto de otro proyecto. */}
+  </main>
+</BaseLayout>

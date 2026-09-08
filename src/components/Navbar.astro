@@ -41,7 +41,7 @@ const data: Record<"es" | "en", NavData> = {
     items: [
       {
         label: "Taxes",
-        href: "/taxes",
+        href: "/taxes/",
         megaMenu: [
           {
             label: "Taxes Personales",
@@ -49,15 +49,14 @@ const data: Record<"es" | "en", NavData> = {
               { label: "Declaración de impuestos personales", href: "/taxes/declaracion-personal", description: "Declaración federal y estatal para individuos y familias" },
               { label: "Declaraciones en todos los estados", href: "/taxes/todos-los-estados", description: "Para quienes trabajan en múltiples estados" },
               { label: "Enmiendas de impuestos", href: "/taxes/enmiendas", description: "Corregimos errores en declaraciones ya presentadas" },
-              { label: "Seguimiento de impuestos", href: "/taxes/seguimiento", description: "Rastreamos el estado de tu reembolso pendiente" },
-              { label: "Transcripciones IRS", href: "/taxes/transcripciones-irs", description: "Copias oficiales de tus declaraciones anteriores" },
+              { label: "Seguimiento de impuestos", href: "/taxes/seguimiento-reembolso", description: "Rastreamos el estado de tu reembolso pendiente" },
             ],
           },
           {
             label: "Taxes de Negocio",
             items: [
               { label: "Declaración de impuestos de negocio", href: "/taxes/declaracion-negocio", description: "Para LLC, Sole Proprietor y corporaciones" },
-              { label: "Asesoría de impuestos de negocio", href: "/taxes/asesoria-negocio", description: "Planificación fiscal para maximizar deducciones" },
+              { label: "Asesoría de impuestos de negocio", href: "/negocio/asesoria-impuestos-negocio", description: "Planificación fiscal para maximizar deducciones" },
               { label: "Formularios 1099-NEC", href: "/taxes/formularios-1099", description: "Formularios para contratistas independientes" },
             ],
           },
@@ -65,31 +64,31 @@ const data: Record<"es" | "en", NavData> = {
             label: "IRS & Resolución Fiscal",
             items: [
               { label: "Auditorías con el IRS", href: "/irs/auditorias", description: "Representación profesional ante cualquier auditoría" },
-              { label: "Resolución de cartas del IRS", href: "/irs/cartas-irs", description: "Interpretamos y respondemos las cartas del IRS" },
-              { label: "Solución de deudas con el IRS", href: "/irs/deudas-irs", description: "Negociamos tu deuda para reducirla o pagarla en cuotas" },
-              { label: "Pagos al IRS", href: "/irs/pagos-irs" },
+              { label: "Resolución de cartas del IRS", href: "/irs/resolucion-cartas", description: "Interpretamos y respondemos las cartas del IRS" },
+              { label: "Solución de deudas con el IRS", href: "/irs/solucion-deudas", description: "Negociamos tu deuda para reducirla o pagarla en cuotas" },
               { label: "Acuerdos de pago con IRS", href: "/irs/acuerdos-pago", description: "Installment Agreement y Offer in Compromise" },
+              { label: "Transcripciones del IRS", href: "/irs/transcripciones", description: "Copias oficiales de tu cuenta y declaraciones ante el IRS" },
             ],
           },
         ],
       },
       {
         label: "ITIN / EIN",
-        href: "/itin-ein",
+        href: "/itin-ein/",
         megaMenu: [
           {
             label: "ITIN & EIN",
             items: [
-              { label: "Solicitud de ITIN Number", href: "/itin-ein/solicitud-itin", description: "Número de identificación fiscal para extranjeros" },
-              { label: "Renovación de ITIN Number", href: "/itin-ein/renovacion-itin", description: "Renovamos tu ITIN antes de que expire" },
-              { label: "Solicitud de EIN para negocio", href: "/itin-ein/solicitud-ein", description: "Número de identificación del empleador para tu negocio" },
+              { label: "Solicitud de ITIN Number", href: "/itin-ein/solicitar-itin", description: "Número de identificación fiscal para extranjeros" },
+              { label: "Renovación de ITIN Number", href: "/itin-ein/renovar-itin", description: "Renovamos tu ITIN antes de que expire" },
+              { label: "Solicitud de EIN para negocio", href: "/itin-ein/solicitar-ein", description: "Número de identificación del empleador para tu negocio" },
             ],
           },
         ],
       },
       {
         label: "Notary Public",
-        href: "/notary-public",
+        href: "/notary-public/",
         megaMenu: [
           {
             label: "Poderes y Autorizaciones",
@@ -128,7 +127,7 @@ const data: Record<"es" | "en", NavData> = {
       },
       {
         label: "Inmigración",
-        href: "/inmigracion",
+        href: "/inmigracion/",
         megaMenu: [
           {
             label: "Trámites Migratorios",
@@ -224,23 +223,22 @@ const data: Record<"es" | "en", NavData> = {
     items: [
       {
         label: "Taxes",
-        href: "/en/taxes",
+        href: "/en/taxes/",
         megaMenu: [
           {
             label: "Personal Taxes",
             items: [
               { label: "Personal tax return", href: "/en/taxes/personal-tax-return", description: "Federal and state returns for individuals and families" },
               { label: "Multi-state tax returns", href: "/en/taxes/all-states", description: "Returns for those working across multiple states" },
-              { label: "Tax amendments", href: "/en/taxes/amendments", description: "Correct errors in previously filed returns" },
+              { label: "Tax amendments", href: "/en/taxes/amended-returns", description: "Correct errors in previously filed returns" },
               { label: "Refund tracking", href: "/en/taxes/refund-tracking", description: "We track the status of your pending refund" },
-              { label: "IRS transcripts", href: "/en/taxes/irs-transcripts", description: "Official copies of your past tax returns" },
             ],
           },
           {
             label: "Business Taxes",
             items: [
               { label: "Business tax return", href: "/en/taxes/business-tax-return", description: "Returns for LLCs, Sole Proprietors and corporations" },
-              { label: "Business tax advisory", href: "/en/taxes/business-tax-advice", description: "Tax planning to maximize your business deductions" },
+              { label: "Business tax advisory", href: "/en/business/business-tax-advice", description: "Tax planning to maximize your business deductions" },
               { label: "1099-NEC forms", href: "/en/taxes/1099-forms", description: "1099-NEC forms for your independent contractors" },
             ],
           },
@@ -250,15 +248,15 @@ const data: Record<"es" | "en", NavData> = {
               { label: "IRS audit representation", href: "/en/irs/audits", description: "Professional representation in any IRS audit" },
               { label: "IRS letter resolution", href: "/en/irs/irs-letters", description: "We interpret and respond to IRS letters for you" },
               { label: "Tax debt resolution", href: "/en/irs/tax-debt-resolution", description: "We negotiate your tax debt to reduce or settle it" },
-              { label: "IRS payments", href: "/en/irs/irs-payments" },
               { label: "IRS payment plans", href: "/en/irs/payment-plans", description: "Installment Agreement and Offer in Compromise" },
+              { label: "IRS transcripts", href: "/en/irs/irs-transcripts", description: "Official copies of your IRS account and past returns" },
             ],
           },
         ],
       },
       {
         label: "ITIN / EIN",
-        href: "/en/itin-ein",
+        href: "/en/itin-ein/",
         megaMenu: [
           {
             label: "ITIN & EIN",
@@ -272,7 +270,7 @@ const data: Record<"es" | "en", NavData> = {
       },
       {
         label: "Notary Public",
-        href: "/en/notary-public",
+        href: "/en/notary-public/",
         megaMenu: [
           {
             label: "Powers & Authorizations",
@@ -311,7 +309,7 @@ const data: Record<"es" | "en", NavData> = {
       },
       {
         label: "Immigration",
-        href: "/en/immigration",
+        href: "/en/immigration/",
         megaMenu: [
           {
             label: "Immigration Procedures",
