@@ -1,4 +1,5 @@
 ---
+import CommunitySection from './CommunitySection.astro';
 import Hero from './Hero.astro';
 import ServicesSection from './ServicesSection.astro';
 import TestimonialsSection from './TestimonialsSection.astro';
@@ -12,20 +13,6 @@ const { lang } = Astro.props;
 
 const t = {
   es: {
-    community: {
-      label: "Nuestra comunidad",
-      heading: { pre: "El aliado de confianza de la", accent: "comunidad hispana", post: "en Las Vegas y EE.UU." },
-      description: "Ayudamos a familias, negocios e inmigrantes con sus trámites de taxes, notary public e inmigración. Profesionalismo, experiencia y atención 100% en español.",
-      cta: "Agendar cita gratis",
-      ctaHref: "/contacto",
-      trust: ["IRS Authorized CAA", "Notary Public Certificada", "Servicio bilingüe"],
-      stats: [
-        { value: "10+", label: "Años de experiencia" },
-        { value: "5,000+", label: "Familias atendidas" },
-        { value: "50+", label: "Servicios disponibles" },
-        { value: "100%", label: "Atención en español e inglés" },
-      ],
-    },
     stats: [
       { value: "10+", label: "Años de experiencia" },
       { value: "5,000+", label: "Clientes atendidos" },
@@ -100,20 +87,6 @@ const t = {
     ]
   },
   en: {
-    community: {
-      label: "Our community",
-      heading: { pre: "The trusted partner of the", accent: "Hispanic community", post: "in the Las Vegas and U.S." },
-      description: "We help families, businesses, and immigrants with their tax, notary, and immigration needs. Professional service, fully bilingual in Spanish and English.",
-      cta: "Book free appointment",
-      ctaHref: "/en/contact",
-      trust: ["IRS Authorized CAA", "Certified Notary Public", "Fully bilingual service"],
-      stats: [
-        { value: "10+", label: "Years of experience" },
-        { value: "5,000+", label: "Families served" },
-        { value: "50+", label: "Services available" },
-        { value: "100%", label: "Spanish & English service" },
-      ],
-    },
     stats: [
       { value: "10+", label: "Years of experience" },
       { value: "5,000+", label: "Clients served" },
@@ -196,85 +169,7 @@ const t = {
   <Hero lang={lang} />
 
   <!-- ─── COMMUNITY & STATS ─────────────────────────────────────────── -->
-  <section class="bg-background-light py-4" aria-labelledby="community-heading">
-    <div class="container-custom">
-      <div class="flex flex-col lg:flex-row items-stretch">
-
-        <!-- LEFT: copy panel -->
-        <div
-          class="flex-1 py-20 lg:py-24 lg:pr-16 xl:pr-24 flex flex-col justify-center border-b lg:border-b-0 "
-          data-reveal
-        >
-          <!-- Label -->
-          <div class="flex items-center gap-3 mb-6">
-            <span class="h-px w-10 bg-brand-light shrink-0" aria-hidden="true"></span>
-            <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
-              {t.community.label}
-            </span>
-          </div>
-
-          <!-- Heading -->
-          <h2
-            id="community-heading"
-            class="font-display text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-neutral-grey leading-[1.1] mb-6"
-          >
-            {t.community.heading.pre}{' '}
-            <em class="not-italic text-brand-light">{t.community.heading.accent}</em>
-            {t.community.heading.post && <>{' '}{t.community.heading.post}</>}
-          </h2>
-
-          <!-- Description -->
-          <p class="text-neutral-grey leading-relaxed mb-8 max-w-[480px]">
-            {t.community.description}
-          </p>
-
-          <!-- CTA -->
-          <a
-            href={t.community.ctaHref}
-            class="self-start inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white hover:bg-brand-light transition-colors focus-visible:outline-2 focus-visible:outline-brand-dark mb-10"
-          >
-            {t.community.cta}
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true">
-              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-            </svg>
-          </a>
-
-          <!-- Trust indicators -->
-          <ul class="flex flex-wrap gap-x-5 gap-y-2" role="list">
-            {t.community.trust.map(item => (
-              <li class="flex items-center gap-1.5 text-xs font-medium text-neutral-grey">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-3.5 text-brand-light shrink-0" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
-                </svg>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- RIGHT: stats cards -->
-        <div class="lg:w-[45%] flex-shrink-0 flex items-center p-8 lg:p-12">
-          <dl class="grid grid-cols-2 gap-4 w-full">
-            {t.community.stats.map((stat, i) => (
-              <div
-                class="group flex flex-col items-start justify-between bg-white rounded-2xl border border-background-muted p-6 lg:p-7 shadow-sm hover:shadow-md transition-shadow duration-300 cursor-default"
-                data-reveal
-                data-reveal-delay={String(i)}
-              >
-                <dt class="font-display text-4xl lg:text-5xl font-bold text-neutral-grey leading-none group-hover:text-brand-light transition-colors duration-300">
-                  {stat.value}
-                </dt>
-                <dd class="text-xs sm:text-sm text-neutral-grey mt-4 leading-snug">
-                  {stat.label}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <CommunitySection lang={lang} />
 
   <!-- ─── SERVICES ──────────────────────────────────────────────────── -->
   <ServicesSection lang={lang} />
