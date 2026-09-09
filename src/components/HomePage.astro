@@ -2,6 +2,7 @@
 import CommunitySection from './CommunitySection.astro';
 import Hero from './Hero.astro';
 import ServicesSection from './ServicesSection.astro';
+import WhyUsSection from './WhyUsSection.astro';
 import TestimonialsSection from './TestimonialsSection.astro';
 import FaqSection from './FaqSection.astro';
 
@@ -19,19 +20,6 @@ const t = {
       { value: "100%", label: "Servicio en español" },
       { value: "3", label: "Oficinas disponibles" }
     ],
-    whyUs: {
-      eyebrow: "¿Por qué elegirnos?",
-      heading: { pre: "No solo asesoramos,", accent: "resolvemos." },
-      description:
-        "Sabemos que detrás de cada trámite hay una familia que no quiere una carta del IRS ni vivir con incertidumbre. Resolvemos tus taxes, notary public e inmigración en un solo lugar de confianza, en español, con precio claro desde el inicio y un comprobante en tus manos de que todo quedó bien hecho.",
-      items: [
-        "Tus taxes completos y sin errores que después traigan cartas del IRS",
-        "El reembolso más alto que la ley permite, 100% legal",
-        "Taxes, ITIN, notary public e inmigración en una sola oficina",
-        "Precio exacto antes de empezar y comprobante de que quedó bien hecho",
-      ],
-      imageAlt: "David Takamura, Notary Public certificado",
-    },
     cta: {
       eyebrow: "Da el primer paso",
       heading: "¿Listo para resolver tu situación fiscal?",
@@ -93,19 +81,6 @@ const t = {
       { value: "100%", label: "Bilingual service" },
       { value: "3", label: "Office locations" }
     ],
-    whyUs: {
-      eyebrow: "Why choose us?",
-      heading: { pre: "Not just paperwork,", accent: "done right." },
-      description:
-        "Notary and apostilles, tax preparation and business filings, all handled correctly the first time, with a clear price before we start and a stamped record that it's done. Our team works primarily in Spanish, but we gladly assist English-speaking clients with these services.",
-      items: [
-        "Notarizations, apostilles and document legalization, done right",
-        "Tax preparation with no errors that bring an IRS letter later",
-        "Business filings in one place: LLC, EIN and corporate documents",
-        "An exact price before we start, and proof in hand that it's done",
-      ],
-      imageAlt: "David Takamura, certified notary public",
-    },
     cta: {
       eyebrow: "Take the first step",
       heading: "Ready to resolve your tax situation?",
@@ -176,59 +151,7 @@ const t = {
 
 
   <!-- ─── WHY US ────────────────────────────────────────────────────── -->
-  <section class="py-32 bg-background-light" aria-labelledby="whyus-heading">
-    <div class="container-custom">
-      <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
-
-        <!-- Left: imagen vertical -->
-        <div class="w-full max-w-xs mx-auto lg:mx-0 lg:w-[34%] lg:shrink-0" data-reveal>
-          <img
-            src="/assets/images/david_takamura_notary_public.jpg"
-            alt={t.whyUs.imageAlt}
-            width="795"
-            height="1193"
-            loading="lazy"
-            decoding="async"
-            class="w-full h-auto rounded-2xl shadow-xl"
-          />
-        </div>
-
-        <!-- Right: texto + checklist -->
-        <div class="flex-1 text-center lg:text-left" data-reveal data-reveal-delay="1">
-          <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
-            {t.whyUs.eyebrow}
-          </span>
-          <h2
-            id="whyus-heading"
-            class="font-display text-4xl md:text-5xl font-bold text-neutral-dark mt-4 mb-6 leading-tight"
-          >
-            {t.whyUs.heading.pre}
-            <span class="text-brand-light block">{t.whyUs.heading.accent}</span>
-          </h2>
-          <p class="text-neutral-grey leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
-            {t.whyUs.description}
-          </p>
-          <ul class="space-y-4 text-left" role="list">
-            {t.whyUs.items.map(item => (
-              <li class="flex items-start gap-3">
-                <span
-                  class="shrink-0 mt-0.5 size-6 rounded-full bg-brand-light
-                         flex items-center justify-center"
-                  aria-hidden="true"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-3.5 text-white">
-                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-                  </svg>
-                </span>
-                <span class="text-base text-neutral-dark font-medium leading-snug">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <WhyUsSection lang={lang} />
 
   <!-- ─── TESTIMONIOS ───────────────────────────────────────────────── -->
   <TestimonialsSection lang={lang} />
