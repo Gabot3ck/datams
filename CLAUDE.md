@@ -71,9 +71,13 @@ src/
 ├── components/
 │   ├── Hero.astro            # Slider 3 slides, GSAP, responsive images via astro:assets
 │   ├── HomePage.astro        # Orquestador del home: importa las 8 secciones + faq/faqImage + script data-reveal
-│   ├── CommunitySection.astro # Home: comunidad + grid 2×2 de stats
+│   ├── CommunitySection.astro  # Home: comunidad + grid 2×2 de stats
+│   ├── ServicesSection.astro   # Home: 6 tarjetas de servicio (Taxes, IRS, ITIN-EIN, Notary Public, Inmigración, DMV)
 │   ├── WhyUsSection.astro      # Home: imagen + checklist "por qué elegirnos"
+│   ├── TestimonialsSection.astro # Home: reseñas de Google (2 cols escalonadas + fade inferior)
+│   ├── TestimonialCard.astro   # Card individual de reseña (usada por TestimonialsSection)
 │   ├── OfficeSection.astro     # Home: galería de oficina + video + CTA maps
+│   ├── FaqSection.astro        # Acordeón de FAQ del home — NO es service/FaqSection (HomePage importa este)
 │   ├── CtaSection.astro        # Home: CTA final (bg-brand) — NO es service/CtaBanner
 │   ├── Navbar.astro          # Header sticky: idioma + megamenú + mobile
 │   ├── MegaMenu.tsx          # React — portal a document.body, tabs por clic
@@ -119,7 +123,7 @@ vitest.config.ts              # tests con Vitest + Container API de Astro
 ```
 1. <Hero lang={lang} />              ← slider de imágenes
 2. <CommunitySection lang={lang} />  ← 2 cols: copy + grid 2×2 stats
-3. <ServicesSection lang={lang} />   ← 3 tarjetas (Taxes, Notary Public, Business)
+3. <ServicesSection lang={lang} />   ← 6 tarjetas (Taxes, IRS, ITIN-EIN, Notary Public, Inmigración, DMV)
 4. <WhyUsSection lang={lang} />      ← imagen + checklist de 4 puntos
 5. <TestimonialsSection lang={lang} /> ← reseñas de Google
 6. <OfficeSection lang={lang} />     ← galería 3 imágenes + video + CTA "cómo llegar"
@@ -134,8 +138,8 @@ de `[data-reveal]`. Cada sección es un componente en `src/components/` con
 `interface Props { lang }` y su propio objeto `t` inline ES/EN.
 
 La sección **Community & Stats** (ahora en `CommunitySection.astro`, después del hero):
-- Izquierda: label con punto rojo, H2 bicolor (`t.community.heading.pre + accent + post`), descripción, CTA, trust indicators con checkmarks
-- Derecha: `<dl>` grid 2×2 con bordes via `class:list` condicional por índice (`i===1||3` → `border-l`, `i===2||3` → `border-t`)
+- Izquierda: label con punto rojo, H2 bicolor (`t.heading.pre + accent + post`), descripción, CTA, trust indicators con checkmarks
+- Derecha: `<dl>` grid 2×2 de tarjetas blancas individuales — cada celda `rounded-2xl` con `border border-background-muted` estático + `shadow-sm` → `hover:shadow-md` (sin `class:list`, sin bordes condicionales)
 - Hover en cada celda: número cambia a `brand-light`
 - Bilingüe: traducciones en el objeto `t` inline dentro de `CommunitySection.astro`
 
