@@ -70,7 +70,11 @@ src/
 ├── assets/images/banners/    # Slides hero: slide_tax_1/2/3_d.png (misma img en m/t/d por ahora)
 ├── components/
 │   ├── Hero.astro            # Slider 3 slides, GSAP, responsive images via astro:assets
-│   ├── HomePage.astro        # Todas las secciones del home
+│   ├── HomePage.astro        # Orquestador del home: importa las 8 secciones + faq/faqImage + script data-reveal
+│   ├── CommunitySection.astro # Home: comunidad + grid 2×2 de stats
+│   ├── WhyUsSection.astro      # Home: imagen + checklist "por qué elegirnos"
+│   ├── OfficeSection.astro     # Home: galería de oficina + video + CTA maps
+│   ├── CtaSection.astro        # Home: CTA final (bg-brand) — NO es service/CtaBanner
 │   ├── Navbar.astro          # Header sticky: idioma + megamenú + mobile
 │   ├── MegaMenu.tsx          # React — portal a document.body, tabs por clic
 │   ├── MegaMenuPanel.tsx     # Panel del megamenú: grid 2 cols de items + imagen + footer link
@@ -113,19 +117,27 @@ vitest.config.ts              # tests con Vitest + Container API de Astro
 ### HomePage.astro — secciones en orden
 
 ```
-1. <Hero lang={lang} />                    ← slider de imágenes
-2. Community & Stats                        ← 2 cols: copy + grid 2×2 stats  ← NUEVO
-3. Services                                 ← 3 tarjetas (Taxes, Notary Public, Business)
-4. Stats bar                                ← fondo accent, 4 números horizontales
-5. Why Us                                   ← checklist 2 cols
-6. CTA Banner                              ← fondo accent-dark, conversión final
+1. <Hero lang={lang} />              ← slider de imágenes
+2. <CommunitySection lang={lang} />  ← 2 cols: copy + grid 2×2 stats
+3. <ServicesSection lang={lang} />   ← 3 tarjetas (Taxes, Notary Public, Business)
+4. <WhyUsSection lang={lang} />      ← imagen + checklist de 4 puntos
+5. <TestimonialsSection lang={lang} /> ← reseñas de Google
+6. <OfficeSection lang={lang} />     ← galería 3 imágenes + video + CTA "cómo llegar"
+7. <FaqSection lang={lang} faqs={faq} image={faqImage} /> ← acordeón
+8. <CtaSection lang={lang} />        ← fondo bg-brand, conversión final
 ```
 
-La sección **Community & Stats** (nueva, después del hero):
+`HomePage.astro` quedó como orquestador: solo importa las 8 secciones, define
+el array `faq` (contenido del acordeón, que alimenta el componente genérico
+`FaqSection`) y `faqImage`, y conserva el `<script>` del IntersectionObserver
+de `[data-reveal]`. Cada sección es un componente en `src/components/` con
+`interface Props { lang }` y su propio objeto `t` inline ES/EN.
+
+La sección **Community & Stats** (ahora en `CommunitySection.astro`, después del hero):
 - Izquierda: label con punto rojo, H2 bicolor (`t.community.heading.pre + accent + post`), descripción, CTA, trust indicators con checkmarks
 - Derecha: `<dl>` grid 2×2 con bordes via `class:list` condicional por índice (`i===1||3` → `border-l`, `i===2||3` → `border-t`)
 - Hover en cada celda: número cambia a `brand-light`
-- Bilingüe: traducciones en `t.community` dentro de `HomePage.astro`
+- Bilingüe: traducciones en el objeto `t` inline dentro de `CommunitySection.astro`
 
 ### Navbar.astro — menú de servicios reales
 

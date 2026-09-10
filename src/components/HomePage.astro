@@ -1,22 +1,21 @@
 ---
-import CommunitySection from './CommunitySection.astro';
-import CtaSection from './CtaSection.astro';
 import Hero from './Hero.astro';
-import OfficeSection from './OfficeSection.astro';
+import CommunitySection from './CommunitySection.astro';
 import ServicesSection from './ServicesSection.astro';
 import WhyUsSection from './WhyUsSection.astro';
 import TestimonialsSection from './TestimonialsSection.astro';
+import OfficeSection from './OfficeSection.astro';
 import FaqSection from './FaqSection.astro';
-
+import CtaSection from './CtaSection.astro';
 
 interface Props {
   lang: 'es' | 'en';
 }
 const { lang } = Astro.props;
 
-const t = {
-  es: {
-    faq: [
+// FaqSection es un componente genérico (compartido con páginas de servicio): su contenido vive acá y se le pasa por props.
+const faq = {
+  es: [
       {
         q: "¿Son ustedes abogados de inmigración?",
         a: "No. No somos un despacho de abogados ni damos asesoría legal. Te ayudamos a completar formularios, reunir documentos y dar seguimiento a tu trámite. Si tu caso necesita representación legal, te decimos con honestidad cuándo es momento de acudir a un abogado con licencia.",
@@ -41,10 +40,8 @@ const t = {
         q: "¿Qué documentos necesito llevar?",
         a: "Depende del trámite. En la página de cada servicio tienes la lista exacta o escríbenos antes de tu cita y te confirmamos qué traer.",
       },
-    ]
-  },
-  en: {
-    faq: [
+    ],
+  en: [
       {
         q: "Are you immigration attorneys?",
         a: "No. We're not a law firm and we don't give legal advice. We help you complete forms, gather documents, and follow up on your case. If your case needs legal representation, we'll tell you honestly when it's time to see a licensed attorney.",
@@ -69,10 +66,15 @@ const t = {
         q: "What documents do I need to bring?",
         a: "It depends on the service. Each service page has the exact list, or message us before your appointment and we'll confirm what to bring.",
       },
-    ]
-  }
+    ],
 }[lang];
 
+const faqImage = {
+  src: "/assets/images/david_takamura_notary_public.jpg",
+  alt: lang === 'es'
+    ? "David Takamura, Notary Public certificado"
+    : "David Takamura, certified notary public",
+};
 ---
 
 <main>
@@ -85,13 +87,11 @@ const t = {
   <!-- ─── SERVICES ──────────────────────────────────────────────────── -->
   <ServicesSection lang={lang} />
 
-
   <!-- ─── WHY US ────────────────────────────────────────────────────── -->
   <WhyUsSection lang={lang} />
 
   <!-- ─── TESTIMONIOS ───────────────────────────────────────────────── -->
   <TestimonialsSection lang={lang} />
-
 
   <!-- ─── OFICINA — GALERÍA IMÁGENES + VIDEO ────────────────────────── -->
   <OfficeSection lang={lang} />
@@ -99,13 +99,8 @@ const t = {
   <!-- ─── FAQ ──────────────────────────────────────────────────────── -->
   <FaqSection
     lang={lang}
-    faqs={t.faq}
-    image={{
-      src: "/assets/images/david_takamura_notary_public.jpg",
-      alt: lang === 'es'
-        ? "David Takamura, Notary Public certificado"
-        : "David Takamura, certified notary public",
-    }}
+    faqs={faq}
+    image={faqImage}
   />
 
   <!-- ─── CTA ──────────────────────────────────────────────────────── -->
