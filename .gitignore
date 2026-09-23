@@ -35,3 +35,8 @@ strategy-taxes.md
 
 reference-images/
 reference-md/
+
+# skills instalados via `npx skills add` (excepto frontend-design, ya versionado)
+.agents/skills/copy-editing/
+.agents/skills/copywriting/
+skills-lock.json

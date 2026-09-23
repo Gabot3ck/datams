@@ -22,7 +22,7 @@ describe('WhyUsSection', () => {
     const html = await render('es');
     expect(html).toMatch(/<ul[^>]*role="list"/);
     expect((html.match(/<li/g) ?? []).length).toBe(4);
-    expect(html).toContain('El reembolso más alto que la ley permite, 100% legal');
+    expect(html).toContain('Agentes Enrolados certificados por el IRS');
   });
 
   it('renderiza el heading accent en inglés', async () => {
