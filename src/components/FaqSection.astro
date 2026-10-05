@@ -1,7 +1,13 @@
 ---
+interface FaqListItem {
+  label: string;          // va en negrita, ej. "Temporada de taxes (2 de enero–15 de abril):"
+  text: string;
+}
+
 interface Faq {
   q: string;
   a: string;
+  list?: FaqListItem[];   // lista opcional bajo el párrafo de respuesta
 }
 
 interface Props {
@@ -35,7 +41,10 @@ const faqSchema =
         mainEntity: faqs.map((faq) => ({
           '@type': 'Question',
           name: faq.q,
-          acceptedAnswer: { '@type': 'Answer', text: faq.a },
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: [faq.a, ...(faq.list ?? []).map((li) => `${li.label} ${li.text}`)].join('\n'),
+          },
         })),
       }
     : null;
@@ -106,9 +115,18 @@ const faqSchema =
                 </button>
               </h3>
               <div id={`${id}-a-${i}`} role="region" aria-labelledby={`${id}-q-${i}`} class="faq-panel">
-                <p class="pb-5 pr-6 text-[15px] leading-relaxed text-neutral-grey">
-                  {faq.a}
-                </p>
+                <div class="pb-5 pr-6 text-[15px] leading-relaxed text-neutral-grey">
+                  <p>{faq.a}</p>
+                  {faq.list && (
+                    <ul class="mt-3 list-disc space-y-2 pl-5">
+                      {faq.list.map((li) => (
+                        <li>
+                          <strong class="font-semibold text-neutral-dark">{li.label}</strong> {li.text}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </div>
             </div>
           ))}

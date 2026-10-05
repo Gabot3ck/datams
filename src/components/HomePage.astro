@@ -30,11 +30,15 @@ const faq = {
       },
       {
         q: "¿Cuánto cuestan sus servicios?",
-        a: "El precio depende de tu trámite específico. Te lo decimos claro antes de empezar, nunca 'vamos viendo según avance'.",
+        a: "Cada trámite tiene su propio precio según lo que necesites, y siempre te lo decimos antes de empezar, sin sorpresas ni cobros de último momento.",
       },
       {
-        q: "¿Atienden en la tarde o los fines de semana?",
-        a: "Sí, atendemos en la tarde y los fines de semana. Nuestros horarios son de lunes a sábado de 09:00 AM a 09:00 PM y los domingos de 10:00 AM a 5:00 PM.",
+        q: "¿Atienden todo el año o solo en temporada de taxes?",
+        a: "Sí, atendemos todo el año, solo cerramos el 1 de enero. El horario cambia según la temporada:",
+        list: [
+          { label: "Temporada de taxes (2 de enero–15 de abril):", text: "lunes a sábado de 9:00 AM a 10:00 PM." },
+          { label: "Resto del año (16 de abril–31 de diciembre):", text: "lunes a viernes de 10:00 AM a 7:00 PM, sábados de 10:00 AM a 2:00 PM." },
+        ],
       },
       {
         q: "¿Qué documentos necesito llevar?",
@@ -56,7 +60,7 @@ const faq = {
       },
       {
         q: "How much do your services cost?",
-        a: "The price depends on your specific case. We tell you clearly before we start, never 'we'll see as we go.'",
+        a: "Each service has its own price depending on what you need, and we always tell you before we start, with no surprises or last-minute charges.",
       },
       {
         q: "Are you open in the evening or on weekends?",
