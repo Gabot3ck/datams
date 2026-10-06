@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { canonicalURL, SITE_URL, SITE_NAME, BUSINESS, TRUST_BAR_DEFAULT_ES, buildServiceJsonLd, buildLocalBusinessJsonLd } from './site';
+import { canonicalURL, SITE_URL, SITE_NAME, BUSINESS, TRUST_BAR_DEFAULT_ES, buildServiceJsonLd, buildLocalBusinessJsonLd, buildOpeningHoursSpecification } from './site';
 
 describe('canonicalURL', () => {
   it('deja la home como raíz con barra', () => {
@@ -77,5 +77,38 @@ describe('buildLocalBusinessJsonLd', () => {
     expect(b.name).toBe("Data's & Multiservices");
     const addr = b.address as Record<string, unknown>;
     expect(addr.postalCode).toBe('89101');
+  });
+});
+
+describe('buildOpeningHoursSpecification', () => {
+  const spec = buildOpeningHoursSpecification([2027]);
+  const find = (validFrom: string, day?: string) =>
+    spec.filter((s) => s.validFrom === validFrom && (!day || s.dayOfWeek?.includes(day)));
+
+  it('marca el 1 de enero como cerrado (00:00–00:00)', () => {
+    const [closed] = find('2027-01-01');
+    expect(closed).toMatchObject({ opens: '00:00', closes: '00:00', validThrough: '2027-01-01' });
+  });
+  it('temporada de taxes: lun–sáb 9:00–22:00 del 2 ene al 15 abr', () => {
+    const [tax] = find('2027-01-02', 'Saturday');
+    expect(tax).toMatchObject({ opens: '09:00', closes: '22:00', validThrough: '2027-04-15' });
+    expect(tax.dayOfWeek).toHaveLength(6);
+  });
+  it('resto del año: lun–vie 10:00–19:00 y sáb 10:00–14:00', () => {
+    expect(find('2027-04-16', 'Friday')[0]).toMatchObject({ opens: '10:00', closes: '19:00', validThrough: '2027-12-31' });
+    expect(find('2027-04-16', 'Saturday')[0]).toMatchObject({ opens: '10:00', closes: '14:00' });
+  });
+  it('domingo no aparece en ninguna temporada', () => {
+    expect(spec.some((s) => s.dayOfWeek?.includes('Sunday'))).toBe(false);
+  });
+  it('por defecto cubre el año actual y el siguiente', () => {
+    const y = new Date().getFullYear();
+    const years = new Set(buildOpeningHoursSpecification().map((s) => s.validFrom.slice(0, 4)));
+    expect([...years]).toEqual([String(y), String(y + 1)]);
+  });
+  it('LocalBusiness y Service usan openingHoursSpecification', () => {
+    expect(buildLocalBusinessJsonLd('es').openingHoursSpecification.length).toBeGreaterThan(0);
+    const svc = buildServiceJsonLd({ name: 'x', description: 'x', serviceType: 'x', url: 'x', lang: 'es' });
+    expect(svc.provider.openingHoursSpecification.length).toBeGreaterThan(0);
   });
 });

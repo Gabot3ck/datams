@@ -78,7 +78,11 @@ const telHref = `tel:${BUSINESS.phone.replace('+', '')}`;
           {BUSINESS.address.street}, {BUSINESS.address.city}, {BUSINESS.address.region} {BUSINESS.address.postalCode}
         </li>
         <li class="hidden sm:block text-white/20" aria-hidden="true">·</li>
-        <li>{BUSINESS.hoursDisplay}</li>
+        <li>
+          {BUSINESS.hoursDisplay[lang].map((line, i) => (
+            <>{i > 0 && <br />}{line}</>
+          ))}
+        </li>
       </ul>
     </address>
   </div>

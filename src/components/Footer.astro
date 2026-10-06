@@ -1,4 +1,6 @@
 ---
+import { BUSINESS } from '@config/site';
+
 const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
 const year = new Date().getFullYear();
 
@@ -41,7 +43,6 @@ const t = {
       heading: 'Contacto',
       phone: '(702) 640-0088',
       address: '235 N Eastern Ave. Suite 130, Las Vegas, NV 89101',
-      hours: 'Lun–Sáb 9AM–9PM · Dom 10AM–5PM',
       mapsLabel: 'Ver en Google Maps',
     },
     follow: 'Síguenos en:',
@@ -77,7 +78,6 @@ const t = {
       heading: 'Contact',
       phone: '(702) 640-0088',
       address: '235 N Eastern Ave. Suite 130, Las Vegas, NV 89101',
-      hours: 'Mon–Sat 9AM–9PM · Sun 10AM–5PM',
       mapsLabel: 'View on Google Maps',
     },
     follow: 'Follow us:',
@@ -149,7 +149,11 @@ const telHref = `tel:+1${t.contact.phone.replace(/\D/g, '')}`;
           {t.contact.heading}
         </h2>
         <ul class="space-y-3 text-sm" role="list">
-          <li class="leading-relaxed">{t.contact.hours}</li>
+          <li class="leading-relaxed">
+            {BUSINESS.hoursDisplay[lang].map((line, i) => (
+              <>{i > 0 && <br />}{line}</>
+            ))}
+          </li>
           <li class="leading-relaxed">{t.contact.address}</li>
           <li>
             <a href={telHref} class="transition-colors hover:text-brand">

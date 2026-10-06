@@ -15,8 +15,36 @@ export const BUSINESS = {
     postalCode: '89101',
     country: 'US',
   },
-  openingHours: ['Mo-Sa 09:00-21:00', 'Su 10:00-17:00'],
-  hoursDisplay: 'Lun–Sáb 9AM–9PM · Dom 10AM–5PM',
+  // Horario por temporada (fechas MM-DD). Domingos cerrados todo el año.
+  // Alimenta el JSON-LD (buildOpeningHoursSpecification); hoursDisplay es la versión corta para UI.
+  seasons: [
+    {
+      from: '01-02', // temporada de taxes
+      through: '04-15',
+      hours: [{ days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:00', closes: '22:00' }],
+    },
+    {
+      from: '04-16', // resto del año
+      through: '12-31',
+      hours: [
+        { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '19:00' },
+        { days: ['Saturday'], opens: '10:00', closes: '14:00' },
+      ],
+    },
+  ],
+  closedDates: ['01-01'],
+  hoursDisplay: {
+    es: [
+      'Temporada de taxes (2 ene–15 abr): Lun–Sáb 9AM–10PM',
+      'Resto del año: Lun–Vie 10AM–7PM · Sáb 10AM–2PM',
+      'Cerrado el 1 de enero',
+    ],
+    en: [
+      'Tax season (Jan 2–Apr 15): Mon–Sat 9AM–10PM',
+      'Rest of the year: Mon–Fri 10AM–7PM · Sat 10AM–2PM',
+      'Closed January 1',
+    ],
+  },
   email: '[PLACEHOLDER: email de contacto del negocio]',
 } as const;
 
@@ -60,6 +88,43 @@ function addressNode() {
   };
 }
 
+/** OpeningHoursSpecification de schema.org para los años dados (por defecto:
+ *  el año del build y el siguiente, para que el sitio no quede sin horario
+ *  vigente si no se reconstruye al cambiar de año). Las fechas cerradas van
+ *  como opens = closes = 00:00, que es como Google marca un día cerrado. */
+export interface OpeningHoursSpec {
+  '@type': 'OpeningHoursSpecification';
+  dayOfWeek?: string[];
+  opens: string;
+  closes: string;
+  validFrom: string;
+  validThrough: string;
+}
+
+export function buildOpeningHoursSpecification(
+  years: number[] = [new Date().getFullYear(), new Date().getFullYear() + 1],
+): OpeningHoursSpec[] {
+  return years.flatMap((year): OpeningHoursSpec[] => [
+    ...BUSINESS.closedDates.map((date) => ({
+      '@type': 'OpeningHoursSpecification' as const,
+      opens: '00:00',
+      closes: '00:00',
+      validFrom: `${year}-${date}`,
+      validThrough: `${year}-${date}`,
+    })),
+    ...BUSINESS.seasons.flatMap((season) =>
+      season.hours.map((h) => ({
+        '@type': 'OpeningHoursSpecification' as const,
+        dayOfWeek: [...h.days],
+        opens: h.opens,
+        closes: h.closes,
+        validFrom: `${year}-${season.from}`,
+        validThrough: `${year}-${season.through}`,
+      })),
+    ),
+  ]);
+}
+
 export function buildLocalBusinessJsonLd(lang: 'es' | 'en') {
   return {
     '@context': 'https://schema.org',
@@ -67,7 +132,7 @@ export function buildLocalBusinessJsonLd(lang: 'es' | 'en') {
     name: SITE_NAME,
     telephone: BUSINESS.phone,
     address: addressNode(),
-    openingHours: BUSINESS.openingHours,
+    openingHoursSpecification: buildOpeningHoursSpecification(),
     areaServed: { '@type': 'City', name: 'Las Vegas' },
     inLanguage: lang,
   };
@@ -90,7 +155,7 @@ export function buildServiceJsonLd(opts: {
       name: SITE_NAME,
       telephone: BUSINESS.phone,
       address: addressNode(),
-      openingHours: BUSINESS.openingHours,
+      openingHoursSpecification: buildOpeningHoursSpecification(),
     },
   };
 }

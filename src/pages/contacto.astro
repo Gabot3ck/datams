@@ -4,7 +4,7 @@ import { BUSINESS, buildLocalBusinessJsonLd } from '@config/site';
 
 const title = "Contacto | Data's & Multiservices";
 const description =
-  "Visítanos en nuestra oficina de Las Vegas o escríbenos por WhatsApp. Atención en español, tardes y sábados.";
+  "Visítanos en nuestra oficina de Las Vegas o escríbenos por WhatsApp. Atención en español todo el año, con horario extendido en temporada de taxes.";
 
 const jsonLd = buildLocalBusinessJsonLd('es');
 const mapsQuery = encodeURIComponent(
@@ -40,7 +40,11 @@ const mapsQuery = encodeURIComponent(
       </div>
       <div>
         <dt class="text-xs font-bold tracking-widest text-brand-light uppercase mb-1">Horario</dt>
-        <dd class="text-neutral-dark">{BUSINESS.hoursDisplay}</dd>
+        <dd class="text-neutral-dark">
+          {BUSINESS.hoursDisplay.es.map((line, i) => (
+            <>{i > 0 && <br />}{line}</>
+          ))}
+        </dd>
       </div>
     </dl>
 

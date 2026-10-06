@@ -16,6 +16,7 @@ describe('CtaBanner', () => {
     const html = await render({ heading: 'X' });
     expect(html).toMatch(/<address/);
     expect(html).toContain(BUSINESS.phoneDisplay);
+    BUSINESS.hoursDisplay.es.forEach((line) => expect(html).toContain(line));
     expect(html).toContain(`tel:${BUSINESS.phone.replace('+', '')}`);
   });
   it('renderiza body y eyebrow si se pasan', async () => {
