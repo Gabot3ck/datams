@@ -48,7 +48,6 @@ Cada decisión indica:
   | "Negociamos tu deuda para reducirla o pagarla en cuotas" | "Revisamos tu deuda y te explicamos tus opciones" | Menú |
   | "Installment Agreement y Offer in Compromise" | "Te explicamos cómo funciona y cómo solicitarlo" | Menú |
   | "…con representación real ante el IRS" | "…en español y sin promesas falsas" | Tarjeta IRS del Home y página IRS |
-  | "Agentes Enrolados certificados por el IRS: te representamos si algo sale mal" | "Participamos en el Annual Filing Season Program del IRS: si auditan una declaración que preparamos, te representamos" | Sección "¿Por qué elegirnos?" |
 
 - **Por qué:** prometer una representación que no se puede dar es publicidad engañosa. Si un cliente llega con una deuda esperando que "negociemos por él" y no podemos hacerlo, perdemos su confianza y nos exponemos a sanciones. Lo que sí podemos decir con verdad ("si preparamos tu declaración, te representamos en la auditoría") es una ventaja real frente a la competencia.
 - **Fundamento:** Circular 230 del Tesoro, §10.3(f) (práctica limitada) y §10.30 (prohíbe la publicidad falsa o engañosa); Rev. Proc. 2014-42 (crea el AFSP).
@@ -58,6 +57,7 @@ Cada decisión indica:
 - **Por qué:** el IRS prohíbe expresamente que quienes tienen el AFSP usen la palabra "certified" (certificado) para describirse, porque el AFSP no es una certificación ni un aval del IRS.
 - **Fundamento:** Rev. Proc. 2014-42.
 - **Además:** no publicamos la foto del registro. Contiene datos personales, y el logo del IRS daría a entender que el IRS respalda al negocio.
+- **Confirmado (2026-10-10):** cada preparador tiene su propio registro AFSP 2026 y lo renueva año a año. ✅
 - **Importante — renovación anual:** el AFSP vence cada 31 de diciembre. Para 2027 cada preparador debe completar de nuevo el curso anual (AFTR). Para representar en una auditoría hay que tener el registro **del año en que se preparó la declaración y del año en que se representa**. ⏳
 
 ### 1.5 "Garantizamos tener el mejor reembolso"
@@ -67,8 +67,24 @@ Cada decisión indica:
 - **Fundamento:** Circular 230 §10.30; advertencias del IRS sobre cómo elegir un preparador.
 
 ### 1.6 "IRS Authorized CAA"
-- **Situación:** el Home muestra "IRS Authorized CAA" (Certifying Acceptance Agent, agente autorizado para ITIN). ❓
-- **Por qué importa:** es una designación distinta del AFSP, que el IRS otorga por acuerdo firmado. Si el negocio no la tiene, hay que quitarla. Si la tiene, es un excelente argumento para la página de ITIN, porque el cliente no tiene que enviar su pasaporte original.
+- **Situación:** la sección de comunidad del Home muestra "IRS Authorized CAA" (Certifying Acceptance Agent). No sabemos si el negocio realmente tiene esa designación. ❓
+- **Qué es:** el CAA es un acuerdo firmado con el IRS para tramitar ITIN. Es distinto del AFSP. Un CAA **autentica en la oficina** el pasaporte y los documentos del cliente y se los devuelve en el momento. Un Acceptance Agent común, o quien no tiene designación, debe enviar los originales o copias certificadas al IRS.
+- **Cómo verificarlo:**
+  1. **Lista pública del IRS:** el IRS publica los Acceptance Agents de Nevada, con nombre, dirección y tipo (CAA o AA), en [irs.gov/individuals/international-taxpayers/acceptance-agents-nevada](https://www.irs.gov/individuals/international-taxpayers/acceptance-agents-nevada). Hay que buscar el nombre del negocio o el de su dueño.
+  2. **Pregunta práctica al cliente:** "Cuando tramitan un ITIN, ¿el cliente se lleva su pasaporte el mismo día, o lo envían al IRS?". Si se lo lleva el mismo día, probablemente son CAA.
+  3. **Documento:** un CAA tiene un acuerdo firmado con el IRS (solicitud con el Formulario 13551) y un número de oficina asignado.
+- **Qué hacer según la respuesta:**
+  - **Si es CAA:** se mantiene, y se aprovecha como argumento fuerte en la página de ITIN: "no tienes que enviar tu pasaporte original al IRS".
+  - **Si es Acceptance Agent (no certificador):** cambiar a "IRS Acceptance Agent".
+  - **Si no tiene designación:** quitarlo antes de publicar el sitio. Afirmar una designación del IRS que no se tiene es publicidad engañosa (Circular 230 §10.30).
+- **Mientras tanto:** no se modificó el sitio. Esa sección ya estaba aprobada y queda como está hasta tener la respuesta.
+
+### 1.7 "Agentes Enrolados certificados por el IRS"
+- **Situación:** el primer punto de "¿Por qué elegirnos?" dice "Agentes Enrolados certificados por el IRS: te representamos si algo sale mal". ❓
+- **Decisión:** la sección ya estaba aprobada, así que **se mantiene el texto original** a pedido del desarrollador. Queda pendiente confirmar la credencial antes de publicar el sitio.
+- **Por qué hay que confirmarlo:** un Enrolled Agent (EA) es una credencial distinta del AFSP: se obtiene aprobando un examen del IRS de tres partes y tiene representación ilimitada. Quienes son EA no necesitan el AFSP, y el equipo informó que cada preparador tiene AFSP. Si nadie es EA, la frase atribuye una credencial que no se tiene (Circular 230 §10.30), y además promete representación "si algo sale mal", que el AFSP no cubre en cobranza ni apelaciones (ver 1.3).
+- **Cómo verificarlo:** cada EA tiene una tarjeta de inscripción del IRS con número de enrolamiento.
+- **Si nadie es EA, texto sugerido:** "Preparadores del Annual Filing Season Program del IRS: si auditan una declaración que preparamos, te representamos."
 
 ---
 
@@ -125,7 +141,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Por qué "Ayuda con el IRS":**
   - Es como habla el cliente real: "necesito ayuda con el IRS".
   - Cubre todo lo que hay en la pestaña (cartas, identidad, auditorías, deudas, pagos, reembolsos, transcripciones) sin prometer un resultado.
-  - **No pertenece a ninguna página en el análisis de Ads**, así que la página general `/irs/` gana una búsqueda propia (grupo 10 tentativo) sin quitársela a otra.
+  - **Está respaldada por los datos de Ads:** "ayuda con el irs" e "irs ayuda" aparecen en el análisis (unas 10–100 búsquedas al mes cada una) y no estaban asignadas a ninguna página. La página general `/irs/` gana así una búsqueda propia (grupo 10) sin quitársela a otra.
 - **Alternativas evaluadas:**
 
   | Opción | Resultado |
@@ -167,15 +183,17 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 3 | declaración de impuestos de negocio LLC en Las Vegas | `/taxes/declaracion-negocio` |
 | 4 | renovar ITIN number en Las Vegas | `/itin-ein/renovar-itin` |
 | 5 | solución de deudas con el IRS | `/irs/solucion-deudas` |
-| 6 | representación en auditorías del IRS | `/irs/auditorias` |
+| 6 | auditoría del IRS | `/irs/auditorias` |
 | 7 | resolución de cartas del IRS | `/irs/resolucion-cartas` |
 | 8 | seguimiento de mi reembolso de taxes | `/taxes/seguimiento-reembolso` |
 | 9 *(nuevo, tentativo)* | verificación de identidad IRS | `/irs/verificacion-identidad` |
 | 10 *(nuevo)* | ayuda con el IRS | `/irs/` (página general) |
 
-- **Grupo 6 y el límite legal:** se mantiene la keyword de Ads. Pero como solo podemos representar en auditorías de declaraciones que preparamos (ver 1.3), el título de la página dice "Auditorías del IRS" y la frase "representación" aparece con su condición: "si preparamos tu declaración, te representamos en la auditoría".
-- **Grupo 10 — validado:** "ayuda con el irs", "irs ayuda" y "ayuda del irs" sí aparecen en los datos de Ads de la competencia. "problemas con el irs" aparece con 0 búsquedas. Confirma que el nombre "Ayuda con el IRS" coincide con cómo busca la gente. ✅
-- **Grupo 9 — sin datos:** ninguna de las ~394 keywords de la competencia trata de verificación o robo de identidad. Puede ser una oportunidad (nadie compite por ella) o puede que tenga poco volumen. **Hay que consultarlo en Keyword Planner** con términos como "verificación de identidad IRS", "carta 5071C" y "robo de identidad IRS" antes de invertir en anuncios. ⏳
+- **Grupo 6, cambio de keyword (2026-10-10):** la keyword principal pasó de "representación en auditorías del IRS" a **"auditoría del IRS"**. ✅
+  - **Por qué:** al revisar los datos originales de Ads, "representación en auditorías del IRS" no aparece: era una frase armada. Lo que la gente busca de verdad es "auditoria del irs", "auditorias del irs" e "irs auditoria".
+  - **Ventaja legal:** el título de la página ya no promete "representación", que con el AFSP solo aplica a declaraciones que nosotros preparamos (ver 1.3). Esa condición se explica dentro de la página: "si preparamos tu declaración, te representamos en la auditoría".
+- **Grupo 9:** no aparece en el análisis original de Ads (los competidores no trabajan este tema). **Hay que validar su volumen en Keyword Planner** antes de crear un grupo de anuncios. ⏳
+- **Grupo 10:** respaldado por los datos de Ads ("ayuda con el irs", "irs ayuda"). ✅
 
 ---
 
@@ -201,8 +219,8 @@ Ordenado de mayor a menor urgencia para el visitante:
 
 | # | Pregunta | Qué cambia según la respuesta |
 |---|---|---|
-| 1 | ¿Cada miembro del equipo que prepara declaraciones tiene su propio registro AFSP 2026? | Solo quien tiene el AFSP puede representar en auditorías |
-| 2 | ¿El negocio es CAA (Certifying Acceptance Agent) del IRS? | Se mantiene o se quita "IRS Authorized CAA" |
+| 1 | ¿El negocio es CAA (Certifying Acceptance Agent) del IRS? Ver cómo verificarlo en 1.6 | Se mantiene o se quita "IRS Authorized CAA" |
+| 2 | ¿Alguien del equipo es Enrolled Agent? Ver 1.7 | Se mantiene o se ajusta el primer punto de "¿Por qué elegirnos?" |
 | 3 | ¿Aceptan cambiar "Garantizamos tener el mejor reembolso"? | Texto de "¿Por qué elegirnos?" |
 | 4 | ¿La primera consulta sigue siendo gratis? | Botones y textos que dicen "consulta sin costo" |
 | 5 | ¿Abren los domingos en alguna temporada? | Horario del sitio y de Google |
@@ -220,3 +238,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-10 | La pestaña "IRS & Resolución Fiscal" pasa a llamarse "Ayuda con el IRS" (menú, breadcrumb y página general del IRS) |
 | 2026-10-10 | Textos finales del menú IRS (acuerdos de pago, verificación de identidad) y regla de cartas vs. identidad |
 | 2026-10-10 | Enlace "Ver toda la ayuda con el IRS →" en el menú (computador y celular) |
+| 2026-10-10 | Grupo 6 pasa a "auditoría del IRS" y grupo 10 queda respaldado por datos. AFSP confirmado por preparador. Se restaura "¿Por qué elegirnos?" y se documentan las verificaciones de CAA y EA (1.6 y 1.7) |
