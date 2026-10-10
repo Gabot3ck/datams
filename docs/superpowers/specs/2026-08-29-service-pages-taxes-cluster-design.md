@@ -237,7 +237,7 @@ H1: *ITIN y EIN en Español en Las Vegas* (redactar metadata). `ServiceList` con
 
 | # | Slug | H1 | Ángulo único |
 |---|---|---|---|
-| 12 | `/itin-ein/solicitar-itin` | Solicitar tu ITIN Number en Las Vegas | Formulario W-7, documentos que prueban identidad y extranjería, rol del CAA (no mandas pasaporte original), se hace junto con la declaración, tiempos (~7–11 sem). |
+| 12 | `/itin-ein/solicitar-itin` | Solicitar tu ITIN Number en Las Vegas | Formulario W-7, documentos que prueban identidad y extranjería, te ayudamos a completar el W-7 y reunir documentos (**no** prometer "no mandas tu pasaporte original" ni devolución el mismo día: el negocio no figura como CAA, ver DECISIONES-NEGOCIO.md §1.6), se hace junto con la declaración, tiempos (~7–11 sem). |
 | 13 | `/itin-ein/renovar-itin` | Renovar tu ITIN Number en Las Vegas | Ya tiene metadata (§4). ITIN que expira por no uso 3 años consecutivos / rangos de dígitos medios, cuándo renovar antes de declarar, qué documentos. |
 | 14 | `/itin-ein/solicitar-ein` | Solicitar un EIN para tu Negocio en Las Vegas | Formulario SS-4, con o sin SSN/ITIN, para qué se necesita (cuenta bancaria de negocio, empleados, LLC), inmediato online vs por fax/correo para extranjeros. |
 
