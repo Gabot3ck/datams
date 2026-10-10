@@ -55,7 +55,7 @@ Cada decisión indica:
 ### 1.4 Nunca decir "certificado" para el AFSP
 - **Decisión:** el texto nuevo del sitio dice "participantes del Annual Filing Season Program del IRS". Nunca "certificados por el IRS". ✅
 - **La misma regla aplica a los Enrolled Agents:** la Circular 230 §10.30 les prohíbe usar el término "certified" (certificado) para describir su credencial, o sugerir que trabajan para el IRS. La fórmula correcta es "Enrolled Agent" o "inscrito para representar ante el IRS".
-- **Excepción pendiente:** el primer punto de "¿Por qué elegirnos?" todavía dice "Agentes Enrolados **certificados** por el IRS". Choca con esta regla aunque sean EA. Ver la propuesta en 1.7. ❓
+- **Corregido (2026-10-10):** el primer punto de "¿Por qué elegirnos?" decía "Agentes Enrolados **certificados** por el IRS". Ahora dice "Agentes Enrolados **ante el IRS**" (ver 1.7). ✅
 - **Por qué:** el IRS prohíbe expresamente que quienes tienen el AFSP usen la palabra "certified" (certificado) para describirse, porque el AFSP no es una certificación ni un aval del IRS.
 - **Fundamento:** Rev. Proc. 2014-42.
 - **Además:** no publicamos la foto del registro. Contiene datos personales, y el logo del IRS daría a entender que el IRS respalda al negocio.
@@ -92,7 +92,7 @@ Cada decisión indica:
   1. **Directorio público del IRS** de preparadores con credenciales (*Directory of Federal Tax Return Preparers with Credentials and Select Qualifications*). Muestra el nombre, la ciudad y la credencial de cada preparador: EA, CPA, abogado o AFSP. Se busca por nombre y ubicación.
   2. **Tarjeta de Enrolled Agent** del IRS, con número de enrolamiento.
 - **Problema del texto actual, aunque sean EA:** dice "Agentes Enrolados **certificados** por el IRS", y el IRS prohíbe a los EA usar "certificado" (ver 1.4).
-  - **Si son EA, texto propuesto:** "Agentes Enrolados ante el IRS: te representamos si algo sale mal." ❓ Pendiente de aprobación, porque la sección ya estaba aprobada.
+  - **Aplicado (2026-10-10, aprobado por el desarrollador):** "Agentes Enrolados ante el IRS: te representamos si algo sale mal." En inglés: "Enrolled Agents — we represent you before the IRS if something goes wrong." ✅ Sigue pendiente confirmar que son EA (directorio o tarjeta).
 - **Si nadie es EA, texto sugerido:** "Preparadores del Annual Filing Season Program del IRS: si auditan una declaración que preparamos, te representamos."
 
 ---
@@ -256,3 +256,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-10 | Grupo 6 pasa a "auditoría del IRS" y grupo 10 queda respaldado por datos. AFSP confirmado por preparador. Se restaura "¿Por qué elegirnos?" y se documentan las verificaciones de CAA y EA (1.6 y 1.7) |
 | 2026-10-10 | El cliente indica que sus colaboradores son "agentes certificados por el IRS": se asume EA como supuesto de trabajo, pendiente de documento (1.7) |
 | 2026-10-10 | Revisión cruzada: "certificado" también prohibido para EA (1.4 y 1.7), la lista de Nevada no muestra el tipo de agente (1.6), metadata de auditorías y acción pendiente en Ads (3.2) |
+| 2026-10-10 | "¿Por qué elegirnos?": "Agentes Enrolados certificados por el IRS" → "Agentes Enrolados ante el IRS" (ES y EN) |
