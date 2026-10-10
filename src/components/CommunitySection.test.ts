@@ -33,4 +33,13 @@ describe('CommunitySection', () => {
     expect(es).toContain('Nuestra comunidad');
     expect(en).toContain('Our community');
   });
+
+  it('no publica "IRS Authorized CAA" sin acuerdo verificado (DECISIONES-NEGOCIO.md §1.6)', async () => {
+    const es = await render('es');
+    const en = await render('en');
+    expect(es).not.toContain('CAA');
+    expect(en).not.toContain('CAA');
+    expect(es).toContain('Preparadores que completaron el Annual Filing Season Program del IRS');
+    expect(en).toContain('Preparers who completed the IRS Annual Filing Season Program');
+  });
 });
