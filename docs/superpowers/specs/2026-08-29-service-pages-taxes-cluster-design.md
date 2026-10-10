@@ -227,7 +227,7 @@ H1: *Ayuda con el IRS en Español en Las Vegas* (renombrado 2026-10-10; Title: "
 | # | Slug | H1 | Ángulo único |
 |---|---|---|---|
 | 7 | `/irs/solucion-deudas` | Solución de Deudas con el IRS, en Español y Sin Compromiso | Offer in Compromise vs Currently Not Collectible vs plan de pago, requisitos reales del OIC, advertencia sobre promesas falsas ("pennies on the dollar"). |
-| 8 | `/irs/auditorias` | Representación en Auditorías del IRS | Tipos: correspondencia / oficina / campo; qué revisa el IRS, plazo de respuesta, qué NO decir, papeles a reunir. |
+| 8 | `/irs/auditorias` | Auditoría del IRS: Te Acompañamos en Español | Tipos: correspondencia / oficina / campo; qué revisa el IRS, plazo de respuesta, qué NO decir, papeles a reunir. |
 | 9 | `/irs/resolucion-cartas` | ¿Te Llegó una Carta del IRS? Te la Resolvemos en Español | Códigos comunes (CP2000, CP14, LT11, CP49), qué significa cada uno, plazo de respuesta por tipo, riesgo de ignorarla. |
 | 10 | `/irs/acuerdos-pago` | Acuerdos de Pago con el IRS (Installment Agreement) | Corto plazo vs largo plazo, umbrales ($10k / $50k / $100k), débito directo, cuotas mínimas, qué pasa si te atrasas. |
 | 11 | `/irs/transcripciones` | Transcripciones del IRS en Las Vegas | 5 tipos (Account, Return, Record of Account, Wage & Income, Verification of Non-filing), para qué sirve cada una (préstamo, inmigración, FAFSA), cómo se piden. |
