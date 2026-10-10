@@ -62,6 +62,7 @@ const data: Record<"es" | "en", NavData> = {
           },
           {
             label: "Ayuda con el IRS",
+            allLink: { label: "Ver toda la ayuda con el IRS", href: "/irs/" },
             items: [
               { label: "Resolución de cartas del IRS", href: "/irs/resolucion-cartas", description: "Te explicamos qué dice tu carta y qué hacer" },
               { label: "Verificación de identidad del IRS", href: "/irs/verificacion-identidad", description: "Carta 5071C, ID.me o robo de identidad: te guiamos paso a paso" },
@@ -246,6 +247,7 @@ const data: Record<"es" | "en", NavData> = {
           },
           {
             label: "IRS Help",
+            allLink: { label: "See all IRS help", href: "/en/irs/" },
             items: [
               { label: "IRS letter help", href: "/en/irs/irs-letters", description: "We explain what your letter means and what to do next" },
               { label: "IRS identity verification", href: "/en/irs/identity-verification", description: "Letter 5071C, ID.me or identity theft: we guide you step by step" },
@@ -642,6 +644,17 @@ const {
                               </a>
                             </li>
                           ))}
+                          {sub.allLink && (
+                            <li>
+                              <a
+                                href={sub.allLink.href}
+                                class="flex items-center gap-1.5 py-3 pl-2 text-sm font-semibold text-brand-light underline"
+                              >
+                                {sub.allLink.label}
+                                <span aria-hidden="true">→</span>
+                              </a>
+                            </li>
+                          )}
                         </ul>
                       </details>
                     ))}

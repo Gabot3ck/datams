@@ -104,18 +104,29 @@ export default function MegaMenuPanel({
                 ))}
               </div>
 
-              {/* Footer del panel: pillar link */}
-              {pillarUrl && (
-                <div className="mt-auto pt-4 border-t border-background-muted">
-                  <a
-                    href={pillarUrl}
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-brand-light hover:underline"
-                  >
-                    {lang === 'es'
-                      ? `Ver todos los servicios de ${categoryLabel}`
-                      : `See all services in ${categoryLabel}`}
-                    <span aria-hidden="true">→</span>
-                  </a>
+              {/* Footer del panel: pillar link + "ver todo" de la subcategoría activa */}
+              {(pillarUrl || activeSub.allLink) && (
+                <div className="mt-auto pt-4 border-t border-background-muted flex items-center gap-x-6 gap-y-2 flex-wrap">
+                  {pillarUrl && (
+                    <a
+                      href={pillarUrl}
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-brand-light hover:underline"
+                    >
+                      {lang === 'es'
+                        ? `Ver todos los servicios de ${categoryLabel}`
+                        : `See all services in ${categoryLabel}`}
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  )}
+                  {activeSub.allLink && (
+                    <a
+                      href={activeSub.allLink.href}
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-brand-light hover:underline"
+                    >
+                      {activeSub.allLink.label}
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  )}
                 </div>
               )}
 

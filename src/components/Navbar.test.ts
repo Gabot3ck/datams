@@ -81,3 +81,13 @@ describe('Navbar — nombre de la pestaña IRS (decisión 2026-10-10)', () => {
     expect(src).not.toContain('Resolución del IRS');
   });
 });
+
+describe('Navbar — acceso directo al pilar /irs/ (decisión 2026-10-10)', () => {
+  it('la subcategoría IRS define allLink ES y EN', () => {
+    expect(src).toContain('allLink: { label: "Ver toda la ayuda con el IRS", href: "/irs/" }');
+    expect(src).toContain('allLink: { label: "See all IRS help", href: "/en/irs/" }');
+  });
+  it('el menú mobile renderiza sub.allLink dentro del acordeón', () => {
+    expect(src).toContain('sub.allLink &&');
+  });
+});

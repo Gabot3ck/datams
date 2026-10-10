@@ -13,6 +13,7 @@ export interface MegaSubcategory {
   label: string;
   image?: string;
   items: MegaSubItem[];
+  allLink?: MegaMiniLink; // "ver todo" de la subcategoría cuando tiene pilar propio (ej. /irs/)
 }
 
 export interface MegaMiniLink {
