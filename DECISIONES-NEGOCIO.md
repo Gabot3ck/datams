@@ -53,7 +53,7 @@ Cada decisión indica:
 - **Fundamento:** Circular 230 del Tesoro, §10.3(f) (práctica limitada) y §10.30 (prohíbe la publicidad falsa o engañosa); Rev. Proc. 2014-42 (crea el AFSP).
 
 ### 1.4 Nunca decir "certificado" para el AFSP
-- **Decisión:** el texto nuevo del sitio dice "participantes del Annual Filing Season Program del IRS". Nunca "certificados por el IRS". ✅
+- **Decisión:** el sitio dice "Preparadores **que completaron** el Annual Filing Season Program del IRS". Nunca "certificados por el IRS", ni "preparadores del IRS" o "del programa del IRS", que pueden leerse como si el IRS los respaldara o trabajaran para él. "Completaron" describe un hecho: el registro se obtiene al completar los requisitos del programa. ✅
 - **La misma regla aplica a los Enrolled Agents:** la Circular 230 §10.30 les prohíbe usar el término "certified" (certificado) para describir su credencial, o sugerir que trabajan para el IRS. La fórmula correcta es "Enrolled Agent" o "inscrito para representar ante el IRS".
 - **Corregido (2026-10-10):** el primer punto de "¿Por qué elegirnos?" decía "Agentes Enrolados **certificados** por el IRS". Ahora usa la credencial verificada, el AFSP, sin la palabra "certificado" (ver 1.7). ✅
 - **Por qué:** el IRS prohíbe expresamente que quienes tienen el AFSP usen la palabra "certified" (certificado) para describirse, porque el AFSP no es una certificación ni un aval del IRS.
@@ -87,7 +87,7 @@ Cada decisión indica:
   1. Atribuía una credencial sin respaldo. El cliente dijo "agentes certificados por el IRS", pero **no aparecen como EA en el directorio público del IRS**, y la única credencial con documento es el AFSP.
   2. Aunque fueran EA, la palabra "certificados" está prohibida para los EA (Circular 230 §10.30, ver 1.4).
 - **Decisión (2026-10-10): publicar lo verificado y subir de nivel solo con prueba.** ✅
-  - **Texto publicado:** "Preparadores del Annual Filing Season Program del IRS: si auditan una declaración que preparamos, te representamos." En inglés: "IRS Annual Filing Season Program preparers — if a return we prepared is audited, we represent you."
+  - **Texto publicado:** "Preparadores que completaron el Annual Filing Season Program del IRS: si auditan una declaración que preparamos, te representamos." En inglés: "Preparers who completed the IRS Annual Filing Season Program — if a return we prepared is audited, we represent you." La barra de confianza de las páginas de servicio usa la versión corta: "Preparadores que completaron el Annual Filing Season Program del IRS".
   - **Por qué:** esperar no cuesta nada, y publicar una credencial que no tienen sí es un riesgo legal. El texto AFSP es verdadero en cualquier caso.
   - **Cómo se llegó aquí:** primero se asumió EA como supuesto de trabajo y se cambió "certificados" por "ante el IRS". Al no aparecer en el directorio, se eligió la opción menos riesgosa.
 - **Qué es un EA:** una credencial distinta del AFSP. Se obtiene aprobando un examen del IRS de tres partes y da representación completa (incluida cobranza y apelaciones). Quienes son EA no necesitan el AFSP.
@@ -267,3 +267,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-10 | Revisión cruzada: "certificado" también prohibido para EA (1.4 y 1.7), la lista de Nevada no muestra el tipo de agente (1.6), metadata de auditorías y acción pendiente en Ads (3.2) |
 | 2026-10-10 | "¿Por qué elegirnos?": "Agentes Enrolados certificados por el IRS" → "Agentes Enrolados ante el IRS" (ES y EN) |
 | 2026-10-10 | No aparecen como EA en el directorio del IRS: "¿Por qué elegirnos?" pasa al texto AFSP (lo verificado). Se sube a EA solo con prueba |
+| 2026-10-10 | Texto AFSP ajustado a "Preparadores que completaron el Annual Filing Season Program del IRS" en "¿Por qué elegirnos?" (ES/EN) y en la barra de confianza, para no sugerir respaldo del IRS |
