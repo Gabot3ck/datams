@@ -46,7 +46,7 @@ Cada decisión indica:
   |---|---|---|
   | "Representación profesional ante cualquier auditoría" | "Te acompañamos en tu auditoría con el IRS" | Menú |
   | "Negociamos tu deuda para reducirla o pagarla en cuotas" | "Revisamos tu deuda y te explicamos tus opciones" | Menú |
-  | "Installment Agreement y Offer in Compromise" | "Te ayudamos a solicitar tu plan de pagos mensuales" | Menú |
+  | "Installment Agreement y Offer in Compromise" | "Te explicamos cómo funciona y cómo solicitarlo" | Menú |
   | "…con representación real ante el IRS" | "…en español y sin promesas falsas" | Tarjeta IRS del Home y página IRS |
   | "Agentes Enrolados certificados por el IRS: te representamos si algo sale mal" | "Participamos en el Annual Filing Season Program del IRS: si auditan una declaración que preparamos, te representamos" | Sección "¿Por qué elegirnos?" |
 
@@ -108,11 +108,11 @@ Ordenado de mayor a menor urgencia para el visitante:
 2. Verificación de identidad del IRS *(nuevo)*
 3. Auditorías con el IRS
 4. Solución de deudas con el IRS
-5. Acuerdos de pago con IRS
+5. Acuerdos de pago con el IRS
 6. Seguimiento de reembolso *(nuevo en esta pestaña)*
 7. Transcripciones del IRS
 
-- **Por qué no agregamos un ítem genérico tipo "no sé cuál es mi caso":** la pestaña ya tiene 7 opciones, y más opciones paralizan a una persona nerviosa por una carta del IRS. Para quien no sabe por dónde empezar, el nombre de la pestaña y el breadcrumb ya llevan a la página general `/irs/` (ver 2.6).
+- **Por qué no agregamos un ítem genérico tipo "no sé cuál es mi caso":** la pestaña ya tiene 7 opciones, y más opciones paralizan a una persona nerviosa por una carta del IRS. Hoy a la página general `/irs/` se llega desde el breadcrumb de cada página del IRS y desde la tarjeta "IRS" del Home. La pestaña del menú no es un enlace (ver 2.7).
 
 ### 2.6 Nombre de la pestaña: "Ayuda con el IRS"
 - **Decisión:** la pestaña se llamaba "IRS & Resolución Fiscal" y ahora se llama **"Ayuda con el IRS"** ("IRS Help" en inglés). El cambio se aplicó al menú, al breadcrumb (la ruta de navegación sobre el título de cada página) y al título de la página general `/irs/`. ✅
@@ -135,6 +135,17 @@ Ordenado de mayor a menor urgencia para el visitante:
   | "Resolución con el IRS" | Correcta, pero más formal y sin búsqueda propia |
   | "IRS & Resolución Fiscal" (anterior) | Correcta, pero técnica para el público del negocio |
   | **"Ayuda con el IRS"** | ✅ Clara, cercana y con búsqueda propia |
+
+
+### 2.7 Textos finales del menú (revisión del 2026-10-10)
+- **"Acuerdos de pago con IRS" → "Acuerdos de pago con el IRS":** igual que los demás ítems y como lo escribe la gente en Google. ✅
+- **Acuerdos de pago:** la descripción pasó de "Te ayudamos a solicitar tu plan de pagos mensuales" a **"Te explicamos cómo funciona y cómo solicitarlo"**. El AFSP no cubre cobranza (ver 1.3), así que la solicitud la hace el cliente; nosotros explicamos. ✅ Conviene confirmarlo con un Enrolled Agent o abogado. ❓
+- **Verificación de identidad:** la descripción pasó de "Verificación de identidad o ingresos y robo de identidad" a **"Carta 5071C, ID.me o robo de identidad: te guiamos paso a paso"**. La versión anterior podía sugerir que nosotros verificamos por la persona, cuando solo puede hacerlo ella misma (ver 2.2). ✅
+- **Acceso directo a `/irs/` desde el menú:** las pestañas no son enlaces, y el pie del panel lleva a `/taxes/`. Hoy no hay un acceso a la página general del IRS desde el menú ni desde el footer. Para SEO no es grave, porque el breadcrumb y el Home la enlazan. Si el cliente quiere ese acceso, la opción limpia es un segundo enlace en el pie del panel ("Ver toda la ayuda con el IRS →"), visible solo cuando la pestaña activa es la del IRS. ⏳ Por decidir.
+
+### 2.8 Cartas del IRS vs. verificación de identidad
+- **Decisión:** los códigos de cartas de identidad (**5071C, 4883C, 5747C**) pertenecen **solo** a la página de Verificación de identidad. La página de Cartas del IRS trata las demás (CP2000, CP14, LT11, CP49) y, cuando la carta es de identidad, enlaza hacia Verificación de identidad. ✅ Regla fijada para la redacción.
+- **Por qué:** los códigos de carta son búsquedas muy concretas ("carta 5071C del IRS"). Si las dos páginas los trabajan, compiten entre sí en Google (canibalización).
 
 ---
 
@@ -203,3 +214,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-05 | Horario real por temporada en todo el sitio |
 | 2026-10-10 | Pestaña IRS: nuevo ítem "Verificación de identidad", "Seguimiento de reembolso" en dos pestañas, lenguaje de representación ajustado al AFSP, "certificado" eliminado. Se crea este documento |
 | 2026-10-10 | La pestaña "IRS & Resolución Fiscal" pasa a llamarse "Ayuda con el IRS" (menú, breadcrumb y página general del IRS) |
+| 2026-10-10 | Textos finales del menú IRS (acuerdos de pago, verificación de identidad) y regla de cartas vs. identidad |
