@@ -22,7 +22,10 @@ describe('WhyUsSection', () => {
     const html = await render('es');
     expect(html).toMatch(/<ul[^>]*role="list"/);
     expect((html.match(/<li/g) ?? []).length).toBe(4);
-    expect(html).toContain('Agentes Enrolados certificados por el IRS');
+    expect(html).toContain('Agentes Enrolados ante el IRS');
+    // Circular 230 §10.30: los EA no pueden describirse como "certificados"
+    expect(html).not.toContain('certificados por el IRS');
+    expect(await render('en')).not.toContain('IRS-certified');
   });
 
   it('renderiza el heading accent en inglés', async () => {
