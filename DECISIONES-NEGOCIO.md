@@ -32,7 +32,8 @@ Cada decisión indica:
 ### 1.2 "No somos abogados"
 - **Decisión:** la sección de preguntas frecuentes dice claramente que no somos abogados en Nevada y que no damos asesoría ni representación legal. ✅
 - **Por qué:** lo exige la ley, y además genera confianza. Decirle al cliente cuándo necesita un abogado es parte de ser honestos.
-- **Fundamento:** NRS 240.085.
+- **Fundamento:** NRS 240.085 (Notary Public que anuncia en otro idioma) y NRS 240A.150 (servicios de preparación de documentos, ver 1.8).
+- **Revisión (2026-10-10):** el **contenido** de la respuesta cumple: dice que no son abogados en Nevada, que no dan asesoría ni representación legal y que no cobran por eso, en ES y EN. ✅ La **forma** no alcanza como aviso de publicidad: está escondida en un acordeón y solo en el Home. Se recomienda el aviso en el pie de página de todas las páginas (ver 1.8). ⏳
 
 ### 1.3 Representación ante el IRS: qué podemos prometer
 - **Situación:** el equipo tiene **PTIN** (número obligatorio de todo preparador pagado) y el **AFSP**, cuyo nombre completo es *Annual Filing Season Program – Record of Completion*. Es el documento "Registro de finalización del Programa Anual de la Temporada de Presentación de Declaraciones". Se verificó el registro 2026 de una preparadora. **Además, el cliente dijo (2026-10-10) que sus colaboradores son "agentes certificados por el IRS".** No dijo "Enrolled Agents", y **no aparecen en el directorio público del IRS** como EA. Por eso el sitio usa la credencial verificada (AFSP) hasta tener prueba de lo contrario (ver 1.7).
@@ -115,16 +116,17 @@ Cada decisión indica:
   - **Fianza** (bond): $25,000 si la empresa tiene un solo preparador registrado, y más según el número de preparadores (NRS 240A.125). ✔️ confirmado
   - Cartel en el local con los precios.
   - Aviso escrito y contrato firmados por el cliente antes de prestar el servicio.
-  - En la publicidad, un aviso visible en el mismo idioma del anuncio de que **no son abogados**. Este punto no se pudo verificar en el texto literal.
+  - **Aviso en toda la publicidad** (NRS 240A.150): ✔️ confirmado. Debe ser "claro y visible", decir que no son abogados autorizados en Nevada y que tienen prohibido dar asesoría o representación legal, estar **en el mismo idioma del anuncio** y seguir la **forma que fija la Secretaría de Estado**. Según un resumen de la ley (falta confirmar si sigue vigente), la fórmula sería: *"I AM NOT AN ATTORNEY IN THE STATE OF NEVADA. I AM NOT LICENSED TO GIVE LEGAL ADVICE OR LEGAL REPRESENTATION."*
+  - **Uso de "DMV" en la publicidad** (según el mismo resumen, a confirmar): solo se puede usar si va seguido de un término como "servicios" y si se aclara que **no están afiliados al DMV**. Hoy el sitio usa "DMV" solo en el menú, en la tarjeta del Home y en las URLs `/dmv/`. ⏳ Revisarlo al trabajar la categoría DMV.
 - **Qué prohíbe** (según el resumen, a confirmar): dar asesoría sobre derechos, defensas, opciones o estrategias legales; comparecer en procedimientos; prometer resultados sin base; ofrecer el servicio sin registro vigente. La sanción sería de hasta $1,000 por infracción, más suspensión o revocación del registro.
 - **Decisión de negocio:** **antes de publicar el sitio, el cliente debe confirmar si está registrado como Document Preparation Service y con fianza vigente.** ⏳
   - **Si lo está:** es el mejor argumento de confianza que tiene. Es verificable en la Secretaría de Estado y responde justo al miedo al fraude de su público. Conviene mostrarlo en el sitio, con número de registro.
   - **Si no lo está:** hay que hablar con un abogado antes de publicar. La ley aplica al negocio, no solo al sitio web.
 - **Qué revisar en el sitio según la respuesta (sin cambios por ahora):**
-  - **Aviso "no somos abogados" en el pie de página**, en ES y EN, visible en todas las páginas. Hoy solo está en las preguntas frecuentes del Home (ver 1.2), y puede no bastar como aviso en la publicidad.
+  - **Aviso "no somos abogados" en el pie de página**, en ES y EN, visible en todas las páginas. ⏳ Recomendado. La respuesta de las preguntas frecuentes del Home (ver 1.2) tiene el contenido correcto, pero **no cumple la forma**: está dentro de un acordeón cerrado (no es "claro y visible"), solo aparece en el Home (las páginas de servicio también son publicidad) y es una paráfrasis, no la fórmula oficial de la Secretaría de Estado.
   - **"Te explicamos tus opciones"** (menú de deudas con el IRS): queda cerca de "asesoría sobre opciones". Que lo revise el abogado.
   - **Página de divorcios:** la descripción propuesta decía "sin necesidad de un abogado para el papeleo", que puede leerse como reemplazar a un abogado. Se cambió en la estrategia de contenido por: "Te ayudamos a llenar los formularios de divorcio en español. No somos abogados ni damos asesoría legal." ✅
-- **Fuentes:** [Secretaría de Estado de Nevada — requisitos de fianza](https://nvsosuat.nv.gov/licensing/document-preparation-services/bond-requirements), [NRS 240A.123](https://nevada.public.law/statutes/nrs_240A.123), [NRS 240A.125](https://nevada.public.law/statutes/nrs_240a.125).
+- **Fuentes:** [Secretaría de Estado de Nevada — requisitos de fianza](https://nvsosuat.nv.gov/licensing/document-preparation-services/bond-requirements), [Secretaría de Estado — obligaciones de un Document Preparation Service](https://nvsosuat.nv.gov/licensing/document-preparation-services/duties-obligations-of-a-document-preparation-service), [NRS 240A.123](https://nevada.public.law/statutes/nrs_240A.123), [NRS 240A.125](https://nevada.public.law/statutes/nrs_240a.125), [NRS 240A.150](https://nevada.public.law/statutes/nrs_240a.150), [NRS 240A completo](https://www.leg.state.nv.us/Division/Legal/LaWLibrary/NRS/NRS-240A.html).
 
 ---
 
@@ -297,3 +299,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-10 | Texto AFSP ajustado a "Preparadores que completaron el Annual Filing Season Program del IRS" en "¿Por qué elegirnos?" (ES/EN) y en la barra de confianza, para no sugerir respaldo del IRS |
 | 2026-10-10 | No aparecen en la lista de Acceptance Agents de Nevada: se quita "IRS Authorized CAA" del Home (ES/EN) y se reemplaza por la credencial AFSP. Guía para la página de ITIN (1.6) |
 | 2026-10-10 | Se identifica la ley de Document Preparation Services (NRS 240A): pregunta al cliente sobre registro y fianza antes de publicar (1.8) |
+| 2026-10-10 | Confirmado el aviso obligatorio en la publicidad (NRS 240A.150). El FAQ cumple en contenido pero no en forma: se recomienda aviso en el pie de página. Se detecta la regla sobre el uso de "DMV" (1.2 y 1.8) |
