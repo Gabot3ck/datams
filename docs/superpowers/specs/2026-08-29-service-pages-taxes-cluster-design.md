@@ -314,3 +314,19 @@ H1: *ITIN y EIN en Español en Las Vegas* (redactar metadata). `ServiceList` con
 - Refactor de `HomePage.astro` / `ServicesSection.astro` más allá de corregir pillarUrls.
 - Tests unitarios completos de helpers (anotado como pendiente).
 - Blog, `/nosotros`.
+
+---
+
+## Adenda 2026-10-10 — pedidos del cliente en la pestaña IRS
+
+Justificación de negocio en `DECISIONES-NEGOCIO.md` (raíz). Impacto en el Plan 2:
+
+| # | URL | H1 tentativo | Ángulo único |
+|---|-----|--------------|--------------|
+| 18 | `/irs/verificacion-identidad` | Verificación de Identidad del IRS en Español | Cartas 5071C / 4883C / 5747C, ID.me, retención por verificación de ingresos, robo de identidad (Form 14039, IP PIN). Copy: "te guiamos" — la verificación la hace el contribuyente. Enlaza a `/irs/resolucion-cartas` y `/taxes/seguimiento-reembolso`. Keyword grupo 9 tentativo (validar en Keyword Planner). |
+
+Cambios de contenido en páginas ya planificadas:
+- `/taxes/seguimiento-reembolso` (#5): H2 por caso — pendiente, atrasado, no cobrado (cheque perdido, Form 3911) — + H2 corto "reembolsos no reclamados de años sin declarar" (plazo de 3 años) que enlaza a `/taxes/declaracion-personal#anos-anteriores`. La retención por verificación de identidad se menciona y enlaza a #18, no se desarrolla.
+- `/taxes/declaracion-personal`: nueva sección `#anos-anteriores` (dueña de la intención "reembolsos no reclamados"). Si se ponen años concretos, actualizarlos cada año.
+- `/irs/resolucion-cartas` (#9): mantiene CP2000 / CP14 / LT11 / CP49; las cartas de identidad enlazan a #18.
+- `/irs/auditorias` (#8), `/irs/solucion-deudas` (#7), `/irs/acuerdos-pago` (#10): equipo PTIN + AFSP → nada de "te representamos" ni "negociamos" en cobranza; en auditorías solo "si preparamos tu declaración, te representamos".
