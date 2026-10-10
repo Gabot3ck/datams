@@ -72,3 +72,12 @@ describe('Navbar — pestaña IRS (decisiones 2026-10-10, ver DECISIONES-NEGOCIO
     });
   }
 });
+
+describe('Navbar — nombre de la pestaña IRS (decisión 2026-10-10)', () => {
+  it('usa "Ayuda con el IRS" / "IRS Help"', () => {
+    expect(src).toContain('label: "Ayuda con el IRS"');
+    expect(src).toContain('label: "IRS Help"');
+    expect(src).not.toContain('Resolución Fiscal');
+    expect(src).not.toContain('Resolución del IRS');
+  });
+});

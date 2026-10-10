@@ -222,7 +222,7 @@ H1: *Taxes en Español en Las Vegas, Sin Sorpresas en el Precio*. Contenido ya r
 | 6 | `/taxes/formularios-1099` | Formularios 1099-NEC para Contratistas en Las Vegas | 1099-NEC vs 1099-MISC vs 1099-K, quién debe emitir, pagos estimados trimestrales, deducciones de contratista, multas por no emitir. |
 
 ### Pilar IRS — `/irs/` (NUEVO)
-H1: *IRS y Resolución Fiscal en Español en Las Vegas* (redactar metadata). `ServiceList` con 5 hijas + `itemList`. Breadcrumb ya anida `/irs/*` bajo Taxes.
+H1: *Ayuda con el IRS en Español en Las Vegas* (renombrado 2026-10-10; Title: "Ayuda con el IRS en Español | Las Vegas"). `ServiceList` con 5 hijas + `itemList`. Breadcrumb ya anida `/irs/*` bajo Taxes.
 
 | # | Slug | H1 | Ángulo único |
 |---|---|---|---|

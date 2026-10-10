@@ -14,7 +14,7 @@ Cada decisión indica:
 
 ## Índice
 1. [Cumplimiento legal en la publicidad](#1-cumplimiento-legal-en-la-publicidad)
-2. [Menú IRS & Resolución Fiscal](#2-menú-irs--resolución-fiscal)
+2. [Menú "Ayuda con el IRS"](#2-menú-ayuda-con-el-irs)
 3. [Cómo cuidamos las keywords de Google Ads](#3-cómo-cuidamos-las-keywords-de-google-ads)
 4. [Horario y forma de atención](#4-horario-y-forma-de-atención)
 5. [Preguntas abiertas para el cliente](#5-preguntas-abiertas-para-el-cliente)
@@ -72,16 +72,16 @@ Cada decisión indica:
 
 ---
 
-## 2. Menú IRS & Resolución Fiscal
+## 2. Menú "Ayuda con el IRS"
 
 ### 2.1 Pedido del cliente
-El cliente pidió agregar dos ítems a la pestaña "IRS & Resolución Fiscal":
+El cliente pidió agregar dos ítems a la pestaña que entonces se llamaba "IRS & Resolución Fiscal" (hoy "Ayuda con el IRS", ver 2.6):
 - **"Resolución del IRS"**: verificación de identidad, verificación de ingresos y usurpación de identidad.
 - **Reembolsos**: no cobrados, pendientes y atrasados.
 
 ### 2.2 Verificación de identidad → página nueva
 - **Decisión:** nuevo ítem **"Verificación de identidad del IRS"** con la página `/irs/verificacion-identidad`. ✅ en el menú · ⏳ la página se crea con el resto del clúster IRS.
-- **Por qué el nombre cambió:** "Resolución del IRS" repite el nombre de la pestaña ("IRS & Resolución Fiscal") y no le dice al visitante qué problema resuelve. "Verificación de identidad" es lo que la persona lee en su carta y lo que escribe en Google.
+- **Por qué el nombre cambió:** "Resolución del IRS" repetía el nombre que tenía la pestaña ("IRS & Resolución Fiscal") y no le dice al visitante qué problema resuelve. "Verificación de identidad" es lo que la persona lee en su carta y lo que escribe en Google.
 - **Por qué una página propia:** es un problema muy común en la comunidad hispana (ITIN, declaraciones duplicadas, alguien que usó tu número). El IRS **retiene el reembolso** hasta que la persona se verifica. Ninguna página del sitio lo cubría, así que no le quita búsquedas a otra.
 - **Qué incluye la página:** cartas 5071C, 4883C y 5747C; ID.me; retención por verificación de ingresos; robo de identidad (formulario 14039 e IP PIN).
 - **Cuidado en el texto:** la verificación la hace la persona misma (en línea, por teléfono o en una oficina del IRS). El sitio dice "te guiamos paso a paso", nunca "verificamos por ti".
@@ -90,7 +90,7 @@ El cliente pidió agregar dos ítems a la pestaña "IRS & Resolución Fiscal":
 - **Decisión:** "no cobrados", "pendientes" y "atrasados" quedan en **un solo ítem: "Seguimiento de reembolso"**. La descripción es *"Pendiente, atrasado o no cobrado: lo rastreamos con el IRS"*. ✅
 - **Por qué no tres ítems:** "pendiente" y "atrasado" son la misma búsqueda ("mi reembolso no ha llegado"). Tres ítems llevarían a la misma página y llenarían el menú. Y si fueran tres páginas, competirían entre sí en Google (ver sección 3).
 - **Por qué no la palabra sola "Reembolsos":** es ambigua. Puede entenderse como "¿me devuelven mi dinero si no quedo satisfecho?". "Seguimiento de reembolso" coincide además con la keyword de Ads de esta página.
-- **Por qué aparece en dos pestañas:** se mantiene en "Taxes Personales" y ahora también aparece en "IRS & Resolución Fiscal", donde el cliente lo pidió. Es la misma página con dos entradas, sin riesgo para el SEO.
+- **Por qué aparece en dos pestañas:** se mantiene en "Taxes Personales" y ahora también aparece en "Ayuda con el IRS", donde el cliente lo pidió. Es la misma página con dos entradas, sin riesgo para el SEO.
 - **El label anterior "Seguimiento de impuestos"** se corrigió: la página trata del reembolso, no de los impuestos en general.
 
 ### 2.4 Los dos sentidos de "no cobrados"
@@ -112,8 +112,29 @@ Ordenado de mayor a menor urgencia para el visitante:
 6. Seguimiento de reembolso *(nuevo en esta pestaña)*
 7. Transcripciones del IRS
 
-- **Por qué no agregamos "Ayuda con el IRS" como ítem genérico:** la pestaña ya tiene 7 opciones. Más opciones paralizan a una persona nerviosa por una carta del IRS. Además, ese ítem habría tomado keywords que ya tienen otra página asignada.
+- **Por qué no agregamos un ítem genérico tipo "no sé cuál es mi caso":** la pestaña ya tiene 7 opciones, y más opciones paralizan a una persona nerviosa por una carta del IRS. Para quien no sabe por dónde empezar, el nombre de la pestaña y el breadcrumb ya llevan a la página general `/irs/` (ver 2.6).
 
+### 2.6 Nombre de la pestaña: "Ayuda con el IRS"
+- **Decisión:** la pestaña se llamaba "IRS & Resolución Fiscal" y ahora se llama **"Ayuda con el IRS"** ("IRS Help" en inglés). El cambio se aplicó al menú, al breadcrumb (la ruta de navegación sobre el título de cada página) y al título de la página general `/irs/`. ✅
+- **Propuesta del cliente:** "IRS & Resolución del IRS", para que se viera la palabra "Resolución". Se descartó por tres razones:
+
+  1. **Repite "IRS" dos veces en un texto de cuatro palabras.** En un menú cada palabra cuenta, porque el visitante lo lee de un vistazo. Una repetición tan cercana parece un error de redacción, y en un negocio que vende precisión con documentos del IRS eso resta credibilidad justo donde más importa.
+  2. **"Resolución del IRS" cambia el sentido.** En español significa "una resolución que dictó el IRS", es decir, una decisión o fallo del propio IRS. No transmite "te ayudamos a resolver tu problema con el IRS". Una persona que ya está nerviosa podría entender que la pestaña trata de decisiones del IRS en su contra.
+  3. **El texto funciona como enlace en todo el sitio.** El nombre de la pestaña también es el breadcrumb de todas las páginas del IRS (`Inicio > Taxes > Ayuda con el IRS > …`), y ese enlace apunta a la página general `/irs/`. Google usa el texto de los enlaces internos para entender de qué trata cada página. Un texto que repite palabras y no coincide con lo que la gente busca no le dice nada útil.
+
+- **Por qué "Ayuda con el IRS":**
+  - Es como habla el cliente real: "necesito ayuda con el IRS".
+  - Cubre todo lo que hay en la pestaña (cartas, identidad, auditorías, deudas, pagos, reembolsos, transcripciones) sin prometer un resultado.
+  - **No pertenece a ninguna página en el análisis de Ads**, así que la página general `/irs/` gana una búsqueda propia (grupo 10 tentativo) sin quitársela a otra.
+- **Alternativas evaluadas:**
+
+  | Opción | Resultado |
+  |---|---|
+  | "IRS & Resolución del IRS" | ❌ Repite "IRS" y cambia el sentido (ver arriba) |
+  | "Problemas con el IRS" | ❌ Ya es una búsqueda asignada a "Solución de deudas". Usarla en el breadcrumb le quitaría fuerza a esa página (canibalización) |
+  | "Resolución con el IRS" | Correcta, pero más formal y sin búsqueda propia |
+  | "IRS & Resolución Fiscal" (anterior) | Correcta, pero técnica para el público del negocio |
+  | **"Ayuda con el IRS"** | ✅ Clara, cercana y con búsqueda propia |
 
 ---
 
@@ -136,9 +157,10 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 7 | resolución de cartas del IRS | `/irs/resolucion-cartas` |
 | 8 | seguimiento de mi reembolso de taxes | `/taxes/seguimiento-reembolso` |
 | 9 *(nuevo, tentativo)* | verificación de identidad IRS | `/irs/verificacion-identidad` |
+| 10 *(nuevo, tentativo)* | ayuda con el IRS | `/irs/` (página general) |
 
 - **Grupo 6 y el límite legal:** se mantiene la keyword de Ads. Pero como solo podemos representar en auditorías de declaraciones que preparamos (ver 1.3), el título de la página dice "Auditorías del IRS" y la frase "representación" aparece con su condición: "si preparamos tu declaración, te representamos en la auditoría".
-- **Grupo 9:** no viene del análisis original de Ads. **Hay que validar su volumen en Keyword Planner** antes de crear un grupo de anuncios para esta página. ⏳
+- **Grupos 9 y 10:** no vienen del análisis original de Ads. **Hay que validar su volumen en Keyword Planner** antes de crear grupos de anuncios para estas páginas. ⏳
 
 ---
 
@@ -180,3 +202,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-09-23 | Atención por orden de llegada: preguntas frecuentes actualizadas; botones de agendar en pausa |
 | 2026-10-05 | Horario real por temporada en todo el sitio |
 | 2026-10-10 | Pestaña IRS: nuevo ítem "Verificación de identidad", "Seguimiento de reembolso" en dos pestañas, lenguaje de representación ajustado al AFSP, "certificado" eliminado. Se crea este documento |
+| 2026-10-10 | La pestaña "IRS & Resolución Fiscal" pasa a llamarse "Ayuda con el IRS" (menú, breadcrumb y página general del IRS) |

@@ -17,7 +17,7 @@ type CategoryEntry = {
 const categoryMap: Record<'es' | 'en', Record<string, CategoryEntry>> = {
   es: {
     taxes:       { label: 'Taxes',                  url: '/taxes/' },
-    irs:         { label: 'IRS & Resolución Fiscal', url: '/irs/', parent: 'taxes' },
+    irs:         { label: 'Ayuda con el IRS', url: '/irs/', parent: 'taxes' },
     'itin-ein':  { label: 'ITIN / EIN',              url: '/itin-ein/' },
     'notary-public': { label: 'Notary Public',       url: '/notary-public/' },
     inmigracion: { label: 'Inmigración',             url: '/inmigracion/' },
@@ -28,7 +28,7 @@ const categoryMap: Record<'es' | 'en', Record<string, CategoryEntry>> = {
   },
   en: {
     taxes:       { label: 'Taxes',               url: '/en/taxes/' },
-    irs:         { label: 'IRS & Tax Resolution', url: '/en/irs/', parent: 'taxes' },
+    irs:         { label: 'IRS Help', url: '/en/irs/', parent: 'taxes' },
     'itin-ein':  { label: 'ITIN / EIN',           url: '/en/itin-ein/' },
     'notary-public': { label: 'Notary Public',    url: '/en/notary-public/' },
     inmigracion: { label: 'Immigration',          url: '/en/immigration/' },

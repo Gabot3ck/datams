@@ -153,7 +153,7 @@ La sección **Community & Stats** (ahora en `CommunitySection.astro`, después d
 
 | Label | Tabs del mega menú |
 |-------|--------------------|
-| Taxes | Taxes Personales · Taxes de Negocio · IRS & Resolución Fiscal |
+| Taxes | Taxes Personales · Taxes de Negocio · Ayuda con el IRS |
 | ITIN / EIN | ITIN & EIN (3 items) |
 | Notary Public | Poderes · Declaraciones · Propiedad · Apostillas |
 | Inmigración | Trámites Migratorios · Documentos y Apoyo |
@@ -197,7 +197,7 @@ interface NavItem {
 ### Breadcrumb.astro
 - Props: `lang: 'es' | 'en'`, `currentLabel: string` (el H1 exacto de la página)
 - Infiere categoría desde `Astro.url.pathname` (quita prefijo `/en`, toma primer segmento)
-- Caso especial: `/irs/*` se anida bajo Taxes → `Inicio > Taxes > IRS & Resolución Fiscal > {currentLabel}`
+- Caso especial: `/irs/*` se anida bajo Taxes → `Inicio > Taxes > Ayuda con el IRS > {currentLabel}`
 - Emite JSON-LD `BreadcrumbList` usando `SITE_URL` de `src/config/site.ts`
 - Uso: justo debajo del header en cada página de servicio, pasando el H1 como `currentLabel`
 
