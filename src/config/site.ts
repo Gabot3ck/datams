@@ -52,7 +52,8 @@ export const TRUST_BAR_DEFAULT_ES = [
   'Atención 100% en español',
   'Precio fijo, conocido antes de empezar',
   'Oficina física en Las Vegas — no somos solo una página web',
-  '[PLACEHOLDER: preparadores con PTIN autorizado por el IRS — confirmar credencial]',
+  // Nunca "certificados": el IRS prohíbe ese término para el AFSP (ver DECISIONES-NEGOCIO.md)
+  'Preparadores participantes del Annual Filing Season Program del IRS',
 ];
 
 const PILLAR_PATHS = new Set([
