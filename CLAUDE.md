@@ -6,6 +6,8 @@ Web de taxes, notary public y servicios corporativos para comunidad hispana en E
 
 > **Cumplimiento legal (IRS):** el equipo es PTIN + AFSP (no EA/CPA/abogado). Representación ante el IRS **solo** en auditorías de declaraciones que ellos prepararon; nunca en cobranza (deudas, acuerdos de pago, OIC) ni apelaciones. Prohibido "certificado/certified" para el AFSP. Usar "te acompañamos / te ayudamos a preparar tu solicitud".
 
+> **Datos de keywords:** `reference-data/` (gitignored) tiene los exports originales de Keyword Planner (UTF-16, tabulado; volúmenes en rangos 0/50/500/5000) y la copia original de `CONTENT-STRATEGY.md`. La versión vigente de la estrategia es `reference-md/CONTENT-STRATEGY.md`.
+
 > **Decisiones de negocio:** `DECISIONES-NEGOCIO.md` (raíz) es la bitácora para el cliente — qué decidimos, por qué y con qué fundamento. Agregar una entrada cada vez que una decisión de negocio/legal/SEO cambie el sitio.
 
 ## Stack

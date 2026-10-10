@@ -171,10 +171,11 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 7 | resolución de cartas del IRS | `/irs/resolucion-cartas` |
 | 8 | seguimiento de mi reembolso de taxes | `/taxes/seguimiento-reembolso` |
 | 9 *(nuevo, tentativo)* | verificación de identidad IRS | `/irs/verificacion-identidad` |
-| 10 *(nuevo, tentativo)* | ayuda con el IRS | `/irs/` (página general) |
+| 10 *(nuevo)* | ayuda con el IRS | `/irs/` (página general) |
 
 - **Grupo 6 y el límite legal:** se mantiene la keyword de Ads. Pero como solo podemos representar en auditorías de declaraciones que preparamos (ver 1.3), el título de la página dice "Auditorías del IRS" y la frase "representación" aparece con su condición: "si preparamos tu declaración, te representamos en la auditoría".
-- **Grupos 9 y 10:** no vienen del análisis original de Ads. **Hay que validar su volumen en Keyword Planner** antes de crear grupos de anuncios para estas páginas. ⏳
+- **Grupo 10 — validado:** "ayuda con el irs", "irs ayuda" y "ayuda del irs" sí aparecen en los datos de Ads de la competencia. "problemas con el irs" aparece con 0 búsquedas. Confirma que el nombre "Ayuda con el IRS" coincide con cómo busca la gente. ✅
+- **Grupo 9 — sin datos:** ninguna de las ~394 keywords de la competencia trata de verificación o robo de identidad. Puede ser una oportunidad (nadie compite por ella) o puede que tenga poco volumen. **Hay que consultarlo en Keyword Planner** con términos como "verificación de identidad IRS", "carta 5071C" y "robo de identidad IRS" antes de invertir en anuncios. ⏳
 
 ---
 
