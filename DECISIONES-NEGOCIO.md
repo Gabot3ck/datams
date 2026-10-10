@@ -107,6 +107,25 @@ Cada decisión indica:
 - **Si se confirma EA:** cambiar a "Agentes Enrolados ante el IRS: te representamos si algo sale mal." y evaluar ampliar "te representamos" en deudas, acuerdos de pago y apelaciones, un diferenciador fuerte frente a la competencia.
 - **Mientras tanto:** el menú y las páginas del IRS mantienen el lenguaje prudente ("te acompañamos", "te explicamos tus opciones").
 
+### 1.8 Servicio de preparación de documentos (NRS 240A)
+- **Situación:** Nevada regula a quien, cobrando, ayuda a otros a preparar documentos legales: los **Document Preparation Services** (capítulo NRS 240A). La definición incluye **preparar declaraciones de impuestos** y, según el resumen revisado, también trámites de inmigración, documentos para tribunales o agencias y actas. Eso cubre casi todo lo que ofrece el negocio. ❓
+- **Exención de los Enrolled Agents, que aquí no aplica:** la ley exime al EA en lo tributario **solo si no ofrece otros servicios de preparación de documentos que requieran registro**. Como el negocio también hace inmigración, corte, DMV y otros trámites, **la exención no aplicaría aunque fueran EA**. Los notarios tampoco están exentos por el solo hecho de serlo.
+- **Qué exige si aplica** (confirmado: registro y fianza; el resto según el resumen de la ley, a confirmar con un abogado):
+  - **Registro** ante la Secretaría de Estado de Nevada. ✔️ confirmado
+  - **Fianza** (bond): $25,000 si la empresa tiene un solo preparador registrado, y más según el número de preparadores (NRS 240A.125). ✔️ confirmado
+  - Cartel en el local con los precios.
+  - Aviso escrito y contrato firmados por el cliente antes de prestar el servicio.
+  - En la publicidad, un aviso visible en el mismo idioma del anuncio de que **no son abogados**. Este punto no se pudo verificar en el texto literal.
+- **Qué prohíbe** (según el resumen, a confirmar): dar asesoría sobre derechos, defensas, opciones o estrategias legales; comparecer en procedimientos; prometer resultados sin base; ofrecer el servicio sin registro vigente. La sanción sería de hasta $1,000 por infracción, más suspensión o revocación del registro.
+- **Decisión de negocio:** **antes de publicar el sitio, el cliente debe confirmar si está registrado como Document Preparation Service y con fianza vigente.** ⏳
+  - **Si lo está:** es el mejor argumento de confianza que tiene. Es verificable en la Secretaría de Estado y responde justo al miedo al fraude de su público. Conviene mostrarlo en el sitio, con número de registro.
+  - **Si no lo está:** hay que hablar con un abogado antes de publicar. La ley aplica al negocio, no solo al sitio web.
+- **Qué revisar en el sitio según la respuesta (sin cambios por ahora):**
+  - **Aviso "no somos abogados" en el pie de página**, en ES y EN, visible en todas las páginas. Hoy solo está en las preguntas frecuentes del Home (ver 1.2), y puede no bastar como aviso en la publicidad.
+  - **"Te explicamos tus opciones"** (menú de deudas con el IRS): queda cerca de "asesoría sobre opciones". Que lo revise el abogado.
+  - **Página de divorcios:** la descripción propuesta decía "sin necesidad de un abogado para el papeleo", que puede leerse como reemplazar a un abogado. Se cambió en la estrategia de contenido por: "Te ayudamos a llenar los formularios de divorcio en español. No somos abogados ni damos asesoría legal." ✅
+- **Fuentes:** [Secretaría de Estado de Nevada — requisitos de fianza](https://nvsosuat.nv.gov/licensing/document-preparation-services/bond-requirements), [NRS 240A.123](https://nevada.public.law/statutes/nrs_240A.123), [NRS 240A.125](https://nevada.public.law/statutes/nrs_240a.125).
+
 ---
 
 ## 2. Menú "Ayuda con el IRS"
@@ -244,18 +263,19 @@ Ordenado de mayor a menor urgencia para el visitante:
 
 ## 5. Preguntas abiertas para el cliente
 
-**Mensaje sugerido para el cliente** (cubre las preguntas 1 y 2):
+**Mensaje sugerido para el cliente** (cubre las preguntas 1, 2 y 3):
 
-> ¿De dónde sale la insignia "IRS Authorized CAA"? No los encontramos en la lista de agentes autorizados del IRS para Nevada. Si tienen el acuerdo, ¿bajo qué nombre aparecen? Para el ITIN: ¿cómo manejan hoy los documentos originales del cliente? Y si alguien del equipo tiene la tarjeta de Enrolled Agent, por favor envíennos el número de enrolamiento.
+> ¿De dónde sale la insignia "IRS Authorized CAA"? No los encontramos en la lista de agentes autorizados del IRS para Nevada. Si tienen el acuerdo, ¿bajo qué nombre aparecen? Para el ITIN: ¿cómo manejan hoy los documentos originales del cliente? Si alguien del equipo tiene la tarjeta de Enrolled Agent, por favor envíennos el número de enrolamiento. Y por último: ¿están registrados en la Secretaría de Estado de Nevada como Document Preparation Service, con fianza? Si es así, ¿cuál es el número de registro?
 
 | # | Pregunta | Qué cambia según la respuesta |
 |---|---|---|
 | 1 | No aparecen en la lista de Acceptance Agents de Nevada. Si tienen el acuerdo CAA, ¿bajo qué nombre está? (número de oficina o acuerdo firmado). ¿Cómo manejan hoy los documentos originales en el ITIN? Ver 1.6 | Si prueban que son CAA: vuelve "IRS Authorized CAA" y el argumento del pasaporte en la página de ITIN |
 | 2 | El cliente dice que sus colaboradores son "agentes certificados por el IRS", pero no aparecen como EA en el directorio del IRS. ¿Pueden mostrar la tarjeta de Enrolled Agent (con número de enrolamiento)? Ver 1.7 | Si son EA: "¿Por qué elegirnos?" sube a "Agentes Enrolados" y se puede ampliar "te representamos". Si no: queda el texto AFSP actual |
-| 3 | ¿Aceptan cambiar "Garantizamos tener el mejor reembolso"? | Texto de "¿Por qué elegirnos?" |
-| 4 | ¿La primera consulta sigue siendo gratis? | Botones y textos que dicen "consulta sin costo" |
-| 5 | ¿Abren los domingos en alguna temporada? | Horario del sitio y de Google |
-| 6 | ¿Planean ofrecer agendamiento de citas? | Botones "Agendar cita" (ver 4.2) |
+| 3 | ¿Están registrados como Document Preparation Service en la Secretaría de Estado de Nevada, con fianza vigente? ¿Cuál es el número de registro? Ver 1.8 | Si lo están: se muestra como argumento de confianza. Si no: consultar a un abogado antes de publicar |
+| 4 | ¿Aceptan cambiar "Garantizamos tener el mejor reembolso"? | Texto de "¿Por qué elegirnos?" |
+| 5 | ¿La primera consulta sigue siendo gratis? | Botones y textos que dicen "consulta sin costo" |
+| 6 | ¿Abren los domingos en alguna temporada? | Horario del sitio y de Google |
+| 7 | ¿Planean ofrecer agendamiento de citas? | Botones "Agendar cita" (ver 4.2) |
 
 ---
 
@@ -276,3 +296,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-10 | No aparecen como EA en el directorio del IRS: "¿Por qué elegirnos?" pasa al texto AFSP (lo verificado). Se sube a EA solo con prueba |
 | 2026-10-10 | Texto AFSP ajustado a "Preparadores que completaron el Annual Filing Season Program del IRS" en "¿Por qué elegirnos?" (ES/EN) y en la barra de confianza, para no sugerir respaldo del IRS |
 | 2026-10-10 | No aparecen en la lista de Acceptance Agents de Nevada: se quita "IRS Authorized CAA" del Home (ES/EN) y se reemplaza por la credencial AFSP. Guía para la página de ITIN (1.6) |
+| 2026-10-10 | Se identifica la ley de Document Preparation Services (NRS 240A): pregunta al cliente sobre registro y fianza antes de publicar (1.8) |
