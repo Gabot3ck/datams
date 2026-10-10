@@ -192,6 +192,7 @@ interface NavItem {
 - **Footer del panel** (siempre pegado al fondo, independiente del número de items):
   - Categorías con pilar (`pillarUrl`): text-link `"Ver todos los servicios de X →"` / `"See all services in X →"`
   - "Más Servicios": 4 mini-links separados por `·` (Negocio · DMV · Formularios Corte · Otros)
+  - Subcategoría con pilar propio (`allLink` en `MegaSubcategory`, hoy solo "Ayuda con el IRS" → `/irs/`): segundo link "Ver toda la ayuda con el IRS →" visible solo con esa pestaña activa. En mobile va al final de la lista del sub-acordeón
   - Estilo: `text-sm font-semibold text-brand-light hover:underline` — discreto, NO botón relleno
 
 ### Breadcrumb.astro
