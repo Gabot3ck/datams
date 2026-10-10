@@ -4,6 +4,10 @@ Web de taxes, notary public y servicios corporativos para comunidad hispana en E
 
 > **Cumplimiento legal (Nevada):** el negocio NO es despacho de abogados, por lo que en español está prohibido usar "notario", "notaría", "notarial" o "licenciado" en publicidad (incluye este sitio). Usar siempre **"Notary Public"** / "notary public". Ver NRS 240.085.
 
+> **Cumplimiento legal (IRS):** el equipo es PTIN + AFSP (no EA/CPA/abogado). Representación ante el IRS **solo** en auditorías de declaraciones que ellos prepararon; nunca en cobranza (deudas, acuerdos de pago, OIC) ni apelaciones. Prohibido "certificado/certified" para el AFSP. Usar "te acompañamos / te ayudamos a preparar tu solicitud".
+
+> **Decisiones de negocio:** `DECISIONES-NEGOCIO.md` (raíz) es la bitácora para el cliente — qué decidimos, por qué y con qué fundamento. Agregar una entrada cada vez que una decisión de negocio/legal/SEO cambie el sitio.
+
 ## Stack
 
 - **Framework**: Astro 6
