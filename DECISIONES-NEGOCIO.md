@@ -69,17 +69,20 @@ Cada decisión indica:
 - **Fundamento:** Circular 230 §10.30; advertencias del IRS sobre cómo elegir un preparador.
 
 ### 1.6 "IRS Authorized CAA"
-- **Situación:** la sección de comunidad del Home muestra "IRS Authorized CAA" (Certifying Acceptance Agent). No sabemos si el negocio realmente tiene esa designación. ❓
-- **Qué es:** el CAA es un acuerdo firmado con el IRS para tramitar ITIN. Es distinto del AFSP. Un CAA **autentica en la oficina** el pasaporte y los documentos del cliente y se los devuelve en el momento. Un Acceptance Agent común, o quien no tiene designación, debe enviar los originales o copias certificadas al IRS.
-- **Cómo verificarlo:**
-  1. **Lista pública del IRS:** el IRS publica los Acceptance Agents de Nevada (nombre, dirección y teléfono) en [irs.gov/individuals/international-taxpayers/acceptance-agents-nevada](https://www.irs.gov/individuals/international-taxpayers/acceptance-agents-nevada). Hay que buscar el nombre del negocio o el de su dueño. **Sirve para saber si el negocio aparece, pero no necesariamente qué tipo de agente es:** el tipo (CAA o AA) se confirma con los pasos 2 y 3.
-  2. **Pregunta práctica al cliente:** "Cuando tramitan un ITIN, ¿el cliente se lleva su pasaporte el mismo día, o lo envían al IRS?". Si se lo lleva el mismo día, probablemente son CAA.
-  3. **Documento:** un CAA tiene un acuerdo firmado con el IRS (solicitud con el Formulario 13551) y un número de oficina asignado.
-- **Qué hacer según la respuesta:**
-  - **Si es CAA:** se mantiene, y se aprovecha como argumento fuerte en la página de ITIN: "no tienes que enviar tu pasaporte original al IRS".
-  - **Si es Acceptance Agent (no certificador):** cambiar a "IRS Acceptance Agent".
-  - **Si no tiene designación:** quitarlo antes de publicar el sitio. Afirmar una designación del IRS que no se tiene es publicidad engañosa (Circular 230 §10.30).
-- **Mientras tanto:** no se modificó el sitio. Esa sección ya estaba aprobada y queda como está hasta tener la respuesta.
+- **Situación inicial:** la sección de comunidad del Home mostraba "IRS Authorized CAA" (Certifying Acceptance Agent), una designación del IRS para tramitar ITIN.
+- **Qué se encontró:** el negocio **no aparece** en la [lista pública de Acceptance Agents de Nevada](https://www.irs.gov/individuals/international-taxpayers/acceptance-agents-nevada), revisada por el IRS el 5 de octubre de 2026 (unas 128 entradas). Es una señal fuerte de que no son CAA ni Acceptance Agent común.
+  - **Sobre el asterisco de la lista:** algunas entradas lo tienen. Según la página general del programa, marcaría a los Acceptance Agents comunes, y las entradas sin asterisco serían CAA. **No está confirmado:** la página de Nevada no trae la leyenda. Para este caso no cambia nada, porque el negocio no aparece en la lista.
+- **Decisión (2026-10-10): se quitó "IRS Authorized CAA" del Home (ES y EN).** ✅ En su lugar va la credencial verificada: "Preparadores que completaron el Annual Filing Season Program del IRS". Si el cliente demuestra que tiene el acuerdo, se vuelve a poner.
+  - **Por qué:** es el mismo criterio de la 1.7. Afirmar una designación del IRS que no se puede demostrar es publicidad engañosa (Circular 230 §10.30), y retirarla no cuesta nada.
+- **Antes de dar el tema por cerrado, descartar:**
+  1. Que figuren con otro nombre: razón social, nombre del dueño, "Datas" sin apóstrofe, "Multi Services" separado.
+  2. Que la aprobación sea tan reciente que la lista todavía no la muestre.
+  3. Que el acuerdo esté a nombre de otra entidad del cliente.
+  - Si el cliente insiste en que son CAA, lo que cierra el tema es el **número de oficina o el acuerdo firmado con el IRS**.
+- **Consecuencia para la página de ITIN:** ⏳
+  - **No usar** "no tienes que enviar tu pasaporte original", ni prometer que los documentos se devuelven el mismo día. Esas dos cosas solo las puede ofrecer un CAA.
+  - **Lo seguro:** "te ayudamos a completar el formulario W-7 y a reunir tus documentos". Según las instrucciones del W-7, sin un agente autorizado los originales o copias certificadas se envían al IRS o se presentan en una oficina del IRS (Taxpayer Assistance Center).
+  - El cliente debe confirmar cómo manejan hoy los documentos originales.
 
 ### 1.7 Enrolled Agents (EA): qué credencial publicamos
 - **Situación inicial:** el primer punto de "¿Por qué elegirnos?" decía "Agentes Enrolados certificados por el IRS: te representamos si algo sale mal".
@@ -241,9 +244,13 @@ Ordenado de mayor a menor urgencia para el visitante:
 
 ## 5. Preguntas abiertas para el cliente
 
+**Mensaje sugerido para el cliente** (cubre las preguntas 1 y 2):
+
+> ¿De dónde sale la insignia "IRS Authorized CAA"? No los encontramos en la lista de agentes autorizados del IRS para Nevada. Si tienen el acuerdo, ¿bajo qué nombre aparecen? Para el ITIN: ¿cómo manejan hoy los documentos originales del cliente? Y si alguien del equipo tiene la tarjeta de Enrolled Agent, por favor envíennos el número de enrolamiento.
+
 | # | Pregunta | Qué cambia según la respuesta |
 |---|---|---|
-| 1 | ¿El negocio es CAA (Certifying Acceptance Agent) del IRS? Ver cómo verificarlo en 1.6 | Se mantiene o se quita "IRS Authorized CAA" |
+| 1 | No aparecen en la lista de Acceptance Agents de Nevada. Si tienen el acuerdo CAA, ¿bajo qué nombre está? (número de oficina o acuerdo firmado). ¿Cómo manejan hoy los documentos originales en el ITIN? Ver 1.6 | Si prueban que son CAA: vuelve "IRS Authorized CAA" y el argumento del pasaporte en la página de ITIN |
 | 2 | El cliente dice que sus colaboradores son "agentes certificados por el IRS", pero no aparecen como EA en el directorio del IRS. ¿Pueden mostrar la tarjeta de Enrolled Agent (con número de enrolamiento)? Ver 1.7 | Si son EA: "¿Por qué elegirnos?" sube a "Agentes Enrolados" y se puede ampliar "te representamos". Si no: queda el texto AFSP actual |
 | 3 | ¿Aceptan cambiar "Garantizamos tener el mejor reembolso"? | Texto de "¿Por qué elegirnos?" |
 | 4 | ¿La primera consulta sigue siendo gratis? | Botones y textos que dicen "consulta sin costo" |
@@ -268,3 +275,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-10 | "¿Por qué elegirnos?": "Agentes Enrolados certificados por el IRS" → "Agentes Enrolados ante el IRS" (ES y EN) |
 | 2026-10-10 | No aparecen como EA en el directorio del IRS: "¿Por qué elegirnos?" pasa al texto AFSP (lo verificado). Se sube a EA solo con prueba |
 | 2026-10-10 | Texto AFSP ajustado a "Preparadores que completaron el Annual Filing Season Program del IRS" en "¿Por qué elegirnos?" (ES/EN) y en la barra de confianza, para no sugerir respaldo del IRS |
+| 2026-10-10 | No aparecen en la lista de Acceptance Agents de Nevada: se quita "IRS Authorized CAA" del Home (ES/EN) y se reemplaza por la credencial AFSP. Guía para la página de ITIN (1.6) |
