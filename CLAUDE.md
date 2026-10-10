@@ -4,7 +4,7 @@ Web de taxes, notary public y servicios corporativos para comunidad hispana en E
 
 > **Cumplimiento legal (Nevada):** el negocio NO es despacho de abogados, por lo que en español está prohibido usar "notario", "notaría", "notarial" o "licenciado" en publicidad (incluye este sitio). Usar siempre **"Notary Public"** / "notary public". Ver NRS 240.085.
 
-> **Cumplimiento legal (IRS):** el equipo es PTIN + AFSP (no EA/CPA/abogado). Representación ante el IRS **solo** en auditorías de declaraciones que ellos prepararon; nunca en cobranza (deudas, acuerdos de pago, OIC) ni apelaciones. Prohibido "certificado/certified" para el AFSP. Usar "te acompañamos / te ayudamos a preparar tu solicitud".
+> **Cumplimiento legal (IRS):** confirmado PTIN + AFSP; el cliente dice que son Enrolled Agents (**supuesto sin documento**, ver `DECISIONES-NEGOCIO.md` §1.7). Hasta confirmarlo, el copy nuevo sigue la regla AFSP: representación ante el IRS **solo** en auditorías de declaraciones que ellos prepararon; nunca en cobranza (deudas, acuerdos de pago, OIC) ni apelaciones. Prohibido "certificado/certified" para el AFSP. Usar "te acompañamos / te ayudamos a preparar tu solicitud".
 
 > **Datos de keywords:** `reference-data/` (gitignored) tiene los exports originales de Keyword Planner (UTF-16, tabulado; volúmenes en rangos 0/50/500/5000) y la copia original de `CONTENT-STRATEGY.md`. La versión vigente de la estrategia es `reference-md/CONTENT-STRATEGY.md`.
 

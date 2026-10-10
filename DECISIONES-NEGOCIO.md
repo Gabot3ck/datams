@@ -35,7 +35,7 @@ Cada decisión indica:
 - **Fundamento:** NRS 240.085.
 
 ### 1.3 Representación ante el IRS: qué podemos prometer
-- **Situación:** el equipo tiene **PTIN** (número obligatorio de todo preparador pagado) y el **AFSP**, cuyo nombre completo es *Annual Filing Season Program – Record of Completion*. Es el documento "Registro de finalización del Programa Anual de la Temporada de Presentación de Declaraciones". Se verificó el registro 2026 de una preparadora. Nadie del equipo es Enrolled Agent (EA), CPA ni abogado.
+- **Situación:** el equipo tiene **PTIN** (número obligatorio de todo preparador pagado) y el **AFSP**, cuyo nombre completo es *Annual Filing Season Program – Record of Completion*. Es el documento "Registro de finalización del Programa Anual de la Temporada de Presentación de Declaraciones". Se verificó el registro 2026 de una preparadora. **Además, el cliente indicó (2026-10-10) que sus colaboradores son Enrolled Agents (EA)**; se toma como supuesto de trabajo, pendiente de documento (ver 1.7).
 - **Qué permite el AFSP:**
   - ✅ Representar al cliente **en auditorías de declaraciones que nosotros mismos preparamos y firmamos**, ante agentes y servicio al cliente del IRS.
   - ❌ **No** permite representar en cobranza: deudas, acuerdos de pago, Offer in Compromise.
@@ -81,7 +81,10 @@ Cada decisión indica:
 
 ### 1.7 "Agentes Enrolados certificados por el IRS"
 - **Situación:** el primer punto de "¿Por qué elegirnos?" dice "Agentes Enrolados certificados por el IRS: te representamos si algo sale mal". ❓
-- **Decisión:** la sección ya estaba aprobada, así que **se mantiene el texto original** a pedido del desarrollador. Queda pendiente confirmar la credencial antes de publicar el sitio.
+- **Decisión (2026-10-10):** el cliente indicó que sus colaboradores son "agentes certificados por el IRS". **Se toma como supuesto de trabajo que son Enrolled Agents (EA)** y el texto original se mantiene. Sigue como pregunta abierta hasta ver el documento. ❓
+- **Ojo con la frase del cliente:** "agentes certificados" también puede referirse al **CAA** (Certifying Acceptance Agent, ver 1.6) o al **AFSP** (el registro que ya vimos). Ninguno de los dos permite decir "Agentes Enrolados". Por eso el documento es lo que confirma.
+- **Qué se mantiene mientras tanto:** el lenguaje prudente del menú y de las páginas del IRS ("te acompañamos", "te explicamos tus opciones"). Es verdadero tanto si son EA como si no, así que no hay que cambiarlo.
+- **Si se confirma que son EA (oportunidad):** un EA tiene representación completa ante el IRS, incluida cobranza y apelaciones. Se podría volver a decir "te representamos" en deudas, acuerdos de pago y auditorías de cualquier declaración, lo que es un diferenciador fuerte frente a la competencia. Se decidirá al tener el documento.
 - **Por qué hay que confirmarlo:** un Enrolled Agent (EA) es una credencial distinta del AFSP: se obtiene aprobando un examen del IRS de tres partes y tiene representación ilimitada. Quienes son EA no necesitan el AFSP, y el equipo informó que cada preparador tiene AFSP. Si nadie es EA, la frase atribuye una credencial que no se tiene (Circular 230 §10.30), y además promete representación "si algo sale mal", que el AFSP no cubre en cobranza ni apelaciones (ver 1.3).
 - **Cómo verificarlo:** cada EA tiene una tarjeta de inscripción del IRS con número de enrolamiento.
 - **Si nadie es EA, texto sugerido:** "Preparadores del Annual Filing Season Program del IRS: si auditan una declaración que preparamos, te representamos."
@@ -220,7 +223,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 | # | Pregunta | Qué cambia según la respuesta |
 |---|---|---|
 | 1 | ¿El negocio es CAA (Certifying Acceptance Agent) del IRS? Ver cómo verificarlo en 1.6 | Se mantiene o se quita "IRS Authorized CAA" |
-| 2 | ¿Alguien del equipo es Enrolled Agent? Ver 1.7 | Se mantiene o se ajusta el primer punto de "¿Por qué elegirnos?" |
+| 2 | El cliente dice que sus colaboradores son "agentes certificados por el IRS": ¿pueden mostrar la tarjeta de Enrolled Agent (con número de enrolamiento)? Ver 1.7 | Si son EA: se confirma "¿Por qué elegirnos?" y se puede ampliar "te representamos". Si no: ajustar ese punto |
 | 3 | ¿Aceptan cambiar "Garantizamos tener el mejor reembolso"? | Texto de "¿Por qué elegirnos?" |
 | 4 | ¿La primera consulta sigue siendo gratis? | Botones y textos que dicen "consulta sin costo" |
 | 5 | ¿Abren los domingos en alguna temporada? | Horario del sitio y de Google |
@@ -239,3 +242,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-10 | Textos finales del menú IRS (acuerdos de pago, verificación de identidad) y regla de cartas vs. identidad |
 | 2026-10-10 | Enlace "Ver toda la ayuda con el IRS →" en el menú (computador y celular) |
 | 2026-10-10 | Grupo 6 pasa a "auditoría del IRS" y grupo 10 queda respaldado por datos. AFSP confirmado por preparador. Se restaura "¿Por qué elegirnos?" y se documentan las verificaciones de CAA y EA (1.6 y 1.7) |
+| 2026-10-10 | El cliente indica que sus colaboradores son "agentes certificados por el IRS": se asume EA como supuesto de trabajo, pendiente de documento (1.7) |
