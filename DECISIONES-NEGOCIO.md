@@ -35,7 +35,7 @@ Cada decisión indica:
 - **Fundamento:** NRS 240.085.
 
 ### 1.3 Representación ante el IRS: qué podemos prometer
-- **Situación:** el equipo tiene **PTIN** (número obligatorio de todo preparador pagado) y el **AFSP**, cuyo nombre completo es *Annual Filing Season Program – Record of Completion*. Es el documento "Registro de finalización del Programa Anual de la Temporada de Presentación de Declaraciones". Se verificó el registro 2026 de una preparadora. **Además, el cliente indicó (2026-10-10) que sus colaboradores son Enrolled Agents (EA)**; se toma como supuesto de trabajo, pendiente de documento (ver 1.7).
+- **Situación:** el equipo tiene **PTIN** (número obligatorio de todo preparador pagado) y el **AFSP**, cuyo nombre completo es *Annual Filing Season Program – Record of Completion*. Es el documento "Registro de finalización del Programa Anual de la Temporada de Presentación de Declaraciones". Se verificó el registro 2026 de una preparadora. **Además, el cliente dijo (2026-10-10) que sus colaboradores son "agentes certificados por el IRS".** No dijo "Enrolled Agents": se interpreta como EA solo como supuesto de trabajo, pendiente de documento (ver 1.7).
 - **Qué permite el AFSP:**
   - ✅ Representar al cliente **en auditorías de declaraciones que nosotros mismos preparamos y firmamos**, ante agentes y servicio al cliente del IRS.
   - ❌ **No** permite representar en cobranza: deudas, acuerdos de pago, Offer in Compromise.
@@ -53,7 +53,9 @@ Cada decisión indica:
 - **Fundamento:** Circular 230 del Tesoro, §10.3(f) (práctica limitada) y §10.30 (prohíbe la publicidad falsa o engañosa); Rev. Proc. 2014-42 (crea el AFSP).
 
 ### 1.4 Nunca decir "certificado" para el AFSP
-- **Decisión:** el sitio dice "participantes del Annual Filing Season Program del IRS". Nunca "certificados por el IRS". ✅
+- **Decisión:** el texto nuevo del sitio dice "participantes del Annual Filing Season Program del IRS". Nunca "certificados por el IRS". ✅
+- **La misma regla aplica a los Enrolled Agents:** la Circular 230 §10.30 les prohíbe usar el término "certified" (certificado) para describir su credencial, o sugerir que trabajan para el IRS. La fórmula correcta es "Enrolled Agent" o "inscrito para representar ante el IRS".
+- **Excepción pendiente:** el primer punto de "¿Por qué elegirnos?" todavía dice "Agentes Enrolados **certificados** por el IRS". Choca con esta regla aunque sean EA. Ver la propuesta en 1.7. ❓
 - **Por qué:** el IRS prohíbe expresamente que quienes tienen el AFSP usen la palabra "certified" (certificado) para describirse, porque el AFSP no es una certificación ni un aval del IRS.
 - **Fundamento:** Rev. Proc. 2014-42.
 - **Además:** no publicamos la foto del registro. Contiene datos personales, y el logo del IRS daría a entender que el IRS respalda al negocio.
@@ -70,7 +72,7 @@ Cada decisión indica:
 - **Situación:** la sección de comunidad del Home muestra "IRS Authorized CAA" (Certifying Acceptance Agent). No sabemos si el negocio realmente tiene esa designación. ❓
 - **Qué es:** el CAA es un acuerdo firmado con el IRS para tramitar ITIN. Es distinto del AFSP. Un CAA **autentica en la oficina** el pasaporte y los documentos del cliente y se los devuelve en el momento. Un Acceptance Agent común, o quien no tiene designación, debe enviar los originales o copias certificadas al IRS.
 - **Cómo verificarlo:**
-  1. **Lista pública del IRS:** el IRS publica los Acceptance Agents de Nevada, con nombre, dirección y tipo (CAA o AA), en [irs.gov/individuals/international-taxpayers/acceptance-agents-nevada](https://www.irs.gov/individuals/international-taxpayers/acceptance-agents-nevada). Hay que buscar el nombre del negocio o el de su dueño.
+  1. **Lista pública del IRS:** el IRS publica los Acceptance Agents de Nevada (nombre, dirección y teléfono) en [irs.gov/individuals/international-taxpayers/acceptance-agents-nevada](https://www.irs.gov/individuals/international-taxpayers/acceptance-agents-nevada). Hay que buscar el nombre del negocio o el de su dueño. **Sirve para saber si el negocio aparece, pero no necesariamente qué tipo de agente es:** el tipo (CAA o AA) se confirma con los pasos 2 y 3.
   2. **Pregunta práctica al cliente:** "Cuando tramitan un ITIN, ¿el cliente se lleva su pasaporte el mismo día, o lo envían al IRS?". Si se lo lleva el mismo día, probablemente son CAA.
   3. **Documento:** un CAA tiene un acuerdo firmado con el IRS (solicitud con el Formulario 13551) y un número de oficina asignado.
 - **Qué hacer según la respuesta:**
@@ -86,7 +88,11 @@ Cada decisión indica:
 - **Qué se mantiene mientras tanto:** el lenguaje prudente del menú y de las páginas del IRS ("te acompañamos", "te explicamos tus opciones"). Es verdadero tanto si son EA como si no, así que no hay que cambiarlo.
 - **Si se confirma que son EA (oportunidad):** un EA tiene representación completa ante el IRS, incluida cobranza y apelaciones. Se podría volver a decir "te representamos" en deudas, acuerdos de pago y auditorías de cualquier declaración, lo que es un diferenciador fuerte frente a la competencia. Se decidirá al tener el documento.
 - **Por qué hay que confirmarlo:** un Enrolled Agent (EA) es una credencial distinta del AFSP: se obtiene aprobando un examen del IRS de tres partes y tiene representación ilimitada. Quienes son EA no necesitan el AFSP, y el equipo informó que cada preparador tiene AFSP. Si nadie es EA, la frase atribuye una credencial que no se tiene (Circular 230 §10.30), y además promete representación "si algo sale mal", que el AFSP no cubre en cobranza ni apelaciones (ver 1.3).
-- **Cómo verificarlo:** cada EA tiene una tarjeta de inscripción del IRS con número de enrolamiento.
+- **Cómo verificarlo (se puede hacer hoy, sin esperar al cliente):**
+  1. **Directorio público del IRS** de preparadores con credenciales (*Directory of Federal Tax Return Preparers with Credentials and Select Qualifications*). Muestra el nombre, la ciudad y la credencial de cada preparador: EA, CPA, abogado o AFSP. Se busca por nombre y ubicación.
+  2. **Tarjeta de Enrolled Agent** del IRS, con número de enrolamiento.
+- **Problema del texto actual, aunque sean EA:** dice "Agentes Enrolados **certificados** por el IRS", y el IRS prohíbe a los EA usar "certificado" (ver 1.4).
+  - **Si son EA, texto propuesto:** "Agentes Enrolados ante el IRS: te representamos si algo sale mal." ❓ Pendiente de aprobación, porque la sección ya estaba aprobada.
 - **Si nadie es EA, texto sugerido:** "Preparadores del Annual Filing Season Program del IRS: si auditan una declaración que preparamos, te representamos."
 
 ---
@@ -150,7 +156,7 @@ Ordenado de mayor a menor urgencia para el visitante:
   | Opción | Resultado |
   |---|---|
   | "IRS & Resolución del IRS" | ❌ Repite "IRS" y cambia el sentido (ver arriba) |
-  | "Problemas con el IRS" | ❌ Ya es una búsqueda asignada a "Solución de deudas". Usarla en el breadcrumb le quitaría fuerza a esa página (canibalización) |
+  | "Problemas con el IRS" | ❌ Tiene 0 búsquedas en los datos de Ads. Además, es una variante asignada a "Solución de deudas" y pone el foco en el problema, no en la ayuda. El riesgo de canibalización es bajo justamente porque casi no se busca |
   | "Resolución con el IRS" | Correcta, pero más formal y sin búsqueda propia |
   | "IRS & Resolución Fiscal" (anterior) | Correcta, pero técnica para el público del negocio |
   | **"Ayuda con el IRS"** | ✅ Clara, cercana y con búsqueda propia |
@@ -197,6 +203,12 @@ Ordenado de mayor a menor urgencia para el visitante:
   - **Ventaja legal:** el título de la página ya no promete "representación", que con el AFSP solo aplica a declaraciones que nosotros preparamos (ver 1.3). Esa condición se explica dentro de la página: "si preparamos tu declaración, te representamos en la auditoría".
 - **Grupo 9:** no aparece en el análisis original de Ads (los competidores no trabajan este tema). **Hay que validar su volumen en Keyword Planner** antes de crear un grupo de anuncios. ⏳
 - **Grupo 10:** respaldado por los datos de Ads ("ayuda con el irs", "irs ayuda"). ✅
+  - **Acción en Google Ads:** si "ayuda con el irs" está como variante en el grupo de anuncios de deudas (grupo 5), hay que sacarla de ahí para que no compita con `/irs/`. ⏳
+- **Página de auditorías con la nueva keyword:** ✅
+  - **Title:** "Auditoría del IRS en Español | Las Vegas"
+  - **Meta description:** "¿Te llegó una auditoría del IRS? Te acompañamos en español. Si preparamos tu declaración, te representamos ante el IRS."
+  - **H1:** "Auditoría del IRS en Las Vegas: Te Acompañamos en Español"
+- **Sobre los volúmenes:** casi todas las búsquedas del análisis caen en el mismo rango (10–100 al mes), así que los datos sirven para saber **qué** busca la gente, pero no para elegir entre variantes por volumen.
 
 ---
 
@@ -243,3 +255,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-10 | Enlace "Ver toda la ayuda con el IRS →" en el menú (computador y celular) |
 | 2026-10-10 | Grupo 6 pasa a "auditoría del IRS" y grupo 10 queda respaldado por datos. AFSP confirmado por preparador. Se restaura "¿Por qué elegirnos?" y se documentan las verificaciones de CAA y EA (1.6 y 1.7) |
 | 2026-10-10 | El cliente indica que sus colaboradores son "agentes certificados por el IRS": se asume EA como supuesto de trabajo, pendiente de documento (1.7) |
+| 2026-10-10 | Revisión cruzada: "certificado" también prohibido para EA (1.4 y 1.7), la lista de Nevada no muestra el tipo de agente (1.6), metadata de auditorías y acción pendiente en Ads (3.2) |
