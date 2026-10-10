@@ -35,7 +35,7 @@ Cada decisión indica:
 - **Fundamento:** NRS 240.085.
 
 ### 1.3 Representación ante el IRS: qué podemos prometer
-- **Situación:** el equipo tiene **PTIN** (número obligatorio de todo preparador pagado) y el **AFSP**, cuyo nombre completo es *Annual Filing Season Program – Record of Completion*. Es el documento "Registro de finalización del Programa Anual de la Temporada de Presentación de Declaraciones". Se verificó el registro 2026 de una preparadora. **Además, el cliente dijo (2026-10-10) que sus colaboradores son "agentes certificados por el IRS".** No dijo "Enrolled Agents": se interpreta como EA solo como supuesto de trabajo, pendiente de documento (ver 1.7).
+- **Situación:** el equipo tiene **PTIN** (número obligatorio de todo preparador pagado) y el **AFSP**, cuyo nombre completo es *Annual Filing Season Program – Record of Completion*. Es el documento "Registro de finalización del Programa Anual de la Temporada de Presentación de Declaraciones". Se verificó el registro 2026 de una preparadora. **Además, el cliente dijo (2026-10-10) que sus colaboradores son "agentes certificados por el IRS".** No dijo "Enrolled Agents", y **no aparecen en el directorio público del IRS** como EA. Por eso el sitio usa la credencial verificada (AFSP) hasta tener prueba de lo contrario (ver 1.7).
 - **Qué permite el AFSP:**
   - ✅ Representar al cliente **en auditorías de declaraciones que nosotros mismos preparamos y firmamos**, ante agentes y servicio al cliente del IRS.
   - ❌ **No** permite representar en cobranza: deudas, acuerdos de pago, Offer in Compromise.
@@ -55,7 +55,7 @@ Cada decisión indica:
 ### 1.4 Nunca decir "certificado" para el AFSP
 - **Decisión:** el texto nuevo del sitio dice "participantes del Annual Filing Season Program del IRS". Nunca "certificados por el IRS". ✅
 - **La misma regla aplica a los Enrolled Agents:** la Circular 230 §10.30 les prohíbe usar el término "certified" (certificado) para describir su credencial, o sugerir que trabajan para el IRS. La fórmula correcta es "Enrolled Agent" o "inscrito para representar ante el IRS".
-- **Corregido (2026-10-10):** el primer punto de "¿Por qué elegirnos?" decía "Agentes Enrolados **certificados** por el IRS". Ahora dice "Agentes Enrolados **ante el IRS**" (ver 1.7). ✅
+- **Corregido (2026-10-10):** el primer punto de "¿Por qué elegirnos?" decía "Agentes Enrolados **certificados** por el IRS". Ahora usa la credencial verificada, el AFSP, sin la palabra "certificado" (ver 1.7). ✅
 - **Por qué:** el IRS prohíbe expresamente que quienes tienen el AFSP usen la palabra "certified" (certificado) para describirse, porque el AFSP no es una certificación ni un aval del IRS.
 - **Fundamento:** Rev. Proc. 2014-42.
 - **Además:** no publicamos la foto del registro. Contiene datos personales, y el logo del IRS daría a entender que el IRS respalda al negocio.
@@ -83,7 +83,10 @@ Cada decisión indica:
 
 ### 1.7 "Agentes Enrolados certificados por el IRS"
 - **Situación:** el primer punto de "¿Por qué elegirnos?" dice "Agentes Enrolados certificados por el IRS: te representamos si algo sale mal". ❓
-- **Decisión (2026-10-10):** el cliente indicó que sus colaboradores son "agentes certificados por el IRS". **Se toma como supuesto de trabajo que son Enrolled Agents (EA)** y el texto original se mantiene. Sigue como pregunta abierta hasta ver el documento. ❓
+- **Decisión final (2026-10-10): publicar lo verificado y subir de nivel solo con prueba.** ✅
+  - El cliente dijo "agentes certificados por el IRS", pero **no aparecen como EA en el directorio público del IRS**, y la única credencial con documento es el AFSP.
+  - **Por qué:** esperar no cuesta nada, y publicar una credencial que no tienen sí es un riesgo legal (Circular 230 §10.30). El texto AFSP es verdadero en cualquier caso. Si más adelante se confirma que son EA, se sube a "Agentes Enrolados ante el IRS".
+  - **Historial de este punto:** primero se asumió EA como supuesto de trabajo y se cambió "certificados" por "ante el IRS". Al no aparecer en el directorio, se eligió la opción menos riesgosa.
 - **Ojo con la frase del cliente:** "agentes certificados" también puede referirse al **CAA** (Certifying Acceptance Agent, ver 1.6) o al **AFSP** (el registro que ya vimos). Ninguno de los dos permite decir "Agentes Enrolados". Por eso el documento es lo que confirma.
 - **Qué se mantiene mientras tanto:** el lenguaje prudente del menú y de las páginas del IRS ("te acompañamos", "te explicamos tus opciones"). Es verdadero tanto si son EA como si no, así que no hay que cambiarlo.
 - **Si se confirma que son EA (oportunidad):** un EA tiene representación completa ante el IRS, incluida cobranza y apelaciones. Se podría volver a decir "te representamos" en deudas, acuerdos de pago y auditorías de cualquier declaración, lo que es un diferenciador fuerte frente a la competencia. Se decidirá al tener el documento.
@@ -92,7 +95,8 @@ Cada decisión indica:
   1. **Directorio público del IRS** de preparadores con credenciales (*Directory of Federal Tax Return Preparers with Credentials and Select Qualifications*). Muestra el nombre, la ciudad y la credencial de cada preparador: EA, CPA, abogado o AFSP. Se busca por nombre y ubicación.
   2. **Tarjeta de Enrolled Agent** del IRS, con número de enrolamiento.
 - **Problema del texto actual, aunque sean EA:** dice "Agentes Enrolados **certificados** por el IRS", y el IRS prohíbe a los EA usar "certificado" (ver 1.4).
-  - **Aplicado (2026-10-10, aprobado por el desarrollador):** "Agentes Enrolados ante el IRS: te representamos si algo sale mal." En inglés: "Enrolled Agents — we represent you before the IRS if something goes wrong." ✅ Sigue pendiente confirmar que son EA (directorio o tarjeta).
+  - **Texto publicado:** "Preparadores del Annual Filing Season Program del IRS: si auditan una declaración que preparamos, te representamos." En inglés: "IRS Annual Filing Season Program preparers — if a return we prepared is audited, we represent you." ✅
+  - **Si se confirma EA (tarjeta o aparición en el directorio):** cambiar a "Agentes Enrolados ante el IRS: te representamos si algo sale mal." y evaluar ampliar "te representamos" en deudas, acuerdos de pago y apelaciones.
 - **Si nadie es EA, texto sugerido:** "Preparadores del Annual Filing Season Program del IRS: si auditan una declaración que preparamos, te representamos."
 
 ---
@@ -235,7 +239,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 | # | Pregunta | Qué cambia según la respuesta |
 |---|---|---|
 | 1 | ¿El negocio es CAA (Certifying Acceptance Agent) del IRS? Ver cómo verificarlo en 1.6 | Se mantiene o se quita "IRS Authorized CAA" |
-| 2 | El cliente dice que sus colaboradores son "agentes certificados por el IRS": ¿pueden mostrar la tarjeta de Enrolled Agent (con número de enrolamiento)? Ver 1.7 | Si son EA: se confirma "¿Por qué elegirnos?" y se puede ampliar "te representamos". Si no: ajustar ese punto |
+| 2 | El cliente dice que sus colaboradores son "agentes certificados por el IRS", pero no aparecen como EA en el directorio del IRS. ¿Pueden mostrar la tarjeta de Enrolled Agent (con número de enrolamiento)? Ver 1.7 | Si son EA: "¿Por qué elegirnos?" sube a "Agentes Enrolados" y se puede ampliar "te representamos". Si no: queda el texto AFSP actual |
 | 3 | ¿Aceptan cambiar "Garantizamos tener el mejor reembolso"? | Texto de "¿Por qué elegirnos?" |
 | 4 | ¿La primera consulta sigue siendo gratis? | Botones y textos que dicen "consulta sin costo" |
 | 5 | ¿Abren los domingos en alguna temporada? | Horario del sitio y de Google |
@@ -257,3 +261,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-10 | El cliente indica que sus colaboradores son "agentes certificados por el IRS": se asume EA como supuesto de trabajo, pendiente de documento (1.7) |
 | 2026-10-10 | Revisión cruzada: "certificado" también prohibido para EA (1.4 y 1.7), la lista de Nevada no muestra el tipo de agente (1.6), metadata de auditorías y acción pendiente en Ads (3.2) |
 | 2026-10-10 | "¿Por qué elegirnos?": "Agentes Enrolados certificados por el IRS" → "Agentes Enrolados ante el IRS" (ES y EN) |
+| 2026-10-10 | No aparecen como EA en el directorio del IRS: "¿Por qué elegirnos?" pasa al texto AFSP (lo verificado). Se sube a EA solo con prueba |
