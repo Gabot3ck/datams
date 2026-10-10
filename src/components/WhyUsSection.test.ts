@@ -23,7 +23,9 @@ describe('WhyUsSection', () => {
     expect(html).toMatch(/<ul[^>]*role="list"/);
     expect((html.match(/<li/g) ?? []).length).toBe(4);
     // Credencial verificada = AFSP; "Agentes Enrolados" solo con tarjeta EA (DECISIONES-NEGOCIO.md §1.7)
-    expect(html).toContain('Annual Filing Season Program');
+    // "completaron": describe un hecho, no una relación con el IRS (§1.4)
+    expect(html).toContain('Preparadores que completaron el Annual Filing Season Program del IRS');
+    expect(await render('en')).toContain('Preparers who completed the IRS Annual Filing Season Program');
     expect(html).not.toContain('Agentes Enrolados');
     // Circular 230 §10.30: los EA no pueden describirse como "certificados"
     expect(html).not.toContain('certificados por el IRS');

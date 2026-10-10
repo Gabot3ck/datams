@@ -53,7 +53,7 @@ export const TRUST_BAR_DEFAULT_ES = [
   'Precio fijo, conocido antes de empezar',
   'Oficina física en Las Vegas — no somos solo una página web',
   // Nunca "certificados": el IRS prohíbe ese término para el AFSP (ver DECISIONES-NEGOCIO.md)
-  'Preparadores participantes del Annual Filing Season Program del IRS',
+  'Preparadores que completaron el Annual Filing Season Program del IRS',
 ];
 
 const PILLAR_PATHS = new Set([
