@@ -24,6 +24,7 @@ export const ROUTES: RoutePair[] = [
   { es: '/irs/resolucion-cartas',       en: '/en/irs/irs-letters',            enBuilt: false },
   { es: '/irs/acuerdos-pago',           en: '/en/irs/payment-plans',          enBuilt: false },
   { es: '/irs/transcripciones',         en: '/en/irs/irs-transcripts',        enBuilt: false },
+  { es: '/irs/verificacion-identidad', en: '/en/irs/identity-verification', enBuilt: false },
   // ── ITIN / EIN ─────────────────────────────────────────────────────
   { es: '/itin-ein/',                   en: '/en/itin-ein/',                  enBuilt: false },
   { es: '/itin-ein/solicitar-itin',    en: '/en/itin-ein/itin-application',  enBuilt: false },

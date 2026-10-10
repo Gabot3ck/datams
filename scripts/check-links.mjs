@@ -10,7 +10,7 @@ export const KNOWN_PENDING = new Set([
   '/taxes/declaracion-negocio', '/taxes/todos-los-estados',
   '/taxes/enmiendas', '/taxes/seguimiento-reembolso', '/taxes/formularios-1099',
   '/irs/solucion-deudas', '/irs/auditorias', '/irs/resolucion-cartas',
-  '/irs/acuerdos-pago', '/irs/transcripciones',
+  '/irs/acuerdos-pago', '/irs/transcripciones', '/irs/verificacion-identidad',
   '/itin-ein/solicitar-itin', '/itin-ein/renovar-itin', '/itin-ein/solicitar-ein',
 ]); // Plan 2 / Tasks 17-18 los construyen; se van quitando a medida
 const ASSET_EXT = /\.(css|js|mjs|svg|ico|png|jpg|jpeg|gif|webp|avif|woff|woff2|xml|txt|json|pdf)$/i;

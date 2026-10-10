@@ -50,3 +50,25 @@ describe('Navbar — slugs EN alineados a routes.ts', () => {
     expect(src).not.toContain('/en/taxes/business-tax-advice');
   });
 });
+
+describe('Navbar — pestaña IRS (decisiones 2026-10-10, ver DECISIONES-NEGOCIO.md)', () => {
+  it('incluye Verificación de identidad del IRS en ES y EN', () => {
+    expect(src).toContain('/irs/verificacion-identidad');
+    expect(src).toContain('/en/irs/identity-verification');
+  });
+  it('seguimiento de reembolso aparece en Taxes Personales y en la pestaña IRS (ES y EN)', () => {
+    expect(src.split('href: "/taxes/seguimiento-reembolso"').length - 1).toBe(2);
+    expect(src.split('href: "/en/taxes/refund-tracking"').length - 1).toBe(2);
+    expect(src).not.toContain('Seguimiento de impuestos');
+  });
+  // Equipo con PTIN + AFSP: sin representación en cobranza ni "cualquier auditoría"
+  const prohibidos = [
+    'Representación profesional', 'Negociamos tu deuda',
+    'Professional representation', 'We negotiate your tax debt',
+  ];
+  for (const p of prohibidos) {
+    it(`no promete "${p}"`, () => {
+      expect(src).not.toContain(p);
+    });
+  }
+});
