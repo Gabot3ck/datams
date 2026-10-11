@@ -15,10 +15,11 @@ Cada decisión indica:
 ## Índice
 1. [Cumplimiento legal en la publicidad](#1-cumplimiento-legal-en-la-publicidad)
 2. [Menú "Ayuda con el IRS"](#2-menú-ayuda-con-el-irs)
-3. [Cómo cuidamos las keywords de Google Ads](#3-cómo-cuidamos-las-keywords-de-google-ads)
-4. [Horario y forma de atención](#4-horario-y-forma-de-atención)
-5. [Preguntas abiertas para el cliente](#5-preguntas-abiertas-para-el-cliente)
-6. [Historial de cambios](#6-historial-de-cambios)
+3. [Menú Notary Public](#3-menú-notary-public)
+4. [Cómo cuidamos las keywords de Google Ads](#4-cómo-cuidamos-las-keywords-de-google-ads)
+5. [Horario y forma de atención](#5-horario-y-forma-de-atención)
+6. [Preguntas abiertas para el cliente](#6-preguntas-abiertas-para-el-cliente)
+7. [Historial de cambios](#7-historial-de-cambios)
 
 ---
 
@@ -146,7 +147,7 @@ El cliente pidió agregar dos ítems a la pestaña que entonces se llamaba "IRS 
 
 ### 2.3 Reembolsos → un solo ítem, no tres
 - **Decisión:** "no cobrados", "pendientes" y "atrasados" quedan en **un solo ítem: "Seguimiento de reembolso"**. La descripción es *"Pendiente, atrasado o no cobrado: lo rastreamos con el IRS"*. ✅
-- **Por qué no tres ítems:** "pendiente" y "atrasado" son la misma búsqueda ("mi reembolso no ha llegado"). Tres ítems llevarían a la misma página y llenarían el menú. Y si fueran tres páginas, competirían entre sí en Google (ver sección 3).
+- **Por qué no tres ítems:** "pendiente" y "atrasado" son la misma búsqueda ("mi reembolso no ha llegado"). Tres ítems llevarían a la misma página y llenarían el menú. Y si fueran tres páginas, competirían entre sí en Google (ver sección 4).
 - **Por qué no la palabra sola "Reembolsos":** es ambigua. Puede entenderse como "¿me devuelven mi dinero si no quedo satisfecho?". "Seguimiento de reembolso" coincide además con la keyword de Ads de esta página.
 - **Por qué aparece en dos pestañas:** se mantiene en "Taxes Personales" y ahora también aparece en "Ayuda con el IRS", donde el cliente lo pidió. Es la misma página con dos entradas, sin riesgo para el SEO.
 - **El label anterior "Seguimiento de impuestos"** se corrigió: la página trata del reembolso, no de los impuestos en general.
@@ -210,14 +211,55 @@ Ordenado de mayor a menor urgencia para el visitante:
 
 ---
 
-## 3. Cómo cuidamos las keywords de Google Ads
+## 3. Menú Notary Public
 
-### 3.1 Una búsqueda = una página
+### 3.1 Pedido del cliente (2026-10-11)
+- Cambiar "Propiedad y Documentos Legales" por **"Documentos Legales"**.
+- Dentro, una sección **"Títulos de Traila"** con "Diligenciamiento de título para mobile home" y "Living trust".
+- Al revisar el resultado, el desarrollador propuso **separar "Títulos de Traila" en una pestaña propia** (ver 3.3).
+- Aclaración del cliente: "TRAI" en el pedido original era **"traila"**, la forma en que muchos hispanos en EE.UU. llaman a la mobile home.
+
+### 3.2 Una sola pestaña "Documentos Legales"
+- **Decisión:** se fusionaron las pestañas "Declaraciones y Documentos" y "Propiedad y Documentos Legales" en una sola, **"Documentos Legales"** ("Legal Documents" en inglés), con 6 documentos. ✅
+- **Por qué:** con dos pestañas que decían "Documentos", el visitante no sabía en cuál buscar. Una sola pestaña elimina la duda.
+- **SEO:** no cambió ninguna URL; solo se reorganizó el menú.
+- **Resultado:** Notary Public queda con 4 pestañas: Poderes y Autorizaciones (4), Documentos Legales (6), Títulos de Traila (2) y Apostillas (2).
+
+### 3.3 Pestaña propia "Títulos de Traila"
+- **Decisión:** los títulos de mobile home tienen su propia pestaña, **"Títulos de Traila"** ("Mobile Home Titles" en inglés), entre Documentos Legales y Apostillas. ✅
+- **Por qué pestaña y no grupo:** primero se probó como grupo con encabezado al final de "Documentos Legales", pero quedaba al fondo de una lista de 8. Como pestaña se ve apenas se abre el menú de Notary Public, las pestañas quedan equilibradas (Apostillas también tiene 2) y el menú mantiene su estructura simple de dos niveles, sin código extra.
+- **Por qué "traila":** es como habla el cliente real, así que se reconoce al instante. Como el nombre de la pestaña no es un enlace, no afecta al SEO. La palabra también irá en el título de la página ("Título de Mobile Home (Casa Móvil o Traila) en Las Vegas") para captar esa búsqueda.
+- **Por qué en inglés no dice "trailer":** en inglés "trailer" suena a remolque de carga; "mobile home" es el término correcto.
+- **Dato importante para el contenido:** en Nevada estos títulos **no los maneja el DMV**, sino la **Nevada Housing Division** (formulario T1, Certificate of Title Transfer). Las páginas no deben mencionar al DMV (ver la regla de uso de "DMV" en 1.8).
+
+### 3.4 "Trámite de título de Mobile Home" (no "Diligenciamiento")
+- **Decisión:** el ítem se llama **"Trámite de título de Mobile Home"**, con la descripción "Traspaso o duplicado del título de tu traila". ✅
+- **Por qué "trámite":** "diligenciamiento" es un término formal, más usado en Colombia. Para el público mexicano y centroamericano de Las Vegas, "trámite" es la palabra natural.
+- **Por qué reemplaza a "Títulos de casas móviles":** el ítem existente cubría el mismo servicio. Se renombró y **conserva su URL** (`/notary-public/titulos-casas-moviles`) para que no haya dos páginas compitiendo por la misma búsqueda (ver 4.1).
+
+### 3.5 Living trust: solo para un trust que ya existe
+- **Decisión:** el ítem se llama **"Mobile home en un Living Trust"**, con la descripción "Pasa tu traila a un trust ya existente". Tiene página propia: `/notary-public/mobile-home-living-trust`. ✅
+- **Por qué no "Living trust" a secas:** se leería como "hacemos living trusts". **Redactar** un trust es planificación patrimonial y, para quien no es abogado, práctica ilegal del derecho. Además choca con la prohibición de dar asesoría legal de NRS 240A (ver 1.8).
+- **Qué sí se puede ofrecer:** poner la mobile home a nombre de un trust **ya creado por un abogado**. El formulario oficial T1 de la Nevada Housing Division tiene una sección para trusts que firma el trustee **ante notary public**: es trabajo de Notary Public.
+- **Por qué página propia:** "pasar mi traila a un trust" es una búsqueda distinta de "traspasar el título de mi traila".
+- **Redacción segura para la página:**
+  - Sí: "Si ya tienes un living trust hecho por un abogado, te ayudamos con el trámite para poner tu mobile home a su nombre y notarizamos las firmas."
+  - Sí: "No somos abogados ni damos asesoría legal. Si necesitas crear un trust, consulta con un abogado."
+  - No: "redactamos tu living trust", "te asesoramos sobre trusts", "te decimos si te conviene un trust", ni prometer plazos o tarifas del trámite.
+
+### 3.6 Pendientes de Notary Public
+- **"Testamentos":** el menú dice "**Redacción** y firma de testamentos" ("Drafting…" en inglés). Redactar testamentos tiene el mismo riesgo que redactar un trust. No se cambió porque es texto ya aprobado. Alternativa segura: "Firma ante notary public de tu testamento ya redactado". ❓ Depende de la respuesta del cliente (ver 6).
+- **Estrategia de contenido desactualizada:** la sección Notaría de `CONTENT-STRATEGY.md` usa URLs `/notaria/` y nombres de página distintos a los del menú, además de "Notario Público", "notariado" y "Poder Notarial", que la NRS 240.085 prohíbe (ver 1.1). Hay que corregirla **antes** de escribir las páginas de Notary. ⏳
+- **Keywords:** los datos de Ads no cubren Notary Public (no hay resultados para traila, mobile home, trust ni testamento). Hay que hacer una investigación nueva antes de fijar keywords. ⏳
+
+## 4. Cómo cuidamos las keywords de Google Ads
+
+### 4.1 Una búsqueda = una página
 - **Decisión:** cada grupo de búsquedas del análisis de Ads (Keyword Planner, ~394 keywords de competidores) tiene **una sola página** dueña. ✅
 - **Por qué:** si dos páginas apuntan a la misma búsqueda, Google no sabe cuál mostrar y ambas posicionan peor. A esto se le llama **canibalización**. También encarece Ads, porque la página de destino pierde relevancia.
 - **Cómo lo aplicamos:** antes de crear una página nueva revisamos si su búsqueda ya tiene dueña. Si la tiene, el contenido nuevo se agrega como sección de esa página.
 
-### 3.2 Grupos actuales del clúster Taxes / IRS / ITIN
+### 4.2 Grupos actuales del clúster Taxes / IRS / ITIN
 | # | Búsqueda principal | Página |
 |---|---|---|
 | 1 | taxes en español en Las Vegas | `/taxes/` |
@@ -245,9 +287,9 @@ Ordenado de mayor a menor urgencia para el visitante:
 
 ---
 
-## 4. Horario y forma de atención
+## 5. Horario y forma de atención
 
-### 4.1 Horario por temporada
+### 5.1 Horario por temporada
 - **Decisión:** el sitio muestra el horario real, que cambia por temporada. ✅
   - **Temporada de taxes** (2 ene – 15 abr): lunes a sábado, 9:00 AM – 10:00 PM.
   - **Resto del año:** lunes a viernes 10:00 AM – 7:00 PM, sábado 10:00 AM – 2:00 PM.
@@ -255,7 +297,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Por qué:** un horario incorrecto en Google hace que la gente llegue con la oficina cerrada, y eso termina en reseñas negativas.
 - **Importante:** Google necesita las fechas de cada temporada con año. **El sitio debe volver a publicarse al menos una vez al año** para que Google siga mostrando el horario vigente. ⏳
 
-### 4.2 Atención por orden de llegada vs. botones de "Agendar cita"
+### 5.2 Atención por orden de llegada vs. botones de "Agendar cita"
 - **Situación:** la oficina atiende **solo por orden de llegada**, pero varios botones del sitio dicen "Agendar cita". ❓
 - **Recomendación:** reemplazarlos por acciones reales. El botón principal sería "Visítanos hoy / Cómo llegar" (Google Maps) y el secundario WhatsApp o llamada. Si más adelante se implementa agendamiento, se vuelven a poner.
 - **Por qué:** prometer algo que no existe genera desconfianza desde el primer contacto.
@@ -263,7 +305,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 
 ---
 
-## 5. Preguntas abiertas para el cliente
+## 6. Preguntas abiertas para el cliente
 
 **Mensaje sugerido para el cliente** (cubre las preguntas 1, 2 y 3):
 
@@ -277,11 +319,14 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 4 | ¿Aceptan cambiar "Garantizamos tener el mejor reembolso"? | Texto de "¿Por qué elegirnos?" |
 | 5 | ¿La primera consulta sigue siendo gratis? | Botones y textos que dicen "consulta sin costo" |
 | 6 | ¿Abren los domingos en alguna temporada? | Horario del sitio y de Google |
-| 7 | ¿Planean ofrecer agendamiento de citas? | Botones "Agendar cita" (ver 4.2) |
+| 7 | ¿Planean ofrecer agendamiento de citas? | Botones "Agendar cita" (ver 5.2) |
+| 8 | Con las mobile homes, ¿preparan los formularios (T1 y otros) o solo notarizan las firmas? Ver 3.4 y 3.5 | Qué se puede prometer en las dos páginas de "Títulos de Traila" |
+| 9 | ¿Tienen un abogado de confianza al que derivar a quien todavía no tiene un trust? Ver 3.5 | Mensaje de derivación en la página del living trust |
+| 10 | Sobre Testamentos: ¿redactan el documento o solo notarizan uno ya redactado? Ver 3.6 | Si solo notarizan: cambiar "Redacción y firma" por "Firma ante notary public de tu testamento ya redactado" |
 
 ---
 
-## 6. Historial de cambios
+## 7. Historial de cambios
 
 | Fecha | Cambio |
 |---|---|
@@ -300,3 +345,5 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-10 | No aparecen en la lista de Acceptance Agents de Nevada: se quita "IRS Authorized CAA" del Home (ES/EN) y se reemplaza por la credencial AFSP. Guía para la página de ITIN (1.6) |
 | 2026-10-10 | Se identifica la ley de Document Preparation Services (NRS 240A): pregunta al cliente sobre registro y fianza antes de publicar (1.8) |
 | 2026-10-10 | Confirmado el aviso obligatorio en la publicidad (NRS 240A.150). El FAQ cumple en contenido pero no en forma: se recomienda aviso en el pie de página. Se detecta la regla sobre el uso de "DMV" (1.2 y 1.8) |
+| 2026-10-11 | Notary Public: pestaña única "Documentos Legales", grupo "Títulos de Traila" con "Trámite de título de Mobile Home" y "Mobile home en un Living Trust" (sección 3) |
+| 2026-10-11 | "Títulos de Traila" pasa de grupo dentro de "Documentos Legales" a pestaña propia (3.3) |
