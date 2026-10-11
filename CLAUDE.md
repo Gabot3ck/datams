@@ -157,7 +157,7 @@ La sección **Community & Stats** (ahora en `CommunitySection.astro`, después d
 |-------|--------------------|
 | Taxes | Taxes Personales · Taxes de Negocio · Ayuda con el IRS |
 | ITIN / EIN | ITIN & EIN (3 items) |
-| Notary Public | Poderes · Declaraciones · Propiedad · Apostillas |
+| Notary Public | Poderes y Autorizaciones · Documentos Legales · Títulos de Traila · Apostillas |
 | Inmigración | Trámites Migratorios · Documentos y Apoyo |
 | Más Servicios | Business · DMV · Formularios Corte · Otros |
 | Nosotros / Blog / Contacto | — links simples |
