@@ -238,7 +238,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Por qué reemplaza a "Títulos de casas móviles":** el ítem existente cubría el mismo servicio. Se renombró y **conserva su URL** (`/notary-public/titulos-casas-moviles`) para que no haya dos páginas compitiendo por la misma búsqueda (ver 4.1).
 
 ### 3.5 Living trust: solo para un trust que ya existe
-- **Decisión:** el ítem se llama **"Mobile home en un Living Trust"**, con la descripción "Pasa tu traila a un trust ya existente". Tiene página propia: `/notary-public/mobile-home-living-trust`. ✅
+- **Decisión:** el ítem se llama **"Mobile Home en un Living Trust"**, con la descripción "Pasa tu traila a un trust ya existente". Tiene página propia: `/notary-public/mobile-home-living-trust`. ✅
 - **Por qué no "Living trust" a secas:** se leería como "hacemos living trusts". **Redactar** un trust es planificación patrimonial y, para quien no es abogado, práctica ilegal del derecho. Además choca con la prohibición de dar asesoría legal de NRS 240A (ver 1.8).
 - **Qué sí se puede ofrecer:** poner la mobile home a nombre de un trust **ya creado por un abogado**. El formulario oficial T1 de la Nevada Housing Division tiene una sección para trusts que firma el trustee **ante notary public**: es trabajo de Notary Public.
 - **Por qué página propia:** "pasar mi traila a un trust" es una búsqueda distinta de "traspasar el título de mi traila".
@@ -345,5 +345,5 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-10 | No aparecen en la lista de Acceptance Agents de Nevada: se quita "IRS Authorized CAA" del Home (ES/EN) y se reemplaza por la credencial AFSP. Guía para la página de ITIN (1.6) |
 | 2026-10-10 | Se identifica la ley de Document Preparation Services (NRS 240A): pregunta al cliente sobre registro y fianza antes de publicar (1.8) |
 | 2026-10-10 | Confirmado el aviso obligatorio en la publicidad (NRS 240A.150). El FAQ cumple en contenido pero no en forma: se recomienda aviso en el pie de página. Se detecta la regla sobre el uso de "DMV" (1.2 y 1.8) |
-| 2026-10-11 | Notary Public: pestaña única "Documentos Legales", grupo "Títulos de Traila" con "Trámite de título de Mobile Home" y "Mobile home en un Living Trust" (sección 3) |
+| 2026-10-11 | Notary Public: pestaña única "Documentos Legales", grupo "Títulos de Traila" con "Trámite de título de Mobile Home" y "Mobile Home en un Living Trust" (sección 3) |
 | 2026-10-11 | "Títulos de Traila" pasa de grupo dentro de "Documentos Legales" a pestaña propia (3.3) |
