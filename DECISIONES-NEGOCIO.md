@@ -258,6 +258,30 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Por qué:** la lista de servicios del cliente incluye "Duplicado de título" en DMV, y la pestaña "Títulos de Traila" también ofrece duplicados. Si el ítem de DMV dice "título" a secas, las dos páginas compiten por la misma búsqueda (canibalización, ver 4.1).
 - **Fundamento:** en Nevada los títulos de mobile home no los maneja el DMV, sino la Nevada Housing Division (ver 3.3). La separación refleja dos trámites distintos.
 
+### 3.8 Pestaña Apostillas: carta poder, permiso de viaje y otros documentos
+- **Pedido del cliente (2026-10-12):** agregar "Apostilla de carta poder" y "Permisos de viaje", ambos con la descripción "válido en cualquier parte del mundo". Además, "Apostillas de cartas y documentos" le parecía demasiado general.
+- **Decisión:** la pestaña queda con 4 ítems. ✅
+  - "Apostillas de actas de nacimiento": sin cambio.
+  - **"Apostilla de carta poder"** → `/notary-public/apostilla-carta-poder`. Descripción: "Válida en países del Convenio de La Haya".
+  - **"Apostilla de permiso de viaje para menores"** → `/notary-public/apostilla-permiso-viaje-menores`. Descripción: "Válida en países del Convenio de La Haya".
+  - **"Apostilla de otros documentos"** (antes "Apostillas de cartas y documentos") → **conserva su URL** `/notary-public/apostillas-documentos`. Descripción: "Actas de matrimonio y otros documentos oficiales".
+- **Por qué no "válido en cualquier parte del mundo":** la apostilla solo vale en los países del Convenio de La Haya. En los demás (por ejemplo, **Cuba**) hace falta legalización consular. Prometer validez mundial sería publicidad engañosa. El cliente aprobó "países del Convenio de La Haya".
+- **Por qué "permiso de viaje para menores" y con "Apostilla":** el cliente confirmó que son solo para menores. Ya existe "Permiso de salida para menores" en Poderes y Autorizaciones, así que un ítem llamado "Permisos de viaje" competiría con él. Lo nuevo es apostillar el permiso, y el nombre lo dice.
+- **Quién cubre cada búsqueda (ver 4.1):**
+  - "Carta poder" y "Permiso de salida para menores" cubren a quien necesita **hacer** el documento.
+  - Las páginas de apostilla cubren a quien necesita **apostillarlo**.
+  - "Otros documentos" no debe mencionar poderes, permisos de viaje ni actas de nacimiento, porque esos tienen su propia página. Se omiten las partidas de nacimiento en su descripción por la misma razón.
+- **Redacción para las páginas:**
+  - En Nevada la apostilla la emite la **Secretaría de Estado**, no el notary public. Por eso decimos "te ayudamos a tramitar la apostilla", no "apostillamos".
+  - La Secretaría de Estado de Nevada solo apostilla documentos de Nevada. Los documentos federales van al Departamento de Estado de EE.UU.
+  - En las páginas se puede nombrar a México y a la mayoría de los países de Latinoamérica como países del convenio.
+  - Para la carta poder no se puede usar "poder notarial" (ver 1.1), aunque sea como lo busca la gente. Usamos "carta poder" y "power of attorney".
+  - Para países fuera del convenio, la Secretaría de Estado emite una certificación en lugar de la apostilla, y suele hacer falta además la legalización de la embajada o del consulado. Las páginas pueden mencionarlo, sin prometer plazos.
+  - Las actas (nacimiento, matrimonio) se apostillan sobre **copias certificadas** emitidas por la entidad que las expidió. ❓ Confirmar con la Secretaría de Estado antes de escribir las páginas (fuente actual: terceros, no oficial).
+  - Los H1 distinguen **hacer** el documento de **apostillarlo**. Las páginas "Carta poder" y "Permiso de salida para menores" enlazan a su apostilla, y viceversa.
+  - En la página del permiso de viaje no se dice que la apostilla siempre sea obligatoria: depende del país, del consulado o de la aerolínea.
+- **Pendiente:** la nueva pestaña mezcla "Apostillas de actas…" (plural, texto ya aprobado) con los demás ítems en singular. Si el cliente quiere uniformar, se cambia solo el texto del ítem, no la URL. ❓
+
 ## 4. Cómo cuidamos las keywords de Google Ads
 
 ### 4.1 Una búsqueda = una página
@@ -355,3 +379,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-11 | "Títulos de Traila" pasa de grupo dentro de "Documentos Legales" a pestaña propia (3.3) |
 | 2026-10-12 | Fórmula única "firma ante notary public"; se deja de usar "notarizamos" (1.1 y 3.5) |
 | 2026-10-12 | Menú DMV: "Duplicado de título" → "Duplicado de título de vehículo" (ES/EN), para no competir con los duplicados de mobile home (3.7) |
+| 2026-10-12 | Apostillas: nuevos "Apostilla de carta poder" y "Apostilla de permiso de viaje para menores"; "Apostillas de cartas y documentos" pasa a "Apostilla de otros documentos" (misma URL). "Países del Convenio de La Haya" en lugar de "cualquier parte del mundo" (3.8) |
