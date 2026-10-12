@@ -129,3 +129,21 @@ describe('Navbar — duplicado de título: DMV solo vehículos (decisión 2026-1
     expect(src).not.toMatch(/\bnotariz(ar|amos|an|a|o|ado|ada)\b/i);
   });
 });
+
+describe('Navbar — Apostillas: carta poder, permiso de viaje para menores y otros documentos (decisión 2026-10-12)', () => {
+  it('ítems nuevos en ES y EN', () => {
+    expect(src).toContain('{ label: "Apostilla de carta poder", href: "/notary-public/apostilla-carta-poder", description: "Válida en países del Convenio de La Haya" }');
+    expect(src).toContain('{ label: "Apostilla de permiso de viaje para menores", href: "/notary-public/apostilla-permiso-viaje-menores", description: "Válida en países del Convenio de La Haya" }');
+    expect(src).toContain('href: "/en/notary-public/apostille-letter-of-attorney"');
+    expect(src).toContain('href: "/en/notary-public/apostille-minor-travel-permit"');
+  });
+  it('"cartas y documentos" pasa a "otros documentos" y conserva su URL', () => {
+    expect(src).toContain('{ label: "Apostilla de otros documentos", href: "/notary-public/apostillas-documentos"');
+    expect(src).toContain('{ label: "Apostille — other documents", href: "/en/notary-public/apostille-documents"');
+    expect(src).not.toContain('Apostillas de cartas y documentos');
+    expect(src).not.toContain('letters & documents');
+  });
+  it('nunca promete validez "en cualquier parte del mundo"', () => {
+    expect(src).not.toMatch(/cualquier parte del mundo|anywhere in the world/i);
+  });
+});
