@@ -29,6 +29,7 @@ Cada decisión indica:
 - **Decisión:** en todo el sitio usamos "Notary Public". Nunca "notario", "notaría", "notarial" ni "licenciado". ✅
 - **Por qué:** en Latinoamérica un "notario" es un abogado. Usar esa palabra en EE.UU. hace creer que el negocio puede dar asesoría legal, y es una de las causas más comunes de fraude migratorio.
 - **Fundamento:** NRS 240.085 (Nevada) prohíbe traducir "notary public" como "notario" en publicidad y exige aclarar que no son abogados.
+- **Para hablar de firmas, una sola fórmula:** "firma ante notary public" (por ejemplo, "firmas ante notary public"). No usamos "notarizar" ni "notarizamos". La ley no lo prohíbe, pero comparte raíz con "notario" y preferimos no dar pie a la confusión. Es la fórmula que el menú ya usaba (Affidavit, Contrato de renta, Testamentos). En inglés, "notarized" es correcto y se mantiene. ✅
 
 ### 1.2 "No somos abogados"
 - **Decisión:** la sección de preguntas frecuentes dice claramente que no somos abogados en Nevada y que no damos asesoría ni representación legal. ✅
@@ -243,7 +244,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Qué sí se puede ofrecer:** poner la mobile home a nombre de un trust **ya creado por un abogado**. El formulario oficial T1 de la Nevada Housing Division tiene una sección para trusts que firma el trustee **ante notary public**: es trabajo de Notary Public.
 - **Por qué página propia:** "pasar mi traila a un trust" es una búsqueda distinta de "traspasar el título de mi traila".
 - **Redacción segura para la página:**
-  - Sí: "Si ya tienes un living trust hecho por un abogado, te ayudamos con el trámite para poner tu mobile home a su nombre y notarizamos las firmas."
+  - Sí: "Si ya tienes un living trust hecho por un abogado, te ayudamos con el trámite para poner tu mobile home a su nombre, y firmas ante notary public."
   - Sí: "No somos abogados ni damos asesoría legal. Si necesitas crear un trust, consulta con un abogado."
   - No: "redactamos tu living trust", "te asesoramos sobre trusts", "te decimos si te conviene un trust", ni prometer plazos o tarifas del trámite.
 
@@ -251,6 +252,11 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **"Testamentos":** el menú dice "**Redacción** y firma de testamentos" ("Drafting…" en inglés). Redactar testamentos tiene el mismo riesgo que redactar un trust. No se cambió porque es texto ya aprobado. Alternativa segura: "Firma ante notary public de tu testamento ya redactado". ❓ Depende de la respuesta del cliente (ver 6).
 - **Estrategia de contenido desactualizada:** la sección Notaría de `CONTENT-STRATEGY.md` usa URLs `/notaria/` y nombres de página distintos a los del menú, además de "Notario Público", "notariado" y "Poder Notarial", que la NRS 240.085 prohíbe (ver 1.1). Hay que corregirla **antes** de escribir las páginas de Notary. ⏳
 - **Keywords:** los datos de Ads no cubren Notary Public (no hay resultados para traila, mobile home, trust ni testamento). Hay que hacer una investigación nueva antes de fijar keywords. ⏳
+
+### 3.7 "Duplicado de título": mobile home vs. vehículo
+- **Decisión:** el ítem de DMV pasa a llamarse **"Duplicado de título de vehículo"** ("Vehicle title duplicate" en inglés), y su página habla solo de vehículos. Los duplicados de título de mobile home quedan en la página de "Trámite de título de Mobile Home". La URL no cambia (`/dmv/duplicado-titulo`). ✅
+- **Por qué:** la lista de servicios del cliente incluye "Duplicado de título" en DMV, y la pestaña "Títulos de Traila" también ofrece duplicados. Si el ítem de DMV dice "título" a secas, las dos páginas compiten por la misma búsqueda (canibalización, ver 4.1).
+- **Fundamento:** en Nevada los títulos de mobile home no los maneja el DMV, sino la Nevada Housing Division (ver 3.3). La separación refleja dos trámites distintos.
 
 ## 4. Cómo cuidamos las keywords de Google Ads
 
@@ -320,9 +326,9 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 5 | ¿La primera consulta sigue siendo gratis? | Botones y textos que dicen "consulta sin costo" |
 | 6 | ¿Abren los domingos en alguna temporada? | Horario del sitio y de Google |
 | 7 | ¿Planean ofrecer agendamiento de citas? | Botones "Agendar cita" (ver 5.2) |
-| 8 | Con las mobile homes, ¿preparan los formularios (T1 y otros) o solo notarizan las firmas? Ver 3.4 y 3.5 | Qué se puede prometer en las dos páginas de "Títulos de Traila" |
+| 8 | Con las mobile homes, ¿preparan los formularios (T1 y otros) o solo hacen las firmas ante notary public? Ver 3.4 y 3.5 | Qué se puede prometer en las dos páginas de "Títulos de Traila" |
 | 9 | ¿Tienen un abogado de confianza al que derivar a quien todavía no tiene un trust? Ver 3.5 | Mensaje de derivación en la página del living trust |
-| 10 | Sobre Testamentos: ¿redactan el documento o solo notarizan uno ya redactado? Ver 3.6 | Si solo notarizan: cambiar "Redacción y firma" por "Firma ante notary public de tu testamento ya redactado" |
+| 10 | Sobre Testamentos: ¿redactan el documento o solo hacen la firma ante notary public de uno ya redactado? Ver 3.6 | Si solo firman ante notary public: cambiar "Redacción y firma" por "Firma ante notary public de tu testamento ya redactado" |
 
 ---
 
@@ -347,3 +353,5 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-10 | Confirmado el aviso obligatorio en la publicidad (NRS 240A.150). El FAQ cumple en contenido pero no en forma: se recomienda aviso en el pie de página. Se detecta la regla sobre el uso de "DMV" (1.2 y 1.8) |
 | 2026-10-11 | Notary Public: pestaña única "Documentos Legales", grupo "Títulos de Traila" con "Trámite de título de Mobile Home" y "Mobile Home en un Living Trust" (sección 3) |
 | 2026-10-11 | "Títulos de Traila" pasa de grupo dentro de "Documentos Legales" a pestaña propia (3.3) |
+| 2026-10-12 | Fórmula única "firma ante notary public"; se deja de usar "notarizamos" (1.1 y 3.5) |
+| 2026-10-12 | Menú DMV: "Duplicado de título" → "Duplicado de título de vehículo" (ES/EN), para no competir con los duplicados de mobile home (3.7) |
