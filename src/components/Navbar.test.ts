@@ -118,3 +118,14 @@ describe('Navbar — Notary Public: "Documentos Legales" + pestaña "Títulos de
     expect(src).toContain('trust ya existente');
   });
 });
+
+describe('Navbar — duplicado de título: DMV solo vehículos (decisión 2026-10-12)', () => {
+  it('el ítem de DMV dice "de vehículo" en ES y EN', () => {
+    expect(src).toContain('{ label: "Duplicado de título de vehículo", href: "/dmv/duplicado-titulo" }');
+    expect(src).toContain('{ label: "Vehicle title duplicate", href: "/en/dmv/title-duplicate" }');
+  });
+  it('en español no usa "notarizar" (fórmula única: "ante notary public")', () => {
+    // Solo formas en español; "Notarized"/"notarization" en inglés son correctas.
+    expect(src).not.toMatch(/\bnotariz(ar|amos|an|a|o|ado|ada)\b/i);
+  });
+});
