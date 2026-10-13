@@ -147,3 +147,21 @@ describe('Navbar — Apostillas: carta poder, permiso de viaje para menores y ot
     expect(src).not.toMatch(/cualquier parte del mundo|anywhere in the world/i);
   });
 });
+
+describe('Navbar — Inmigración: Tarjeta de Social Security y Affidavit of Support (decisión 2026-10-12)', () => {
+  it('Tarjeta de Social Security en ES y EN, sin "Citas" en el nombre', () => {
+    expect(src).toContain('{ label: "Tarjeta de Social Security", href: "/inmigracion/tarjeta-social-security", description: "Primera vez o duplicado" }');
+    expect(src).toContain('href: "/en/immigration/social-security-card"');
+    expect(src).not.toMatch(/Citas para el Social Security/i);
+  });
+  it('Affidavit of Support (I-864) en Inmigración, ES y EN', () => {
+    expect(src).toContain('{ label: "Affidavit of Support (I-864)", href: "/inmigracion/affidavit-of-support"');
+    expect(src).toContain('href: "/en/immigration/affidavit-of-support"');
+    expect(src).not.toContain('/notary-public/affidavit-of-support');
+  });
+  it('ambos van en "Documentos y Apoyo Migratorio", antes de "Otros formularios migratorios"', () => {
+    const tab = src.slice(src.indexOf('label: "Documentos y Apoyo Migratorio"'), src.indexOf('Otros formularios migratorios'));
+    expect(tab).toContain('Tarjeta de Social Security');
+    expect(tab).toContain('Affidavit of Support (I-864)');
+  });
+});
