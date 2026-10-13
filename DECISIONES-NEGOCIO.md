@@ -16,10 +16,11 @@ Cada decisión indica:
 1. [Cumplimiento legal en la publicidad](#1-cumplimiento-legal-en-la-publicidad)
 2. [Menú "Ayuda con el IRS"](#2-menú-ayuda-con-el-irs)
 3. [Menú Notary Public](#3-menú-notary-public)
-4. [Cómo cuidamos las keywords de Google Ads](#4-cómo-cuidamos-las-keywords-de-google-ads)
-5. [Horario y forma de atención](#5-horario-y-forma-de-atención)
-6. [Preguntas abiertas para el cliente](#6-preguntas-abiertas-para-el-cliente)
-7. [Historial de cambios](#7-historial-de-cambios)
+4. [Menú Inmigración](#4-menú-inmigración)
+5. [Cómo cuidamos las keywords de Google Ads](#5-cómo-cuidamos-las-keywords-de-google-ads)
+6. [Horario y forma de atención](#6-horario-y-forma-de-atención)
+7. [Preguntas abiertas para el cliente](#7-preguntas-abiertas-para-el-cliente)
+8. [Historial de cambios](#8-historial-de-cambios)
 
 ---
 
@@ -130,6 +131,15 @@ Cada decisión indica:
   - **Página de divorcios:** la descripción propuesta decía "sin necesidad de un abogado para el papeleo", que puede leerse como reemplazar a un abogado. Se cambió en la estrategia de contenido por: "Te ayudamos a llenar los formularios de divorcio en español. No somos abogados ni damos asesoría legal." ✅
 - **Fuentes:** [Secretaría de Estado de Nevada — requisitos de fianza](https://nvsosuat.nv.gov/licensing/document-preparation-services/bond-requirements), [Secretaría de Estado — obligaciones de un Document Preparation Service](https://nvsosuat.nv.gov/licensing/document-preparation-services/duties-obligations-of-a-document-preparation-service), [NRS 240A.123](https://nevada.public.law/statutes/nrs_240A.123), [NRS 240A.125](https://nevada.public.law/statutes/nrs_240a.125), [NRS 240A.150](https://nevada.public.law/statutes/nrs_240a.150), [NRS 240A completo](https://www.leg.state.nv.us/Division/Legal/LaWLibrary/NRS/NRS-240A.html).
 
+### 1.9 Trámites que el Social Security da gratis (Sección 1140)
+- **Decisión:** toda página o anuncio que ofrezca, cobrando, un trámite que el Social Security hace gratis (tarjeta por primera vez, duplicado, cambio de nombre) debe decir **de forma clara y destacada** que ese trámite es gratis en el Social Security. ✅ El cliente confirmó que cobra por este servicio.
+- **Por qué:** la Sección 1140 de la Social Security Act permite cobrar por ayudar con un servicio gratuito del Social Security **solo si se avisa al cliente** que es gratis allí. Lo vigila la Oficina del Inspector General del Social Security (OIG), con multas de miles de dólares por infracción.
+- **Lo que no sirve como defensa:** un descargo del tipo "no estamos afiliados al gobierno" (20 CFR 498.102). Hace falta el aviso de gratuidad.
+- **Cómo lo aplicamos:**
+  - La página incluye, en un recuadro visible y con letra que resalte: "Este trámite es gratis en el Social Security. Nosotros cobramos por ayudarte a prepararlo."
+  - No usamos el logo, los colores ni frases que sugieran que somos el Social Security o que tenemos un convenio con la agencia. Por eso el ítem no dice "Citas para el Social Security" (ver 4.1).
+- **Fuentes:** [SSA OIG — Sección 1140](https://oig.ssa.gov/fraud-reporting/consumer-protection-section-1140/), [20 CFR 498.102](https://www.law.cornell.edu/cfr/text/20/498.102).
+
 ---
 
 ## 2. Menú "Ayuda con el IRS"
@@ -148,7 +158,7 @@ El cliente pidió agregar dos ítems a la pestaña que entonces se llamaba "IRS 
 
 ### 2.3 Reembolsos → un solo ítem, no tres
 - **Decisión:** "no cobrados", "pendientes" y "atrasados" quedan en **un solo ítem: "Seguimiento de reembolso"**. La descripción es *"Pendiente, atrasado o no cobrado: lo rastreamos con el IRS"*. ✅
-- **Por qué no tres ítems:** "pendiente" y "atrasado" son la misma búsqueda ("mi reembolso no ha llegado"). Tres ítems llevarían a la misma página y llenarían el menú. Y si fueran tres páginas, competirían entre sí en Google (ver sección 4).
+- **Por qué no tres ítems:** "pendiente" y "atrasado" son la misma búsqueda ("mi reembolso no ha llegado"). Tres ítems llevarían a la misma página y llenarían el menú. Y si fueran tres páginas, competirían entre sí en Google (ver sección 5).
 - **Por qué no la palabra sola "Reembolsos":** es ambigua. Puede entenderse como "¿me devuelven mi dinero si no quedo satisfecho?". "Seguimiento de reembolso" coincide además con la keyword de Ads de esta página.
 - **Por qué aparece en dos pestañas:** se mantiene en "Taxes Personales" y ahora también aparece en "Ayuda con el IRS", donde el cliente lo pidió. Es la misma página con dos entradas, sin riesgo para el SEO.
 - **El label anterior "Seguimiento de impuestos"** se corrigió: la página trata del reembolso, no de los impuestos en general.
@@ -236,7 +246,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 ### 3.4 "Trámite de título de Mobile Home" (no "Diligenciamiento")
 - **Decisión:** el ítem se llama **"Trámite de título de Mobile Home"**, con la descripción "Traspaso o duplicado del título de tu traila". ✅
 - **Por qué "trámite":** "diligenciamiento" es un término formal, más usado en Colombia. Para el público mexicano y centroamericano de Las Vegas, "trámite" es la palabra natural.
-- **Por qué reemplaza a "Títulos de casas móviles":** el ítem existente cubría el mismo servicio. Se renombró y **conserva su URL** (`/notary-public/titulos-casas-moviles`) para que no haya dos páginas compitiendo por la misma búsqueda (ver 4.1).
+- **Por qué reemplaza a "Títulos de casas móviles":** el ítem existente cubría el mismo servicio. Se renombró y **conserva su URL** (`/notary-public/titulos-casas-moviles`) para que no haya dos páginas compitiendo por la misma búsqueda (ver 5.1).
 
 ### 3.5 Living trust: solo para un trust que ya existe
 - **Decisión:** el ítem se llama **"Mobile Home en un Living Trust"**, con la descripción "Pasa tu traila a un trust ya existente". Tiene página propia: `/notary-public/mobile-home-living-trust`. ✅
@@ -249,13 +259,13 @@ Ordenado de mayor a menor urgencia para el visitante:
   - No: "redactamos tu living trust", "te asesoramos sobre trusts", "te decimos si te conviene un trust", ni prometer plazos o tarifas del trámite.
 
 ### 3.6 Pendientes de Notary Public
-- **"Testamentos":** el menú dice "**Redacción** y firma de testamentos" ("Drafting…" en inglés). Redactar testamentos tiene el mismo riesgo que redactar un trust. No se cambió porque es texto ya aprobado. Alternativa segura: "Firma ante notary public de tu testamento ya redactado". ❓ Depende de la respuesta del cliente (ver 6).
+- **"Testamentos":** el menú dice "**Redacción** y firma de testamentos" ("Drafting…" en inglés). Redactar testamentos tiene el mismo riesgo que redactar un trust. No se cambió porque es texto ya aprobado. Alternativa segura: "Firma ante notary public de tu testamento ya redactado". ❓ Depende de la respuesta del cliente (ver 7).
 - **Estrategia de contenido desactualizada:** la sección Notaría de `CONTENT-STRATEGY.md` usa URLs `/notaria/` y nombres de página distintos a los del menú, además de "Notario Público", "notariado" y "Poder Notarial", que la NRS 240.085 prohíbe (ver 1.1). Hay que corregirla **antes** de escribir las páginas de Notary. ⏳
 - **Keywords:** los datos de Ads no cubren Notary Public (no hay resultados para traila, mobile home, trust ni testamento). Hay que hacer una investigación nueva antes de fijar keywords. ⏳
 
 ### 3.7 "Duplicado de título": mobile home vs. vehículo
 - **Decisión:** el ítem de DMV pasa a llamarse **"Duplicado de título de vehículo"** ("Vehicle title duplicate" en inglés), y su página habla solo de vehículos. Los duplicados de título de mobile home quedan en la página de "Trámite de título de Mobile Home". La URL no cambia (`/dmv/duplicado-titulo`). ✅
-- **Por qué:** la lista de servicios del cliente incluye "Duplicado de título" en DMV, y la pestaña "Títulos de Traila" también ofrece duplicados. Si el ítem de DMV dice "título" a secas, las dos páginas compiten por la misma búsqueda (canibalización, ver 4.1).
+- **Por qué:** la lista de servicios del cliente incluye "Duplicado de título" en DMV, y la pestaña "Títulos de Traila" también ofrece duplicados. Si el ítem de DMV dice "título" a secas, las dos páginas compiten por la misma búsqueda (canibalización, ver 5.1).
 - **Fundamento:** en Nevada los títulos de mobile home no los maneja el DMV, sino la Nevada Housing Division (ver 3.3). La separación refleja dos trámites distintos.
 
 ### 3.8 Pestaña Apostillas: carta poder, permiso de viaje y otros documentos
@@ -267,7 +277,7 @@ Ordenado de mayor a menor urgencia para el visitante:
   - **"Apostilla de otros documentos"** (antes "Apostillas de cartas y documentos") → **conserva su URL** `/notary-public/apostillas-documentos`. Descripción: "Actas de matrimonio y otros documentos oficiales".
 - **Por qué no "válido en cualquier parte del mundo":** la apostilla solo vale en los países del Convenio de La Haya. En los demás (por ejemplo, **Cuba**) hace falta legalización consular. Prometer validez mundial sería publicidad engañosa. El cliente aprobó "países del Convenio de La Haya".
 - **Por qué "permiso de viaje para menores" y con "Apostilla":** el cliente confirmó que son solo para menores. Ya existe "Permiso de salida para menores" en Poderes y Autorizaciones, así que un ítem llamado "Permisos de viaje" competiría con él. Lo nuevo es apostillar el permiso, y el nombre lo dice.
-- **Quién cubre cada búsqueda (ver 4.1):**
+- **Quién cubre cada búsqueda (ver 5.1):**
   - "Carta poder" y "Permiso de salida para menores" cubren a quien necesita **hacer** el documento.
   - Las páginas de apostilla cubren a quien necesita **apostillarlo**.
   - "Otros documentos" no debe mencionar poderes, permisos de viaje ni actas de nacimiento, porque esos tienen su propia página. Se omiten las partidas de nacimiento en su descripción por la misma razón.
@@ -282,14 +292,47 @@ Ordenado de mayor a menor urgencia para el visitante:
   - En la página del permiso de viaje no se dice que la apostilla siempre sea obligatoria: depende del país, del consulado o de la aerolínea.
 - **Pendiente:** la nueva pestaña mezcla "Apostillas de actas…" (plural, texto ya aprobado) con los demás ítems en singular. Si el cliente quiere uniformar, se cambia solo el texto del ítem, no la URL. ❓
 
-## 4. Cómo cuidamos las keywords de Google Ads
+---
 
-### 4.1 Una búsqueda = una página
+## 4. Menú Inmigración
+
+### 4.1 "Tarjeta de Social Security" (no "Citas para el Social Security")
+- **Pedido del cliente (2026-10-12):** agregar "Citas para el Social Security", para la primera vez o un duplicado.
+- **Decisión:** el ítem se llama **"Tarjeta de Social Security"**, con la descripción **"Primera vez o duplicado"** ("Social Security card", "First-time or replacement card" en inglés), en la pestaña **Documentos y Apoyo Migratorio**. URL: `/inmigracion/tarjeta-social-security`. ✅
+- **Por qué no "Citas":** sacar una cita en el Social Security es gratis y no requiere ayuda. Además, "Citas para el Social Security" puede hacer pensar que nosotros damos las citas o tenemos un convenio con la agencia (ver 1.9). Lo que el cliente ofrece en realidad es el trámite completo: llenar el formulario SS-5, revisar documentos y preparar la cita.
+- **Por qué "duplicado" y no "reemplazo":** el Social Security dice "reemplazo", pero la gente busca "duplicado". Esto no choca con el "Duplicado de título de vehículo" de DMV (ver 3.7), porque es otro documento.
+- **Por qué en Inmigración:** el Social Security no es un trámite migratorio, pero la pestaña ya incluye el pasaporte americano. Además, el caso más común de "primera vez" es alguien que acaba de recibir su permiso de trabajo o su green card.
+- **Para la página:**
+  - Debe llevar el aviso obligatorio de gratuidad (ver 1.9).
+  - En los formularios del permiso de trabajo (I-765) y de la green card (I-485) se puede pedir la tarjeta en el mismo trámite. Estas páginas se enlazan entre sí.
+
+### 4.2 "Affidavit of Support (I-864)" va en Inmigración, no en Notary Public
+- **Pedido del cliente (2026-10-12):** agregar "Affidavit of Support" como documento de apoyo. Surgió la duda de si ya estaba en "Documentos Legales" de Notary Public.
+- **Decisión:** es un ítem nuevo de Inmigración: **"Affidavit of Support (I-864)"**, con la descripción **"Formulario de patrocinio económico para tu familiar"** ("Financial sponsorship form for your relative" en inglés), en **Documentos y Apoyo Migratorio**. URL: `/inmigracion/affidavit-of-support`. ✅
+- **Por qué no es el "Affidavit" de Notary Public:**
+  - El "Affidavit" de Notary Public es una declaración jurada genérica que se firma ante notary public.
+  - El Affidavit of Support es el formulario **I-864 de USCIS**, en el que el patrocinador se compromete a mantener económicamente a su familiar. **No se firma ante notary public:** desde 2006 se firma bajo pena de perjurio (28 USC 1746). ❓ Confirmar con las instrucciones vigentes del formulario en uscis.gov antes de escribir la página.
+- **Para que no compitan (ver 5.1):**
+  - "I-864" va en el nombre y en el H1, y distingue esta página de "Affidavit".
+  - La página de "Affidavit" de Notary Public lleva una línea: "¿Buscas el Affidavit of Support (I-864)?", con un enlace a esta página.
+  - Esta página enlaza con "Peticiones familiares" y "Residencia permanente", que son los trámites donde se usa.
+- **I-864A:** el cliente confirmó que también ayuda con el **I-864A** (el contrato del familiar que suma sus ingresos a los del patrocinador). Se trata en la misma página, sin ítem propio.
+- **Redacción segura (NRS 240A y asesoría migratoria):**
+  - Sí: "Te ayudamos a llenar el I-864 y el I-864A con tus datos". Se pueden citar los límites de ingresos oficiales de USCIS.
+  - No: "te decimos si calificas como patrocinador", "te conseguimos un co-patrocinador" ni "te aseguramos que lo aprueben". La asesoría migratoria solo la pueden dar abogados o representantes acreditados.
+- **Resultado:** "Documentos y Apoyo Migratorio" pasa de 5 a 7 ítems. "Otros formularios migratorios" sigue al final, como opción para todo lo demás.
+- **Keywords:** los exports de Ads no tienen datos de "social security" ni de "affidavit". Hay que investigarlas aparte, igual que en Notary Public (ver 3.6). ⏳
+
+---
+
+## 5. Cómo cuidamos las keywords de Google Ads
+
+### 5.1 Una búsqueda = una página
 - **Decisión:** cada grupo de búsquedas del análisis de Ads (Keyword Planner, ~394 keywords de competidores) tiene **una sola página** dueña. ✅
 - **Por qué:** si dos páginas apuntan a la misma búsqueda, Google no sabe cuál mostrar y ambas posicionan peor. A esto se le llama **canibalización**. También encarece Ads, porque la página de destino pierde relevancia.
 - **Cómo lo aplicamos:** antes de crear una página nueva revisamos si su búsqueda ya tiene dueña. Si la tiene, el contenido nuevo se agrega como sección de esa página.
 
-### 4.2 Grupos actuales del clúster Taxes / IRS / ITIN
+### 5.2 Grupos actuales del clúster Taxes / IRS / ITIN
 | # | Búsqueda principal | Página |
 |---|---|---|
 | 1 | taxes en español en Las Vegas | `/taxes/` |
@@ -317,9 +360,9 @@ Ordenado de mayor a menor urgencia para el visitante:
 
 ---
 
-## 5. Horario y forma de atención
+## 6. Horario y forma de atención
 
-### 5.1 Horario por temporada
+### 6.1 Horario por temporada
 - **Decisión:** el sitio muestra el horario real, que cambia por temporada. ✅
   - **Temporada de taxes** (2 ene – 15 abr): lunes a sábado, 9:00 AM – 10:00 PM.
   - **Resto del año:** lunes a viernes 10:00 AM – 7:00 PM, sábado 10:00 AM – 2:00 PM.
@@ -327,7 +370,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Por qué:** un horario incorrecto en Google hace que la gente llegue con la oficina cerrada, y eso termina en reseñas negativas.
 - **Importante:** Google necesita las fechas de cada temporada con año. **El sitio debe volver a publicarse al menos una vez al año** para que Google siga mostrando el horario vigente. ⏳
 
-### 5.2 Atención por orden de llegada vs. botones de "Agendar cita"
+### 6.2 Atención por orden de llegada vs. botones de "Agendar cita"
 - **Situación:** la oficina atiende **solo por orden de llegada**, pero varios botones del sitio dicen "Agendar cita". ❓
 - **Recomendación:** reemplazarlos por acciones reales. El botón principal sería "Visítanos hoy / Cómo llegar" (Google Maps) y el secundario WhatsApp o llamada. Si más adelante se implementa agendamiento, se vuelven a poner.
 - **Por qué:** prometer algo que no existe genera desconfianza desde el primer contacto.
@@ -335,7 +378,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 
 ---
 
-## 6. Preguntas abiertas para el cliente
+## 7. Preguntas abiertas para el cliente
 
 **Mensaje sugerido para el cliente** (cubre las preguntas 1, 2 y 3):
 
@@ -349,14 +392,14 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 4 | ¿Aceptan cambiar "Garantizamos tener el mejor reembolso"? | Texto de "¿Por qué elegirnos?" |
 | 5 | ¿La primera consulta sigue siendo gratis? | Botones y textos que dicen "consulta sin costo" |
 | 6 | ¿Abren los domingos en alguna temporada? | Horario del sitio y de Google |
-| 7 | ¿Planean ofrecer agendamiento de citas? | Botones "Agendar cita" (ver 5.2) |
+| 7 | ¿Planean ofrecer agendamiento de citas? | Botones "Agendar cita" (ver 6.2) |
 | 8 | Con las mobile homes, ¿preparan los formularios (T1 y otros) o solo hacen las firmas ante notary public? Ver 3.4 y 3.5 | Qué se puede prometer en las dos páginas de "Títulos de Traila" |
 | 9 | ¿Tienen un abogado de confianza al que derivar a quien todavía no tiene un trust? Ver 3.5 | Mensaje de derivación en la página del living trust |
 | 10 | Sobre Testamentos: ¿redactan el documento o solo hacen la firma ante notary public de uno ya redactado? Ver 3.6 | Si solo firman ante notary public: cambiar "Redacción y firma" por "Firma ante notary public de tu testamento ya redactado" |
 
 ---
 
-## 7. Historial de cambios
+## 8. Historial de cambios
 
 | Fecha | Cambio |
 |---|---|
@@ -380,3 +423,5 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-12 | Fórmula única "firma ante notary public"; se deja de usar "notarizamos" (1.1 y 3.5) |
 | 2026-10-12 | Menú DMV: "Duplicado de título" → "Duplicado de título de vehículo" (ES/EN), para no competir con los duplicados de mobile home (3.7) |
 | 2026-10-12 | Apostillas: nuevos "Apostilla de carta poder" y "Apostilla de permiso de viaje para menores"; "Apostillas de cartas y documentos" pasa a "Apostilla de otros documentos" (misma URL). "Países del Convenio de La Haya" en lugar de "cualquier parte del mundo" (3.8) |
+| 2026-10-12 | Regla de la Sección 1140: aviso de gratuidad en los trámites del Social Security (1.9) |
+| 2026-10-12 | Menú Inmigración: nuevos "Tarjeta de Social Security" y "Affidavit of Support (I-864)" en Documentos y Apoyo Migratorio. Se agrega la sección 4 y las secciones 4-7 pasan a 5-8 (sección 4) |
