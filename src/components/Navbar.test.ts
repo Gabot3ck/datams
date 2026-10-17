@@ -218,3 +218,13 @@ describe('Navbar — Otros Servicios: Rompetiket, citas y copias (decisión 2026
     expect(src).toContain('{ label: "Copies, printing & fax", href: "/en/other/copies-printing-fax", description: "Right at our office" }');
   });
 });
+
+describe('Navbar — Taxes Personales: "Extensión de taxes" (decisión 2026-10-17)', () => {
+  it('nuevo ítem ES y EN, después de "todos los estados"', () => {
+    expect(src).toMatch(/href: "\/taxes\/todos-los-estados"[^\n]*\n\s*\{ label: "Extensión de taxes", href: "\/taxes\/extension", description: "Evita la multa por declarar tarde" \}/);
+    expect(src).toMatch(/href: "\/en\/taxes\/all-states"[^\n]*\n\s*\{ label: "Tax extension", href: "\/en\/taxes\/tax-extension", description: "Avoid the late-filing penalty" \}/);
+  });
+  it('no promete evitar toda multa (la extensión no cubre el pago tardío)', () => {
+    expect(src).not.toContain('"Para evitar multa"');
+  });
+});
