@@ -267,6 +267,12 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Decisión:** el ítem de DMV pasa a llamarse **"Duplicado de título de vehículo"** ("Vehicle title duplicate" en inglés), y su página habla solo de vehículos. Los duplicados de título de mobile home quedan en la página de "Trámite de título de Mobile Home". La URL no cambia (`/dmv/duplicado-titulo`). ✅
 - **Por qué:** la lista de servicios del cliente incluye "Duplicado de título" en DMV, y la pestaña "Títulos de Traila" también ofrece duplicados. Si el ítem de DMV dice "título" a secas, las dos páginas compiten por la misma búsqueda (canibalización, ver 5.1).
 - **Fundamento:** en Nevada los títulos de mobile home no los maneja el DMV, sino la Nevada Housing Division (ver 3.3). La separación refleja dos trámites distintos.
+- **Cambio (2026-10-17):** el cliente pidió que el ítem diga **"Duplicado de título"**, con la descripción "Para vehículos particulares y trailas". ✅ Queda así:
+  - **"Duplicado de título"**, con la descripción **"Para vehículos particulares y remolques"** ("Title duplicate", "For personal vehicles and trailers" en inglés). La URL no cambia.
+  - **Por qué "remolques" y no "trailas":** en el menú, "traila" significa mobile home (pestaña "Títulos de Traila", ver 3.3). Si la pestaña DMV también dijera "trailas", el usuario vería dos lugares para el mismo duplicado y las dos páginas competirían por la misma búsqueda (ver 5.1). Además, el título de una mobile home no lo emite el DMV. Los remolques (de carga, de viaje, de botes) sí se titulan en el DMV.
+  - **Supuesto de trabajo:** el cliente se refiere a remolques, no a mobile homes. ❓ Confirmar (ver 7). Si se refiere a mobile homes, la descripción pasa a "Para autos, camionetas y motos" y el duplicado de mobile home sigue en "Títulos de Traila".
+  - Ya no hace falta repetir "de vehículo" en el nombre: la pestaña DMV y la descripción lo dejan claro, y "duplicado de título" es como lo busca la gente.
+  - **Para la página:** H1 y title deben decir "vehículo" o "remolque", no "título" a secas, para no competir con la página de mobile home.
 
 ### 3.8 Pestaña Apostillas: carta poder, permiso de viaje y otros documentos
 - **Pedido del cliente (2026-10-12):** agregar "Apostilla de carta poder" y "Permisos de viaje", ambos con la descripción "válido en cualquier parte del mundo". Además, "Apostillas de cartas y documentos" le parecía demasiado general.
@@ -292,6 +298,15 @@ Ordenado de mayor a menor urgencia para el visitante:
   - En la página del permiso de viaje no se dice que la apostilla siempre sea obligatoria: depende del país, del consulado o de la aerolínea.
 - **Pendiente:** la nueva pestaña mezcla "Apostillas de actas…" (plural, texto ya aprobado) con los demás ítems en singular. Si el cliente quiere uniformar, se cambia solo el texto del ítem, no la URL. ❓
 
+### 3.9 "Servicios para tu cita del DMV": sin "Citas" ni "Agendamos"
+- **Decisión:** la descripción de "Citas y preparación DMV" pasa de "Agendamos y preparamos tu cita en el DMV" a **"Te ayudamos a sacar tu cita y a preparar tus documentos"** ("We help you book your appointment and get your documents ready" en inglés). ✅
+- **Por qué:** "Agendamos tu cita en el DMV" puede hacer pensar que tenemos acceso especial o un convenio con el DMV. Sacar la cita es gratis y la puede hacer cualquiera en línea. Es el mismo criterio de 1.9 (Social Security) y de la regla de uso de "DMV" (1.8). Además, "Agendamos" chocaba con la atención por orden de llegada (6.2), aunque la cita sea en el DMV y no en nuestra oficina.
+- **Nombre del ítem (2026-10-17):** "Citas y preparación DMV" pasa a **"Servicios para tu cita del DMV"** ("Services for your DMV appointment" en inglés). La URL no cambia (`/dmv/citas-dmv`). ✅
+  - **Por qué:** "Citas … DMV" suena a que nosotros damos las citas o tenemos acceso especial al DMV, igual que "Citas para el Social Security" (ver 4.1).
+  - **Por qué "Servicios":** la regla de uso de "DMV" en la publicidad pide que "DMV" vaya acompañado de un término como "servicios" (ver 1.8). Este nombre ya cumple esa parte. El aviso de que **no estamos afiliados al DMV** sigue siendo necesario y va en la página.
+  - **Por qué "tu cita":** deja claro que la cita es del cliente en el DMV, y conserva las palabras que la gente busca ("cita" y "DMV").
+  - Se descartaron "Ayuda con tu cita del DMV" (no cumple la regla de "servicios") y "Preparación para tu cita del DMV" (pierde la parte de sacar la cita).
+
 ---
 
 ## 4. Menú Inmigración
@@ -300,7 +315,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Pedido del cliente (2026-10-12):** agregar "Citas para el Social Security", para la primera vez o un duplicado.
 - **Decisión:** el ítem se llama **"Tarjeta de Social Security"**, con la descripción **"Primera vez o duplicado"** ("Social Security card", "First-time or replacement card" en inglés), en la pestaña **Documentos y Apoyo Migratorio**. URL: `/inmigracion/tarjeta-social-security`. ✅
 - **Por qué no "Citas":** sacar una cita en el Social Security es gratis y no requiere ayuda. Además, "Citas para el Social Security" puede hacer pensar que nosotros damos las citas o tenemos un convenio con la agencia (ver 1.9). Lo que el cliente ofrece en realidad es el trámite completo: llenar el formulario SS-5, revisar documentos y preparar la cita.
-- **Por qué "duplicado" y no "reemplazo":** el Social Security dice "reemplazo", pero la gente busca "duplicado". Esto no choca con el "Duplicado de título de vehículo" de DMV (ver 3.7), porque es otro documento.
+- **Por qué "duplicado" y no "reemplazo":** el Social Security dice "reemplazo", pero la gente busca "duplicado". Esto no choca con el "Duplicado de título" de DMV (ver 3.7), porque es otro documento.
 - **Por qué en Inmigración:** el Social Security no es un trámite migratorio, pero la pestaña ya incluye el pasaporte americano. Además, el caso más común de "primera vez" es alguien que acaba de recibir su permiso de trabajo o su green card.
 - **Para la página:**
   - Debe llevar el aviso obligatorio de gratuidad (ver 1.9).
@@ -396,6 +411,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 8 | Con las mobile homes, ¿preparan los formularios (T1 y otros) o solo hacen las firmas ante notary public? Ver 3.4 y 3.5 | Qué se puede prometer en las dos páginas de "Títulos de Traila" |
 | 9 | ¿Tienen un abogado de confianza al que derivar a quien todavía no tiene un trust? Ver 3.5 | Mensaje de derivación en la página del living trust |
 | 10 | Sobre Testamentos: ¿redactan el documento o solo hacen la firma ante notary public de uno ya redactado? Ver 3.6 | Si solo firman ante notary public: cambiar "Redacción y firma" por "Firma ante notary public de tu testamento ya redactado" |
+| 11 | Cuando dicen "trailas" en el duplicado de título de DMV, ¿se refieren a remolques (de carga o de viaje) o a casas móviles (mobile home)? Ver 3.7 | Si son mobile homes: la descripción de DMV pasa a "Para autos, camionetas y motos" |
 
 ---
 
@@ -425,3 +441,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-12 | Apostillas: nuevos "Apostilla de carta poder" y "Apostilla de permiso de viaje para menores"; "Apostillas de cartas y documentos" pasa a "Apostilla de otros documentos" (misma URL). "Países del Convenio de La Haya" en lugar de "cualquier parte del mundo" (3.8) |
 | 2026-10-12 | Regla de la Sección 1140: aviso de gratuidad en los trámites del Social Security (1.9) |
 | 2026-10-12 | Menú Inmigración: nuevos "Tarjeta de Social Security" y "Affidavit of Support (I-864)" en Documentos y Apoyo Migratorio. Se agrega la sección 4 y las secciones 4-7 pasan a 5-8 (sección 4) |
+| 2026-10-17 | Menú DMV: "Duplicado de título de vehículo" → "Duplicado de título", con la descripción "Para vehículos particulares y remolques" (3.7). "Citas y preparación DMV" → "Servicios para tu cita del DMV", y su descripción "Agendamos…" → "Te ayudamos a sacar tu cita…" (3.9) |
