@@ -222,7 +222,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 
 ---
 
-## 3. Menú Notary Public
+## 3. Menú Notary Public y Más Servicios
 
 ### 3.1 Pedido del cliente (2026-10-11)
 - Cambiar "Propiedad y Documentos Legales" por **"Documentos Legales"**.
@@ -307,6 +307,30 @@ Ordenado de mayor a menor urgencia para el visitante:
   - **Por qué "tu cita":** deja claro que la cita es del cliente en el DMV, y conserva las palabras que la gente busca ("cita" y "DMV").
   - Se descartaron "Ayuda con tu cita del DMV" (no cumple la regla de "servicios") y "Preparación para tu cita del DMV" (pierde la parte de sacar la cita).
 
+
+### 3.10 Otros Servicios: Rompetiket une la revisión y el pago de tickets
+- **Pedido del cliente (2026-10-17):** dejar "Rompetiket / Papeletas" solo como "Rompetiket", con la descripción "Tikets y multas de tránsito". El cliente aclaró que el servicio es **revisar si la persona tiene multas de tránsito y cuánto debe**.
+- **Decisión:** "Rompetiket" y "Pago de tickets de tráfico" pasan a ser **un solo ítem**. ✅
+  - **"Rompetiket"**, con la descripción **"Revisamos tus multas de tránsito y te ayudamos a pagarlas"**. URL: `/otros/tickets-transito`.
+  - En inglés: **"Rompetiket (traffic tickets)"**, con la descripción "We check your traffic tickets and help you pay them". URL: `/en/other/traffic-tickets`.
+- **Por qué uno solo:** para el cliente es un solo trámite (primero revisa cuánto debe y después paga). Con dos ítems casi iguales, las dos páginas competirían por las mismas búsquedas (ver 5.1). La página puede captar las dos en el title y el H1, por ejemplo "Rompetiket: revisa y paga tus tickets de tránsito en Las Vegas".
+- **Por qué esa descripción y no "Tickets y multas de tránsito":** la del cliente no dice qué hacemos. La nueva explica el servicio real.
+- **Por qué la URL `/otros/tickets-transito`:** Google no entiende "rompetiket", pero sí "tickets de tránsito". Además, queda igual a la URL en inglés. Todavía no había páginas creadas, así que el cambio no rompe nada.
+- **Por qué se quitó "pelear" y "dismissal":** la descripción anterior decía "Asistencia para pelear multas y citaciones" y en inglés "Ticket dismissal", que promete anular el ticket. Pelear un ticket en la corte o pedir que lo reduzcan es trabajo de abogado. Hacerlo sin serlo es ejercicio ilegal del derecho y choca con NRS 240A (ver 1.8). Revisar y ayudar a pagar no tiene ese problema.
+- **Para la página:** no prometer que se baja, se anula o se "rompe" el ticket. Si la persona quiere pelearlo, la página le dice que consulte con un abogado.
+- **Keywords:** los datos de Ads no incluyen "rompetiket", "papeleta" ni "ticket de tránsito". Hay que investigarlas aparte. ⏳
+
+### 3.11 Otros Servicios: "Ayuda para sacar citas", sin licencias y con copias y fax
+- **Pedido del cliente (2026-10-17):** quitar "Licencias ciudad y condado", agregar un ítem de citas (Social Security, banco y otros) y agregar "Copias, impresiones y fax".
+- **"Licencias ciudad y condado" sale de Otros.** ✅ Ese servicio ya está en Negocio como "Permisos del condado y la ciudad" (`/negocio/permisos-ciudad-condado`), y la estrategia de contenido ya lo había fusionado ahí. Tener las dos páginas sería canibalización (ver 5.1).
+- **"Ayuda para sacar citas" reemplaza a "Citas de consulado".** ✅ Descripción: **"Consulados, bancos, oficinas de gobierno y más"**. URL: `/otros/ayuda-citas`. En inglés: "Appointment help", con la descripción "Consulates, banks, government offices and more" (`/en/other/appointment-help`).
+  - **Por qué juntar las citas:** "Citas de consulado" y el ítem nuevo eran el mismo servicio con distintas oficinas. El usuario pidió que fueran uno solo.
+  - **Por qué no se nombra al Social Security:** en 4.1 ya se descartó "Citas para el Social Security": sacar esa cita es gratis y ya existe el ítem "Tarjeta de Social Security". Nombrarlo aquí obligaría a poner el aviso de gratuidad (ver 1.9) y competiría con esa página. La página puede enlazar a "Tarjeta de Social Security".
+  - **Por qué se quitó "Agendamiento":** la descripción anterior decía "Agendamiento de citas en consulados". Es el mismo problema que en DMV (ver 3.9): suena a que tenemos acceso especial a la oficina.
+  - **Para la página:** las citas del consulado de México son gratis. La página debe decirlo ("La cita es gratis. Nosotros cobramos por ayudarte a sacarla y preparar tus documentos") y no prometer fechas ni citas garantizadas. Como "citas consulado" probablemente es la búsqueda principal, el H1 y el title deben incluir "consulado".
+- **Nuevo "Copias, impresiones y fax".** ✅ Descripción: **"Directo en nuestra oficina"**. URL: `/otros/copias-impresiones-fax`. En inglés: "Copies, printing & fax", con la descripción "Right at our office" (`/en/other/copies-printing-fax`). La descripción calza con la atención por orden de llegada (ver 6.2). Una página corta con horario y precios sirve para quien busca "fax cerca de mí".
+- **Resultado:** la pestaña "Otros Servicios" pasa de 7 a 6 ítems.
+- **Pendiente:** la sección Otros de `CONTENT-STRATEGY.md` usa URLs viejas (`/otros/rompe-tiquet-papeletas` y otras). Hay que actualizarla antes de escribir estas páginas. ⏳
 ---
 
 ## 4. Menú Inmigración
@@ -442,3 +466,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-12 | Regla de la Sección 1140: aviso de gratuidad en los trámites del Social Security (1.9) |
 | 2026-10-12 | Menú Inmigración: nuevos "Tarjeta de Social Security" y "Affidavit of Support (I-864)" en Documentos y Apoyo Migratorio. Se agrega la sección 4 y las secciones 4-7 pasan a 5-8 (sección 4) |
 | 2026-10-17 | Menú DMV: "Duplicado de título de vehículo" → "Duplicado de título", con la descripción "Para vehículos particulares y remolques" (3.7). "Citas y preparación DMV" → "Servicios para tu cita del DMV", y su descripción "Agendamos…" → "Te ayudamos a sacar tu cita…" (3.9) |
+| 2026-10-17 | Otros Servicios: "Rompetiket" une la revisión y el pago de tickets (`/otros/tickets-transito`) (3.10). "Ayuda para sacar citas" reemplaza a "Citas de consulado", sale "Licencias ciudad y condado" y entra "Copias, impresiones y fax". La sección 3 pasa a llamarse "Menú Notary Public y Más Servicios" (3.11) |
