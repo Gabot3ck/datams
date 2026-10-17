@@ -330,7 +330,7 @@ Ordenado de mayor a menor urgencia para el visitante:
   - **Para la página:** las citas del consulado de México son gratis. La página debe decirlo ("La cita es gratis. Nosotros cobramos por ayudarte a sacarla y preparar tus documentos") y no prometer fechas ni citas garantizadas. Como "citas consulado" probablemente es la búsqueda principal, el H1 y el title deben incluir "consulado".
 - **Nuevo "Copias, impresiones y fax".** ✅ Descripción: **"Directo en nuestra oficina"**. URL: `/otros/copias-impresiones-fax`. En inglés: "Copies, printing & fax", con la descripción "Right at our office" (`/en/other/copies-printing-fax`). La descripción calza con la atención por orden de llegada (ver 6.2). Una página corta con horario y precios sirve para quien busca "fax cerca de mí".
 - **Resultado:** la pestaña "Otros Servicios" pasa de 7 a 6 ítems.
-- **Pendiente:** la sección Otros de `CONTENT-STRATEGY.md` usa URLs viejas (`/otros/rompe-tiquet-papeletas` y otras). Hay que actualizarla antes de escribir estas páginas. ⏳
+- **Estrategia de contenido actualizada (2026-10-17):** `CONTENT-STRATEGY.md` ya tiene las URLs y la metadata nuevas de Otros (árbol y tabla), y las filas de DMV de "Duplicado de título" (con remolque) y de la cita del DMV (sin "agendar"). ✅
 ---
 
 ## 4. Menú Inmigración
