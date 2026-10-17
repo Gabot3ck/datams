@@ -142,7 +142,7 @@ Cada decisión indica:
 
 ---
 
-## 2. Menú "Ayuda con el IRS"
+## 2. Menú Taxes y "Ayuda con el IRS"
 
 ### 2.1 Pedido del cliente
 El cliente pidió agregar dos ítems a la pestaña que entonces se llamaba "IRS & Resolución Fiscal" (hoy "Ayuda con el IRS", ver 2.6):
@@ -219,6 +219,16 @@ Ordenado de mayor a menor urgencia para el visitante:
 ### 2.8 Cartas del IRS vs. verificación de identidad
 - **Decisión:** los códigos de cartas de identidad (**5071C, 4883C, 5747C**) pertenecen **solo** a la página de Verificación de identidad. La página de Cartas del IRS trata las demás (CP2000, CP14, LT11, CP49) y, cuando la carta es de identidad, enlaza hacia Verificación de identidad. ✅ Regla fijada para la redacción.
 - **Por qué:** los códigos de carta son búsquedas muy concretas ("carta 5071C del IRS"). Si las dos páginas los trabajan, compiten entre sí en Google (canibalización).
+
+### 2.9 "Extensión de taxes": evita la multa por declarar tarde, no por pagar tarde
+- **Pedido del cliente (2026-10-17):** agregar en Taxes Personales "Extensión de taxes", con la descripción "Para evitar multa".
+- **Decisión:** el ítem se llama **"Extensión de taxes"**, con la descripción **"Evita la multa por declarar tarde"** ("Tax extension", "Avoid the late-filing penalty" en inglés). URL: `/taxes/extension` (`/en/taxes/tax-extension`). Va en tercer lugar, después de "Declaraciones en todos los estados" y antes de "Enmiendas", siguiendo el orden en que la gente hace los trámites. La pestaña pasa de 4 a 5 ítems. ✅
+- **Por qué no "Para evitar multa":** la extensión (formulario 4868) da más tiempo para **presentar** la declaración, no para **pagar**. Evita la multa por declarar tarde (5 % de lo adeudado por mes de atraso), pero **no** la multa por pagar tarde ni los intereses. Quien debe impuestos igual tiene que pagar antes del 15 de abril. "Para evitar multa" haría pensar que la extensión cubre todo, y esa persona después recibiría la multa por pago tardío.
+- **Para la página:**
+  - Decir claro: "La extensión te da más tiempo para declarar, no para pagar".
+  - Si la persona debe y no puede pagar, enlazar a "Acuerdos de pago con el IRS" (`/irs/acuerdos-pago`), con la redacción AFSP: "te ayudamos a preparar tu solicitud", sin prometer representación en cobranza (ver 1.7).
+  - Solo personas (formulario 4868). La extensión de negocios (formulario 7004) no se incluye por ahora. ❓ Preguntar al cliente si también la ofrece.
+- **Keywords:** los datos de Ads no tienen búsquedas de "extensión de taxes". Va como grupo 11 tentativo (ver 5.2). ⏳
 
 ---
 
@@ -384,11 +394,13 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 8 | seguimiento de mi reembolso de taxes | `/taxes/seguimiento-reembolso` |
 | 9 *(nuevo, tentativo)* | verificación de identidad IRS | `/irs/verificacion-identidad` |
 | 10 *(nuevo)* | ayuda con el IRS | `/irs/` (página general) |
+| 11 *(nuevo, tentativo)* | extensión de taxes | `/taxes/extension` |
 
 - **Grupo 6, cambio de keyword (2026-10-10):** la keyword principal pasó de "representación en auditorías del IRS" a **"auditoría del IRS"**. ✅
   - **Por qué:** al revisar los datos originales de Ads, "representación en auditorías del IRS" no aparece: era una frase armada. Lo que la gente busca de verdad es "auditoria del irs", "auditorias del irs" e "irs auditoria".
   - **Ventaja legal:** el título de la página ya no promete "representación", que con el AFSP solo aplica a declaraciones que nosotros preparamos (ver 1.3). Esa condición se explica dentro de la página: "si preparamos tu declaración, te representamos en la auditoría".
 - **Grupo 9:** no aparece en el análisis original de Ads (los competidores no trabajan este tema). **Hay que validar su volumen en Keyword Planner** antes de crear un grupo de anuncios. ⏳
+- **Grupo 11:** no aparece en los datos de Ads. Hay que validar su volumen en Keyword Planner antes de crear un grupo de anuncios (ver 2.9). ⏳
 - **Grupo 10:** respaldado por los datos de Ads ("ayuda con el irs", "irs ayuda"). ✅
   - **Acción en Google Ads:** si "ayuda con el irs" está como variante en el grupo de anuncios de deudas (grupo 5), hay que sacarla de ahí para que no compita con `/irs/`. ⏳
 - **Página de auditorías con la nueva keyword:** ✅
@@ -436,6 +448,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 9 | ¿Tienen un abogado de confianza al que derivar a quien todavía no tiene un trust? Ver 3.5 | Mensaje de derivación en la página del living trust |
 | 10 | Sobre Testamentos: ¿redactan el documento o solo hacen la firma ante notary public de uno ya redactado? Ver 3.6 | Si solo firman ante notary public: cambiar "Redacción y firma" por "Firma ante notary public de tu testamento ya redactado" |
 | 11 | Cuando dicen "trailas" en el duplicado de título de DMV, ¿se refieren a remolques (de carga o de viaje) o a casas móviles (mobile home)? Ver 3.7 | Si son mobile homes: la descripción de DMV pasa a "Para autos, camionetas y motos" |
+| 12 | ¿También ayudan con la extensión de taxes de negocios (formulario 7004)? Ver 2.9 | Si la ofrecen: la página de extensión también habla de negocios |
 
 ---
 
@@ -467,3 +480,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-12 | Menú Inmigración: nuevos "Tarjeta de Social Security" y "Affidavit of Support (I-864)" en Documentos y Apoyo Migratorio. Se agrega la sección 4 y las secciones 4-7 pasan a 5-8 (sección 4) |
 | 2026-10-17 | Menú DMV: "Duplicado de título de vehículo" → "Duplicado de título", con la descripción "Para vehículos particulares y remolques" (3.7). "Citas y preparación DMV" → "Servicios para tu cita del DMV", y su descripción "Agendamos…" → "Te ayudamos a sacar tu cita…" (3.9) |
 | 2026-10-17 | Otros Servicios: "Rompetiket" une la revisión y el pago de tickets (`/otros/tickets-transito`) (3.10). "Ayuda para sacar citas" reemplaza a "Citas de consulado", sale "Licencias ciudad y condado" y entra "Copias, impresiones y fax". La sección 3 pasa a llamarse "Menú Notary Public y Más Servicios" (3.11) |
+| 2026-10-17 | Taxes Personales: nuevo "Extensión de taxes" con la descripción "Evita la multa por declarar tarde" (`/taxes/extension`). Grupo 11 tentativo. La sección 2 pasa a llamarse "Menú Taxes y Ayuda con el IRS" (2.9) |
