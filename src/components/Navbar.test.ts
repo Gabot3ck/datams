@@ -119,10 +119,24 @@ describe('Navbar — Notary Public: "Documentos Legales" + pestaña "Títulos de
   });
 });
 
-describe('Navbar — duplicado de título: DMV solo vehículos (decisión 2026-10-12)', () => {
-  it('el ítem de DMV dice "de vehículo" en ES y EN', () => {
-    expect(src).toContain('{ label: "Duplicado de título de vehículo", href: "/dmv/duplicado-titulo" }');
-    expect(src).toContain('{ label: "Vehicle title duplicate", href: "/en/dmv/title-duplicate" }');
+describe('Navbar — duplicado de título: DMV vehículos y remolques (decisión 2026-10-17)', () => {
+  it('el ítem de DMV aclara vehículos y remolques en la descripción, ES y EN', () => {
+    expect(src).toContain('{ label: "Duplicado de título", href: "/dmv/duplicado-titulo", description: "Para vehículos particulares y remolques" }');
+    expect(src).toContain('{ label: "Title duplicate", href: "/en/dmv/title-duplicate", description: "For personal vehicles and trailers" }');
+  });
+  it('la descripción de DMV no dice "traila" (en el menú, traila = mobile home)', () => {
+    expect(src).not.toMatch(/description: "[^"]*vehículos particulares[^"]*traila/i);
+  });
+  it('citas DMV: el nombre dice "Servicios para tu cita del DMV", ES y EN', () => {
+    expect(src).toContain('{ label: "Servicios para tu cita del DMV", href: "/dmv/citas-dmv"');
+    expect(src).toContain('{ label: "Services for your DMV appointment", href: "/en/dmv/dmv-appointments"');
+    expect(src).not.toContain('Citas y preparación DMV');
+  });
+  it('citas DMV: no dice que agendamos nosotros la cita', () => {
+    expect(src).not.toContain('Agendamos y preparamos tu cita en el DMV');
+    expect(src).not.toContain('We schedule and prepare you for your DMV appointment');
+    expect(src).toContain('description: "Te ayudamos a sacar tu cita y a preparar tus documentos"');
+    expect(src).toContain('description: "We help you book your appointment and get your documents ready"');
   });
   it('en español no usa "notarizar" (fórmula única: "ante notary public")', () => {
     // Solo formas en español; "Notarized"/"notarization" en inglés son correctas.
