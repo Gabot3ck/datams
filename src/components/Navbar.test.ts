@@ -179,3 +179,42 @@ describe('Navbar — Inmigración: Tarjeta de Social Security y Affidavit of Sup
     expect(tab).toContain('Affidavit of Support (I-864)');
   });
 });
+
+describe('Navbar — Otros Servicios: Rompetiket, citas y copias (decisión 2026-10-17)', () => {
+  const tabEs = src.slice(src.indexOf('label: "Otros Servicios",\n            items: ['), src.indexOf('{ label: "Nosotros"'));
+  const tabEn = src.slice(src.indexOf('label: "Other Services",\n            items: ['), src.indexOf('{ label: "About Us"'));
+
+  it('la pestaña queda con 6 ítems en ES y EN', () => {
+    expect(tabEs.match(/\{ label: /g)).toHaveLength(6);
+    expect(tabEn.match(/\{ label: /g)).toHaveLength(6);
+  });
+  it('Rompetiket une revisión y pago de tickets en un solo ítem', () => {
+    expect(src).toContain('{ label: "Rompetiket", href: "/otros/tickets-transito", description: "Revisamos tus multas de tránsito y te ayudamos a pagarlas" }');
+    expect(src).toContain('{ label: "Rompetiket (traffic tickets)", href: "/en/other/traffic-tickets", description: "We check your traffic tickets and help you pay them" }');
+    expect(src).not.toContain('Pago de tickets de tráfico');
+    expect(src).not.toContain('Traffic ticket payment');
+  });
+  it('Rompetiket no promete anular ni pelear el ticket', () => {
+    expect(src).not.toMatch(/ticket dismissal/i);
+    expect(src).not.toContain('pelear multas');
+  });
+  it('"Ayuda para sacar citas" reemplaza a "Citas de consulado", sin "Agendamiento"', () => {
+    expect(src).toContain('{ label: "Ayuda para sacar citas", href: "/otros/ayuda-citas", description: "Consulados, bancos, oficinas de gobierno y más" }');
+    expect(src).toContain('{ label: "Appointment help", href: "/en/other/appointment-help", description: "Consulates, banks, government offices and more" }');
+    expect(src).not.toContain('Citas de consulado');
+    expect(src).not.toMatch(/Agendamiento/);
+  });
+  it('el ítem de citas no nombra al Social Security (ver Sección 1140)', () => {
+    expect(tabEs).not.toMatch(/social security|seguro social/i);
+    expect(tabEn).not.toMatch(/social security/i);
+  });
+  it('"Licencias ciudad y condado" sale de Otros (vive en Negocio)', () => {
+    expect(src).not.toContain('Licencias ciudad y condado');
+    expect(src).not.toContain('City & county licenses');
+    expect(src).toContain('{ label: "Permisos del condado y la ciudad", href: "/negocio/permisos-ciudad-condado"');
+  });
+  it('nuevo "Copias, impresiones y fax", ES y EN', () => {
+    expect(src).toContain('{ label: "Copias, impresiones y fax", href: "/otros/copias-impresiones-fax", description: "Directo en nuestra oficina" }');
+    expect(src).toContain('{ label: "Copies, printing & fax", href: "/en/other/copies-printing-fax", description: "Right at our office" }');
+  });
+});
