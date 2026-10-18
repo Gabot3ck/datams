@@ -517,11 +517,24 @@ const {
           aria-label={lang === "es"
             ? "Inicio — Tax & Notary Public"
             : "Home — Tax & Notary Public"}
-          class="flex shrink-0 items-baseline gap-1 font-bold"
+          class="flex shrink-0 items-center"
         >
-          <span class="text-xl text-brand-light">DATA'S</span>
-          <span class="text-xs font-normal text-neutral-grey">&amp;</span>
-          <span class="text-xl text-brand-dark">MULTISERVICES</span>
+          <!-- Mobile: logo vertical (texto bajo edificios) · lg (990px): horizontal -->
+          <picture>
+            <source
+              media="(min-width: 990px)"
+              srcset="/assets/logo/datams-logo-horizontal.svg"
+              width="184"
+              height="48"
+            />
+            <img
+              src="/assets/logo/datams-logo.svg"
+              alt=""
+              width="49"
+              height="56"
+              class="h-14 w-auto lg:h-12"
+            />
+          </picture>
         </a>
 
         <!-- Navegación desktop -->
