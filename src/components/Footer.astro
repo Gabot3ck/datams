@@ -99,13 +99,13 @@ const telHref = `tel:+1${t.contact.phone.replace(/\D/g, '')}`;
       <!-- Marca -->
       <div class="sm:col-span-2 lg:col-span-1">
         <a href={t.logoHref} aria-label={t.logoAria} class="inline-block">
-          {/* TODO: reemplazar por el logo real, p. ej. /assets/logo.svg */}
           <img
-            src="/assets/images/test/thumb_empresas_4b46959dd7.avif"
-            alt="Data's & Multiservices"
-            width="140"
-            height="40"
-            class="h-10 w-auto rounded"
+            src="/assets/logo/datams-logo.svg"
+            alt=""
+            width="98"
+            height="112"
+            loading="lazy"
+            class="h-28 w-auto"
           />
         </a>
         <p class="mt-4 max-w-xs text-sm leading-relaxed">{t.tagline}</p>
