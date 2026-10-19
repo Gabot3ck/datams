@@ -51,12 +51,17 @@ const {
   id,
 } = Astro.props;
 
-const sectionClass = ClassSection ?? classSection ?? "min-h-[500px] sm:min-h-[400px] md:min-h-[500px] xl:min-h-[70vh]";
+// ≥1440px: proporción fija 2.75:1 en vez de 70vh (en pantallas grandes el hero quedaba muy alto)
+const sectionClass = ClassSection ?? classSection ?? "min-h-[500px] sm:min-h-[400px] md:min-h-[500px] xl:min-h-[70vh] min-[1440px]:min-h-0 min-[1440px]:aspect-[2.75/1]";
 const uid = id ?? `hero-${Math.random().toString(36).slice(2)}`;
 
+// sm–lg: la caja va de 80px hasta la mitad del ancho (50%).
+// lg+: la caja va desde el borde del contenido (columna del logo, mínimo 80px por las
+// flechas) hasta la línea áurea (61.8% desde el lado opuesto). Replica el ancho de
+// .container-custom: max-w-7xl + xl:px-12 hasta 1520px; luego 80dvw con tope 1920px.
 const gridMap: Record<SlideContent['placement'], string> = {
-  left:  "sm:left-20 sm:right-auto",
-  right: "sm:right-20 sm:left-auto",
+  left:  "sm:left-20 sm:right-[50%] lg:right-[61.8%] xl:left-[max(80px,calc((100%_-_1280px)/2_+_48px))] min-[1520px]:left-[calc((100%_-_min(80dvw,1920px))/2_+_48px)]",
+  right: "sm:right-20 sm:left-[50%] lg:left-[61.8%] xl:right-[max(80px,calc((100%_-_1280px)/2_+_48px))] min-[1520px]:right-[calc((100%_-_min(80dvw,1920px))/2_+_48px)]",
 };
 
 const slidesContent: Record<'es' | 'en', SlideContent[]> = {
@@ -219,6 +224,16 @@ const slides = await Promise.all(
           decoding="async"
           fetchpriority={i === 0 ? "high" : undefined}
         />
+
+        <!-- Degradado de legibilidad: mobile de arriba hacia abajo (texto arriba); lateral según placement desde sm -->
+        <div
+          class:list={[
+            "pointer-events-none absolute inset-0",
+            "bg-linear-to-b from-black/85 via-black/55 via-35% to-transparent to-60%",
+            s.placement === "left" ? "sm:bg-linear-to-r" : "sm:bg-linear-to-l",
+            "sm:from-black/75 sm:via-black/50 sm:via-50% sm:to-transparent sm:to-65% lg:via-40% lg:to-55%",
+          ]}
+        ></div>
       </div>
     ))}
   </div>
@@ -229,12 +244,11 @@ const slides = await Promise.all(
       {slides.map((s, i) => (
         <div
           class:list={[
-            "left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2",
+            // mobile: arriba y centrada; sm+: centrada en vertical
+            "left-1/2 -translate-x-1/2 top-8 sm:top-1/2 sm:-translate-y-1/2",
             "sm:translate-x-0",
             gridMap[s.placement],
-            "hero-panel w-[300px] sm:w-[380px] lg:w-[650px] absolute ",
-            "bg-black/35 backdrop-blur-sm ring-1 ring-white/10 rounded",
-            "p-4 sm:p-6 md:p-8 lg:p-10",
+            "hero-panel w-[calc(100%_-_3rem)] max-w-[360px] sm:w-auto sm:max-w-none lg:max-w-[650px] absolute ",
             "text-center sm:text-left",
             "transition-opacity duration-500 ease-in-out",
             i === 0 ? "opacity-100" : "opacity-0 pointer-events-none",
@@ -243,14 +257,14 @@ const slides = await Promise.all(
           data-index={i}
         >
           <h1
-            class="font-bold leading-tight text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl"
+            class="font-bold leading-tight text-balance text-white text-xl md:text-2xl lg:text-[length:clamp(1.25rem,1.11rem_+_1.3vw,3.2rem)]"
             data-hero-title
           >
             {s.title}
           </h1>
 
           <p
-            class="mt-1 sm:mt-2 md:mt-4 lg:w-[410px] text-sm md:text-[1rem] lg:text-[1.15rem] xl:text-2xl text-white/90"
+            class="mt-1 sm:mt-2 md:mt-4 lg:max-w-[36ch] text-sm md:text-[1rem] lg:text-[length:clamp(0.875rem,0.75rem_+_0.39vw,1.375rem)] text-white/90"
             data-hero-subtitle
           >
             {s.subtitle}
