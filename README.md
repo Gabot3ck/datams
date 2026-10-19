@@ -153,6 +153,8 @@ Cada ítem de navegación es `NavItem { label, href, megaMenu? }`:
 
 ## Hero slider — imágenes
 
+Prompts y proceso usados para generar las imágenes: `docs/hero-images/PROMPTS.md`.
+
 Cada slide usa tres imágenes en `src/assets/images/banners/` (patrón de nombre:
 `datamultiservices-<tema>-<slide><m|t|d>.webp`). Astro las convierte a WebP en
 varios anchos; basta con exportar en el tamaño de la tabla.

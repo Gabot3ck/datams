@@ -128,7 +128,7 @@ vitest.config.ts              # tests con Vitest + Container API de Astro
 - Panel de texto sin caja en todos los tamaños: mobile arriba y centrado sobre degradado vertical; tablet de 80px al 50%; ≥990px hasta la línea áurea (`right-[61.8%]`) y ≥1280px alineado con la columna del logo (mínimo 80px por las flechas). `gridMap` replica el ancho de `.container-custom`: si cambia el contenedor, actualizar `gridMap`
 - Degradado de legibilidad dentro de cada slide (vertical en mobile, lateral según `placement` desde 640px)
 - Tipografía fluida con `clamp()` desde 990px (título, subtítulo, CTA). Flechas: círculo fluido 32→52px, área táctil mínima 44px
-- Hay un `<h1>` por slide (3 en la página): pendiente dejar uno solo
+- Un solo `<h1>`: el título del slide 1; los slides 2 y 3 renderizan su título como `<p>` con el mismo estilo (`const Title` en el map de paneles)
 
 ### HomePage.astro — secciones en orden
 
@@ -280,7 +280,6 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [x] Imágenes hero responsive reales del slide 1 (mobile/tablet/desktop)
 - [ ] Imágenes hero de los slides 2 y 3 (specs en `README.md`; slide 3 en espejo). Hoy `s2d` apunta a `slide_tax_2_d.png` y `s2m`/`s2t` a `slide_tax_1_d.png`
 - [ ] Tablet slide 1 (`-1t2.webp`): a 768px el subtítulo roza el pelo de la clienta (~25px); mover/achicar el grupo en Canva
-- [ ] Un solo `<h1>` en el Hero (hoy uno por slide)
 - [ ] `CommunitySection`: "5,000+" desborda a 320px (scroll horizontal)
 - [ ] Imágenes reales en subcategorías del mega menú (actualmente sin imagen → fondo gris)
 - [x] URLs reales en tarjetas de Services del Home (`/taxes`, `/notary-public`, `/negocio`)
