@@ -409,6 +409,31 @@ Ordenado de mayor a menor urgencia para el visitante:
   - **H1:** "Auditoría del IRS en Las Vegas: Te Acompañamos en Español"
 - **Sobre los volúmenes:** casi todas las búsquedas del análisis caen en el mismo rango (10–100 al mes), así que los datos sirven para saber **qué** busca la gente, pero no para elegir entre variantes por volumen.
 
+### 5.3 Slider del Home: 4 slides, una búsqueda por slide
+- **Decisión:** el slider de la página de inicio pasa de 3 a 4 slides. Cada slide trata un solo servicio y enlaza a su página. ✅
+
+| # | Búsqueda | Título (ES) | Botón |
+|---|---|---|---|
+| 1 | **taxes en Las Vegas** (~5.000 al mes, la más buscada) | Taxes en Las Vegas, con atención en español | Ver servicios de taxes → `/taxes/` |
+| 2 | ayuda con el IRS, deuda con el IRS (~50 al mes) | Ayuda con el IRS, en español | Ver ayuda con el IRS → `/irs/` |
+| 3 | Notary Public Las Vegas (sin datos de Ads) | Notary Public en español, en Las Vegas | Visítanos hoy → `/contacto` |
+| 4 | ITIN / EIN y taxes de LLC (solo "taxes de una LLC" tiene datos) | Tu ITIN o EIN, con ayuda en español | Ver ITIN y EIN → `/itin-ein/` |
+
+- **Por qué:**
+  - El título del slide 1 es el título principal (H1) de la página de inicio, lo primero que Google lee. Antes decía "Haz tus taxes sin estrés y con confianza", sin ninguna búsqueda real. Ahora lleva "taxes en Las Vegas", que tiene unas 100 veces más búsquedas que cualquier otra del análisis.
+  - Antes los 3 slides repetían "taxes y notary public". Ahora cada uno responde a una necesidad distinta y lleva a la página que la resuelve, lo que también ayuda a Google a entender cuál es la página de cada servicio (5.1).
+  - Los botones decían "Contáctanos" y no llevaban a ninguna parte. Ahora llevan a páginas reales, y ninguno dice "agendar" porque la atención es por orden de llegada (6.2).
+- **Textos que se quitaron y por qué:**
+  - "100% confiable" y "sin errores": promesas que no se pueden demostrar (ver 1.5).
+  - "trámites legales", "asesoría experta" y "seguridad y resultados": suenan a asesoría legal y a prometer un resultado (1.2 y 1.8).
+  - "Te explicamos tus opciones" (propuesta inicial del slide 2) se cambió por "Te ayudamos a entenderla y a preparar tu respuesta": hablar de "opciones" frente al IRS suena a asesoría (1.3 y 1.8).
+- **Inglés:** los textos están escritos para quien habla inglés en EE.UU., no traducidos palabra por palabra (por ejemplo "Las Vegas Tax Preparation, in English & Spanish"). Mientras no existan las páginas en inglés, los botones llevan a la página en español. ⏳
+- **Pendientes:**
+  - "Preparadores registrados (PTIN)" en el slide 1 depende de que todos los preparadores tengan PTIN vigente (pregunta 13). ❓
+  - El slide de Notary Public no tiene datos de búsqueda: se eligió por su peso en el negocio. Si el cliente prefiere, se cambia por "Taxes atrasados y reembolso", que sí tiene datos (pregunta 14). ❓
+  - Faltan las imágenes reales de los slides 2, 3 y 4 (hoy son de prueba). ⏳
+  - El título de la pestaña y la descripción de la página de inicio no dicen "Las Vegas" y la descripción dice "100% en español". Propuesta: "Taxes en Las Vegas, en Español | Data's & Multiservices". ⏳
+
 ---
 
 ## 6. Horario y forma de atención
@@ -449,6 +474,8 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 10 | Sobre Testamentos: ¿redactan el documento o solo hacen la firma ante notary public de uno ya redactado? Ver 3.6 | Si solo firman ante notary public: cambiar "Redacción y firma" por "Firma ante notary public de tu testamento ya redactado" |
 | 11 | Cuando dicen "trailas" en el duplicado de título de DMV, ¿se refieren a remolques (de carga o de viaje) o a casas móviles (mobile home)? Ver 3.7 | Si son mobile homes: la descripción de DMV pasa a "Para autos, camionetas y motos" |
 | 12 | ¿También ayudan con la extensión de taxes de negocios (formulario 7004)? Ver 2.9 | Si la ofrecen: la página de extensión también habla de negocios |
+| 13 | ¿Todos los preparadores que atienden tienen PTIN vigente este año? Ver 5.3 | Si alguno no lo tiene: se quita "(PTIN)" del slide principal de la página de inicio |
+| 14 | ¿Notary Public es su segundo servicio más importante después de taxes? Ver 5.3 | Si no lo es: el slide 3 pasa a "Taxes atrasados y reembolso", que sí tiene búsquedas medidas |
 
 ---
 
@@ -481,3 +508,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-17 | Menú DMV: "Duplicado de título de vehículo" → "Duplicado de título", con la descripción "Para vehículos particulares y remolques" (3.7). "Citas y preparación DMV" → "Servicios para tu cita del DMV", y su descripción "Agendamos…" → "Te ayudamos a sacar tu cita…" (3.9) |
 | 2026-10-17 | Otros Servicios: "Rompetiket" une la revisión y el pago de tickets (`/otros/tickets-transito`) (3.10). "Ayuda para sacar citas" reemplaza a "Citas de consulado", sale "Licencias ciudad y condado" y entra "Copias, impresiones y fax". La sección 3 pasa a llamarse "Menú Notary Public y Más Servicios" (3.11) |
 | 2026-10-17 | Taxes Personales: nuevo "Extensión de taxes" con la descripción "Evita la multa por declarar tarde" (`/taxes/extension`). Grupo 11 tentativo. La sección 2 pasa a llamarse "Menú Taxes y Ayuda con el IRS" (2.9) |
+| 2026-10-19 | Slider de la página de inicio: 4 slides, uno por servicio (taxes, IRS, Notary Public, ITIN/EIN), con "taxes en Las Vegas" en el título principal y botones a páginas reales. Se quitan "100% confiable", "sin errores" y "trámites legales" (5.3). Preguntas 13 y 14 |
