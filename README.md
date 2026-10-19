@@ -147,6 +147,32 @@ Cada ítem de navegación es `NavItem { label, href, megaMenu? }`:
 
 **Selector de idioma**: ES muestra `flag_mexico.webp` (bandera de México, no España). Decisión deliberada: el público objetivo es hispano en EE.UU.
 
+**Logo**: vertical (`datams-logo.svg`) bajo 640px; horizontal (`datams-logo-horizontal.svg`) desde 640px.
+
+---
+
+## Hero slider — imágenes
+
+Cada slide usa tres imágenes en `src/assets/images/banners/` (patrón de nombre:
+`datamultiservices-<tema>-<slide><m|t|d>.webp`). Astro las convierte a WebP en
+varios anchos; basta con exportar en el tamaño de la tabla.
+
+| Versión | Rango | Tamaño | Zona de texto | Personas / foco |
+|---------|-------|--------|---------------|-----------------|
+| Mobile | <640px | **1200 × 1600** (3:4) | arriba, sobre degradado oscuro | escena en la mitad inferior; parte superior con relleno liso |
+| Tablet | 640–989px | **2048 × 1152** (16:9) | 0–50% del ancho | desde x ≥ 52%; foco ≈ (72%, 37%) |
+| Desktop | ≥990px | **2560 × 1152** (2.22:1) | 0–38.2% del ancho (línea áurea) | desde x ≥ 41%; foco ≈ (61.8%, 38.2%) |
+
+Reglas generales:
+
+- El lado del texto debe ser fondo liso (pared desenfocada); el degradado CSS lo funde.
+- Sin texto legible ni logos en papeles o pantallas.
+- Zonas que pueden recortarse según la pantalla: ~140–170px a los lados y ~60–100px arriba/abajo.
+- En mobile y tablet (<768px) las flechas y los puntos van al pie: dejar libre el borde inferior.
+- Si el foco de una imagen no coincide, se ajusta en `Hero.astro` con
+  `mobilePosition` / `tabletPosition` / `desktopPosition` (clase `object-[x%_y%]`).
+- Slide 3 tiene el texto a la derecha (`placement: "right"`): componer en espejo.
+
 ---
 
 ## Pendiente antes de producción

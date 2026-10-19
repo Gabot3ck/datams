@@ -73,7 +73,7 @@ Al crear una página EN: crear el archivo + poner `enBuilt: true` en su entrada.
 
 ```
 src/
-├── assets/images/banners/    # Slides hero: slide_tax_1/2/3_d.png (misma img en m/t/d por ahora)
+├── assets/images/banners/    # Slides hero: slide 1 = datamultiservices-taxes-nevada-1{m,t2,d}.webp; slides 2–3 provisorias slide_tax_*.png
 ├── components/
 │   ├── Hero.astro            # Slider 3 slides, GSAP, responsive images via astro:assets
 │   ├── HomePage.astro        # Orquestador del home: importa las 8 secciones + faq/faqImage + script data-reveal
@@ -122,7 +122,13 @@ vitest.config.ts              # tests con Vitest + Container API de Astro
 - **IMPORTANTE**: `hero-slider.js` cargado con `<script is:inline src="/scripts/hero-slider.js">` — sin esto los botones no funcionan
 - `public/scripts/hero-slider.js` maneja: prev/next/dots/autoplay/keyboard/swipe/WeakMap state
 - GSAP anima title → subtitle → cta en secuencia via `MutationObserver` en `opacity-100`
-- Imágenes: actualmente misma PNG para m/t/d. Reemplazar con versiones reales responsive
+- Imágenes: slide 1 tiene m/t/d propias (`datamultiservices-taxes-nevada-1{m,t2,d}.webp`); slides 2 y 3 siguen con las PNG provisorias `slide_tax_*`. Specs de tamaño y encuadre en `README.md` → "Hero slider — imágenes"
+- Encuadre por imagen: `mobilePosition` / `tabletPosition` / `desktopPosition` en `slideImages` (clase `object-[x%_y%]`, default `object-center`). El foco va en esa misma coordenada → queda fijo en pantalla aunque cambie el recorte
+- Altura: `min-h` 500/400/500 → `xl:70vh` → desde 1440px `aspect-[2.75/1]` (no volver a vh en pantallas grandes: quedaba muy alto)
+- Panel de texto sin caja en todos los tamaños: mobile arriba y centrado sobre degradado vertical; tablet de 80px al 50%; ≥990px hasta la línea áurea (`right-[61.8%]`) y ≥1280px alineado con la columna del logo (mínimo 80px por las flechas). `gridMap` replica el ancho de `.container-custom`: si cambia el contenedor, actualizar `gridMap`
+- Degradado de legibilidad dentro de cada slide (vertical en mobile, lateral según `placement` desde 640px)
+- Tipografía fluida con `clamp()` desde 990px (título, subtítulo, CTA). Flechas: círculo fluido 32→52px, área táctil mínima 44px
+- Hay un `<h1>` por slide (3 en la página): pendiente dejar uno solo
 
 ### HomePage.astro — secciones en orden
 
@@ -271,7 +277,11 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [ ] Páginas EN del clúster (arquitectura lista: poner `enBuilt: true` en `routes.ts` al crearlas)
 - [ ] Integrar componente de formulario real en `/contacto`
 - [ ] Imagen OG real (`public/assets/og-image.webp`, 1200×675)
-- [ ] Imágenes hero responsive reales (mobile/tablet/desktop separadas)
+- [x] Imágenes hero responsive reales del slide 1 (mobile/tablet/desktop)
+- [ ] Imágenes hero de los slides 2 y 3 (specs en `README.md`; slide 3 en espejo). Hoy `s2d` apunta a `slide_tax_2_d.png` y `s2m`/`s2t` a `slide_tax_1_d.png`
+- [ ] Tablet slide 1 (`-1t2.webp`): a 768px el subtítulo roza el pelo de la clienta (~25px); mover/achicar el grupo en Canva
+- [ ] Un solo `<h1>` en el Hero (hoy uno por slide)
+- [ ] `CommunitySection`: "5,000+" desborda a 320px (scroll horizontal)
 - [ ] Imágenes reales en subcategorías del mega menú (actualmente sin imagen → fondo gris)
 - [x] URLs reales en tarjetas de Services del Home (`/taxes`, `/notary-public`, `/negocio`)
 
