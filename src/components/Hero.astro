@@ -277,7 +277,7 @@ const slides = await Promise.all(
             >
               <a
                 href={s.ctaHref}
-                class={` ${s.btnClass || "bg-brand hover:bg-brand-dark text-background-light"} text-[12px] lg:text-sm px-6 py-4 mx-auto sm:mx-0 rounded-md transition-colors ease-in duration-300`}
+                class={` ${s.btnClass || "bg-brand hover:bg-brand-dark text-background-light"} inline-flex min-h-11 items-center text-[length:clamp(0.8125rem,0.74rem_+_0.3vw,1.0625rem)] px-[1.8em] py-[0.9em] mx-auto sm:mx-0 rounded-md transition-colors ease-in duration-300`}
               >
                 {s.ctaText}
               </a>
@@ -294,29 +294,35 @@ const slides = await Promise.all(
       <button
         type="button"
         class:list={[
-          "hero-prev absolute left-4 bottom-2 sm:bottom-3 md:top-[50%] -translate-y-1/2 z-10",
-          "h-12 w-12 rounded-full bg-white shadow border border-gray-400 text-3xl",
-          "grid place-items-center",
-          "hover:cursor-pointer hover:scale-110 transition-transform duration-200",
+          "hero-prev group absolute left-4 bottom-2 sm:bottom-3 md:top-[50%] -translate-y-1/2 z-10",
+          // círculo fluido (32px → 52px); el área táctil nunca baja de 44px
+          "[--hero-arrow:clamp(2rem,1.5rem_+_1.25vw,3.25rem)]",
+          "grid size-[max(44px,var(--hero-arrow))] place-items-center hover:cursor-pointer focus-visible:outline-none",
         ]}
         aria-label={ui.prevLabel}
         data-hero-prev
       >
-        <span aria-hidden="true">‹</span>
+        <span
+          aria-hidden="true"
+          class="grid size-[var(--hero-arrow)] place-items-center rounded-full bg-white shadow border border-gray-400 text-[length:calc(var(--hero-arrow)*0.62)] leading-none transition-transform duration-200 group-hover:scale-110 group-focus-visible:ring-2 group-focus-visible:ring-brand group-focus-visible:ring-offset-2"
+        >‹</span>
       </button>
 
       <button
         type="button"
         class:list={[
-          "hero-next absolute right-4 bottom-2 sm:bottom-3 md:top-[50%] -translate-y-1/2 z-10",
-          "h-12 w-12 rounded-full bg-white shadow border border-gray-400 text-3xl",
-          "grid place-items-center",
-          "hover:cursor-pointer hover:scale-110 transition-transform duration-200",
+          "hero-next group absolute right-4 bottom-2 sm:bottom-3 md:top-[50%] -translate-y-1/2 z-10",
+          // círculo fluido (32px → 52px); el área táctil nunca baja de 44px
+          "[--hero-arrow:clamp(2rem,1.5rem_+_1.25vw,3.25rem)]",
+          "grid size-[max(44px,var(--hero-arrow))] place-items-center hover:cursor-pointer focus-visible:outline-none",
         ]}
         aria-label={ui.nextLabel}
         data-hero-next
       >
-        <span aria-hidden="true">›</span>
+        <span
+          aria-hidden="true"
+          class="grid size-[var(--hero-arrow)] place-items-center rounded-full bg-white shadow border border-gray-400 text-[length:calc(var(--hero-arrow)*0.62)] leading-none transition-transform duration-200 group-hover:scale-110 group-focus-visible:ring-2 group-focus-visible:ring-brand group-focus-visible:ring-offset-2"
+        >›</span>
       </button>
 
       <div
