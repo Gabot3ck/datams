@@ -519,10 +519,10 @@ const {
             : "Home — Tax & Notary Public"}
           class="flex shrink-0 items-center"
         >
-          <!-- Mobile: logo vertical (texto bajo edificios) · lg (990px): horizontal -->
+          <!-- Mobile (<640px): logo vertical (texto bajo edificios) · sm (640px): horizontal -->
           <picture>
             <source
-              media="(min-width: 990px)"
+              media="(min-width: 640px)"
               srcset="/assets/logo/datams-logo-horizontal.svg"
               width="184"
               height="48"
@@ -532,7 +532,7 @@ const {
               alt=""
               width="49"
               height="56"
-              class="h-14 w-auto lg:h-12"
+              class="h-14 w-auto sm:h-12"
             />
           </picture>
         </a>
