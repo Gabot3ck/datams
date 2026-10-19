@@ -73,9 +73,9 @@ Al crear una página EN: crear el archivo + poner `enBuilt: true` en su entrada.
 
 ```
 src/
-├── assets/images/banners/    # Slides hero: slide 1 = datamultiservices-taxes-nevada-1{m,t2,d}.webp; slides 2–3 provisorias slide_tax_*.png
+├── assets/images/banners/    # Slides hero: slide 1 = datamultiservices-taxes-nevada-1{m,t2,d}.webp; slides 2–4 provisorias slide_tax_*.png (slide 4 reutiliza slide_tax_2_d)
 ├── components/
-│   ├── Hero.astro            # Slider 3 slides, GSAP, responsive images via astro:assets
+│   ├── Hero.astro            # Slider 4 slides (taxes · IRS · Notary Public · ITIN-EIN), GSAP, responsive images via astro:assets
 │   ├── HomePage.astro        # Orquestador del home: importa las 8 secciones + faq/faqImage + script data-reveal
 │   ├── CommunitySection.astro  # Home: comunidad + grid 2×2 de stats
 │   ├── ServicesSection.astro   # Home: 6 tarjetas de servicio (Taxes, IRS, ITIN-EIN, Notary Public, Inmigración, DMV)

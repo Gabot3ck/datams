@@ -14,6 +14,11 @@ import s3m from '../assets/images/banners/slide_tax_3_d.png';
 import s3t from '../assets/images/banners/slide_tax_3_d.png';
 import s3d from '../assets/images/banners/slide_tax_3_d.png';
 
+// Slide 4 provisorio: reutiliza la imagen de prueba del slide 2 hasta tener la propia
+import s4m from '../assets/images/banners/slide_tax_2_d.png';
+import s4t from '../assets/images/banners/slide_tax_2_d.png';
+import s4d from '../assets/images/banners/slide_tax_2_d.png';
+
 interface Props {
   lang?: 'es' | 'en';
   autoplay?: boolean;
@@ -64,59 +69,78 @@ const gridMap: Record<SlideContent['placement'], string> = {
   right: "sm:right-20 sm:left-[50%] lg:left-[61.8%] xl:right-[max(80px,calc((100%_-_1280px)/2_+_48px))] min-[1520px]:right-[calc((100%_-_min(80dvw,1920px))/2_+_48px)]",
 };
 
+// Cada slide apunta a una keyword (ver DECISIONES-NEGOCIO.md §5.3). El título del
+// slide 1 es el único <h1> del home: lleva "taxes en Las Vegas".
+// EN: los CTA apuntan a la página ES mientras su gemela EN no exista (enBuilt: false).
 const slidesContent: Record<'es' | 'en', SlideContent[]> = {
   es: [
     {
-      title: "Haz tus taxes sin estrés y con confianza",
-      subtitle: "Te ayudamos a declarar correctamente y acceder a servicios de notary public",
+      title: "Taxes en Las Vegas, con atención en español",
+      subtitle: "Declaración personal o de negocio con preparadores registrados (PTIN). Ven sin cita a nuestra oficina.",
       placement: "left",
-      ctaText: "Contáctanos",
-      ctaHref: "#",
-      alt: "",
+      ctaText: "Ver servicios de taxes",
+      ctaHref: "/taxes/",
+      alt: "Asesor de taxes atendiendo a una clienta en su escritorio, en la oficina de Data's & Multiservices en Las Vegas",
     },
     {
-      title: "Tu aliado latino para taxes y notary public en EE.UU.",
-      subtitle: "Simplificamos tus trámites fiscales y legales con asesoría experta, rápida y 100% confiable.",
-      placement: "left",
-      ctaText: "Contáctanos",
-      ctaHref: "#",
-      alt: "",
+      title: "Ayuda con el IRS, en español",
+      subtitle: "¿Te llegó una carta del IRS? Te ayudamos a entenderla y a preparar tu respuesta, paso a paso.",
+      placement: "right",
+      ctaText: "Ver ayuda con el IRS",
+      ctaHref: "/irs/",
+      alt: "Asesor revisando con una clienta una carta del IRS sobre el escritorio",
       btnClass: "bg-background-light text-brand-dark",
     },
     {
-      title: "Cumple con tus taxes y trámites legales sin errores",
-      subtitle: "Notary public diseñado para latinos que buscan seguridad y resultados",
+      title: "Notary Public en español, en Las Vegas",
+      subtitle: "Firmas ante Notary Public para poderes y otros documentos. Atención por orden de llegada.",
+      placement: "left",
+      ctaText: "Visítanos hoy",
+      ctaHref: "/contacto",
+      alt: "Persona firmando un documento ante un Notary Public en el mostrador de la oficina",
+    },
+    {
+      title: "Tu ITIN o EIN, con ayuda en español",
+      subtitle: "Te ayudamos a preparar tu solicitud de ITIN o EIN y los taxes de tu LLC o negocio.",
       placement: "right",
-      ctaText: "Contáctanos",
-      ctaHref: "#",
-      alt: "",
+      ctaText: "Ver ITIN y EIN",
+      ctaHref: "/itin-ein/",
+      alt: "Dueña de un pequeño negocio revisando con su asesor formularios de ITIN o EIN en una laptop",
     },
   ],
   en: [
     {
-      title: "File your taxes with confidence and ease",
-      subtitle: "We help you file accurately and access notary services with expert guidance",
+      title: "Las Vegas Tax Preparation, in English & Spanish",
+      subtitle: "Personal and business returns from PTIN-registered preparers. Walk-ins welcome at our office.",
       placement: "left",
-      ctaText: "Contact Us",
-      ctaHref: "/en/#",
-      alt: "",
+      ctaText: "See Tax Services",
+      ctaHref: "/taxes/",
+      alt: "Tax preparer assisting a client at his desk in the Data's & Multiservices office in Las Vegas",
     },
     {
-      title: "Your Latino ally for taxes and notary services in the U.S.",
-      subtitle: "We simplify your tax and legal processes with expert, fast, and 100% reliable advice.",
-      placement: "left",
-      ctaText: "Contact Us",
-      ctaHref: "/en/#",
-      alt: "",
+      title: "Help With IRS Letters and Notices",
+      subtitle: "Got a letter from the IRS? We help you understand it and prepare your response, step by step.",
+      placement: "right",
+      ctaText: "Get IRS Help",
+      ctaHref: "/irs/",
+      alt: "Preparer reviewing an IRS letter on the desk with a client",
       btnClass: "bg-background-light text-brand-dark",
     },
     {
-      title: "Stay compliant with your taxes and legal paperwork without mistakes",
-      subtitle: "Notary services designed for Latinos seeking security and results",
+      title: "Notary Public in Las Vegas, Walk-ins Welcome",
+      subtitle: "Signatures before a notary public for powers of attorney and other documents.",
+      placement: "left",
+      ctaText: "Visit Us Today",
+      ctaHref: "/contacto",
+      alt: "Person signing a document in front of a notary public at the office counter",
+    },
+    {
+      title: "ITIN and EIN Help for Individuals and LLCs",
+      subtitle: "We help you prepare your ITIN or EIN application and your LLC or small business taxes.",
       placement: "right",
-      ctaText: "Contact Us",
-      ctaHref: "/en/#",
-      alt: "",
+      ctaText: "ITIN & EIN Services",
+      ctaHref: "/itin-ein/",
+      alt: "Small business owner reviewing ITIN or EIN forms on a laptop with her advisor",
     },
   ],
 };
@@ -140,6 +164,7 @@ const slideImages: SlideImage[] = [
   { mobile: s1m, tablet: s1t, desktop: s1d, mobilePosition: "object-[50%_70%]", tabletPosition: "object-[72%_37%]", desktopPosition: "object-[40%_37%]" },
   { mobile: s2m, tablet: s2t, desktop: s2d },
   { mobile: s3m, tablet: s3t, desktop: s3d },
+  { mobile: s4m, tablet: s4t, desktop: s4d },
 ];
 
 const W_MOBILE = [375, 480, 540, 640, 720, 900];
