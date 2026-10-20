@@ -19,12 +19,14 @@ export const BUSINESS = {
   // Alimenta el JSON-LD (buildOpeningHoursSpecification); hoursDisplay es la versión corta para UI.
   seasons: [
     {
-      from: '01-02', // temporada de taxes
+      label: { es: 'Temporada de taxes', en: 'Tax season' },
+      from: '01-02',
       through: '04-15',
       hours: [{ days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:00', closes: '22:00' }],
     },
     {
-      from: '04-16', // resto del año
+      label: { es: 'Resto del año', en: 'Rest of the year' },
+      from: '04-16',
       through: '12-31',
       hours: [
         { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '19:00' },
@@ -124,6 +126,53 @@ export function buildOpeningHoursSpecification(
       })),
     ),
   ]);
+}
+
+const MONTHS = {
+  es: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+};
+const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const DAY_NAMES = {
+  es: { short: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'], long: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'] },
+  en: { short: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], long: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] },
+};
+
+/** 'MM-DD' → "2 de enero" / "January 2" */
+function formatDay(mmdd: string, lang: 'es' | 'en'): string {
+  const [m, d] = mmdd.split('-').map(Number);
+  return lang === 'es' ? `${d} de ${MONTHS.es[m - 1]}` : `${MONTHS.en[m - 1]} ${d}`;
+}
+
+/** '19:00' → "7:00 PM" */
+function formatTime(hhmm: string): string {
+  const [h, m] = hhmm.split(':').map(Number);
+  return `${h % 12 || 12}:${String(m).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`;
+}
+
+/** Días consecutivos → "Lun – Sáb"; un solo día → nombre completo ("Sábado"). */
+function formatDays(days: readonly string[], lang: 'es' | 'en'): string {
+  const idx = days.map((d) => WEEKDAYS.indexOf(d));
+  const names = DAY_NAMES[lang];
+  return idx.length === 1 ? names.long[idx[0]] : `${names.short[idx[0]]} – ${names.short[idx[idx.length - 1]]}`;
+}
+
+/** Horario por temporada listo para mostrar en tabla (footer). Sale de
+ *  BUSINESS.seasons, la misma fuente que el JSON-LD. */
+export function buildHoursTable(lang: 'es' | 'en') {
+  return {
+    seasons: BUSINESS.seasons.map((season) => ({
+      label: season.label[lang],
+      dates: `${formatDay(season.from, lang)} – ${formatDay(season.through, lang)}`,
+      rows: season.hours.map((h) => ({
+        days: formatDays(h.days, lang),
+        time: `${formatTime(h.opens)} – ${formatTime(h.closes)}`,
+      })),
+    })),
+    closed: BUSINESS.closedDates.map((d) =>
+      lang === 'es' ? `Cerrado el ${formatDay(d, 'es')}` : `Closed ${formatDay(d, 'en')}`,
+    ),
+  };
 }
 
 export function buildLocalBusinessJsonLd(lang: 'es' | 'en') {

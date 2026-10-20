@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { canonicalURL, SITE_URL, SITE_NAME, BUSINESS, TRUST_BAR_DEFAULT_ES, buildServiceJsonLd, buildLocalBusinessJsonLd, buildOpeningHoursSpecification } from './site';
+import { canonicalURL, SITE_URL, SITE_NAME, BUSINESS, TRUST_BAR_DEFAULT_ES, buildServiceJsonLd, buildLocalBusinessJsonLd, buildOpeningHoursSpecification, buildHoursTable } from './site';
 
 describe('canonicalURL', () => {
   it('deja la home como raíz con barra', () => {
@@ -110,5 +110,30 @@ describe('buildOpeningHoursSpecification', () => {
     expect(buildLocalBusinessJsonLd('es').openingHoursSpecification.length).toBeGreaterThan(0);
     const svc = buildServiceJsonLd({ name: 'x', description: 'x', serviceType: 'x', url: 'x', lang: 'es' });
     expect(svc.provider.openingHoursSpecification.length).toBeGreaterThan(0);
+  });
+});
+
+describe('buildHoursTable', () => {
+  it('arma las temporadas en español desde BUSINESS.seasons', () => {
+    const t = buildHoursTable('es');
+    expect(t.seasons).toEqual([
+      { label: 'Temporada de taxes', dates: '2 de enero – 15 de abril', rows: [{ days: 'Lun – Sáb', time: '9:00 AM – 10:00 PM' }] },
+      {
+        label: 'Resto del año',
+        dates: '16 de abril – 31 de diciembre',
+        rows: [
+          { days: 'Lun – Vie', time: '10:00 AM – 7:00 PM' },
+          { days: 'Sábado', time: '10:00 AM – 2:00 PM' },
+        ],
+      },
+    ]);
+    expect(t.closed).toEqual(['Cerrado el 1 de enero']);
+  });
+
+  it('arma las temporadas en inglés', () => {
+    const t = buildHoursTable('en');
+    expect(t.seasons[0]).toEqual({ label: 'Tax season', dates: 'January 2 – April 15', rows: [{ days: 'Mon – Sat', time: '9:00 AM – 10:00 PM' }] });
+    expect(t.seasons[1].rows[1]).toEqual({ days: 'Saturday', time: '10:00 AM – 2:00 PM' });
+    expect(t.closed).toEqual(['Closed January 1']);
   });
 });
