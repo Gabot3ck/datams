@@ -89,7 +89,8 @@ src/
 │   ├── MegaMenu.tsx          # React — portal a document.body, tabs por clic
 │   ├── MegaMenuPanel.tsx     # Panel del megamenú: grid 2 cols de items + imagen + footer link
 │   ├── Breadcrumb.astro      # Breadcrumb reutilizable con JSON-LD BreadcrumbList
-│   ├── Footer.astro          # Footer con 8 links de categorías + contacto (HTML estático)
+│   ├── Footer.astro          # Footer oscuro: perfil de Las Vegas + 4 columnas + aviso legal (GSAP)
+│   ├── FooterSkyline.astro   # SVG del perfil de Las Vegas (decorativo)
 │   ├── BaseLayout.astro      # Layout raíz con SEO completo — incluye Navbar + Footer
 │   └── service/              # ServiceHero, TrustBar, ServiceList, RelatedServices, ProcessSteps,
 │                              # DocsChecklist, InfoBlock, WhyUs, FaqSection, CtaBanner
@@ -210,12 +211,14 @@ interface NavItem {
 - Emite JSON-LD `BreadcrumbList` usando `SITE_URL` de `src/config/site.ts`
 - Uso: justo debajo del header en cada página de servicio, pasando el H1 como `currentLabel`
 
-### Footer.astro
-- HTML estático puro — sin JS, sin hidratación
-- Lang inferida desde `Astro.url.pathname` (mismo patrón que Navbar)
-- 4 columnas: marca/tagline · **Servicios** (8 links de categoría) · Empresa · Contacto
+### Footer.astro + FooterSkyline.astro
+- Fondo `bg-midnight` con el perfil de Las Vegas como borde superior (`FooterSkyline.astro`, SVG decorativo `aria-hidden`)
+- Perfil en orden real del Strip: Luxor (haz amarillo claro) · Excalibur · NY-NY (Estatua + Empire + Chrysler) · Paris (Eiffel + globo) · High Roller · Wynn/Encore · Stratosphere · letrero "Welcome to Fabulous Las Vegas" (letras negras, sin estrella). Eiffel y Estatua = SVG de descarga libre en `src/assets/svg/` (importados `?raw`); el resto es dibujo propio
+- Animación GSAP + ScrollTrigger en el `<script>` de `Footer.astro`: parallax de 3 capas (`data-layer`), ventanas, haz, ampolletas del letrero, noria girando y entrada de columnas (`data-fx-col`). Respeta `prefers-reduced-motion`
+- 4 columnas: Nosotros · Contacto (dirección + teléfono, **sin WhatsApp**) · **Servicios** (8 links de categoría) · Horario (`buildHoursTable()` de `site.ts`, sale de `BUSINESS.seasons`) + "Cómo llegar"
+- Abajo, centrado: divisor con Instagram/Facebook · logo · aviso "No somos abogados" (NRS 240A.150) · copyright · autor. Redes y autor = `#` (pendiente)
 - Los 8 links de categoría son el interlinking SEO principal — siempre visibles sin JS
-- Registrado en `BaseLayout.astro` — aparece en todas las páginas automáticamente
+- Lang inferida desde `Astro.url.pathname`. Registrado en `BaseLayout.astro`
 
 ### Páginas de servicio (src/components/service/ + ServiceLayout.astro)
 - Patrón: un `.astro` por página que compone componentes de sección dentro de `<ServiceLayout>`.

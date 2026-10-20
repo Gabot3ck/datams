@@ -1,24 +1,29 @@
 ---
-import { BUSINESS } from '@config/site';
+import { BUSINESS, buildHoursTable } from '@config/site';
+import FooterSkyline from './FooterSkyline.astro';
 
 const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
 const year = new Date().getFullYear();
+const hours = buildHoursTable(lang);
 
 // Enlace a la ficha en Google Maps (dirección de la oficina).
 const MAPS_URL =
   'https://www.google.com/maps/search/?api=1&query=235%20N%20Eastern%20Ave%20Suite%20130%2C%20Las%20Vegas%2C%20NV%2089101';
 
-// TODO: reemplazar por las URLs reales.
+// PENDIENTE: URLs reales de redes y del autor (por ahora '#').
 const SOCIAL = {
   instagram: '#',
   facebook: '#',
 };
-const DEV_URL = '#'; // TODO: enlace de Gabriel Castillo
+const DEV_URL = '#';
 
 const t = {
   es: {
-    tagline:
-      'Taxes · Notary Public · Inmigración · Servicios Corporativos para la comunidad hispana en Las Vegas.',
+    about: {
+      heading: 'Nosotros',
+      body: 'Taxes, Notary Public, inmigración y servicios para tu negocio, en español y en Las Vegas. Atendemos a la comunidad hispana por orden de llegada.',
+    },
+    contact: { heading: 'Contacto', mapsAria: 'Ver la dirección en Google Maps' },
     services: {
       heading: 'Servicios',
       items: [
@@ -32,28 +37,21 @@ const t = {
         { label: 'Otros Servicios', href: '/otros' },
       ],
     },
-    company: {
-      heading: 'Empresa',
-      items: [
-        { label: 'Nosotros', href: '/nosotros' },
-        { label: 'Contacto', href: '/contacto' },
-      ],
-    },
-    contact: {
-      heading: 'Contacto',
-      phone: '(702) 640-0088',
-      address: '235 N Eastern Ave. Suite 130, Las Vegas, NV 89101',
-      mapsLabel: 'Ver en Google Maps',
-    },
-    follow: 'Síguenos en:',
+    hours: { heading: 'Horario', directions: 'Cómo llegar' },
+    // NRS 240A.150: aviso obligatorio en la publicidad (mismo texto aprobado en el FAQ del Home)
+    disclaimer:
+      'No somos abogados en el estado de Nevada. No estamos autorizados para brindar asesoramiento legal ni representación legal, y no podemos aceptar honorarios por brindar asesoramiento legal o representación legal.',
     rights: `© ${year} Data's & Multiservices. Todos los derechos reservados.`,
     devBy: 'Desarrollado por Gabriel Castillo',
     logoHref: '/',
     logoAria: 'Inicio',
   },
   en: {
-    tagline:
-      'Taxes · Notary · Immigration · Business Services for the Hispanic community in Las Vegas.',
+    about: {
+      heading: 'About Us',
+      body: 'Taxes, Notary Public, immigration and small business services in Spanish and English, here in Las Vegas. Walk-ins only, first come, first served.',
+    },
+    contact: { heading: 'Contact', mapsAria: 'View the address on Google Maps' },
     services: {
       heading: 'Services',
       items: [
@@ -67,20 +65,9 @@ const t = {
         { label: 'Other Services', href: '/en/other' },
       ],
     },
-    company: {
-      heading: 'Company',
-      items: [
-        { label: 'About Us', href: '/en/about' },
-        { label: 'Contact', href: '/en/contact' },
-      ],
-    },
-    contact: {
-      heading: 'Contact',
-      phone: '(702) 640-0088',
-      address: '235 N Eastern Ave. Suite 130, Las Vegas, NV 89101',
-      mapsLabel: 'View on Google Maps',
-    },
-    follow: 'Follow us:',
+    hours: { heading: 'Hours', directions: 'Get directions' },
+    disclaimer:
+      'We are not attorneys licensed to practice law in the State of Nevada. We are not authorized to give legal advice or provide legal representation, and we may not accept fees for legal advice or legal representation.',
     rights: `© ${year} Data's & Multiservices. All rights reserved.`,
     devBy: 'Built by Gabriel Castillo',
     logoHref: '/en',
@@ -88,138 +75,177 @@ const t = {
   },
 }[lang];
 
-const telHref = `tel:+1${t.contact.phone.replace(/\D/g, '')}`;
+const telHref = `tel:${BUSINESS.phone}`;
+const address = `${BUSINESS.address.street}, ${BUSINESS.address.city}, ${BUSINESS.address.region} ${BUSINESS.address.postalCode}`;
+
+const heading = 'mb-5 text-sm font-bold uppercase tracking-widest text-white';
+const social = 'grid size-11 place-items-center rounded-full bg-brand-light/15 text-brand-light transition-colors hover:bg-brand-light hover:text-midnight focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-light';
 ---
 
-<footer class="border-t border-background-muted bg-background-light text-neutral-grey">
-  <!-- Grid principal -->
-  <div class="container-custom py-14 lg:py-16">
-    <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+<footer data-fx-skyline class="relative overflow-hidden">
+  <FooterSkyline />
 
-      <!-- Marca -->
-      <div class="sm:col-span-2 lg:col-span-1">
-        <a href={t.logoHref} aria-label={t.logoAria} class="inline-block">
-          <img
-            src="/assets/logo/datams-logo.svg"
-            alt=""
-            width="98"
-            height="112"
-            loading="lazy"
-            class="h-28 w-auto"
-          />
-        </a>
-        <p class="mt-4 max-w-xs text-sm leading-relaxed">{t.tagline}</p>
+  <div class="-mt-px bg-midnight text-white/70">
+    <div class="container-custom pt-12 pb-10 lg:pt-14">
+      <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+
+        <!-- Nosotros -->
+        <div data-fx-col>
+          <h2 class={heading}>{t.about.heading}</h2>
+          <p class="text-sm leading-relaxed">{t.about.body}</p>
+        </div>
+
+        <!-- Contacto -->
+        <address class="not-italic" data-fx-col>
+          <h2 class={heading}>{t.contact.heading}</h2>
+          <ul class="space-y-3.5 text-sm" role="list">
+            <li class="flex gap-3">
+              <svg class="mt-0.5 size-4 shrink-0 text-brand-light" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="m9.69 18.93.01.01a.75.75 0 0 0 .6 0C10.6 18.8 17 15.9 17 9a7 7 0 1 0-14 0c0 6.9 6.4 9.8 6.69 9.93ZM10 11.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z" clip-rule="evenodd" /></svg>
+              <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" aria-label={`${address} — ${t.contact.mapsAria}`} class="leading-relaxed transition-colors hover:text-white">
+                {address}
+              </a>
+            </li>
+            <li class="flex gap-3">
+              <svg class="mt-0.5 size-4 shrink-0 text-brand-light" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.15c.71 0 1.33.5 1.47 1.2l.7 3.5a1.5 1.5 0 0 1-.8 1.63l-.9.45a10.05 10.05 0 0 0 6.1 6.1l.45-.9a1.5 1.5 0 0 1 1.63-.8l3.5.7c.7.14 1.2.76 1.2 1.47v1.15A1.5 1.5 0 0 1 16.5 18H15C8.1 18 2 11.9 2 5V3.5Z" clip-rule="evenodd" /></svg>
+              <a href={telHref} class="transition-colors hover:text-white">{BUSINESS.phoneDisplay}</a>
+            </li>
+          </ul>
+        </address>
+
+        <!-- Servicios: los 8 enlaces de categoría son el interlinking SEO principal -->
+        <nav aria-label={t.services.heading} data-fx-col>
+          <h2 class={heading}>{t.services.heading}</h2>
+          <ul class="grid grid-cols-2 gap-x-4 gap-y-2.5 lg:grid-cols-1" role="list">
+            {t.services.items.map((item) => (
+              <li>
+                <a href={item.href} class="text-sm transition-colors hover:text-white">
+                  <span class="text-brand-light" aria-hidden="true">› </span>{item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <!-- Horario por temporada (sale de BUSINESS.seasons, igual que el JSON-LD) -->
+        <div data-fx-col>
+          <h2 class={heading}>{t.hours.heading}</h2>
+          <div class="space-y-5 text-sm">
+            {hours.seasons.map((season) => (
+              <div>
+                <p class="font-semibold text-white">{season.label}</p>
+                <p class="text-xs text-white/55">{season.dates}</p>
+                <dl class="mt-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1">
+                  {season.rows.map((row) => (
+                    <>
+                      <dt>{row.days}</dt>
+                      <dd class="text-right tabular-nums text-white/85">{row.time}</dd>
+                    </>
+                  ))}
+                </dl>
+              </div>
+            ))}
+            {hours.closed.map((line) => <p class="text-xs text-white/55">{line}</p>)}
+          </div>
+          <a
+            href={MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-5 inline-flex min-h-11 items-center gap-2 rounded-md bg-brand px-5 text-sm font-semibold text-white transition-colors hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            {t.hours.directions}
+            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.64L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.16-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" /></svg>
+          </a>
+        </div>
       </div>
 
-      <!-- Servicios -->
-      <nav aria-label={t.services.heading}>
-        <h2 class="mb-4 text-xs font-bold uppercase tracking-widest text-neutral-dark">
-          {t.services.heading}
-        </h2>
-        <ul class="space-y-2.5" role="list">
-          {t.services.items.map((item) => (
-            <li>
-              <a href={item.href} class="text-sm transition-colors hover:text-brand">
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <!-- Divisor con redes al centro -->
+      <div class="mt-12 flex items-center gap-5" data-fx-col>
+        <span class="h-px flex-1 bg-white/15" aria-hidden="true"></span>
+        <div class="flex gap-3">
+          <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class={social}>
+            <svg viewBox="0 0 24 24" fill="currentColor" class="size-5" aria-hidden="true"><path d="M12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6Zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Zm5-8.1a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM12 3.6c2.7 0 3 0 4.1.1 2.7.1 4 1.4 4.1 4.1.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 2.7-1.4 4-4.1 4.1-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-2.7-.1-4-1.4-4.1-4.1C3.7 15 3.6 14.7 3.6 12s0-3 .1-4.1c.1-2.7 1.4-4 4.1-4.1 1.1-.1 1.4-.2 4.2-.2ZM12 2c-2.7 0-3.1 0-4.1.1C4.2 2.2 2.2 4.2 2.1 7.9 2 8.9 2 9.3 2 12s0 3.1.1 4.1c.2 3.7 2.2 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3.1 0 4.1-.1c3.7-.2 5.7-2.2 5.8-5.8.1-1 .1-1.4.1-4.1s0-3.1-.1-4.1c-.2-3.7-2.2-5.7-5.8-5.8C15.1 2 14.7 2 12 2Z" /></svg>
+          </a>
+          <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class={social}>
+            <svg viewBox="0 0 24 24" fill="currentColor" class="size-5" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.5-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z" /></svg>
+          </a>
+        </div>
+        <span class="h-px flex-1 bg-white/15" aria-hidden="true"></span>
+      </div>
 
-      <!-- Empresa -->
-      <nav aria-label={t.company.heading}>
-        <h2 class="mb-4 text-xs font-bold uppercase tracking-widest text-neutral-dark">
-          {t.company.heading}
-        </h2>
-        <ul class="space-y-2.5" role="list">
-          {t.company.items.map((item) => (
-            <li>
-              <a href={item.href} class="text-sm transition-colors hover:text-brand">
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <!-- Contacto -->
-      <address class="not-italic">
-        <h2 class="mb-4 text-xs font-bold uppercase tracking-widest text-neutral-dark">
-          {t.contact.heading}
-        </h2>
-        <ul class="space-y-3 text-sm" role="list">
-          <li class="leading-relaxed">
-            {BUSINESS.hoursDisplay[lang].map((line, i) => (
-              <>{i > 0 && <br />}{line}</>
-            ))}
-          </li>
-          <li class="leading-relaxed">{t.contact.address}</li>
-          <li>
-            <a href={telHref} class="transition-colors hover:text-brand">
-              {t.contact.phone}
-            </a>
-          </li>
-          <li>
-            <a
-              href={MAPS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-1 font-semibold text-brand transition-colors hover:text-brand-dark"
-            >
-              {t.contact.mapsLabel}
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-3.5" aria-hidden="true">
-                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </address>
-
-    </div>
-  </div>
-
-  <!-- Barra inferior -->
-  <div class="border-t border-background-muted">
-    <div class="container-custom flex flex-col gap-4 py-5 text-xs text-neutral-grey sm:flex-row sm:items-center sm:justify-between">
-      <p>
-        {t.rights}
-        <span class="mx-1.5 text-neutral-grey/50" aria-hidden="true">·</span>
-        <a
-          href={DEV_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="font-medium transition-colors hover:text-brand hover:underline"
-        >
+      <!-- Logo, aviso legal, copyright y autor (centrados, cada uno en su línea) -->
+      <div class="mt-8 flex flex-col items-center text-center" data-fx-col>
+        <a href={t.logoHref} aria-label={t.logoAria}>
+          <img src="/assets/logo/datams-logo.svg" alt="" width="98" height="112" loading="lazy" class="h-24 w-auto opacity-85 brightness-0 invert" />
+        </a>
+        <p class="mt-6 max-w-[42rem] text-xs leading-relaxed text-white/70">{t.disclaimer}</p>
+        <p class="mt-4 text-xs text-white/55">{t.rights}</p>
+        <a href={DEV_URL} target="_blank" rel="noopener noreferrer" class="mt-2 text-xs text-white/55 transition-colors hover:text-white hover:underline">
           {t.devBy}
-        </a>
-      </p>
-
-      <div class="flex items-center gap-3">
-        <span>{t.follow}</span>
-        <a
-          href={SOCIAL.instagram}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram"
-          class="text-neutral-grey transition-colors hover:text-brand"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5" aria-hidden="true">
-            <path d="M12 2.2c3.2 0 3.58 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.16-.73.36-1.06.68-.32.33-.52.63-.68 1.06-.13.32-.28.8-.32 1.7-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.04.9.19 1.38.32 1.7.16.43.36.73.68 1.06.33.32.63.52 1.06.68.32.13.8.28 1.7.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.16.73-.36 1.06-.68.32-.33.52-.63.68-1.06.13-.32.28-.8.32-1.7.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 0 0-.68-1.06 2.85 2.85 0 0 0-1.06-.68c-.32-.13-.8-.28-1.7-.32C15.5 4.01 15.15 4 12 4Zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88Zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28Zm5.1-2.14a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z" />
-          </svg>
-        </a>
-        <a
-          href={SOCIAL.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook"
-          class="text-neutral-grey transition-colors hover:text-brand"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5" aria-hidden="true">
-            <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.5-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z" />
-          </svg>
         </a>
       </div>
     </div>
   </div>
 </footer>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll<HTMLElement>("[data-fx-skyline]").forEach((root) => {
+    const q = gsap.utils.selector(root);
+
+    // Movimiento reducido: estado final, sin animaciones
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.set(q("[data-window]"), { opacity: 0.8 });
+      gsap.set(q("[data-beam]"), { opacity: 1 });
+      gsap.set(q("[data-sign-bulb]"), { opacity: 1 });
+      return;
+    }
+
+    // Parallax: cada capa del perfil sube a distinta velocidad mientras el footer entra en pantalla
+    gsap.timeline({
+      scrollTrigger: { trigger: root, start: "top bottom", end: "top 35%", scrub: 0.8 },
+    })
+      .from(q('[data-layer="far"]'), { yPercent: 45, ease: "none" }, 0)
+      .from(q('[data-layer="mid"]'), { yPercent: 70, ease: "none" }, 0)
+      .from(q('[data-layer="front"]'), { yPercent: 100, ease: "none" }, 0);
+
+    // Al llegar: se encienden las ventanas, el haz del Luxor, las ampolletas del letrero y entran las columnas
+    ScrollTrigger.create({
+      trigger: root,
+      start: "top 45%",
+      once: true,
+      onEnter: () => {
+        gsap.to(q("[data-window]"), {
+          opacity: () => gsap.utils.random(0.45, 1),
+          duration: 0.4,
+          stagger: { each: 0.012, from: "random" },
+        });
+        gsap.to(q("[data-beam]"), { opacity: 1, duration: 1.2, delay: 0.4, ease: "power2.out" });
+        gsap.from(q("[data-fx-col]"), { y: 30, opacity: 0, duration: 0.7, stagger: 0.1, ease: "power2.out" });
+
+        // Letrero: las ampolletas se encienden en orden y luego corre la marquesina
+        gsap.to(q("[data-sign-bulb]"), {
+          opacity: 1, duration: 0.05, stagger: 0.03, delay: 0.6,
+          onComplete: () => {
+            gsap.to(q("[data-sign-bulb]"), {
+              opacity: 0.3, duration: 0.3, ease: "sine.inOut",
+              stagger: { each: 0.05, repeat: -1, yoyo: true },
+            });
+          },
+        });
+
+        // Parpadeo suave y continuo de algunas ventanas
+        gsap.to(q("[data-window]:nth-child(4n)"), {
+          opacity: 0.2, duration: 1.6, repeat: -1, yoyo: true, delay: 1.5,
+          stagger: { each: 0.3, from: "random" }, ease: "sine.inOut",
+        });
+      },
+    });
+
+    // La noria gira lento todo el tiempo
+    gsap.to(q("[data-wheel]"), { rotation: 360, duration: 90, repeat: -1, ease: "none", svgOrigin: "860 138" });
+  });
+</script>

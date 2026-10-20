@@ -1,0 +1,237 @@
+---
+// Perfil de Las Vegas del footer (decorativo, aria-hidden). Lo anima el <script> de Footer.astro
+// vía data-layer / data-window / data-beam / data-wheel / data-sign-bulb.
+// Dibujo propio en SVG (viewBox 1440×260, suelo en y=252). Íconos en el orden real del Strip,
+// de sur a norte: Luxor, Excalibur, New York-New York, Paris, High Roller, Wynn/Encore, Stratosphere.
+import eiffelRaw from '../assets/svg/eiffel.svg?raw';
+import libertyRaw from '../assets/svg/liberty.svg?raw';
+
+// Eiffel y Estatua de la Libertad: SVG de descarga libre aportados por el usuario
+// (trazados potrace: viewBox 640×1280 y 510×1280, coordenadas invertidas)
+const svgPaths = (raw: string) => [...raw.matchAll(/ d="([^"]+)"/g)].map((m) => m[1]);
+const eiffelPaths = svgPaths(eiffelRaw);
+const libertyPaths = svgPaths(libertyRaw); // SVG del usuario, viewBox 510×1280
+
+const G = 252; // línea de suelo
+
+// Silueta simétrica: lista de [media anchura, y] de abajo hacia arriba → path cerrado
+const sym = (cx: number, pts: [number, number][]) => {
+  const left = pts.map(([h, y]) => `${(cx - h).toFixed(1)} ${y}`);
+  const right = [...pts].reverse().map(([h, y]) => `${(cx + h).toFixed(1)} ${y}`);
+  return `M${left.join('L')}L${right.join('L')}Z`;
+};
+// Escalonado (rascacielos art déco): [media anchura, y_inicio, y_fin] por tramo
+const stepped = (cx: number, steps: [number, number][]) => {
+  const pts: [number, number][] = [];
+  let y = G;
+  steps.forEach(([h, top]) => { pts.push([h, y], [h, top]); y = top; });
+  return sym(cx, pts);
+};
+
+// ── Torres del plano medio: [x, ancho, alto]
+const mid: [number, number, number][] = [
+  [0, 60, 95], [58, 44, 128], [190, 50, 110], [300, 46, 150], [520, 48, 140],
+  [585, 40, 118], [640, 56, 165], [760, 50, 120], [945, 48, 150], [990, 40, 110],
+  [1140, 52, 160], [1190, 40, 120], [1280, 55, 128], [1330, 42, 152], [1376, 64, 104],
+];
+const windows: { x: number; y: number }[] = [];
+mid.forEach(([x, w, h], i) => {
+  for (let y = G - h + 12; y < 232; y += 14) {
+    for (let cx = x + 7; cx < x + w - 8; cx += 11) {
+      if ((i * 7 + y + cx) % 5 === 0) windows.push({ x: cx, y });
+    }
+  }
+});
+
+// ── Letrero de bienvenida (dibujo propio; el diseño original es de dominio público)
+const sign = (() => {
+  const face: [number, number][] = [[22, 193], [33, 177], [72, 171], [111, 177], [122, 193], [111, 209], [72, 217], [33, 209]];
+  const bulbs: { x: number; y: number }[] = [];
+  face.forEach(([x1, y1], i) => {
+    const [x2, y2] = face[(i + 1) % face.length];
+    const n = Math.max(2, Math.round(Math.hypot(x2 - x1, y2 - y1) / 5.5));
+    for (let k = 0; k < n; k++) bulbs.push({ x: x1 + ((x2 - x1) * k) / n, y: y1 + ((y2 - y1) * k) / n });
+  });
+  return { face: face.map((p) => p.join(',')).join(' '), bulbs, welcome: [...'WELCOME'] };
+})();
+
+// ── Luxor: pirámide (la esfinge salió para dejar lugar al letrero)
+const luxor = { cx: 112, apex: 158, half: 92 };
+
+// ── Excalibur: muralla almenada + torres con techo cónico
+const excWall = (() => {
+  let d = `M196 ${G}V206`;
+  for (let x = 196; x < 318; x += 12) d += `H${x + 6}V200H${x + 12}V206`;
+  return d + `V${G}Z`;
+})();
+const turrets: [number, number, number][] = [[206, 7, 178], [234, 9, 166], [262, 10, 158], [290, 9, 168], [312, 7, 182]];
+
+// ── New York-New York
+const empire = stepped(420, [[22, 172], [17, 142], [12, 120], [7, 104], [4, 92], [1.6, 60]]);
+const chrysler = stepped(478, [[14, 128], [11.5, 118], [9, 109], [6.5, 101], [4, 94], [1.3, 64]]);
+const nyBlocks: [number, number, number][] = [[386, 16, 176], [444, 18, 196], [496, 22, 182]];
+// ── Paris: torre Eiffel (con arco y plataformas), hotel con mansarda y globo
+const parisHotel = `M612 ${G}V186H606L614 168H702L710 186H704V${G}Z`;
+const dormers = [628, 648, 668, 688];
+const balloon = { cx: 726, cy: 146, r: 22 };
+
+// ── High Roller
+const wheel = { cx: 860, cy: 138, r: 92 };
+const spokes = Array.from({ length: 16 }, (_, i) => (i * Math.PI * 2) / 16);
+const cabins = Array.from({ length: 28 }, (_, i) => (i * Math.PI * 2) / 28);
+
+// ── Stratosphere
+const strat = { cx: 1236 };
+
+// ── Torres genéricas de primer plano: [x, ancho, alto]
+const front: [number, number, number][] = [
+  [0, 18, 48], [960, 40, 92], [1150, 34, 70], [1290, 48, 86], [1340, 28, 62], [1372, 68, 74],
+];
+
+// Palmeras: tronco curvo + 5 hojas
+const palm = (x: number, h: number) => {
+  const top = G - h;
+  return {
+    trunk: `M${x} ${G} Q${x + 6} ${G - h / 2} ${x + 3} ${top}`,
+    fronds: [[-26, 10], [-17, -6], [0, -12], [17, -6], [26, 10]]
+      .map(([dx, dy]) => `M${x + 3} ${top} Q${x + 3 + dx / 2} ${top + dy - 8} ${x + 3 + dx} ${top + dy + 10}`)
+      .join(' '),
+  };
+};
+const palms = [palm(598, 62), palm(780, 74), palm(1120, 66)];
+---
+
+<div data-skyline class="relative aspect-[1440/260] min-h-[120px] w-full" aria-hidden="true">
+  <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice" class="absolute inset-0 h-full w-full">
+      <defs>
+        <linearGradient id="beam-fade" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="#FDE68A" stop-opacity="1" />
+          <stop offset="1" stop-color="#FDE68A" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <!-- Capa 1: montañas (Spring Mountains) -->
+      <g data-layer="far" fill="#c9c8cc">
+        <path d="M0 260V172l90-30 80 18 90-50 90 40 90-30 100 45 100-35 120 25 100-50 120 45 100-25 110 35 100-40 150 30v100Z" />
+      </g>
+
+      <!-- Capa 2: torres del plano medio con ventanas -->
+      <g data-layer="mid">
+        <g fill="#3b3a3f">
+          {mid.map(([x, w, h]) => <rect x={x} y={G - h} width={w} height={h + 8} />)}
+        </g>
+        <g fill="#e3ab02">
+          {windows.map((p) => <rect data-window x={p.x} y={p.y} width="4" height="5" opacity="0.15" />)}
+        </g>
+      </g>
+
+      <!-- Capa 3: primer plano (mismo color que el fondo del footer) -->
+      <g data-layer="front" fill="#1A1A1D" stroke="#1A1A1D">
+        <!-- Haz de luz del Luxor -->
+        <g data-beam opacity="0" stroke="none" fill="url(#beam-fade)">
+          <rect x={luxor.cx - 6} y="0" width="12" height={luxor.apex} opacity="0.35" />
+          <rect x={luxor.cx - 1.5} y="0" width="3" height={luxor.apex} />
+        </g>
+
+        <g stroke="none">
+          {front.map(([x, w, h]) => <rect x={x} y={G - h} width={w} height={h + 8} />)}
+
+          <!-- Luxor -->
+          <polygon points={`${luxor.cx - luxor.half},${G} ${luxor.cx},${luxor.apex} ${luxor.cx + luxor.half},${G}`} />
+
+          <!-- Excalibur -->
+          <path d={excWall} />
+          {turrets.map(([cx, h, top]) => (
+            <>
+              <rect x={cx - h} y={top} width={h * 2} height={G - top} />
+              <polygon points={`${cx - h - 2},${top} ${cx},${top - h * 2.6} ${cx + h + 2},${top}`} />
+              <rect x={cx - 0.6} y={top - h * 2.6 - 8} width="1.2" height="8" />
+              <polygon points={`${cx + 0.6},${top - h * 2.6 - 8} ${cx + 7},${top - h * 2.6 - 6} ${cx + 0.6},${top - h * 2.6 - 4}`} />
+            </>
+          ))}
+
+          <!-- New York-New York -->
+          {nyBlocks.map(([x, w, top]) => <rect x={x} y={top} width={w} height={G - top + 8} />)}
+          <path d={empire} />
+          <path d={chrysler} />
+          <!-- Estatua de la Libertad (SVG del usuario): pedestal propio + estatua de alto 112 -->
+          <path d="M338 252V232H342V222H346V215H378V222H382V232H386V252Z" />
+          <svg x="340.6" y="104.5" width="44.6" height="112" viewBox="0 0 510 1280">
+            <g transform="translate(0 1280) scale(0.1 -0.1)">
+              {libertyPaths.map((d) => <path d={d} />)}
+            </g>
+          </svg>
+
+          <!-- Paris -->
+          <path d={parisHotel} />
+          {dormers.map((x) => <polygon points={`${x - 4},168 ${x},160 ${x + 4},168`} />)}
+          <svg x="515" y="48" width="102" height="204" viewBox="0 0 640 1280">
+            <g transform="translate(0 1280) scale(0.1 -0.1)">
+              {eiffelPaths.map((d) => <path d={d} />)}
+            </g>
+          </svg>
+          <circle cx={balloon.cx} cy={balloon.cy} r={balloon.r} />
+          <polygon points={`${balloon.cx - 19},${balloon.cy + 11} ${balloon.cx + 19},${balloon.cy + 11} ${balloon.cx + 6},${balloon.cy + 36} ${balloon.cx - 6},${balloon.cy + 36}`} />
+          <rect x={balloon.cx - 6} y={balloon.cy + 38} width="12" height="8" />
+          <rect x={balloon.cx - 2} y={balloon.cy + 46} width="4" height={G - balloon.cy - 46} />
+
+          <!-- Wynn y Encore -->
+          <path d={`M1010 ${G + 8}V72Q1036 40 1074 44V${G + 8}Z`} />
+          <path d={`M1080 ${G + 8}V96Q1102 70 1132 74V${G + 8}Z`} />
+
+          <!-- Stratosphere: trípode, eje, cápsula en tres niveles y aguja -->
+          <polygon points={`${strat.cx - 22},${G} ${strat.cx - 7},132 ${strat.cx + 7},132 ${strat.cx + 22},${G}`} />
+          <rect x={strat.cx - 7} y="62" width="14" height={G - 62} />
+          <polygon points={`${strat.cx - 24},84 ${strat.cx + 24},84 ${strat.cx + 14},98 ${strat.cx - 14},98`} />
+          <rect x={strat.cx - 31} y="68" width="62" height="16" rx="6" />
+          <rect x={strat.cx - 22} y="57" width="44" height="11" rx="4" />
+          <rect x={strat.cx - 5} y="34" width="10" height="23" />
+          <rect x={strat.cx - 10} y="30" width="20" height="4" />
+          <rect x={strat.cx - 1} y="2" width="2" height="28" />
+
+          <!-- Suelo -->
+          <rect x="0" y={G - 2} width="1440" height="12" />
+        </g>
+
+        <!-- High Roller -->
+        <g data-wheel>
+          <circle cx={wheel.cx} cy={wheel.cy} r={wheel.r} fill="none" stroke-width="6" />
+          {spokes.map((a) => (
+            <line x1={wheel.cx} y1={wheel.cy} x2={wheel.cx + Math.cos(a) * wheel.r} y2={wheel.cy + Math.sin(a) * wheel.r} stroke-width="1.6" />
+          ))}
+          {cabins.map((a) => (
+            <ellipse cx={wheel.cx + Math.cos(a) * (wheel.r + 5)} cy={wheel.cy + Math.sin(a) * (wheel.r + 5)} rx="5" ry="3.6" stroke="none" />
+          ))}
+        </g>
+        <circle cx={wheel.cx} cy={wheel.cy} r="9" stroke="none" />
+        <path stroke="none" d={`M${wheel.cx - 4} ${wheel.cy}L${wheel.cx - 46} ${G}H${wheel.cx - 32}L${wheel.cx} ${wheel.cy + 14}L${wheel.cx + 32} ${G}H${wheel.cx + 46}L${wheel.cx + 4} ${wheel.cy}Z`} />
+
+
+        <!-- Letrero de bienvenida: dibujado en x≈22–122 y desplazado junto a la Stratosphere -->
+        <g data-sign stroke="none" transform="translate(1250 0)">
+          <rect x="51" y="172" width="5" height="80" />
+          <rect x="88" y="172" width="5" height="80" />
+          <polygon points={sign.face} fill="#FAF7F2" stroke="#1A1A1D" stroke-width="1.6" stroke-linejoin="round" />
+          {sign.welcome.map((ch, i) => (
+            <>
+              <circle cx={48 + i * 8} cy="181" r="3.7" fill="#FAF7F2" stroke="#1A1A1D" stroke-width="0.7" />
+              <text x={48 + i * 8} y="182.9" text-anchor="middle" font-family="Roboto, sans-serif" font-weight="700" font-size="5" fill="#1A1A1D">{ch}</text>
+            </>
+          ))}
+          <text x="72" y="191" text-anchor="middle" font-family="Roboto, sans-serif" font-size="4.6" fill="#1A1A1D">TO <tspan font-style="italic" font-weight="700">Fabulous</tspan></text>
+          <text x="72" y="201.5" text-anchor="middle" font-family="Roboto, sans-serif" font-weight="900" font-size="10.5" fill="#1A1A1D">LAS VEGAS</text>
+          <text x="72" y="208.5" text-anchor="middle" font-family="Roboto, sans-serif" font-weight="700" font-size="4.4" letter-spacing="0.8" fill="#1A1A1D">NEVADA</text>
+          <g fill="#e3ab02">
+            {sign.bulbs.map((b) => <circle data-sign-bulb cx={b.x} cy={b.y} r="1.25" opacity="0.25" />)}
+          </g>
+        </g>
+
+        <!-- Palmeras -->
+        {palms.map((p) => (
+          <g fill="none" stroke-linecap="round">
+            <path d={p.trunk} stroke-width="4" />
+            <path d={p.fronds} stroke-width="3.5" />
+          </g>
+        ))}
+      </g>
+    </svg>
+</div>
