@@ -18,9 +18,12 @@ describe('CtaSection', () => {
     expect(await render('en')).toContain('Schedule a free consultation');
   });
 
-  it('el botón apunta a /contacto en es y /en/contact en en', async () => {
-    expect(await render('es')).toContain('href="/contacto"');
-    expect(await render('en')).toContain('href="/en/contact"');
+  it('el botón llama al teléfono del negocio con aria-label por idioma', async () => {
+    const es = await render('es');
+    expect(es).toContain('href="tel:+17026400088"');
+    expect(es).toContain('(702) 640-0088');
+    expect(es).toContain('aria-label="Llámanos al (702) 640-0088"');
+    expect(await render('en')).toContain('aria-label="Call us at (702) 640-0088"');
   });
 
   it('la imagen usa el alt de imageAlt', async () => {
