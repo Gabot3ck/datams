@@ -40,30 +40,30 @@ const t = {
 }[lang];
 ---
 
-<section class="py-24 bg-background-light" aria-labelledby="office-heading">
+<section class="py-section bg-background-light" aria-labelledby="office-heading">
   <div class="container-custom">
 
     <!-- Cabecera -->
-    <div class="text-center mb-12" data-reveal>
+    <div class="text-center" data-reveal>
       <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
         {t.kicker}
       </span>
       <h2
         id="office-heading"
-        class="font-display text-4xl md:text-5xl font-bold text-neutral-dark mt-4 mb-5 leading-tight text-balance"
+        class="font-display text-fluid-4xl font-bold text-neutral-dark mt-fluid-sm mb-fluid-sm leading-tight text-balance"
       >
         {t.heading.pre}{' '}
         <span class="text-brand">{t.heading.accent}</span>{' '}
         {t.heading.post}
       </h2>
-      <p class="text-neutral-grey text-lg leading-relaxed max-w-xl mx-auto text-pretty">
+      <p class="text-neutral-grey text-fluid-lg leading-relaxed max-w-xl mx-auto text-pretty">
         {t.description}
       </p>
     </div>
 
     <!-- Medios: 2 imágenes apiladas · 1 imagen vertical · video -->
     <div
-      class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1.1fr_2fr] lg:grid-rows-1 lg:h-[460px]"
+      class="mt-fluid-xl grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1.1fr_2fr] lg:grid-rows-1 lg:h-[460px]"
       data-reveal
       data-reveal-delay="1"
     >
@@ -124,12 +124,12 @@ const t = {
     </div>
 
     <!-- CTA: cómo llegar -->
-    <div class="mt-12 text-center" data-reveal>
+    <div class="mt-fluid-xl text-center" data-reveal>
       <a
         href={t.ctaHref}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5
+        class="inline-flex min-h-11 items-center gap-2 rounded-full bg-brand px-fluid-md py-fluid-sm
                text-sm font-semibold text-white transition-colors hover:bg-brand-light
                focus-visible:outline-2 focus-visible:outline-brand-dark"
       >

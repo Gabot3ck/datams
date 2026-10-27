@@ -135,32 +135,32 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
 
 <section
   id={sectionId}
-  class="py-24 bg-background-light dark:bg-accent-dark"
+  class="py-section bg-background-light dark:bg-accent-dark"
   aria-labelledby="services-heading"
 >
   <div class="container-custom">
 
     <!-- Section header -->
-    <header class="text-center mb-16" data-reveal>
-      <p class="text-brand text-lg max-w-xl mx-auto font-bold leading-relaxed">
+    <header class="text-center mb-fluid-xl" data-reveal>
+      <p class="text-brand text-fluid-lg max-w-xl mx-auto font-bold leading-relaxed">
         {t.sectionLabel}
       </p>
       <h2
         id="services-heading"
-        class="font-display text-4xl md:text-5xl font-bold text-dark mt-3 mb-4 leading-tight"
+        class="font-display text-fluid-4xl font-bold text-dark mt-fluid-sm mb-fluid-sm leading-tight"
       >
         {t.heading}
       </h2>
-      <p class="text-dark text-xl max-w-xl mx-auto leading-relaxed">
+      <p class="text-dark text-fluid-xl max-w-xl mx-auto leading-relaxed">
         {t.subheading}
       </p>
     </header>
 
     <!-- Service cards -->
-    <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" role="list">
+    <ul class="grid grid-cols-1 md:grid-cols-3 gap-fluid-md" role="list">
       {t.items.map((service, i) => (
         <li
-          class="group/card flex flex-col bg-white border border-background-muted rounded-2xl p-8 lg:p-10
+          class="group/card flex flex-col bg-white border border-background-muted rounded-2xl p-fluid-lg
                  transition-all duration-500"
           data-reveal
           data-reveal-delay={String(i + 1)}
@@ -168,7 +168,7 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
 
           <!-- Icon box -->
           <div
-            class="mb-4 flex items-center justify-start transition-all duration-300 shrink-0"
+            class="mb-fluid-sm flex items-center justify-start transition-all duration-300 shrink-0"
             aria-hidden="true"
           >
             <img
@@ -184,7 +184,7 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
           <!-- Card content -->
           <article class="flex flex-col flex-1">
             <h3
-              class="font-display text-xl font-bold text-neutral-dark
+              class="font-display text-fluid-xl font-bold text-neutral-dark
                     transition-colors duration-300 mb-3 leading-snug"
             >
               {service.label}

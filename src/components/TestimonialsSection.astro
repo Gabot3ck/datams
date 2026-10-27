@@ -133,21 +133,21 @@ const leftReviews = reviews.slice(0, 3);
 const rightReviews = reviews.slice(3, 6);
 ---
 
-<section class="py-24 bg-background-light" aria-labelledby="testimonials-heading">
+<section class="py-section bg-background-light" aria-labelledby="testimonials-heading">
   <div class="container-custom">
 
     <!-- Cabecera -->
-    <header class="text-center mb-14" data-reveal>
+    <header class="text-center mb-fluid-xl" data-reveal>
       <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
         {t.kicker}
       </span>
       <h2
         id="testimonials-heading"
-        class="font-display text-4xl md:text-5xl font-bold text-neutral-dark mt-4 mb-4 leading-tight text-balance"
+        class="font-display text-fluid-4xl font-bold text-neutral-dark mt-fluid-sm mb-fluid-sm leading-tight text-balance"
       >
         {t.heading}
       </h2>
-      <p class="text-neutral-grey text-lg leading-relaxed max-w-xl mx-auto text-pretty">
+      <p class="text-neutral-grey text-fluid-lg leading-relaxed max-w-xl mx-auto text-pretty">
         {t.subheading}
       </p>
     </header>
@@ -181,7 +181,7 @@ const rightReviews = reviews.slice(3, 6);
     </div>
 
     <!-- Enlace a Google -->
-    <div class="mt-8 text-center" data-reveal>
+    <div class="mt-fluid-lg text-center" data-reveal>
       <a
         href={REVIEWS_URL}
         target="_blank"

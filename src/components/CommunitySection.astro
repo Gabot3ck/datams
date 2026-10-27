@@ -36,17 +36,17 @@ const t = {
 }[lang];
 ---
 
-<section class="bg-background-light py-4" aria-labelledby="community-heading">
+<section class="bg-background-light" aria-labelledby="community-heading">
   <div class="container-custom">
     <div class="flex flex-col lg:flex-row items-stretch">
 
       <!-- LEFT: copy panel -->
       <div
-        class="flex-1 py-20 lg:py-24 lg:pr-16 xl:pr-24 flex flex-col justify-center border-b lg:border-b-0 "
+        class="flex-1 py-section lg:pr-section flex flex-col justify-center border-b lg:border-b-0 "
         data-reveal
       >
         <!-- Label -->
-        <div class="flex items-center gap-3 mb-6">
+        <div class="flex items-center gap-3 mb-fluid-md">
           <span class="h-px w-10 bg-brand-light shrink-0" aria-hidden="true"></span>
           <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
             {t.label}
@@ -56,7 +56,7 @@ const t = {
         <!-- Heading -->
         <h2
           id="community-heading"
-          class="font-display text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-neutral-grey leading-[1.1] mb-6"
+          class="font-display text-fluid-4xl font-bold text-neutral-grey leading-[1.1] mb-fluid-md"
         >
           {t.heading.pre}{' '}
           <em class="not-italic text-brand-light">{t.heading.accent}</em>
@@ -64,14 +64,14 @@ const t = {
         </h2>
 
         <!-- Description -->
-        <p class="text-neutral-grey leading-relaxed mb-8 max-w-[480px]">
+        <p class="text-fluid-base text-neutral-grey leading-relaxed mb-fluid-lg max-w-[480px]">
           {t.description}
         </p>
 
         <!-- CTA -->
         <a
           href={t.ctaHref}
-          class="self-start inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white hover:bg-brand-light transition-colors focus-visible:outline-2 focus-visible:outline-brand-dark mb-10"
+          class="self-start inline-flex min-h-11 items-center gap-2 rounded-full bg-brand px-fluid-md py-fluid-sm text-sm font-semibold text-white hover:bg-brand-light transition-colors focus-visible:outline-2 focus-visible:outline-brand-dark mb-fluid-lg"
         >
           {t.cta}
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true">
@@ -93,18 +93,18 @@ const t = {
       </div>
 
       <!-- RIGHT: stats cards -->
-      <div class="lg:w-[45%] flex-shrink-0 flex items-center p-8 lg:p-12">
-        <dl class="grid grid-cols-2 gap-4 w-full">
+      <div class="lg:w-[45%] flex-shrink-0 flex items-center py-fluid-lg lg:p-fluid-lg">
+        <dl class="grid grid-cols-2 gap-fluid-sm w-full">
           {t.stats.map((stat, i) => (
             <div
-              class="group flex flex-col items-start justify-between bg-white rounded-2xl border border-background-muted p-6 lg:p-7 shadow-sm hover:shadow-md transition-shadow duration-300 cursor-default"
+              class="group flex flex-col items-start justify-between bg-white rounded-2xl border border-background-muted p-fluid-md shadow-sm hover:shadow-md transition-shadow duration-300 cursor-default"
               data-reveal
               data-reveal-delay={String(i)}
             >
-              <dt class="font-display text-4xl lg:text-5xl font-bold text-neutral-grey leading-none group-hover:text-brand-light transition-colors duration-300">
+              <dt class="font-display text-fluid-4xl font-bold text-neutral-grey leading-none group-hover:text-brand-light transition-colors duration-300">
                 {stat.value}
               </dt>
-              <dd class="text-xs sm:text-sm text-neutral-grey mt-4 leading-snug">
+              <dd class="text-xs sm:text-sm text-neutral-grey mt-fluid-sm leading-snug">
                 {stat.label}
               </dd>
             </div>

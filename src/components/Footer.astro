@@ -86,8 +86,8 @@ const social = 'grid size-11 place-items-center rounded-full bg-brand-light/15 t
   <FooterSkyline />
 
   <div class="-mt-px bg-midnight text-white/70">
-    <div class="container-custom pt-12 pb-10 lg:pt-14">
-      <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="container-custom pt-fluid-xl pb-fluid-lg">
+      <div class="grid grid-cols-1 gap-fluid-lg sm:grid-cols-2 lg:grid-cols-4">
 
         <!-- Nosotros -->
         <div data-fx-col>
@@ -159,7 +159,7 @@ const social = 'grid size-11 place-items-center rounded-full bg-brand-light/15 t
       </div>
 
       <!-- Divisor con redes al centro -->
-      <div class="mt-12 flex items-center gap-5" data-fx-col>
+      <div class="mt-fluid-xl flex items-center gap-5" data-fx-col>
         <span class="h-px flex-1 bg-white/15" aria-hidden="true"></span>
         <div class="flex gap-3">
           <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class={social}>
@@ -173,7 +173,7 @@ const social = 'grid size-11 place-items-center rounded-full bg-brand-light/15 t
       </div>
 
       <!-- Logo, aviso legal, copyright y autor (centrados, cada uno en su línea) -->
-      <div class="mt-8 flex flex-col items-center text-center" data-fx-col>
+      <div class="mt-fluid-lg flex flex-col items-center text-center" data-fx-col>
         <a href={t.logoHref} aria-label={t.logoAria}>
           <img src="/assets/logo/datams-logo.svg" alt="" width="98" height="112" loading="lazy" class="h-24 w-auto opacity-85 brightness-0 invert" />
         </a>
