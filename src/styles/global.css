@@ -51,6 +51,26 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
   --breakpoint-3xl: 1920px;
+
+  /* F L U I D   T Y P E — crece lineal de 320px a 1920px (mín/máx en rem para
+     respetar el zoom). Fórmula: mín + (máx − mín) · (100vw − 320px) / 1600px.
+     text-xs queda fijo a propósito (legibilidad). */
+  --text-fluid-sm:   clamp(0.875rem, 0.85rem + 0.125vw, 1rem);       /* 14 → 16 */
+  --text-fluid-base: clamp(1rem, 0.975rem + 0.125vw, 1.125rem);      /* 16 → 18 */
+  --text-fluid-lg:   clamp(1.0625rem, 1.025rem + 0.1875vw, 1.25rem); /* 17 → 20 */
+  --text-fluid-xl:   clamp(1.125rem, 1.05rem + 0.375vw, 1.5rem);     /* 18 → 24 */
+  --text-fluid-2xl:  clamp(1.25rem, 1.125rem + 0.625vw, 1.875rem);   /* 20 → 30 */
+  --text-fluid-3xl:  clamp(1.375rem, 1.2rem + 0.875vw, 2.25rem);     /* 22 → 36 */
+  --text-fluid-4xl:  clamp(1.5rem, 1.2rem + 1.5vw, 3rem);            /* 24 → 48 */
+  --text-fluid-5xl:  clamp(1.75rem, 1.35rem + 2vw, 3.75rem);         /* 28 → 60 */
+
+  /* F L U I D   S P A C E — p-*, m-*, gap-*, space-* (ej. py-section, gap-fluid-md) */
+  --spacing-fluid-xs: clamp(0.5rem, 0.45rem + 0.25vw, 0.75rem);      /*  8 → 12 */
+  --spacing-fluid-sm: clamp(0.75rem, 0.65rem + 0.5vw, 1.25rem);      /* 12 → 20 */
+  --spacing-fluid-md: clamp(1rem, 0.8rem + 1vw, 2rem);               /* 16 → 32 */
+  --spacing-fluid-lg: clamp(1.5rem, 1.2rem + 1.5vw, 3rem);           /* 24 → 48 */
+  --spacing-fluid-xl: clamp(2rem, 1.6rem + 2vw, 4rem);               /* 32 → 64 */
+  --spacing-section:  clamp(3rem, 2.2rem + 4vw, 7rem);               /* 48 → 112, padding vertical de secciones */
 }
 
 
