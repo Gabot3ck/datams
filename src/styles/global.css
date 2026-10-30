@@ -55,6 +55,9 @@
   /* F L U I D   T Y P E — crece lineal de 320px a 1920px (mín/máx en rem para
      respetar el zoom). Fórmula: mín + (máx − mín) · (100vw − 320px) / 1600px.
      text-xs queda fijo a propósito (legibilidad). */
+  /* Párrafos y texto de tarjeta: rango propio, 360px → 1280px */
+  --text-fluid-body: clamp(0.75rem, 0.652rem + 0.4348vw, 1.125rem);    /* 12 · 14 · 16 → 18 */
+  --text-fluid-card: clamp(0.8125rem, 0.7636rem + 0.2174vw, 0.9375rem); /* 13 · 14 · 15 */
   --text-fluid-sm:   clamp(0.875rem, 0.85rem + 0.125vw, 1rem);       /* 14 → 16 */
   --text-fluid-base: clamp(1rem, 0.975rem + 0.125vw, 1.125rem);      /* 16 → 18 */
   --text-fluid-lg:   clamp(1.0625rem, 1.025rem + 0.1875vw, 1.25rem); /* 17 → 20 */
