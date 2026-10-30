@@ -436,7 +436,7 @@ const {
             aria-haspopup="listbox"
             aria-expanded="false"
             aria-label={`Idioma actual: ${currentLangLabel}. Cambiar idioma`}
-            class="flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-neutral-grey hover:bg-gray-100 transition-colors cursor-pointer"
+            class="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs sm:text-sm font-medium text-neutral-grey hover:bg-gray-100 transition-colors cursor-pointer"
           >
             <img
               src={currentFlag}
@@ -490,7 +490,7 @@ const {
         <!-- CTA principal -->
         <a
           href={ctaHref}
-          class="rounded-full bg-brand px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-brand-light focus-visible:outline-2 focus-visible:outline-brand-dark"
+          class="rounded-full bg-brand px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm font-medium text-white transition-colors hover:bg-brand-light focus-visible:outline-2 focus-visible:outline-brand-dark"
         >
           {cta}
         </a>

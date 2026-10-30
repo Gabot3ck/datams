@@ -285,14 +285,14 @@ const slides = await Promise.all(
           data-index={i}
         >
           <Title
-            class="font-bold leading-tight text-balance text-white text-xl md:text-2xl lg:text-[length:clamp(1.25rem,1.11rem_+_1.3vw,3.2rem)]"
+            class="font-bold leading-tight text-balance text-white text-[length:clamp(1.125rem,0.794rem_+_1.47vw,1.75rem)] lg:text-[length:clamp(1.25rem,1.11rem_+_1.3vw,3.2rem)]"
             data-hero-title
           >
             {s.title}
           </Title>
 
           <p
-            class="mt-1 sm:mt-2 md:mt-4 lg:max-w-[36ch] text-sm md:text-[1rem] lg:text-[length:clamp(0.875rem,0.75rem_+_0.39vw,1.375rem)] text-white/90"
+            class="mt-fluid-sm lg:max-w-[36ch] text-[length:clamp(0.8125rem,0.72rem_+_0.39vw,1rem)] lg:text-[length:clamp(0.875rem,0.75rem_+_0.39vw,1.375rem)] text-white/90"
             data-hero-subtitle
           >
             {s.subtitle}
@@ -300,12 +300,12 @@ const slides = await Promise.all(
 
           {s.ctaHref && s.ctaText && (
             <div
-              class="mt-3 sm:mt-5 md:mt-8 flex flex-wrap items-center gap-4"
+              class="mt-fluid-md flex flex-wrap items-center gap-4"
               data-hero-cta
             >
               <a
                 href={s.ctaHref}
-                class={` ${s.btnClass || "bg-brand hover:bg-brand-dark text-background-light"} inline-flex min-h-11 items-center text-[length:clamp(0.8125rem,0.74rem_+_0.3vw,1.0625rem)] px-[1.8em] py-[0.9em] mx-auto sm:mx-0 rounded-md transition-colors ease-in duration-300`}
+                class={` ${s.btnClass || "bg-brand hover:bg-brand-dark text-background-light"} inline-flex min-h-11 items-center text-xs px-[1.4em] py-[0.7em] sm:text-[length:clamp(0.8125rem,0.74rem_+_0.3vw,1.0625rem)] sm:px-[1.8em] sm:py-[0.9em] mx-auto sm:mx-0 rounded-md transition-colors ease-in duration-300`}
               >
                 {s.ctaText}
               </a>
