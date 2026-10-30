@@ -78,7 +78,7 @@ const t = {
 const telHref = `tel:${BUSINESS.phone}`;
 const address = `${BUSINESS.address.street}, ${BUSINESS.address.city}, ${BUSINESS.address.region} ${BUSINESS.address.postalCode}`;
 
-const heading = 'mb-5 text-[13px] font-bold uppercase tracking-widest text-white';
+const heading = 'mb-4 text-xs font-bold uppercase tracking-widest text-white';
 const social = 'grid size-11 place-items-center rounded-full bg-brand-light/15 text-brand-light transition-colors hover:bg-brand-light hover:text-midnight focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-light';
 ---
 
@@ -86,19 +86,19 @@ const social = 'grid size-11 place-items-center rounded-full bg-brand-light/15 t
   <FooterSkyline />
 
   <div class="-mt-px bg-midnight text-white/70">
-    <div class="container-custom pt-fluid-xl pb-fluid-lg">
+    <div class="container-custom pt-fluid-lg pb-fluid-md">
       <div class="grid grid-cols-1 gap-fluid-lg sm:grid-cols-2 lg:grid-cols-4">
 
         <!-- Nosotros -->
         <div data-fx-col>
           <h2 class={heading}>{t.about.heading}</h2>
-          <p class="text-[13px] leading-relaxed">{t.about.body}</p>
+          <p class="text-xs leading-relaxed">{t.about.body}</p>
         </div>
 
         <!-- Contacto -->
         <address class="not-italic" data-fx-col>
           <h2 class={heading}>{t.contact.heading}</h2>
-          <ul class="space-y-3.5 text-[13px]" role="list">
+          <ul class="space-y-3 text-xs" role="list">
             <li class="flex gap-3">
               <svg class="mt-0.5 size-4 shrink-0 text-brand-light" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="m9.69 18.93.01.01a.75.75 0 0 0 .6 0C10.6 18.8 17 15.9 17 9a7 7 0 1 0-14 0c0 6.9 6.4 9.8 6.69 9.93ZM10 11.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z" clip-rule="evenodd" /></svg>
               <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" aria-label={`${address} — ${t.contact.mapsAria}`} class="leading-relaxed transition-colors hover:text-white">
@@ -115,10 +115,10 @@ const social = 'grid size-11 place-items-center rounded-full bg-brand-light/15 t
         <!-- Servicios: los 8 enlaces de categoría son el interlinking SEO principal -->
         <nav aria-label={t.services.heading} data-fx-col>
           <h2 class={heading}>{t.services.heading}</h2>
-          <ul class="grid grid-cols-2 gap-x-4 gap-y-2.5 lg:grid-cols-1" role="list">
+          <ul class="grid grid-cols-2 gap-x-4 gap-y-2 lg:grid-cols-1" role="list">
             {t.services.items.map((item) => (
               <li>
-                <a href={item.href} class="text-[13px] transition-colors hover:text-white">
+                <a href={item.href} class="text-xs transition-colors hover:text-white">
                   <span class="text-brand-light" aria-hidden="true">› </span>{item.label}
                 </a>
               </li>
@@ -129,11 +129,11 @@ const social = 'grid size-11 place-items-center rounded-full bg-brand-light/15 t
         <!-- Horario por temporada (sale de BUSINESS.seasons, igual que el JSON-LD) -->
         <div data-fx-col>
           <h2 class={heading}>{t.hours.heading}</h2>
-          <div class="space-y-5 text-[13px]">
+          <div class="space-y-4 text-xs">
             {hours.seasons.map((season) => (
               <div>
                 <p class="font-semibold text-white">{season.label}</p>
-                <p class="text-xs text-white/55">{season.dates}</p>
+                <p class="text-[11px] text-white/55">{season.dates}</p>
                 <dl class="mt-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1">
                   {season.rows.map((row) => (
                     <>
@@ -144,13 +144,13 @@ const social = 'grid size-11 place-items-center rounded-full bg-brand-light/15 t
                 </dl>
               </div>
             ))}
-            {hours.closed.map((line) => <p class="text-xs text-white/55">{line}</p>)}
+            {hours.closed.map((line) => <p class="text-[11px] text-white/55">{line}</p>)}
           </div>
           <a
             href={MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-5 inline-flex min-h-11 items-center gap-2 rounded-md bg-brand px-5 text-[13px] font-semibold text-white transition-colors hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            class="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md bg-brand px-5 text-xs font-semibold text-white transition-colors hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             {t.hours.directions}
             <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.64L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.16-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" /></svg>
@@ -159,7 +159,7 @@ const social = 'grid size-11 place-items-center rounded-full bg-brand-light/15 t
       </div>
 
       <!-- Divisor con redes al centro -->
-      <div class="mt-fluid-xl flex items-center gap-5" data-fx-col>
+      <div class="mt-fluid-lg flex items-center gap-5" data-fx-col>
         <span class="h-px flex-1 bg-white/15" aria-hidden="true"></span>
         <div class="flex gap-3">
           <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class={social}>
@@ -177,9 +177,9 @@ const social = 'grid size-11 place-items-center rounded-full bg-brand-light/15 t
         <a href={t.logoHref} aria-label={t.logoAria}>
           <img src="/assets/logo/datams-logo.svg" alt="" width="98" height="112" loading="lazy" class="h-24 w-auto opacity-85 brightness-0 invert" />
         </a>
-        <p class="mt-6 max-w-[42rem] text-xs leading-relaxed text-white/70">{t.disclaimer}</p>
-        <p class="mt-4 text-xs text-white/55">{t.rights}</p>
-        <a href={DEV_URL} target="_blank" rel="noopener noreferrer" class="mt-2 text-xs text-white/55 transition-colors hover:text-white hover:underline">
+        <p class="mt-5 max-w-[42rem] text-[11px] leading-relaxed text-white/70">{t.disclaimer}</p>
+        <p class="mt-4 text-[11px] text-white/55">{t.rights}</p>
+        <a href={DEV_URL} target="_blank" rel="noopener noreferrer" class="mt-2 text-[11px] text-white/55 transition-colors hover:text-white hover:underline">
           {t.devBy}
         </a>
       </div>
