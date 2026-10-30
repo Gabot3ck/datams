@@ -24,9 +24,9 @@ const ctaText = ctaLabel ?? (lang === 'es' ? 'Agendar mi cita gratis' : 'Book my
 const telHref = `tel:${BUSINESS.phone.replace('+', '')}`;
 ---
 
-<section class="bg-midnight py-20 lg:py-28 text-center" aria-labelledby="cta-banner-heading">
+<section class="bg-midnight py-section text-center" aria-labelledby="cta-banner-heading">
   <div class="container-custom">
-    <div class="flex items-center justify-center gap-4 mb-8">
+    <div class="flex items-center justify-center gap-4 mb-fluid-lg">
       <span class="h-px w-12 bg-brand-light/60" aria-hidden="true"></span>
       <span class="text-xs font-bold tracking-widest text-brand-light/80 uppercase">
         {eyebrowText}
@@ -36,17 +36,17 @@ const telHref = `tel:${BUSINESS.phone.replace('+', '')}`;
 
     <h2
       id="cta-banner-heading"
-      class="font-display text-3xl md:text-5xl font-bold text-white mb-5 leading-tight max-w-2xl mx-auto"
+      class="font-display text-fluid-5xl font-bold text-white mb-fluid-md leading-tight max-w-2xl mx-auto"
     >
       {heading}
     </h2>
     {body && (
-      <p class="text-white/60 mb-10 max-w-lg mx-auto leading-relaxed">{body}</p>
+      <p class="text-fluid-base text-white/60 mb-fluid-lg max-w-lg mx-auto leading-relaxed">{body}</p>
     )}
 
     <a
       href={ctaHref}
-      class="inline-flex items-center gap-2 rounded-full bg-brand-light px-8 py-4 text-base font-semibold text-white hover:bg-brand-dark transition-colors shadow-lg focus-visible:outline-2 focus-visible:outline-brand-light"
+      class="inline-flex items-center gap-2 rounded-full bg-brand-light min-h-11 px-fluid-md py-fluid-sm text-fluid-base font-semibold text-white hover:bg-brand-dark transition-colors shadow-lg focus-visible:outline-2 focus-visible:outline-brand-light"
     >
       {ctaText}
       <svg
@@ -63,9 +63,9 @@ const telHref = `tel:${BUSINESS.phone.replace('+', '')}`;
       </svg>
     </a>
 
-    <address class="not-italic mt-12 border-t border-white/10 pt-8">
+    <address class="not-italic mt-fluid-xl border-t border-white/10 pt-fluid-lg">
       <ul
-        class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-8 text-sm text-white/50"
+        class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-fluid-sm sm:gap-fluid-lg text-sm text-white/50"
         role="list"
       >
         <li>

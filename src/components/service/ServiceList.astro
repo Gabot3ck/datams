@@ -13,11 +13,11 @@ const moreText = lang === 'es' ? 'Ver más' : 'Learn more';
 ---
 
 <section
-  class="py-20 lg:py-28 bg-background-light"
+  class="py-section bg-background-light"
   aria-labelledby="services-heading"
 >
   <div class="container-custom">
-    <div class="text-center mb-14">
+    <div class="text-center mb-fluid-xl">
       {
         eyebrow && (
           <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
@@ -27,13 +27,13 @@ const moreText = lang === 'es' ? 'Ver más' : 'Learn more';
       }
       <h2
         id="services-heading"
-        class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mt-3 leading-tight"
+        class="font-display text-fluid-4xl font-bold text-neutral-dark mt-fluid-xs leading-tight"
       >
         {heading}
       </h2>
       {
         intro && (
-          <p class="text-neutral-grey mt-4 max-w-xl mx-auto leading-relaxed">
+          <p class="text-fluid-base text-neutral-grey mt-fluid-sm max-w-xl mx-auto leading-relaxed">
             {intro}
           </p>
         )
@@ -41,7 +41,7 @@ const moreText = lang === 'es' ? 'Ver más' : 'Learn more';
     </div>
 
     <ul
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-fluid-md"
       role="list"
     >
       {
@@ -49,19 +49,19 @@ const moreText = lang === 'es' ? 'Ver más' : 'Learn more';
           <li>
             <a
               href={svc.href}
-              class="group flex flex-col h-full bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden"
+              class="group flex flex-col h-full bg-white rounded-2xl p-fluid-md shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden"
             >
               <span
                 class="absolute left-0 inset-y-0 w-[3px] bg-brand-light scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom rounded-r-full"
                 aria-hidden="true"
               />
-              <h3 class="font-display text-lg font-bold text-neutral-dark group-hover:text-brand-light transition-colors leading-snug mb-3">
+              <h3 class="font-display text-fluid-lg font-bold text-neutral-dark group-hover:text-brand-light transition-colors leading-snug mb-fluid-xs">
                 {svc.label}
               </h3>
-              <p class="text-sm text-neutral-grey leading-relaxed flex-1">
+              <p class="text-fluid-sm text-neutral-grey leading-relaxed flex-1">
                 {svc.description}
               </p>
-              <span class="inline-flex items-center gap-1 mt-5 text-sm font-semibold text-brand-light group-hover:gap-2 transition-all">
+              <span class="inline-flex items-center gap-1 mt-fluid-md text-sm font-semibold text-brand-light group-hover:gap-2 transition-all">
                 {moreText}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -12,14 +12,14 @@ const mapsQuery = encodeURIComponent(
 );
 ---
 <BaseLayout {title} {description} lang="es" {jsonLd}>
-  <main class="container-custom py-20 lg:py-28">
-    <h1 class="font-display text-4xl md:text-5xl font-bold text-neutral-dark leading-tight">Contacto</h1>
-    <p class="text-neutral-grey mt-4 max-w-xl leading-relaxed">
+  <main class="container-custom py-section">
+    <h1 class="font-display text-fluid-5xl font-bold text-neutral-dark leading-tight">Contacto</h1>
+    <p class="text-fluid-base text-neutral-grey mt-fluid-sm max-w-xl leading-relaxed">
       Estamos en Las Vegas y atendemos en español. Puedes escribirnos por WhatsApp, llamarnos o
       visitarnos en la oficina.
     </p>
 
-    <dl class="mt-10 grid gap-6 sm:grid-cols-2 max-w-2xl">
+    <dl class="mt-fluid-lg grid gap-fluid-md text-fluid-base sm:grid-cols-2 max-w-2xl">
       <div>
         <dt class="text-xs font-bold tracking-widest text-brand-light uppercase mb-1">Teléfono</dt>
         <dd><a href={`tel:${BUSINESS.phone.replace('+', '')}`} class="text-neutral-dark hover:text-brand-light">{BUSINESS.phoneDisplay}</a></dd>

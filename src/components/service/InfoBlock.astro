@@ -3,14 +3,14 @@ interface Props { eyebrow?: string; heading: string; bg?: 'white' | 'light'; }
 const { eyebrow, heading, bg = 'white' } = Astro.props;
 const bgClass = bg === 'light' ? 'bg-background-light' : 'bg-white';
 ---
-<section class:list={['py-16 lg:py-20', bgClass]} aria-label={heading}>
+<section class:list={['py-section', bgClass]} aria-label={heading}>
   <div class="container-custom">
     <div class="max-w-2xl mx-auto">
       {eyebrow && <span class="text-xs font-bold tracking-widest text-brand-light uppercase">{eyebrow}</span>}
-      <h2 class="font-display text-3xl md:text-4xl font-bold text-neutral-dark mt-3 mb-6 leading-tight">
+      <h2 class="font-display text-fluid-4xl font-bold text-neutral-dark mt-fluid-xs mb-fluid-md leading-tight">
         {heading}
       </h2>
-      <div class="prose-service text-neutral-grey leading-relaxed flex flex-col gap-4">
+      <div class="prose-service text-fluid-base text-neutral-grey leading-relaxed flex flex-col gap-fluid-sm">
         <slot />
       </div>
     </div>
