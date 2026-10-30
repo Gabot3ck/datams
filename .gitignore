@@ -41,3 +41,4 @@ reference-data/
 .agents/skills/copy-editing/
 .agents/skills/copywriting/
 skills-lock.json
+.playwright-mcp/
