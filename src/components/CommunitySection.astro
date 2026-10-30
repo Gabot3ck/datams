@@ -56,7 +56,7 @@ const t = {
         <!-- Heading -->
         <h2
           id="community-heading"
-          class="font-display text-fluid-4xl font-bold text-neutral-grey leading-[1.1] mb-fluid-md"
+          class="font-display text-fluid-2xl md:text-fluid-3xl lg:text-fluid-4xl font-bold text-neutral-grey leading-[1.1] mb-fluid-md"
         >
           {t.heading.pre}{' '}
           <em class="not-italic text-brand-light">{t.heading.accent}</em>
@@ -64,7 +64,7 @@ const t = {
         </h2>
 
         <!-- Description -->
-        <p class="text-fluid-base text-neutral-grey leading-relaxed mb-fluid-lg max-w-[480px]">
+        <p class="text-fluid-body text-neutral-grey leading-relaxed mb-fluid-lg max-w-[480px]">
           {t.description}
         </p>
 
@@ -101,10 +101,10 @@ const t = {
               data-reveal
               data-reveal-delay={String(i)}
             >
-              <dt class="font-display text-fluid-4xl font-bold text-neutral-grey leading-none group-hover:text-brand-light transition-colors duration-300">
+              <dt class="font-display text-fluid-2xl md:text-fluid-3xl lg:text-fluid-4xl font-bold text-neutral-grey leading-none group-hover:text-brand-light transition-colors duration-300">
                 {stat.value}
               </dt>
-              <dd class="text-xs sm:text-sm text-neutral-grey mt-fluid-sm leading-snug">
+              <dd class="text-fluid-card text-neutral-grey mt-fluid-sm leading-snug">
                 {stat.label}
               </dd>
             </div>

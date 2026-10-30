@@ -142,25 +142,25 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
 
     <!-- Section header -->
     <header class="text-center mb-fluid-xl" data-reveal>
-      <p class="text-brand text-fluid-lg max-w-xl mx-auto font-bold leading-relaxed">
+      <p class="text-brand text-fluid-sm lg:text-fluid-lg max-w-xl mx-auto font-bold leading-relaxed">
         {t.sectionLabel}
       </p>
       <h2
         id="services-heading"
-        class="font-display text-fluid-4xl font-bold text-dark mt-fluid-sm mb-fluid-sm leading-tight"
+        class="font-display text-fluid-2xl md:text-fluid-3xl lg:text-fluid-4xl font-bold text-dark mt-fluid-xs mb-fluid-xs lg:mt-fluid-sm lg:mb-fluid-sm leading-tight"
       >
         {t.heading}
       </h2>
-      <p class="text-dark text-fluid-xl max-w-xl mx-auto leading-relaxed">
+      <p class="text-dark text-fluid-body max-w-xl mx-auto leading-relaxed">
         {t.subheading}
       </p>
     </header>
 
     <!-- Service cards -->
-    <ul class="grid grid-cols-1 md:grid-cols-3 gap-fluid-md" role="list">
+    <ul class="grid grid-cols-2 md:grid-cols-3 gap-fluid-sm md:gap-fluid-md" role="list">
       {t.items.map((service, i) => (
         <li
-          class="group/card flex flex-col bg-white border border-background-muted rounded-2xl p-fluid-lg
+          class="group/card flex flex-col bg-white border border-background-muted rounded-2xl p-fluid-sm md:p-fluid-md lg:p-fluid-lg
                  transition-all duration-500"
           data-reveal
           data-reveal-delay={String(i + 1)}
@@ -177,21 +177,21 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
               width={ service.width ?? 48 }
               height="48"
               loading="lazy"
-              class="text-brand"
+              class="h-8 w-auto md:h-10 lg:h-12 text-brand"
             />
           </div>
 
           <!-- Card content -->
           <article class="flex flex-col flex-1">
             <h3
-              class="font-display text-fluid-xl font-bold text-neutral-dark
-                    transition-colors duration-300 mb-3 leading-snug"
+              class="font-display text-fluid-sm md:text-fluid-lg lg:text-fluid-xl font-bold text-neutral-dark
+                    transition-colors duration-300 mb-1.5 md:mb-3 leading-snug"
             >
               {service.label}
             </h3>
 
             <p
-              class="text-sm text-neutral-grey leading-relaxed mb-2 flex-1"
+              class="text-fluid-card text-neutral-grey leading-relaxed mb-1 md:mb-2 flex-1 line-clamp-3 md:line-clamp-none"
             >
               {service.description}
             </p>
@@ -199,14 +199,14 @@ const sectionId = lang === 'es' ? 'servicios' : 'services';
             <!-- CTA pill button -->
             <a
               href={service.href}
-              class="inline-flex items-start gap-3 text-brand text-md font-semibold
+              class="inline-flex min-h-11 items-center gap-1 md:gap-3 whitespace-nowrap text-brand text-xs md:text-sm lg:text-base font-semibold
                     hover:underline transition-all duration-300"
               aria-label={`${service.cta} — ${service.label}`}
             >
               {service.cta}
               <!-- Arrow circle -->
               <span
-                class="size-6 flex items-center justify-center shrink-0 duration-300"
+                class="size-4 md:size-6 flex items-center justify-center shrink-0 duration-300"
                 aria-hidden="true"
               >
                 <svg
