@@ -5,7 +5,7 @@ const { heading, steps } = Astro.props;
 <section class="py-section bg-white" aria-labelledby="process-heading">
   <div class="container-custom">
     <div class="max-w-3xl mx-auto">
-      <h2 id="process-heading" class="font-display text-fluid-4xl font-bold text-neutral-dark mb-fluid-lg leading-tight">
+      <h2 id="process-heading" class="font-display text-fluid-2xl md:text-fluid-3xl lg:text-fluid-4xl font-bold text-neutral-dark mb-fluid-lg leading-tight">
         {heading}
       </h2>
       <ol role="list" class="flex flex-col gap-fluid-sm">
@@ -16,7 +16,7 @@ const { heading, steps } = Astro.props;
             </span>
             <div>
               <h3 class="text-fluid-base font-semibold text-neutral-dark mb-1">{step.title}</h3>
-              <p class="text-fluid-sm text-neutral-grey leading-relaxed">{step.body}</p>
+              <p class="text-fluid-card text-neutral-grey leading-relaxed">{step.body}</p>
             </div>
           </li>
         ))}

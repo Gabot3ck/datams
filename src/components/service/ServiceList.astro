@@ -27,13 +27,13 @@ const moreText = lang === 'es' ? 'Ver más' : 'Learn more';
       }
       <h2
         id="services-heading"
-        class="font-display text-fluid-4xl font-bold text-neutral-dark mt-fluid-xs leading-tight"
+        class="font-display text-fluid-2xl md:text-fluid-3xl lg:text-fluid-4xl font-bold text-neutral-dark mt-fluid-xs leading-tight"
       >
         {heading}
       </h2>
       {
         intro && (
-          <p class="text-fluid-base text-neutral-grey mt-fluid-sm max-w-xl mx-auto leading-relaxed">
+          <p class="text-fluid-body text-neutral-grey mt-fluid-sm max-w-xl mx-auto leading-relaxed">
             {intro}
           </p>
         )
@@ -58,7 +58,7 @@ const moreText = lang === 'es' ? 'Ver más' : 'Learn more';
               <h3 class="font-display text-fluid-lg font-bold text-neutral-dark group-hover:text-brand-light transition-colors leading-snug mb-fluid-xs">
                 {svc.label}
               </h3>
-              <p class="text-fluid-sm text-neutral-grey leading-relaxed flex-1">
+              <p class="text-fluid-card text-neutral-grey leading-relaxed flex-1">
                 {svc.description}
               </p>
               <span class="inline-flex items-center gap-1 mt-fluid-md text-sm font-semibold text-brand-light group-hover:gap-2 transition-all">
