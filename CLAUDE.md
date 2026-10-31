@@ -137,7 +137,7 @@ vitest.config.ts              # tests con Vitest + Container API de Astro
 1. <Hero lang={lang} />              ← slider de imágenes
 2. <CommunitySection lang={lang} />  ← 2 cols: copy + grid 2×2 stats
 3. <ServicesSection lang={lang} />   ← 6 tarjetas (Taxes, IRS, ITIN-EIN, Notary Public, Inmigración, DMV)
-4. <WhyUsSection lang={lang} />      ← imagen + checklist de 4 puntos
+4. <WhyUsSection lang={lang} />      ← imagen + checklist de 4 puntos (horizontal desde 640px; en mobile foto 200×250 recortada)
 5. <TestimonialsSection lang={lang} /> ← reseñas de Google
 6. <OfficeSection lang={lang} />     ← galería 3 imágenes + video + CTA "cómo llegar"
 7. <FaqSection lang={lang} faqs={faq} image={faqImage} /> ← acordeón
@@ -286,6 +286,15 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [ ] `CommunitySection`: "5,000+" desborda a 320px (scroll horizontal)
 - [ ] Imágenes reales en subcategorías del mega menú (actualmente sin imagen → fondo gris)
 - [x] URLs reales en tarjetas de Services del Home (`/taxes`, `/notary-public`, `/negocio`)
+- [x] CTAs sin "Agendar cita" (solo orden de llegada): llamada `tel:` en Navbar, `ServiceHero` y `CtaSection`; "Cómo llegar" (`BUSINESS.directionsUrl`) en `CommunitySection`, menú mobile y `CtaBanner`. Ver `DECISIONES-NEGOCIO.md` §6.2
+- [ ] Tarjeta IRS del Home dice "deudas, acuerdos de pago": choca con la regla AFSP
+- [ ] Copy por decidir: "Notary Public Certificada" (Community) y "Garantizamos tener el mejor reembolso" (WhyUs)
+- [ ] Confirmar con el cliente si la consulta es gratis (pregunta 5 de `DECISIONES-NEGOCIO.md`); si lo es, puede volver a los CTA
+- [ ] `/taxes/extension` es enlace roto (página sin crear): `npm run check:links`
+- [ ] `Navbar.test.ts:184` busca `\n` literal: falla si `Navbar.astro` queda con CRLF (`core.autocrlf=true`) y pasa con LF. Cambiar a regex `\r?\n`
+- [ ] Limitar el ancho de párrafos: `max-w-*` está redefinido en `@theme` (xs=425px, md=768px…), así que esas clases casi no limitan
+- [ ] Footer: Instagram, Facebook y link del autor siguen en `#`
+- [ ] Title y meta del Home sin "Las Vegas"
 
 ## Comandos
 
