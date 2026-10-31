@@ -12,7 +12,7 @@ import CtaBanner from '../../components/service/CtaBanner.astro';
 
 const title = "Declaración de Impuestos Personales | Las Vegas";
 const description =
-  "Declaramos tus impuestos personales en español, revisando cada deducción para tu reembolso máximo. Precio fijo, sin letras chiquitas. Agenda tu cita.";
+  "Declaramos tus impuestos personales en español, revisando cada deducción para tu reembolso máximo. Precio fijo, sin letras chiquitas. Ven sin cita.";
 
 const incluye = [
   'Declaración federal (IRS) y estatal, según donde hayas trabajado',
@@ -22,8 +22,8 @@ const incluye = [
   'Declaración para ingresos por contrato (1099) o trabajo independiente',
 ];
 const pasos = [
-  { title: 'Agenda tu cita', body: 'Por WhatsApp, teléfono o en nuestra oficina.' },
-  { title: 'Trae tus documentos', body: 'Si no estás seguro de qué necesitas, te lo confirmamos antes de tu cita para que no hagas el viaje en falso.' },
+  { title: 'Ven a la oficina', body: 'Sin cita: te atendemos por orden de llegada.' },
+  { title: 'Trae tus documentos', body: 'Si no sabes bien qué necesitas, llámanos antes de venir y te lo confirmamos, para que no hagas el viaje en vano.' },
   { title: 'Preparamos y revisamos contigo', body: 'Preparamos tu declaración y la revisamos contigo, explicándote en español qué significa cada línea, antes de enviarla al IRS.' },
   { title: 'Te damos tu comprobante', body: 'Recibes un comprobante de que quedó presentada, y si elegiste depósito directo, te explicamos cuándo esperar tu reembolso.' },
 ];
@@ -41,7 +41,7 @@ const whyUs = [
   { heading: 'Te explicamos el resultado', body: 'No solo te entregamos un papel con números.' },
 ];
 const faqs = [
-  { q: '¿Puedo declarar si trabajé en más de un estado este año?', a: 'Sí, preparamos declaraciones en todos los estados donde hayas trabajado, dentro de la misma cita.' },
+  { q: '¿Puedo declarar si trabajé en más de un estado este año?', a: 'Sí, preparamos declaraciones de todos los estados donde hayas trabajado, en una sola visita.' },
   { q: '¿Qué pasa si soy contratista independiente (1099) y no empleado?', a: 'También te ayudamos — la declaración de ingresos 1099 tiene reglas distintas a un W-2, y te explicamos qué te corresponde declarar.' },
   { q: '¿Cuánto tiempo tarda mi reembolso después de declarar?', a: 'El tiempo lo determina el IRS, no nosotros, pero si pasa más tiempo del esperado, te ayudamos con el seguimiento de tu reembolso.' },
   { q: '¿Necesito sacar mi ITIN antes de poder declarar?', a: 'Si no tienes Social Security ni ITIN todavía, podemos ayudarte a solicitar tu ITIN como parte del mismo proceso.' },
@@ -58,7 +58,6 @@ const faqs = [
   <ServiceHero
     eyebrow="Taxes personales"
     heading="Declaración de Impuestos Personales en Las Vegas"
-    ctaLabel="Agendar mi declaración"
   >
     <p>Tu declaración de impuestos personales es la base de todo lo demás: tu reembolso, tu historial con el IRS, e incluso documentación que más adelante puedes necesitar para otros trámites (como inmigración o un préstamo). Por eso la hacemos con calma, revisando cada detalle contigo, no como un formulario que se llena rápido y se manda.</p>
     <p>Trabajamos con declaraciones federales y estatales, para individuos y familias — tengas W-2, seas contratista independiente (1099), o declares con ITIN Number.</p>
@@ -77,7 +76,7 @@ const faqs = [
   <DocsChecklist
     heading="Documentos que necesitas traer"
     items={docs}
-    note="Si te falta algo de esta lista, dínoslo antes de tu cita — muchas veces hay alternativas."
+    note="Si te falta algo de esta lista, llámanos antes de venir: muchas veces hay alternativas."
   />
 
   <WhyUs heading="Por qué elegirnos para tu declaración personal" items={whyUs} />
@@ -95,7 +94,7 @@ const faqs = [
   />
 
   <CtaBanner
-    heading="Agenda tu declaración personal"
+    heading="Ven a hacer tu declaración personal"
     body="Te decimos qué necesitas traer y cuánto va a costar antes de empezar."
   />
 </ServiceLayout>

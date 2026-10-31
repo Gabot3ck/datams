@@ -10,7 +10,7 @@ import { SITE_URL } from '@config/site';
 
 const title = "Taxes en Español en Las Vegas | Data's & Multiservices";
 const description =
-  "Hacemos tus taxes en español, con precio claro desde el inicio. Oficina física en Las Vegas, citas por WhatsApp, tardes y sábados. Agenda hoy.";
+  "Hacemos tus taxes en español, con precio claro desde el inicio. Oficina física en Las Vegas, sin cita, por orden de llegada. También en la tarde y los sábados.";
 
 const services = [
   { label: 'Declaración de impuestos personales', href: '/taxes/declaracion-personal',
@@ -35,7 +35,7 @@ const whyUs = [
 
 const faqs = [
   { q: '¿Necesito cita o puedo llegar directo a la oficina?',
-    a: '[PLACEHOLDER: completar según política real — ej. "Puedes agendar por WhatsApp o llegar en nuestro horario de atención, aunque agendar te garantiza que no esperes."]' },
+    a: 'No necesitas cita: atendemos por orden de llegada. Ven el día que te quede mejor. En temporada de taxes (enero a abril) te recomendamos llegar temprano, porque puede haber espera.' },
   { q: '¿Puedo declarar taxes si tengo ITIN en vez de número de Social Security?',
     a: 'Sí. Trabajamos regularmente con personas que declaran usando ITIN Number, y si todavía no tienes uno, también te ayudamos a solicitarlo.' },
   { q: '¿Cuánto cuesta hacer mis taxes?',
@@ -62,7 +62,7 @@ const itemList = services.map((s) => ({ name: s.label, url: `${SITE_URL}${s.href
     headingAccent="Sin Sorpresas en el Precio"
   >
     <p>Hacer tus taxes no debería sentirse como un riesgo. En Data's &amp; Multiservices te ayudamos a declarar tus impuestos en español, de principio a fin, con un precio claro desde la primera consulta — sin sorpresas, sin letras chiquitas y sin que tengas que adivinar en inglés qué te están cobrando.</p>
-    <p>Tenemos oficina física en Las Vegas, atendemos por WhatsApp, y agendamos citas en la tarde y los sábados, porque sabemos que tu horario no siempre es de 9 a 5.</p>
+    <p>Tenemos oficina física en Las Vegas y atendemos por orden de llegada, también en la tarde y los sábados, porque sabemos que tu horario no siempre es de 9 a 5.</p>
   </ServiceHero>
 
   <TrustBar />
@@ -84,6 +84,6 @@ const itemList = services.map((s) => ({ name: s.label, url: `${SITE_URL}${s.href
 
   <CtaBanner
     heading="¿Listo para declarar tus taxes sin estrés?"
-    body="Agenda una consulta sin costo y te decimos exactamente qué necesitas y cuánto va a costar, antes de que decidas continuar."
+    body="Ven a la oficina o llámanos: te decimos qué necesitas y cuánto va a costar antes de que decidas continuar."
   />
 </ServiceLayout>
