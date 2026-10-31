@@ -14,8 +14,8 @@ describe('WhyUsSection', () => {
   });
 
   it('la imagen usa el alt correcto por idioma', async () => {
-    expect(await render('es')).toContain('alt="David Takamura, Notary Public certificado"');
-    expect(await render('en')).toContain('alt="David Takamura, certified notary public"');
+    expect(await render('es')).toContain('alt="David Takamura, Notary Public"');
+    expect(await render('en')).toContain('alt="David Takamura, notary public"');
   });
 
   it('renderiza una lista de 4 items', async () => {
