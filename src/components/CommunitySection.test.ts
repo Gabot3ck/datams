@@ -20,9 +20,14 @@ describe('CommunitySection', () => {
     expect(html).toContain('Años de experiencia');
   });
 
-  it('CTA apunta a /contacto en es y /en/contact en en', async () => {
-    expect(await render('es')).toContain('href="/contacto"');
-    expect(await render('en')).toContain('href="/en/contact"');
+  it('CTA abre las direcciones en Google Maps, sin hablar de citas', async () => {
+    const es = await render('es');
+    const en = await render('en');
+    expect(es).toContain('href="https://www.google.com/maps/dir/?api=1');
+    expect(es).toContain('Cómo llegar');
+    expect(en).toContain('Get directions');
+    expect(es).not.toMatch(/agendar/i);
+    expect(en).not.toMatch(/appointment/i);
   });
 
   it('renderiza los 3 trust indicators y cambia el copy por idioma', async () => {

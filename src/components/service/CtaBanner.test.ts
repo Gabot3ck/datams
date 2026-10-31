@@ -7,10 +7,18 @@ const render = async (props: Record<string, unknown>) =>
   (await AstroContainer.create()).renderToString(CtaBanner, { props });
 
 describe('CtaBanner', () => {
-  it('renderiza heading <h2> y CTA a /contacto por defecto', async () => {
+  it('renderiza heading <h2> y CTA a Google Maps por defecto, en pestaña nueva', async () => {
     const html = await render({ heading: '¿Listo para declarar?' });
     expect(html).toMatch(/<h2[^>]*>[^<]*¿Listo para declarar\?/);
+    expect(html).toContain('href="https://www.google.com/maps/dir/?api=1');
+    expect(html).toContain('target="_blank"');
+    expect(html).toContain('Cómo llegar');
+    expect(html).toContain('Por orden de llegada');
+  });
+  it('un ctaHref interno no abre pestaña nueva', async () => {
+    const html = await render({ heading: 'X', ctaHref: '/contacto' });
     expect(html).toContain('href="/contacto"');
+    expect(html).not.toContain('target="_blank"');
   });
   it('incluye el teléfono del negocio en un <address>', async () => {
     const html = await render({ heading: 'X' });

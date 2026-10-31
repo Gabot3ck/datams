@@ -14,8 +14,8 @@ describe('CtaSection', () => {
   });
 
   it('el subheading cambia por idioma', async () => {
-    expect(await render('es')).toContain('Agenda una consulta sin costo');
-    expect(await render('en')).toContain('Schedule a free consultation');
+    expect(await render('es')).toContain('Llámanos o ven a nuestra oficina');
+    expect(await render('en')).toContain('Call us or stop by our Las Vegas office');
   });
 
   it('el botón llama al teléfono del negocio con aria-label por idioma', async () => {

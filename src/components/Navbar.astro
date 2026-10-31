@@ -1,6 +1,7 @@
 ---
 import MegaMenu from "./MegaMenu.tsx";
 import type { MegaSubcategory, MegaMiniLink } from "./MegaMenu.tsx";
+import { BUSINESS } from "../config/site";
 
 const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
 const currentPath = Astro.url.pathname;
@@ -19,7 +20,7 @@ interface NavItem {
 interface NavData {
   items: NavItem[];
   cta: string;
-  ctaHref: string;
+  mobileCta: string;
   logoHref: string;
   altLangLabel: string;
   altLangFlag: string;
@@ -31,8 +32,8 @@ interface NavData {
 const data: Record<"es" | "en", NavData> = {
   es: {
     logoHref: "/",
-    cta: "Agendar cita",
-    ctaHref: "/contacto",
+    cta: `Llámanos: ${BUSINESS.phoneDisplay}`,
+    mobileCta: "Cómo llegar",
     currentLangLabel: "ES",
     currentFlag: "/assets/icons/flag_mexico.webp",
     altLangLabel: "EN",
@@ -221,8 +222,8 @@ const data: Record<"es" | "en", NavData> = {
   },
   en: {
     logoHref: "/en",
-    cta: "Book appointment",
-    ctaHref: "/en/contact",
+    cta: `Call ${BUSINESS.phoneDisplay}`,
+    mobileCta: "Get directions",
     currentLangLabel: "EN",
     currentFlag: "/assets/icons/flag_usa.webp",
     altLangLabel: "ES",
@@ -414,7 +415,7 @@ const data: Record<"es" | "en", NavData> = {
 const {
   items,
   cta,
-  ctaHref,
+  mobileCta,
   logoHref,
   altLangLabel,
   altLangFlag,
@@ -489,8 +490,8 @@ const {
 
         <!-- CTA principal -->
         <a
-          href={ctaHref}
-          class="rounded-full bg-brand px-3 py-1 text-xs font-medium text-white transition-colors hover:bg-brand-light focus-visible:outline-2 focus-visible:outline-brand-dark"
+          href={`tel:${BUSINESS.phone}`}
+          class="relative rounded-full bg-brand px-3 py-1 text-xs font-medium whitespace-nowrap tabular-nums text-white transition-colors hover:bg-brand-light focus-visible:outline-2 focus-visible:outline-brand-dark after:absolute after:inset-x-0 after:-inset-y-2.5"
         >
           {cta}
         </a>
@@ -723,10 +724,12 @@ const {
       <!-- CTA mobile -->
       <div class="px-4 pb-4 pt-2">
         <a
-          href={ctaHref}
+          href={BUSINESS.directionsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           class="block w-full rounded-full bg-brand-light py-3 text-center text-xs font-medium text-white hover:bg-brand-dark transition-colors"
         >
-          {cta}
+          {mobileCta}
         </a>
       </div>
     </div>

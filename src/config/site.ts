@@ -8,6 +8,7 @@ export const BUSINESS = {
   phone: '+17026400088',
   phoneDisplay: '(702) 640-0088',
   whatsapp: 'https://wa.me/17026400088',
+  directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=235%20N%20Eastern%20Ave%20Suite%20130%2C%20Las%20Vegas%2C%20NV%2089101',
   address: {
     street: '235 N Eastern Ave. Suite 130',
     city: 'Las Vegas',

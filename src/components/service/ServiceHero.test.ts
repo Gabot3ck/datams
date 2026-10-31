@@ -17,9 +17,11 @@ describe('ServiceHero', () => {
     const html = await render({ eyebrow: 'X', heading: 'Y' }, '<p>Párrafo de intro</p>');
     expect(html).toContain('Párrafo de intro');
   });
-  it('CTA por defecto apunta a /contacto', async () => {
+  it('CTA por defecto llama al teléfono del negocio', async () => {
     const html = await render({ eyebrow: 'X', heading: 'Y' });
-    expect(html).toContain('href="/contacto"');
+    expect(html).toContain('href="tel:+17026400088"');
+    expect(html).toContain('Llámanos: (702) 640-0088');
+    expect(await render({ eyebrow: 'X', heading: 'Y', lang: 'en' })).toContain('Call (702) 640-0088');
   });
   it('respeta ctaHref y ctaLabel', async () => {
     const html = await render({ eyebrow: 'X', heading: 'Y', ctaHref: 'https://wa.me/1', ctaLabel: 'WhatsApp' });

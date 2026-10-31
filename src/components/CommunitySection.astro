@@ -1,4 +1,6 @@
 ---
+import { BUSINESS } from '../config/site';
+
 interface Props {
   lang: 'es' | 'en';
 }
@@ -9,8 +11,7 @@ const t = {
     label: "Nuestra comunidad",
     heading: { pre: "El aliado de confianza de la", accent: "comunidad hispana", post: "en Las Vegas y EE.UU." },
     description: "Ayudamos a familias, negocios e inmigrantes con sus trámites de taxes, notary public e inmigración. Profesionalismo, experiencia y atención 100% en español.",
-    cta: "Agendar cita gratis",
-    ctaHref: "/contacto",
+    cta: "Cómo llegar",
     trust: ["Preparadores que completaron el Annual Filing Season Program del IRS", "Notary Public Certificada", "Servicio bilingüe"],
     stats: [
       { value: "10+", label: "Años de experiencia" },
@@ -23,8 +24,7 @@ const t = {
     label: "Our community",
     heading: { pre: "The trusted partner of the", accent: "Hispanic community", post: "in the Las Vegas and U.S." },
     description: "We help families, businesses, and immigrants with their tax, notary, and immigration needs. Professional service, fully bilingual in Spanish and English.",
-    cta: "Book free appointment",
-    ctaHref: "/en/contact",
+    cta: "Get directions",
     trust: ["Preparers who completed the IRS Annual Filing Season Program", "Certified Notary Public", "Fully bilingual service"],
     stats: [
       { value: "10+", label: "Years of experience" },
@@ -70,7 +70,9 @@ const t = {
 
         <!-- CTA -->
         <a
-          href={t.ctaHref}
+          href={BUSINESS.directionsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           class="self-start inline-flex min-h-11 items-center gap-2 rounded-full bg-brand px-fluid-md py-fluid-sm text-sm font-semibold text-white hover:bg-brand-light transition-colors focus-visible:outline-2 focus-visible:outline-brand-dark mb-fluid-lg"
         >
           {t.cta}

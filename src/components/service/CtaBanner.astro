@@ -14,13 +14,14 @@ const {
   heading,
   body,
   eyebrow,
-  ctaHref = '/contacto',
+  ctaHref = BUSINESS.directionsUrl,
   ctaLabel,
   lang = 'es',
 } = Astro.props;
 
-const eyebrowText = eyebrow ?? (lang === 'es' ? 'Sin compromiso, sin costo' : 'No commitment, no cost');
-const ctaText = ctaLabel ?? (lang === 'es' ? 'Agendar mi cita gratis' : 'Book my free appointment');
+const eyebrowText = eyebrow ?? (lang === 'es' ? 'Por orden de llegada' : 'First come, first served');
+const ctaText = ctaLabel ?? (lang === 'es' ? 'Cómo llegar' : 'Get directions');
+const isExternal = ctaHref.startsWith('http');
 const telHref = `tel:${BUSINESS.phone.replace('+', '')}`;
 ---
 
@@ -46,6 +47,8 @@ const telHref = `tel:${BUSINESS.phone.replace('+', '')}`;
 
     <a
       href={ctaHref}
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
       class="inline-flex items-center gap-2 rounded-full bg-brand-light min-h-11 px-fluid-md py-fluid-sm text-fluid-base font-semibold text-white hover:bg-brand-dark transition-colors shadow-lg focus-visible:outline-2 focus-visible:outline-brand-light"
     >
       {ctaText}
