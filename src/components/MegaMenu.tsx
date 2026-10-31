@@ -115,7 +115,7 @@ export default function MegaMenu({ label, subcategories, lang, pillarUrl, catego
         }}
         aria-expanded={isActive}
         aria-haspopup="true"
-        className={`flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors hover:text-brand-light hover:cursor-pointer ${
+        className={`flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs xl:text-sm font-medium transition-colors hover:text-brand-light hover:cursor-pointer ${
           isActive ? 'text-brand-light bg-gray-50' : 'text-neutral-grey'
         }`}
       >
