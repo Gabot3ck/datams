@@ -449,10 +449,13 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Importante:** Google necesita las fechas de cada temporada con año. **El sitio debe volver a publicarse al menos una vez al año** para que Google siga mostrando el horario vigente. ⏳
 
 ### 6.2 Atención por orden de llegada vs. botones de "Agendar cita"
-- **Situación:** la oficina atiende **solo por orden de llegada**, pero varios botones del sitio dicen "Agendar cita". ❓
-- **Recomendación:** reemplazarlos por acciones reales. El botón principal sería "Visítanos hoy / Cómo llegar" (Google Maps) y el secundario WhatsApp o llamada. Si más adelante se implementa agendamiento, se vuelven a poner.
+- **Situación:** la oficina atiende **solo por orden de llegada**, pero varios botones del sitio decían "Agendar cita".
+- **Decisión (2026-10-31):** se quitan todos los "Agendar cita" y cada botón hace una acción real. ✅
+  - **Llamada:** barra superior del menú, botón inicial de las páginas de servicio y CTA final del Home. Es para quien todavía tiene dudas.
+  - **Cómo llegar (Google Maps):** sección Comunidad del Home, botón del menú en celular y banner final de las páginas de servicio. Es para quien ya decidió venir.
 - **Por qué:** prometer algo que no existe genera desconfianza desde el primer contacto.
-- **Estado:** en pausa por decisión del cliente.
+- **También se quitó "gratis" / "sin costo"** de esos botones y textos, porque falta confirmar si la consulta es gratis (pregunta 5).
+- Si más adelante se implementa agendamiento, se vuelven a poner (pregunta 7).
 
 ---
 
@@ -513,3 +516,5 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-17 | Taxes Personales: nuevo "Extensión de taxes" con la descripción "Evita la multa por declarar tarde" (`/taxes/extension`). Grupo 11 tentativo. La sección 2 pasa a llamarse "Menú Taxes y Ayuda con el IRS" (2.9) |
 | 2026-10-19 | Slider de la página de inicio: 4 slides, uno por servicio (taxes, IRS, Notary Public, ITIN/EIN), con "taxes en Las Vegas" en el título principal y botones a páginas reales. Se quitan "100% confiable", "sin errores" y "trámites legales" (5.3). Preguntas 13 y 14 |
 | 2026-10-19 | Pie de página nuevo con el perfil de Las Vegas. Incluye el aviso "No somos abogados" en todas las páginas (ES/EN), con el texto de las preguntas frecuentes; falta confirmar si debe ser la fórmula oficial (1.2, 1.8 y pregunta 15). Sale WhatsApp del pie de página |
+| 2026-10-31 | Se eliminan los botones "Agendar cita": ahora llaman al teléfono o abren "Cómo llegar" en Google Maps. Sale "gratis" / "sin costo" hasta confirmar la pregunta 5 (6.2) |
+| 2026-10-31 | Texto alternativo de la foto en "¿Por qué elegirnos?": "Notary Public certificado" → "Notary Public" (ES/EN) |
