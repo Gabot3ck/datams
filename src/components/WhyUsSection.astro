@@ -36,10 +36,10 @@ const t = {
 
 <section class="py-section bg-background-light" aria-labelledby="whyus-heading">
     <div class="container-custom">
-      <div class="flex flex-col lg:flex-row gap-fluid-xl lg:gap-section items-center">
+      <div class="flex flex-col sm:flex-row gap-fluid-xl lg:gap-section items-center">
 
         <!-- Left: imagen vertical -->
-        <div class="w-full max-w-xs mx-auto lg:mx-0 lg:w-[34%] lg:shrink-0" data-reveal>
+        <div class="w-[200px] mx-auto sm:mx-0 sm:w-[34%] sm:shrink-0" data-reveal>
           <img
             src="/assets/images/david_takamura_notary_public.jpg"
             alt={t.imageAlt}
@@ -47,12 +47,12 @@ const t = {
             height="1193"
             loading="lazy"
             decoding="async"
-            class="w-full h-auto rounded-2xl shadow-xl"
+            class="w-full h-auto aspect-[4/5] sm:aspect-auto object-cover object-top rounded-2xl shadow-xl"
           />
         </div>
 
         <!-- Right: texto + checklist -->
-        <div class="flex-1 text-center lg:text-left" data-reveal data-reveal-delay="1">
+        <div class="flex-1 text-center sm:text-left" data-reveal data-reveal-delay="1">
           <span class="text-xs font-bold tracking-widest text-brand-light uppercase">
             {t.eyebrow}
           </span>
@@ -63,7 +63,7 @@ const t = {
             {t.heading.pre}
             <span class="text-brand-light block">{t.heading.accent}</span>
           </h2>
-          <p class="text-fluid-body text-neutral-grey leading-relaxed mb-fluid-lg max-w-md mx-auto lg:mx-0">
+          <p class="text-fluid-body text-neutral-grey leading-relaxed mb-fluid-lg max-w-md mx-auto sm:mx-0">
             {t.description}
           </p>
           <ul class="space-y-fluid-sm text-left" role="list">
