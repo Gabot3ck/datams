@@ -52,7 +52,7 @@ Cada decisión indica:
   | "Representación profesional ante cualquier auditoría" | "Te acompañamos en tu auditoría con el IRS" | Menú |
   | "Negociamos tu deuda para reducirla o pagarla en cuotas" | "Revisamos tu deuda y te explicamos tus opciones" | Menú |
   | "Installment Agreement y Offer in Compromise" | "Te explicamos cómo funciona y cómo solicitarlo" | Menú |
-  | "…con representación real ante el IRS" | "…en español y sin promesas falsas" | Página IRS |
+  | "…con representación real ante el IRS" | "…en español y sin promesas falsas" (2026-10-10; reemplazado, ver fila siguiente) | Tarjeta IRS del Home |
   | "Te ayudamos con deudas, acuerdos de pago, cartas, auditorías…" | "Cartas, auditorías, deudas y verificación de identidad: te explicamos qué dice el IRS y qué hacer…" (2026-11-04) | Tarjeta IRS del Home |
 
 - **Por qué:** prometer una representación que no se puede dar es publicidad engañosa. Si un cliente llega con una deuda esperando que "negociemos por él" y no podemos hacerlo, perdemos su confianza y nos exponemos a sanciones. Lo que sí podemos decir con verdad ("si preparamos tu declaración, te representamos en la auditoría") es una ventaja real frente a la competencia.
