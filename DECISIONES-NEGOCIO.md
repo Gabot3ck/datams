@@ -52,7 +52,8 @@ Cada decisión indica:
   | "Representación profesional ante cualquier auditoría" | "Te acompañamos en tu auditoría con el IRS" | Menú |
   | "Negociamos tu deuda para reducirla o pagarla en cuotas" | "Revisamos tu deuda y te explicamos tus opciones" | Menú |
   | "Installment Agreement y Offer in Compromise" | "Te explicamos cómo funciona y cómo solicitarlo" | Menú |
-  | "…con representación real ante el IRS" | "…en español y sin promesas falsas" | Tarjeta IRS del Home y página IRS |
+  | "…con representación real ante el IRS" | "…en español y sin promesas falsas" | Página IRS |
+  | "Te ayudamos con deudas, acuerdos de pago, cartas, auditorías…" | "Cartas, auditorías, deudas y verificación de identidad: te explicamos qué dice el IRS y qué hacer…" (2026-11-04) | Tarjeta IRS del Home |
 
 - **Por qué:** prometer una representación que no se puede dar es publicidad engañosa. Si un cliente llega con una deuda esperando que "negociemos por él" y no podemos hacerlo, perdemos su confianza y nos exponemos a sanciones. Lo que sí podemos decir con verdad ("si preparamos tu declaración, te representamos en la auditoría") es una ventaja real frente a la competencia.
 - **Fundamento:** Circular 230 del Tesoro, §10.3(f) (práctica limitada) y §10.30 (prohíbe la publicidad falsa o engañosa); Rev. Proc. 2014-42 (crea el AFSP).
@@ -70,7 +71,7 @@ Cada decisión indica:
 ### 1.5 "Garantizamos tener el mejor reembolso"
 - **Situación:** la sección "¿Por qué elegirnos?" dice "Garantizamos tener el mejor reembolso" ("We guarantee you the best possible refund"). ❓
 - **Recomendación:** cambiarla por algo como *"Revisamos cada deducción contigo para que recibas todo lo que te corresponde."*
-- **Por qué:** el monto del reembolso lo determina el IRS según la ley, no el preparador. El IRS advierte al público contra los preparadores que **prometen reembolsos más altos**, y lo considera señal de alerta. Además, el sitio se diferencia justamente por "sin promesas falsas".
+- **Por qué:** el monto del reembolso lo determina el IRS según la ley, no el preparador. El IRS advierte al público contra los preparadores que **prometen reembolsos más altos**, y lo considera señal de alerta. Además, el sitio se diferencia justamente por no prometer resultados.
 - **Fundamento:** Circular 230 §10.30; advertencias del IRS sobre cómo elegir un preparador.
 
 ### 1.6 "IRS Authorized CAA"
