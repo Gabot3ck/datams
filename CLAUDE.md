@@ -287,7 +287,6 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [ ] Imágenes reales en subcategorías del mega menú (actualmente sin imagen → fondo gris)
 - [x] URLs reales en tarjetas de Services del Home (`/taxes`, `/notary-public`, `/negocio`)
 - [x] CTAs sin "Agendar cita" (solo orden de llegada): llamada `tel:` en Navbar, `ServiceHero` y `CtaSection`; "Cómo llegar" (`BUSINESS.directionsUrl`) en `CommunitySection`, menú mobile y `CtaBanner`. Ver `DECISIONES-NEGOCIO.md` §6.2
-- [ ] Tarjeta IRS del Home dice "deudas, acuerdos de pago": choca con la regla AFSP
 - [ ] Copy por decidir: "Notary Public Certificada" (Community) y "Garantizamos tener el mejor reembolso" (WhyUs)
 - [ ] Confirmar con el cliente si la consulta es gratis (pregunta 5 de `DECISIONES-NEGOCIO.md`); si lo es, puede volver a los CTA
 - [ ] `/taxes/extension` es enlace roto (página sin crear): `npm run check:links`
