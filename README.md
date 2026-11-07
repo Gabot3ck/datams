@@ -173,7 +173,7 @@ Reglas generales:
 - En mobile y tablet (<768px) las flechas y los puntos van al pie: dejar libre el borde inferior.
 - Si el foco de una imagen no coincide, se ajusta en `Hero.astro` con
   `mobilePosition` / `tabletPosition` / `desktopPosition` (clase `object-[x%_y%]`).
-- Slide 3 tiene el texto a la derecha (`placement: "right"`): componer en espejo.
+- Los slides 2 y 4 tienen el texto a la derecha (`placement: "right"`): componer en espejo (personas a la izquierda). Los slides 1 y 3 lo tienen a la izquierda.
 
 ---
 
