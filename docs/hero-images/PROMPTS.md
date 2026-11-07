@@ -15,7 +15,7 @@ texto: inventan la oficina y cambian la cara.
 - Foto de la oficina (ambiente y referencia de luz).
 - Foto del equipo (solo referencia de vestimenta; no se usó como base).
 
-**Resultado:** `src/assets/images/banners/datamultiservices-taxes-nevada-1{d,t2,m}.webp`.
+**Resultado:** `src/assets/images/banners/datamultiservices-taxes-nevada-1{d,t,m}.webp`.
 El asesor es real; la clienta es generada por IA. No usar esta imagen junto a
 reseñas o testimonios (parecería una clienta real).
 
@@ -129,7 +129,7 @@ El encuadre final de cada tamaño se hizo en Canva sobre la imagen generada:
 
 - **Desktop 2560×1152:** personas desde x ≈ 41%, foco entre las caras en la
   línea áurea (61.8%, 38.2%), lado izquierdo liso para el texto.
-- **Tablet 2048×1152:** personas desde x ≈ 52%. La versión `-1t2` todavía
+- **Tablet 2048×1152:** personas desde x ≈ 52%. La versión `-1t` todavía
   roza el texto a 768px (pendiente en `CLAUDE.md`).
 - **Mobile 1200×1600:** escena en la mitad inferior; arriba, relleno con un
   degradado de colores parecidos para que el degradado oscuro del CSS lo
