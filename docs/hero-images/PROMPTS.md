@@ -1,7 +1,7 @@
 # Prompts de imágenes del Hero
 
 Bitácora de cómo se generaron los banners del slider del home, para repetir el
-proceso en los slides 2 y 3. Tamaños y zonas de texto: `README.md` → "Hero slider — imágenes".
+proceso en slides nuevos. Tamaños y zonas de texto: `README.md` → "Hero slider — imágenes".
 
 ## Slide 1 — asesor atendiendo a una clienta (2026-10-18)
 
@@ -135,10 +135,78 @@ El encuadre final de cada tamaño se hizo en Canva sobre la imagen generada:
   degradado de colores parecidos para que el degradado oscuro del CSS lo
   oculte y el texto vaya encima.
 
-## Plantilla para los slides 2 y 3
+## Slide 4 — dueño de un negocio junto a su camioneta (2026-11-09)
 
-1. Partir de una **foto real** del equipo o la oficina como base (nunca generar la cara de alguien del equipo).
-2. Prompt base como el del paso 1, cambiando la escena (p. ej. firma con Notary Public, trámite ITIN) y el lado libre: el slide 3 lleva el texto a la **derecha** → personas en los dos tercios de la **izquierda**.
+**Idea:** en vez de otra escena de atención en la oficina, mostrar al
+**cliente en su negocio** (el texto habla de "los taxes de tu LLC o negocio").
+Rubro elegido: reparaciones y mantenimiento de casas, en un barrio de Las
+Vegas (grava, agaves, palmeras, casas estuco). Persona 100% generada, sin foto
+base: no usarla en Nosotros ni junto a reseñas.
+
+**Resultado:** `src/assets/images/banners/datamultiservices-ayuda-itin-ein-las-vegas-4{d,t,m}.webp`.
+
+### 1. Primer intento (descartado)
+
+El prompt pedía "RIGHT 45%… strongly out of focus… for website text overlay".
+El modelo armó **un panel aparte** a la derecha, muy desenfocado y con un corte
+vertical duro. **Lección:** no describir la zona del texto como un bloque con
+función; describirla como parte de la escena.
+
+### 2. Prompt final
+
+```
+A single continuous wide photograph, one camera, one moment, no split, no
+panels, no collage, no vertical seams.
+
+Photorealistic editorial photo. A Hispanic man in his early 40s, owner of a
+small home repair and maintenance business, standing at the open tailgate of
+his white work pickup truck parked in a residential driveway in Las Vegas.
+He is reviewing paperwork for his business: a simple folder of forms and a
+tablet resting on the tailgate, a pen in his hand. He looks at the camera
+with a calm, confident, friendly half-smile. Work clothes: plain navy work
+shirt, a leather tool belt around his waist, no logos.
+
+Framing: the man stands in the left third of the frame, the tailgate and
+truck bed extend toward the center. In the truck bed: an aluminum ladder, a
+red toolbox and two paint buckets. To the right, the same sunny street
+continues naturally into the distance: the front of the truck, the driveway
+and sidewalk, and neighboring beige stucco houses with tile roofs and desert
+landscaping (decorative gravel, agave, a palm tree), getting smaller with
+perspective. The right side of the photo is naturally simple and low-contrast:
+plain stucco walls, garage doors, soft sky. Headroom above his head (about 15%
+of the height).
+
+Depth of field: the man in sharp focus, the background gently and evenly
+soft across the whole frame (f/4), the same softness on the left and the
+right. No heavy blur anywhere.
+
+35mm lens, eye level, warm late-afternoon sunlight from the left, long soft
+shadows, true-to-life skin texture, no smoothing, no plastic look.
+Papers show only faint blurred gray lines, tablet screen dark and
+unreadable. No readable text anywhere: no house numbers, no labels on the
+paint buckets or toolbox, no lettering on the truck, no license plates, no
+street signs. No logos, no flags, no government seals, no watermarks, no
+other people, no distorted hands.
+Aspect ratio 21:9, high resolution.
+```
+
+### 3. Canva
+
+- **Desktop 2560×1152:** la primera versión dejaba el pelo dentro de la franja
+  que se recorta desde 1440px (el hero es 2.75:1 y muestra solo el 81% central
+  de la altura). Se **alejó la imagen** y se rellenó cielo arriba y calle a la
+  derecha: el pelo quedó en y ≈ 34% y no hace falta `desktopPosition`.
+- **Tablet 2048×1152:** recorte de la desktop. La primera versión dejaba el
+  hombro en x ≈ 52% y a 960px chocaba con el texto (ahí el hero recorta arriba
+  y abajo, así que `object-position` no lo arregla). Se movió la foto ~250px a
+  la izquierda: hombro en x ≈ 46%, ~40px de aire con el texto a 768 y 960px.
+- **Mobile 1200×1600:** desktop al 125%, escena abajo (pelo en y ≈ 700) y
+  relleno de cielo arriba; la unión queda bajo el degradado oscuro.
+
+## Plantilla para slides nuevos
+
+1. Si aparece alguien del equipo, partir de una **foto real** como base (nunca generar su cara). Si la escena es de clientes, puede generarse solo con texto.
+2. Prompt base como el del slide 1 o el 4, cambiando la escena y el lado libre: los slides 2 y 4 llevan el texto a la **derecha** → personas a la **izquierda**. Describir el lado del texto como parte de la escena, no como "zona para texto".
 3. Corregir con **una o dos cosas por pasada**, siempre con la foto original como referencia de identidad.
 4. Encuadrar en Canva los tres tamaños según la tabla del `README.md`.
 5. Revisar en el navegador (320 → 2560px) y ajustar `mobilePosition` / `tabletPosition` / `desktopPosition` si hace falta.

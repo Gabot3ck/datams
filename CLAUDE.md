@@ -73,7 +73,7 @@ Al crear una página EN: crear el archivo + poner `enBuilt: true` en su entrada.
 
 ```
 src/
-├── assets/images/banners/    # Slides hero: slide 1 = datamultiservices-taxes-nevada-1{m,t,d}.webp; slide 2 = datamultiservices-ayuda-irs-nevada-2{m,t,d}.webp; slide 3 = datamultiservices-notary-public-las-vegas-3{m,t,d}.webp; slide 4 provisoria slide_tax_2_d.png
+├── assets/images/banners/    # Slides hero: slide 1 = datamultiservices-taxes-nevada-1{m,t,d}.webp; slide 2 = datamultiservices-ayuda-irs-nevada-2{m,t,d}.webp; slide 3 = datamultiservices-notary-public-las-vegas-3{m,t,d}.webp; slide 4 = datamultiservices-ayuda-itin-ein-las-vegas-4{m,t,d}.webp
 ├── components/
 │   ├── Hero.astro            # Slider 4 slides (taxes · IRS · Notary Public · ITIN-EIN), GSAP, responsive images via astro:assets
 │   ├── HomePage.astro        # Orquestador del home: importa las 8 secciones + faq/faqImage + script data-reveal
@@ -123,13 +123,13 @@ vitest.config.ts              # tests con Vitest + Container API de Astro
 - **IMPORTANTE**: `hero-slider.js` cargado con `<script is:inline src="/scripts/hero-slider.js">` — sin esto los botones no funcionan
 - `public/scripts/hero-slider.js` maneja: prev/next/dots/autoplay/keyboard/swipe/WeakMap state
 - GSAP anima title → subtitle → cta en secuencia via `MutationObserver` en `opacity-100`
-- Imágenes: slides 1–3 tienen m/t/d propias (`datamultiservices-taxes-nevada-1{m,t,d}.webp`, `datamultiservices-ayuda-irs-nevada-2{m,t,d}.webp`, `datamultiservices-notary-public-las-vegas-3{m,t,d}.webp`); el slide 4 sigue con la PNG provisoria `slide_tax_2_d.png`. Specs de tamaño y encuadre en `README.md` → "Hero slider — imágenes"
+- Imágenes: los 4 slides tienen m/t/d propias (`datamultiservices-taxes-nevada-1{m,t,d}.webp`, `datamultiservices-ayuda-irs-nevada-2{m,t,d}.webp`, `datamultiservices-notary-public-las-vegas-3{m,t,d}.webp`, `datamultiservices-ayuda-itin-ein-las-vegas-4{m,t,d}.webp`). Specs de tamaño y encuadre en `README.md` → "Hero slider — imágenes"; prompts y proceso en `docs/hero-images/PROMPTS.md`. El dueño del slide 4 es generado con IA: no usarlo en Nosotros ni junto a reseñas
 - Encuadre por imagen: `mobilePosition` / `tabletPosition` / `desktopPosition` en `slideImages` (clase `object-[x%_y%]`, default `object-center`). El foco va en esa misma coordenada → queda fijo en pantalla aunque cambie el recorte
 - Altura: `min-h` 500/400/500 → `xl:70vh` → desde 1440px `aspect-[2.75/1]` (no volver a vh en pantallas grandes: quedaba muy alto)
 - Panel de texto sin caja en todos los tamaños: mobile arriba y centrado sobre degradado vertical; tablet de 80px al 50%; ≥990px hasta la línea áurea (`right-[61.8%]`) y ≥1280px alineado con la columna del logo (mínimo 80px por las flechas). `gridMap` replica el ancho de `.container-custom`: si cambia el contenedor, actualizar `gridMap`
 - Degradado de legibilidad dentro de cada slide (vertical en mobile, lateral según `placement` desde 640px)
 - Tipografía fluida con `clamp()` desde 990px (título, subtítulo, CTA). Flechas: círculo fluido 32→52px, área táctil mínima 44px
-- Un solo `<h1>`: el título del slide 1; los slides 2 y 3 renderizan su título como `<p>` con el mismo estilo (`const Title` en el map de paneles)
+- Un solo `<h1>`: el título del slide 1; los slides 2, 3 y 4 renderizan su título como `<p>` con el mismo estilo (`const Title` en el map de paneles)
 
 ### HomePage.astro — secciones en orden
 
@@ -283,7 +283,7 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [x] Imágenes hero responsive reales del slide 1 (mobile/tablet/desktop)
 - [x] Imágenes hero responsive reales del slide 2 (mobile con la escena bajo el 38% de la altura para no chocar con el texto)
 - [x] Imágenes hero responsive reales del slide 3 (Notary Public; la persona que atiende es generada con IA: no usarla en Nosotros ni junto a reseñas)
-- [ ] Imagen hero del slide 4 (ITIN/EIN; texto a la derecha → personas a la izquierda, como el slide 2; specs en `README.md`). Hoy usa `slide_tax_2_d.png`
+- [x] Imágenes hero responsive reales del slide 4 (ITIN/EIN: dueño de un negocio de reparaciones junto a su camioneta; persona generada con IA)
 - [ ] Tablet slide 1 (`-1t.webp`): a 768px el subtítulo roza el pelo de la clienta (~25px); mover/achicar el grupo en Canva
 - [ ] `CommunitySection`: "5,000+" desborda a 320px (scroll horizontal)
 - [ ] Imágenes reales en subcategorías del mega menú (actualmente sin imagen → fondo gris)
