@@ -73,7 +73,7 @@ Al crear una página EN: crear el archivo + poner `enBuilt: true` en su entrada.
 
 ```
 src/
-├── assets/images/banners/    # Slides hero: slide 1 = datamultiservices-taxes-nevada-1{m,t,d}.webp; slide 2 = datamultiservices-ayuda-irs-nevada-2{m,t,d}.webp; slides 3–4 provisorias slide_tax_*.png (slide 4 reutiliza slide_tax_2_d)
+├── assets/images/banners/    # Slides hero: slide 1 = datamultiservices-taxes-nevada-1{m,t,d}.webp; slide 2 = datamultiservices-ayuda-irs-nevada-2{m,t,d}.webp; slide 3 = datamultiservices-notary-public-las-vegas-3{m,t,d}.webp; slide 4 provisoria slide_tax_2_d.png
 ├── components/
 │   ├── Hero.astro            # Slider 4 slides (taxes · IRS · Notary Public · ITIN-EIN), GSAP, responsive images via astro:assets
 │   ├── HomePage.astro        # Orquestador del home: importa las 8 secciones + faq/faqImage + script data-reveal
@@ -123,7 +123,7 @@ vitest.config.ts              # tests con Vitest + Container API de Astro
 - **IMPORTANTE**: `hero-slider.js` cargado con `<script is:inline src="/scripts/hero-slider.js">` — sin esto los botones no funcionan
 - `public/scripts/hero-slider.js` maneja: prev/next/dots/autoplay/keyboard/swipe/WeakMap state
 - GSAP anima title → subtitle → cta en secuencia via `MutationObserver` en `opacity-100`
-- Imágenes: slides 1 y 2 tienen m/t/d propias (`datamultiservices-taxes-nevada-1{m,t,d}.webp`, `datamultiservices-ayuda-irs-nevada-2{m,t,d}.webp`); slides 3 y 4 siguen con las PNG provisorias `slide_tax_*`. Specs de tamaño y encuadre en `README.md` → "Hero slider — imágenes"
+- Imágenes: slides 1–3 tienen m/t/d propias (`datamultiservices-taxes-nevada-1{m,t,d}.webp`, `datamultiservices-ayuda-irs-nevada-2{m,t,d}.webp`, `datamultiservices-notary-public-las-vegas-3{m,t,d}.webp`); el slide 4 sigue con la PNG provisoria `slide_tax_2_d.png`. Specs de tamaño y encuadre en `README.md` → "Hero slider — imágenes"
 - Encuadre por imagen: `mobilePosition` / `tabletPosition` / `desktopPosition` en `slideImages` (clase `object-[x%_y%]`, default `object-center`). El foco va en esa misma coordenada → queda fijo en pantalla aunque cambie el recorte
 - Altura: `min-h` 500/400/500 → `xl:70vh` → desde 1440px `aspect-[2.75/1]` (no volver a vh en pantallas grandes: quedaba muy alto)
 - Panel de texto sin caja en todos los tamaños: mobile arriba y centrado sobre degradado vertical; tablet de 80px al 50%; ≥990px hasta la línea áurea (`right-[61.8%]`) y ≥1280px alineado con la columna del logo (mínimo 80px por las flechas). `gridMap` replica el ancho de `.container-custom`: si cambia el contenedor, actualizar `gridMap`
@@ -282,7 +282,8 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [ ] Imagen OG real (`public/assets/og-image.webp`, 1200×675)
 - [x] Imágenes hero responsive reales del slide 1 (mobile/tablet/desktop)
 - [x] Imágenes hero responsive reales del slide 2 (mobile con la escena bajo el 38% de la altura para no chocar con el texto)
-- [ ] Imágenes hero de los slides 3 y 4 (specs en `README.md`; slide 3 con texto a la izquierda → personas a la derecha, como el slide 1). Hoy usan `slide_tax_3_d.png` y `slide_tax_2_d.png`
+- [x] Imágenes hero responsive reales del slide 3 (Notary Public; la persona que atiende es generada con IA: no usarla en Nosotros ni junto a reseñas)
+- [ ] Imagen hero del slide 4 (ITIN/EIN; texto a la derecha → personas a la izquierda, como el slide 2; specs en `README.md`). Hoy usa `slide_tax_2_d.png`
 - [ ] Tablet slide 1 (`-1t.webp`): a 768px el subtítulo roza el pelo de la clienta (~25px); mover/achicar el grupo en Canva
 - [ ] `CommunitySection`: "5,000+" desborda a 320px (scroll horizontal)
 - [ ] Imágenes reales en subcategorías del mega menú (actualmente sin imagen → fondo gris)
