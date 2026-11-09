@@ -216,7 +216,7 @@ interface NavItem {
 - Perfil en orden real del Strip: Luxor (haz amarillo claro) · Excalibur · NY-NY (Estatua + Empire + Chrysler) · Paris (Eiffel + globo) · High Roller · Wynn/Encore · Stratosphere · letrero "Welcome to Fabulous Las Vegas" (letras negras, sin estrella). Eiffel y Estatua = SVG de descarga libre en `src/assets/svg/` (importados `?raw`); el resto es dibujo propio
 - Animación GSAP + ScrollTrigger en el `<script>` de `Footer.astro`: parallax de 3 capas (`data-layer`), ventanas, haz, ampolletas del letrero, noria girando y entrada de columnas (`data-fx-col`). Respeta `prefers-reduced-motion`
 - 4 columnas: Nosotros · Contacto (dirección + teléfono, **sin WhatsApp**) · **Servicios** (8 links de categoría) · Horario (`buildHoursTable()` de `site.ts`, sale de `BUSINESS.seasons`) + "Cómo llegar"
-- Abajo, centrado: divisor con Instagram/Facebook · logo · aviso "No somos abogados" (NRS 240A.150) · copyright · autor. Redes y autor = `#` (pendiente)
+- Abajo, centrado: divisor con Instagram/Facebook · logo · aviso "No somos abogados" (NRS 240A.150) · copyright · autor. Instagram y Facebook con URLs reales; autor = `#` (pendiente)
 - Los 8 links de categoría son el interlinking SEO principal — siempre visibles sin JS
 - Lang inferida desde `Astro.url.pathname`. Registrado en `BaseLayout.astro`
 
@@ -294,7 +294,7 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [ ] `/taxes/extension` es enlace roto (página sin crear): `npm run check:links`
 - [ ] `Navbar.test.ts:184` busca `\n` literal: falla si `Navbar.astro` queda con CRLF (`core.autocrlf=true`) y pasa con LF. Cambiar a regex `\r?\n`
 - [ ] Limitar el ancho de párrafos: `max-w-*` está redefinido en `@theme` (xs=425px, md=768px…), así que esas clases casi no limitan
-- [ ] Footer: Instagram, Facebook y link del autor siguen en `#`
+- [ ] Footer: link del autor sigue en `#` (Instagram y Facebook ya tienen URL real)
 - [ ] Title y meta del Home sin "Las Vegas"
 
 ## Comandos
