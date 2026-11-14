@@ -279,7 +279,7 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [ ] Tests unitarios de helpers con Vitest (`site.ts` / `routes.ts`) para coverage — hoy solo smoke tests
 - [ ] Páginas EN del clúster (arquitectura lista: poner `enBuilt: true` en `routes.ts` al crearlas)
 - [ ] Integrar componente de formulario real en `/contacto`
-- [ ] Imagen OG real (`public/assets/og-image.webp`, 1200×675)
+- [x] Imagen OG real (`public/assets/og-image.webp`, 1200×675: logo con nombre sobre blanco)
 - [x] Imágenes hero responsive reales del slide 1 (mobile/tablet/desktop)
 - [x] Imágenes hero responsive reales del slide 2 (mobile con la escena bajo el 38% de la altura para no chocar con el texto)
 - [x] Imágenes hero responsive reales del slide 3 (Notary Public; la persona que atiende es generada con IA: no usarla en Nosotros ni junto a reseñas)
