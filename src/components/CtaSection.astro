@@ -1,5 +1,7 @@
 ---
+import { Picture } from 'astro:assets';
 import { BUSINESS } from '../config/site';
+import imgCta from '../assets/images/cta/contacta-datamultiservices.webp';
 
 interface Props {
   lang: 'es' | 'en';
@@ -12,14 +14,14 @@ const t = {
     heading: "¿Listo para resolver tu situación fiscal?",
     subheading: "Llámanos o ven a nuestra oficina en Las Vegas, sin cita. Te ayudamos con tus taxes, trámites de notary public y de tu negocio.",
     callLabel: `Llámanos al ${BUSINESS.phoneDisplay}`,
-    imageAlt: "Asesor de Data's & Multiservices atendiendo a un cliente",
+    imageAlt: "Asesor de Data's & Multiservices en su escritorio, en la oficina de Las Vegas",
   },
   en: {
     eyebrow: "Take the first step",
     heading: "Ready to resolve your tax situation?",
     subheading: "Call us or stop by our Las Vegas office, no appointment needed. We help with your taxes, notary public services, and business paperwork.",
     callLabel: `Call us at ${BUSINESS.phoneDisplay}`,
-    imageAlt: "A Data's & Multiservices advisor helping a client",
+    imageAlt: "Data's & Multiservices advisor at his desk in the Las Vegas office",
   },
 }[lang];
 
@@ -30,17 +32,22 @@ const telHref = `tel:${BUSINESS.phone}`;
   <div class="container-custom">
     <div class="grid overflow-hidden rounded-[2.5rem] bg-brand shadow-xl lg:grid-cols-2" data-reveal>
 
-      <!-- Imagen (placeholder — reemplazar por la definitiva) -->
+      <!-- Imagen: 100% del ancho en mobile/tablet, mitad de la tarjeta desde 990px.
+           Solo WebP: la fuente ya es WebP con pérdida y el AVIF salía más pesado. -->
       <div class="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto">
-        <img
-          src="/assets/images/contacta-datamultiservices.webp"
+        <Picture
+          src={imgCta}
           alt={t.imageAlt}
+          formats={['webp']}
+          fallbackFormat="webp"
+          widths={[480, 768, 1024, 1440, 1840]}
+          sizes="(min-width: 990px) 50vw, 100vw"
+          quality={75}
           loading="lazy"
           decoding="async"
           class="absolute inset-0 h-full w-full object-cover object-[35%_50%] lg:object-center"
         />
       </div>
-
 
       <!-- Texto + botón -->
       <div class="flex flex-col justify-center p-fluid-lg lg:px-fluid-xl">
@@ -77,9 +84,6 @@ const telHref = `tel:${BUSINESS.phone}`;
           </span>
         </a>
       </div>
-
-
-
     </div>
   </div>
 </section>
