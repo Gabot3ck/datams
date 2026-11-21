@@ -181,8 +181,9 @@ describe('Navbar — Inmigración: Tarjeta de Social Security y Affidavit of Sup
 });
 
 describe('Navbar — Otros Servicios: Rompetiket, citas y copias (decisión 2026-10-17)', () => {
-  const tabEs = src.slice(src.indexOf('label: "Otros Servicios",\n            items: ['), src.indexOf('{ label: "Nosotros"'));
-  const tabEn = src.slice(src.indexOf('label: "Other Services",\n            items: ['), src.indexOf('{ label: "About Us"'));
+  // \r?\n: el archivo puede quedar con CRLF en Windows (core.autocrlf=true)
+  const tabEs = src.slice(src.search(/label: "Otros Servicios",\r?\n\s+items: \[/), src.indexOf('{ label: "Nosotros"'));
+  const tabEn = src.slice(src.search(/label: "Other Services",\r?\n\s+items: \[/), src.indexOf('{ label: "About Us"'));
 
   it('la pestaña queda con 6 ítems en ES y EN', () => {
     expect(tabEs.match(/\{ label: /g)).toHaveLength(6);
