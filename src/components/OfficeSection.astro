@@ -1,8 +1,19 @@
 ---
+import { Picture } from 'astro:assets';
+// Cuadros del upscale del video de la oficina (fuera del tramo que se ve en el
+// video de la web). Patente del auto pixelada en la fachada. Proceso en
+// reference-data/videos/.
+import imgFachada from '../assets/images/office/datamultiservices-fachada-las-vegas.webp';
+import imgAsesora from '../assets/images/office/datamultiservices-asesora-oficina.webp';
+import imgAsesor from '../assets/images/office/datamultiservices-asesor-oficina.webp';
+
 interface Props {
   lang: 'es' | 'en';
 }
 const { lang } = Astro.props;
+
+// Columnas 1 y 2: 100% en mobile, 50% desde 640px, ~25% desde 990px.
+const SIZES = '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw';
 
 const t = {
   es: {
@@ -13,13 +24,13 @@ const t = {
     cta: "Cómo llegar",
     ctaHref: "https://www.google.com/maps/dir/?api=1&destination=235%20N%20Eastern%20Ave%20Suite%20130%2C%20Las%20Vegas%2C%20NV%2089101",
     images: [
-      { src: "/assets/images/test/thumb_servicios_90c45b98c0.jpg", alt: "Atención a un cliente en la oficina" },
-      { src: "/assets/images/test/thumb_empresas_4b46959dd7.avif", alt: "Asesoría a un negocio local" },
-      { src: "/assets/images/test/thumb_servicios_90c45b98c0.jpg", alt: "Recepción de la oficina en Las Vegas" },
+      { src: imgFachada, alt: "Fachada de Data's Multiservices en 235 N Eastern Ave, Las Vegas", position: "object-[50%_30%]" },
+      { src: imgAsesora, alt: "Asesora de Data's Multiservices en su escritorio", position: "object-[60%_35%]" },
+      { src: imgAsesor, alt: "Asesor de Data's Multiservices en su oficina", position: "object-[50%_35%]" },
     ],
-    videoPoster: "/assets/images/test/thumb_empresas_4b46959dd7.avif",
-    videoAlt: "Video: recorrido por nuestra oficina",
-    videoTime: "03:05 / 05:10",
+    videoAlt: "Video: nuestro equipo trabajando en la oficina de Las Vegas",
+    videoPlay: "Reproducir video",
+    videoPause: "Pausar video",
   },
   en: {
     kicker: "Taxes, notary, and immigration help, all in one place",
@@ -29,13 +40,13 @@ const t = {
     cta: "Get Directions",
     ctaHref: "https://www.google.com/maps/dir/?api=1&destination=235%20N%20Eastern%20Ave%20Suite%20130%2C%20Las%20Vegas%2C%20NV%2089101",
     images: [
-      { src: "/assets/images/test/thumb_servicios_90c45b98c0.jpg", alt: "Helping a client at the office" },
-      { src: "/assets/images/test/thumb_empresas_4b46959dd7.avif", alt: "Advising a local business" },
-      { src: "/assets/images/test/thumb_servicios_90c45b98c0.jpg", alt: "Front desk of the Las Vegas office" },
+      { src: imgFachada, alt: "Data's Multiservices storefront at 235 N Eastern Ave, Las Vegas", position: "object-[50%_30%]" },
+      { src: imgAsesora, alt: "Data's Multiservices advisor at her desk", position: "object-[60%_35%]" },
+      { src: imgAsesor, alt: "Data's Multiservices advisor in his office", position: "object-[50%_35%]" },
     ],
-    videoPoster: "/assets/images/test/thumb_empresas_4b46959dd7.avif",
-    videoAlt: "Video: a tour of our office",
-    videoTime: "03:05 / 05:10",
+    videoAlt: "Video: our team at work in the Las Vegas office",
+    videoPlay: "Play video",
+    videoPause: "Pause video",
   },
 }[lang];
 ---
@@ -70,55 +81,74 @@ const t = {
       <!-- Columna 1: dos imágenes apiladas -->
       <div class="flex flex-col gap-4 lg:h-full">
         {t.images.slice(0, 2).map(img => (
-          <img
+          <Picture
             src={img.src}
             alt={img.alt}
+            formats={['avif', 'webp']}
+            widths={[480, 720, 960, 1440]}
+            sizes={SIZES}
+            quality={75}
             loading="lazy"
             decoding="async"
-            class="w-full flex-1 min-h-0 aspect-[4/3] lg:aspect-auto object-cover rounded-xl"
+            pictureAttributes={{ class: 'block flex-1 min-h-0' }}
+            class:list={['w-full aspect-[4/3] lg:aspect-auto lg:h-full object-cover rounded-xl', img.position]}
           />
         ))}
       </div>
 
       <!-- Columna 2: imagen vertical -->
-      <img
+      <Picture
         src={t.images[2].src}
         alt={t.images[2].alt}
+        formats={['avif', 'webp']}
+        widths={[405, 600, 810]}
+        sizes={SIZES}
+        quality={75}
         loading="lazy"
         decoding="async"
-        class="w-full aspect-[3/4] lg:aspect-auto lg:h-full object-cover rounded-xl"
+        pictureAttributes={{ class: 'block lg:h-full' }}
+        class:list={['w-full aspect-[3/4] lg:aspect-auto lg:h-full object-cover rounded-xl', t.images[2].position]}
       />
 
-      <!-- Columna 3: video (placeholder de imagen + overlay decorativo de controles) -->
-      <figure class="relative sm:col-span-2 lg:col-span-1 lg:h-full overflow-hidden rounded-xl">
-        <img
-          src={t.videoPoster}
-          alt={t.videoAlt}
-          loading="lazy"
-          decoding="async"
+      <!-- Columna 3: video en bucle, sin audio. Se reproduce solo cuando está
+           en pantalla y nunca con prefers-reduced-motion. El botón de pausa
+           cumple WCAG 2.2.2 (movimiento de más de 5 s). Fuente y proceso en
+           reference-data/videos/ (gitignored). -->
+      <figure
+        class="relative sm:col-span-2 lg:col-span-1 lg:h-full overflow-hidden rounded-xl bg-midnight"
+        data-office-video
+      >
+        <video
           class="w-full aspect-video lg:aspect-auto lg:h-full object-cover"
-        />
-        {/*
-          Video real: reemplazar el <img> de arriba por
-          <video class="w-full lg:h-full object-cover" controls preload="metadata"
-                 poster={t.videoPoster} aria-label={t.videoAlt}>
-            <source src="/assets/video/oficina.mp4" type="video/mp4" />
-          </video>
-          y eliminar el overlay decorativo de abajo.
-        */}
-        <div
-          class="pointer-events-none absolute inset-x-0 bottom-0 flex items-center gap-3
-                 bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-10 text-white"
-          aria-hidden="true"
+          poster="/assets/video/datamultiservices-oficina-las-vegas-poster.webp"
+          width="1920"
+          height="1080"
+          muted
+          loop
+          playsinline
+          preload="none"
+          aria-label={t.videoAlt}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 shrink-0">
+          <source src="/assets/video/datamultiservices-oficina-las-vegas.webm" type="video/webm" />
+          <source src="/assets/video/datamultiservices-oficina-las-vegas.mp4" type="video/mp4" />
+        </video>
+        <button
+          type="button"
+          class="absolute bottom-3 left-3 flex size-11 items-center justify-center rounded-full
+                 bg-black/55 text-white transition-colors hover:bg-black/75
+                 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          aria-label={t.videoPlay}
+          data-label-play={t.videoPlay}
+          data-label-pause={t.videoPause}
+          data-video-toggle
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5" aria-hidden="true" data-icon-play>
+            <path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.34-5.89a1.5 1.5 0 0 0 0-2.54L6.3 2.84Z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 hidden" aria-hidden="true" data-icon-pause>
             <path d="M6 4.75A.75.75 0 0 1 6.75 4h1.5a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1-.75-.75V4.75ZM11 4.75A.75.75 0 0 1 11.75 4h1.5a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1-.75-.75V4.75Z" />
           </svg>
-          <span class="text-xs font-medium tabular-nums shrink-0">{t.videoTime}</span>
-          <span class="relative h-1 flex-1 rounded-full bg-white/30">
-            <span class="absolute inset-y-0 left-0 w-[60%] rounded-full bg-brand-light"></span>
-          </span>
-        </div>
+        </button>
       </figure>
 
     </div>
@@ -141,3 +171,49 @@ const t = {
     </div>
   </div>
 </section>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelectorAll<HTMLElement>('[data-office-video]').forEach((figure) => {
+    const video = figure.querySelector('video');
+    const button = figure.querySelector<HTMLButtonElement>('[data-video-toggle]');
+    if (!video || !button) return;
+
+    const iconPlay = button.querySelector('[data-icon-play]');
+    const iconPause = button.querySelector('[data-icon-pause]');
+    // Si la persona pausa, el scroll no vuelve a reproducirlo.
+    let userPaused = false;
+
+    const sync = () => {
+      const playing = !video.paused;
+      iconPlay?.classList.toggle('hidden', playing);
+      iconPause?.classList.toggle('hidden', !playing);
+      button.setAttribute('aria-label', (playing ? button.dataset.labelPause : button.dataset.labelPlay) ?? '');
+    };
+    video.addEventListener('play', sync);
+    video.addEventListener('pause', sync);
+
+    button.addEventListener('click', () => {
+      if (video.paused) {
+        userPaused = false;
+        video.play().catch(() => {});
+      } else {
+        userPaused = true;
+        video.pause();
+      }
+    });
+
+    // preload="none": el archivo recién se descarga al entrar en pantalla.
+    new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (!userPaused && !reduceMotion.matches) video.play().catch(() => {});
+        } else if (!video.paused) {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 },
+    ).observe(figure);
+  });
+</script>
