@@ -143,6 +143,12 @@ Cada decisión indica:
   - No usamos el logo, los colores ni frases que sugieran que somos el Social Security o que tenemos un convenio con la agencia. Por eso el ítem no dice "Citas para el Social Security" (ver 4.1).
 - **Fuentes:** [SSA OIG — Sección 1140](https://oig.ssa.gov/fraud-reporting/consumer-protection-section-1140/), [20 CFR 498.102](https://www.law.cornell.edu/cfr/text/20/498.102).
 
+### 1.10 Video de la oficina: el folleto se ve en pantalla
+- **Situación:** el video de la sección "Conoce nuestra oficina" del Home (9 s, en bucle) muestra por 1–2 segundos el folleto impreso del negocio. Ahí se leen, entre otros, "Solicitud de Asilo", "Divorcios" y "Testamentos". Un video en el sitio cuenta como publicidad.
+- **Por qué importa:** como el negocio no es un despacho de abogados, en estos trámites solo puede ayudar a llenar formularios, sin dar asesoría legal (ver 1.8). El asilo es el caso más delicado, porque elegir y argumentar la solicitud se acerca a la asesoría legal. El folleto ya circula, pero en el sitio queda junto al resto de la publicidad.
+- **Decisión:** se publica el video tal como está, porque el folleto solo aparece un momento y el sitio ya tiene la sección Inmigración. Queda pendiente la pregunta 16. ⏳
+- **Si el cliente o su abogado lo piden:** se corta el video justo antes del folleto (queda en unos 8 s) sin repetir el upscale.
+
 ---
 
 ## 2. Menú Taxes y "Ayuda con el IRS"
@@ -466,6 +472,10 @@ Ordenado de mayor a menor urgencia para el visitante:
 
 > ¿De dónde sale la insignia "IRS Authorized CAA"? No los encontramos en la lista de agentes autorizados del IRS para Nevada. Si tienen el acuerdo, ¿bajo qué nombre aparecen? Para el ITIN: ¿cómo manejan hoy los documentos originales del cliente? Si alguien del equipo tiene la tarjeta de Enrolled Agent, por favor envíennos el número de enrolamiento. Y por último: ¿están registrados en la Secretaría de Estado de Nevada como Document Preparation Service, con fianza? Si es así, ¿cuál es el número de registro?
 
+**Mensaje sugerido para las fotos** (cubre las preguntas 17 a 20):
+
+> Para mejorar la sección "Conoce nuestra oficina" necesitamos tres cosas: (1) la foto de la asesora sentada en su escritorio de la sesión de junio, como la que tienen del asesor; (2) una foto nueva del interior con el logo, de día, con la luz de la sala del fondo apagada para que no se refleje quien saca la foto en el vidrio; y (3) el link de su ficha de Google Maps. Por favor, envíen las fotos por WhatsApp "como documento", no como imagen, para que no pierdan calidad. Una consulta más: la placa en el retrato de la asesora dice "David Takamura · Tax Specialist". ¿Es la de ella? ¿Qué nombre y cargo podemos publicar?
+
 | # | Pregunta | Qué cambia según la respuesta |
 |---|---|---|
 | 1 | No aparecen en la lista de Acceptance Agents de Nevada. Si tienen el acuerdo CAA, ¿bajo qué nombre está? (número de oficina o acuerdo firmado). ¿Cómo manejan hoy los documentos originales en el ITIN? Ver 1.6 | Si prueban que son CAA: vuelve "IRS Authorized CAA" y el argumento del pasaporte en la página de ITIN |
@@ -483,6 +493,11 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 13 | ¿Todos los preparadores que atienden tienen PTIN vigente este año? Ver 5.3 | Si alguno no lo tiene: se quita "(PTIN)" del slide principal de la página de inicio |
 | 14 | ¿Notary Public es su segundo servicio más importante después de taxes? Ver 5.3 | Si no lo es: el slide 3 pasa a "Taxes atrasados y reembolso", que sí tiene búsquedas medidas |
 | 15 | El aviso "No somos abogados" ya está en el pie de página con el texto de las preguntas frecuentes. ¿Su abogado confirma que sirve así, o hay que usar la fórmula oficial literal de la Secretaría de Estado? Ver 1.2 y 1.8 | Si pide la fórmula literal: se cambia el texto del pie de página (ES y EN) |
+| 16 | El folleto que se ve en el video de la oficina ofrece "Solicitud de Asilo", "Divorcios" y "Testamentos". ¿Su abogado confirma que pueden anunciar esos servicios como preparación de documentos? Ver 1.10 | Si no: se corta el video antes del folleto y se revisa el folleto impreso |
+| 17 | En la sesión de fotos de junio hay una foto del asesor en su escritorio. ¿Existe una igual de la asesora? Por favor, envíenla "como documento" por WhatsApp para que no pierda calidad | Si existe: reemplaza su foto actual en "Conoce nuestra oficina", que sale de un video ampliado. Si no: se usa el mapa de Google o un montaje de su retrato en la oficina |
+| 18 | ¿Pueden sacar de nuevo la foto del interior (el logo dorado y los escritorios)? De día, desde el mismo lugar, con la luz de la sala del fondo apagada o corriéndose un paso al costado para que no se refleje el fotógrafo en el vidrio, y enviada "como documento" | La foto actual es chica (1024×768) y sale el reflejo del fotógrafo bajo el logo. Con la foto nueva entra a la galería de la oficina |
+| 19 | La placa con el nombre que lleva la asesora en su retrato dice "Professional Multiservices · David Takamura · Tax Specialist". ¿Es la de ella? ¿Qué nombre y cargo podemos publicar? | Si no es su placa: se borra en la imagen antes de usar el retrato (página Nosotros, Google Business) |
+| 20 | ¿Nos pasan el link de su ficha de Google Business (Google Maps)? | Permite poner el mapa con su pin, estrellas y reseñas en "Conoce nuestra oficina" o en Contacto |
 
 ---
 
@@ -519,3 +534,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-19 | Pie de página nuevo con el perfil de Las Vegas. Incluye el aviso "No somos abogados" en todas las páginas (ES/EN), con el texto de las preguntas frecuentes; falta confirmar si debe ser la fórmula oficial (1.2, 1.8 y pregunta 15). Sale WhatsApp del pie de página |
 | 2026-10-31 | Se eliminan los botones "Agendar cita": ahora llaman al teléfono o abren "Cómo llegar" en Google Maps. Sale "gratis" / "sin costo" hasta confirmar la pregunta 5 (6.2) |
 | 2026-10-31 | Texto alternativo de la foto en "¿Por qué elegirnos?": "Notary Public certificado" → "Notary Public" (ES/EN) |
+| 2026-11-14 | Video real de la oficina en el Home (9 s, sin audio, en bucle). No se usa el Reel original porque el teléfono estaba mal escrito ("702-640-008"). El folleto que aparece en el video queda como pregunta 16 (1.10) |
