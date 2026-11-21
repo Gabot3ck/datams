@@ -29,7 +29,9 @@ describe('CtaSection', () => {
   it('la imagen usa el alt de imageAlt', async () => {
     // R2: renderToString HTML-escapes attribute values (& -> entity), so assert
     // the stable substrings of the alt without the ampersand.
-    expect(await render('es')).toContain('atendiendo a un cliente');
-    expect(await render('en')).toContain('advisor helping a client');
+    expect(await render('es')).toContain('en su escritorio, en la oficina de Las Vegas');
+    expect(await render('en')).toContain('advisor at his desk in the Las Vegas office');
+    // El alt no debe volver a mencionar un cliente que no está en la foto (2b43d29)
+    expect(await render('es')).not.toContain('atendiendo a un cliente');
   });
 });
