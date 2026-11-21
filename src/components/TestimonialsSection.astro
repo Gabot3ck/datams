@@ -20,7 +20,7 @@ const { lang } = Astro.props;
 const REVIEWS_URL =
   "https://www.google.com/search?q=datamultiservices&ie=UTF-8#lrd=0x80c8c3e5c36f0a93:0xa7da2c626285ecf5,1,,,,";
 
-// Reseñas placeholder por idioma — reemplazar por las reales de Google.
+// Reseñas reales de Google, por idioma (EN = traducción de la misma reseña).
 // (avatar opcional: ruta de imagen; si se omite, se usa la inicial del nombre.)
 const t = {
   es: {
@@ -28,6 +28,9 @@ const t = {
     heading: "Lo que dice nuestra comunidad",
     subheading: "Reseñas reales de nuestros clientes",
     ctaMore: "Ver más comentarios en Google",
+    carouselLabel: "Reseñas de clientes (desliza para ver más)",
+    dotsLabel: "Elegir reseña",
+    dotLabel: (i: number, n: number) => `Ver reseña ${i} de ${n}`,
     starsLabel: (n: number) => `${n} de 5 estrellas`,
     reviews: [
       {
@@ -77,6 +80,9 @@ const t = {
     heading: "What our community says",
     subheading: "Real reviews from our clients",
     ctaMore: "See more reviews on Google",
+    carouselLabel: "Client reviews (swipe to see more)",
+    dotsLabel: "Choose a review",
+    dotLabel: (i: number, n: number) => `Show review ${i} of ${n}`,
     starsLabel: (n: number) => `${n} out of 5 stars`,
     reviews: [
       {
@@ -129,6 +135,10 @@ const avatarColors = ["bg-brand", "bg-accent", "bg-brand-light"];
 // El contenedor lleva un difuminado inferior común (.fade-bottom) → las cards
 // de abajo de AMBAS columnas se desvanecen en la misma línea horizontal,
 // invitando a ver más en Google.
+// En mobile (<md) el mismo contenedor es un carrusel horizontal con
+// scroll-snap (CSS; solo los dots usan un script): las <ul> pasan a
+// `display: contents` para que las 6 cards queden en una sola fila, en
+// orden 1→6.
 const leftReviews = reviews.slice(0, 3);
 const rightReviews = reviews.slice(3, 6);
 ---
@@ -152,9 +162,20 @@ const rightReviews = reviews.slice(3, 6);
       </p>
     </header>
 
-    <!-- Dos columnas (derecha un poco más abajo) con difuminado inferior común -->
-    <div class="fade-bottom grid gap-6 md:grid-cols-2 md:gap-x-10 max-w-[880px] mx-auto">
-      <ul class="flex flex-col gap-6" role="list">
+    <!-- Mobile: carrusel horizontal. >=md: dos columnas (derecha un poco más abajo) con difuminado inferior común -->
+    <div
+      class="fade-bottom grid gap-6 md:grid-cols-2 md:gap-x-10 max-w-220 mx-auto
+             max-md:flex max-md:gap-4 max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory
+             max-md:-mx-6 max-md:px-6 max-md:scroll-px-6 sm:max-md:-mx-8 sm:max-md:px-8 sm:max-md:scroll-px-8
+             max-md:pt-1 max-md:pb-3 max-md:scrollbar-none max-md:[&::-webkit-scrollbar]:hidden
+             focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
+      id="testimonials-carousel"
+      role="region"
+      aria-label={t.carouselLabel}
+      tabindex="0"
+      data-carousel
+    >
+      <ul class="flex flex-col gap-6 max-md:contents" role="list">
         {leftReviews.map((review, i) => (
           <TestimonialCard
             {...review}
@@ -166,7 +187,7 @@ const rightReviews = reviews.slice(3, 6);
         ))}
       </ul>
 
-      <ul class="flex flex-col gap-6 md:mt-14" role="list">
+      <ul class="flex flex-col gap-6 md:mt-14 max-md:contents" role="list">
         {rightReviews.map((review, i) => (
           <TestimonialCard
             {...review}
@@ -178,6 +199,33 @@ const rightReviews = reviews.slice(3, 6);
           />
         ))}
       </ul>
+    </div>
+
+    <!-- Dots del carrusel (solo mobile). Punto visible de 8px dentro de un
+         botón de 44px (área táctil). Inactivo gris claro, activo vino. -->
+    <div
+      class="mt-2 flex justify-center md:hidden"
+      role="group"
+      aria-label={t.dotsLabel}
+      data-carousel-dots
+    >
+      {reviews.map((_, i) => (
+        <button
+          type="button"
+          class="group grid size-12 place-items-center rounded-full
+                 focus-visible:outline-2 focus-visible:outline-brand-dark"
+          aria-controls="testimonials-carousel"
+          aria-label={t.dotLabel(i + 1, reviews.length)}
+          aria-current={i === 0 ? 'true' : undefined}
+          data-dot={i}
+        >
+          <span
+            class="size-2 rounded-full bg-accent-extralight transition-colors duration-300
+                   group-aria-current:bg-brand"
+            aria-hidden="true"
+          ></span>
+        </button>
+      ))}
     </div>
 
     <!-- Enlace a Google -->
@@ -205,3 +253,61 @@ const rightReviews = reviews.slice(3, 6);
 
   </div>
 </section>
+
+<script>
+  // Sincroniza los dots con el carrusel mobile: el dot activo sigue a la card
+  // más cercana al borde de snap, y un clic en un dot desplaza a esa card.
+  // En >=md el carrusel no existe (grid) y los dots están ocultos.
+  const carousel = document.querySelector<HTMLElement>('[data-carousel]');
+  const dots = [...document.querySelectorAll<HTMLButtonElement>('[data-carousel-dots] [data-dot]')];
+
+  if (carousel && dots.length) {
+    const cards = [...carousel.querySelectorAll<HTMLElement>('li')];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // Posición de scroll que deja la card alineada con el scroll-padding.
+    const targetLeft = (card: HTMLElement) =>
+      card.offsetLeft - carousel.offsetLeft - parseFloat(getComputedStyle(carousel).scrollPaddingLeft || '0');
+
+    const setActive = (index: number) => {
+      dots.forEach((dot, i) => {
+        if (i === index) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+    };
+
+    const activeIndex = () => {
+      // Al final del scroll la última card puede no alcanzar su snap exacto.
+      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 2) return cards.length - 1;
+      let best = 0;
+      let bestDist = Infinity;
+      cards.forEach((card, i) => {
+        const dist = Math.abs(targetLeft(card) - carousel.scrollLeft);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = i;
+        }
+      });
+      return best;
+    };
+
+    let frame = 0;
+    carousel.addEventListener(
+      'scroll',
+      () => {
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => setActive(activeIndex()));
+      },
+      { passive: true },
+    );
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        carousel.scrollTo({
+          left: targetLeft(cards[i]),
+          behavior: reduceMotion.matches ? 'auto' : 'smooth',
+        });
+      });
+    });
+  }
+</script>
