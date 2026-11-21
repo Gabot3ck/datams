@@ -441,7 +441,7 @@ Ordenado de mayor a menor urgencia para el visitante:
   - "Preparadores registrados (PTIN)" en el slide 1 depende de que todos los preparadores tengan PTIN vigente (pregunta 13). ❓
   - El slide de Notary Public no tiene datos de búsqueda: se eligió por su peso en el negocio. Si el cliente prefiere, se cambia por "Taxes atrasados y reembolso", que sí tiene datos (pregunta 14). ❓
   - Faltan las imágenes reales de los slides 2, 3 y 4 (hoy son de prueba). ⏳
-  - El título de la pestaña y la descripción de la página de inicio no dicen "Las Vegas" y la descripción dice "100% en español". Propuesta: "Taxes en Las Vegas, en Español | Data's & Multiservices". ⏳
+  - Título de la pestaña y descripción de la página de inicio: resuelto el 2026-11-21. Ahora empiezan con "Taxes en Las Vegas" (EN: "Las Vegas Tax Preparation"), suman Notary Public y la marca, y ya no dicen "100% en español" ni "servicios corporativos". ✅
 
 ---
 
@@ -535,3 +535,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-31 | Se eliminan los botones "Agendar cita": ahora llaman al teléfono o abren "Cómo llegar" en Google Maps. Sale "gratis" / "sin costo" hasta confirmar la pregunta 5 (6.2) |
 | 2026-10-31 | Texto alternativo de la foto en "¿Por qué elegirnos?": "Notary Public certificado" → "Notary Public" (ES/EN) |
 | 2026-11-14 | Video real de la oficina en el Home (9 s, sin audio, en bucle). No se usa el Reel original porque el teléfono estaba mal escrito ("702-640-008"). El folleto que aparece en el video queda como pregunta 16 (1.10) |
+| 2026-11-21 | Título y descripción de la página de inicio con "Taxes en Las Vegas" y el nombre del negocio (ES: "Taxes en Las Vegas y Notary Public \| Data's & Multiservices"; EN: "Las Vegas Tax Preparation \| Data's & Multiservices"). Sin "100%" ni "servicios corporativos" (5.3) |
