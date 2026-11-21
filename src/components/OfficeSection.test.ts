@@ -13,9 +13,18 @@ describe('OfficeSection', () => {
     expect(await render('en')).toContain('Our Office');
   });
 
-  it('renderiza 4 imágenes (3 galería + poster de video)', async () => {
-    const html = await render('es');
-    expect((html.match(/<img/g) ?? []).length).toBe(4);
+  it('renderiza 3 imágenes de galería, todas con alt no vacío', async () => {
+    const imgs = (await render('es')).match(/<img[^>]*>/g) ?? [];
+    expect(imgs).toHaveLength(3);
+    expect(imgs.every((img) => /\balt="[^"]+"/.test(img))).toBe(true);
+  });
+
+  it('el video tiene poster, aria-label y no precarga (b523520)', async () => {
+    const video = (await render('es')).match(/<video[^>]*>/)?.[0] ?? '';
+    expect(video).toContain('poster="/assets/video/datamultiservices-oficina-las-vegas-poster.webp"');
+    expect(video).toMatch(/aria-label="[^"]+"/);
+    expect(video).toContain('preload="none"');
+    expect(video).toContain('muted');
   });
 
   it('el CTA abre Google Maps en pestaña nueva y segura', async () => {
