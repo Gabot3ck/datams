@@ -291,7 +291,7 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [ ] Copy por decidir: "Notary Public Certificada" (Community) y "Garantizamos tener el mejor reembolso" (WhyUs)
 - [ ] Confirmar con el cliente si la consulta es gratis (pregunta 5 de `DECISIONES-NEGOCIO.md`); si lo es, puede volver a los CTA
 - [ ] `/taxes/extension` es enlace roto (página sin crear): `npm run check:links`
-- [ ] `Navbar.test.ts:184` busca `\n` literal: falla si `Navbar.astro` queda con CRLF (`core.autocrlf=true`) y pasa con LF. Cambiar a regex `\r?\n`
+- [x] `Navbar.test.ts` tolera CRLF (regex `\r?\n`); suite completa en verde
 - [ ] Limitar el ancho de párrafos: `max-w-*` está redefinido en `@theme` (xs=425px, md=768px…), así que esas clases casi no limitan
 - [ ] Footer: link del autor sigue en `#` (Instagram y Facebook ya tienen URL real)
 - [x] Title y meta del Home con "Taxes en Las Vegas" (628da2a)
