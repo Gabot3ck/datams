@@ -1,8 +1,19 @@
 ---
+import { Picture } from 'astro:assets';
+// Cuadros del upscale del video de la oficina (fuera del tramo que se ve en el
+// video de la web). Patente del auto pixelada en la fachada. Proceso en
+// reference-data/videos/.
+import imgFachada from '../assets/images/office/datamultiservices-fachada-las-vegas.webp';
+import imgAsesora from '../assets/images/office/datamultiservices-asesora-oficina.webp';
+import imgAsesor from '../assets/images/office/datamultiservices-asesor-oficina.webp';
+
 interface Props {
   lang: 'es' | 'en';
 }
 const { lang } = Astro.props;
+
+// Columnas 1 y 2: 100% en mobile, 50% desde 640px, ~25% desde 990px.
+const SIZES = '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw';
 
 const t = {
   es: {
@@ -13,9 +24,9 @@ const t = {
     cta: "Cómo llegar",
     ctaHref: "https://www.google.com/maps/dir/?api=1&destination=235%20N%20Eastern%20Ave%20Suite%20130%2C%20Las%20Vegas%2C%20NV%2089101",
     images: [
-      { src: "/assets/images/test/thumb_servicios_90c45b98c0.jpg", alt: "Atención a un cliente en la oficina" },
-      { src: "/assets/images/test/thumb_empresas_4b46959dd7.avif", alt: "Asesoría a un negocio local" },
-      { src: "/assets/images/test/thumb_servicios_90c45b98c0.jpg", alt: "Recepción de la oficina en Las Vegas" },
+      { src: imgFachada, alt: "Fachada de Data's Multiservices en 235 N Eastern Ave, Las Vegas", position: "object-[50%_30%]" },
+      { src: imgAsesora, alt: "Asesora de Data's Multiservices en su escritorio", position: "object-[60%_35%]" },
+      { src: imgAsesor, alt: "Asesor de Data's Multiservices en su oficina", position: "object-[50%_35%]" },
     ],
     videoPoster: "/assets/images/test/thumb_empresas_4b46959dd7.avif",
     videoAlt: "Video: recorrido por nuestra oficina",
@@ -29,9 +40,9 @@ const t = {
     cta: "Get Directions",
     ctaHref: "https://www.google.com/maps/dir/?api=1&destination=235%20N%20Eastern%20Ave%20Suite%20130%2C%20Las%20Vegas%2C%20NV%2089101",
     images: [
-      { src: "/assets/images/test/thumb_servicios_90c45b98c0.jpg", alt: "Helping a client at the office" },
-      { src: "/assets/images/test/thumb_empresas_4b46959dd7.avif", alt: "Advising a local business" },
-      { src: "/assets/images/test/thumb_servicios_90c45b98c0.jpg", alt: "Front desk of the Las Vegas office" },
+      { src: imgFachada, alt: "Data's Multiservices storefront at 235 N Eastern Ave, Las Vegas", position: "object-[50%_30%]" },
+      { src: imgAsesora, alt: "Data's Multiservices advisor at her desk", position: "object-[60%_35%]" },
+      { src: imgAsesor, alt: "Data's Multiservices advisor in his office", position: "object-[50%_35%]" },
     ],
     videoPoster: "/assets/images/test/thumb_empresas_4b46959dd7.avif",
     videoAlt: "Video: a tour of our office",
@@ -70,23 +81,33 @@ const t = {
       <!-- Columna 1: dos imágenes apiladas -->
       <div class="flex flex-col gap-4 lg:h-full">
         {t.images.slice(0, 2).map(img => (
-          <img
+          <Picture
             src={img.src}
             alt={img.alt}
+            formats={['avif', 'webp']}
+            widths={[480, 720, 960, 1440]}
+            sizes={SIZES}
+            quality={75}
             loading="lazy"
             decoding="async"
-            class="w-full flex-1 min-h-0 aspect-[4/3] lg:aspect-auto object-cover rounded-xl"
+            pictureAttributes={{ class: 'block flex-1 min-h-0' }}
+            class:list={['w-full aspect-[4/3] lg:aspect-auto lg:h-full object-cover rounded-xl', img.position]}
           />
         ))}
       </div>
 
       <!-- Columna 2: imagen vertical -->
-      <img
+      <Picture
         src={t.images[2].src}
         alt={t.images[2].alt}
+        formats={['avif', 'webp']}
+        widths={[405, 600, 810]}
+        sizes={SIZES}
+        quality={75}
         loading="lazy"
         decoding="async"
-        class="w-full aspect-[3/4] lg:aspect-auto lg:h-full object-cover rounded-xl"
+        pictureAttributes={{ class: 'block lg:h-full' }}
+        class:list={['w-full aspect-[3/4] lg:aspect-auto lg:h-full object-cover rounded-xl', t.images[2].position]}
       />
 
       <!-- Columna 3: video (placeholder de imagen + overlay decorativo de controles) -->
