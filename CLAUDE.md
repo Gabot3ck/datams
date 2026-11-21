@@ -284,7 +284,6 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [x] Imágenes hero responsive reales del slide 2 (mobile con la escena bajo el 38% de la altura para no chocar con el texto)
 - [x] Imágenes hero responsive reales del slide 3 (Notary Public; la persona que atiende es generada con IA: no usarla en Nosotros ni junto a reseñas)
 - [x] Imágenes hero responsive reales del slide 4 (ITIN/EIN: dueño de un negocio de reparaciones junto a su camioneta; persona generada con IA)
-- [ ] Tablet slide 1 (`-1t.webp`): a 768px el subtítulo roza el pelo de la clienta (~25px); mover/achicar el grupo en Canva
 - [ ] `CommunitySection`: "5,000+" desborda a 320px (scroll horizontal)
 - [ ] Imágenes reales en subcategorías del mega menú (actualmente sin imagen → fondo gris)
 - [x] URLs reales en tarjetas de Services del Home (`/taxes`, `/notary-public`, `/negocio`)
@@ -295,7 +294,7 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [ ] `Navbar.test.ts:184` busca `\n` literal: falla si `Navbar.astro` queda con CRLF (`core.autocrlf=true`) y pasa con LF. Cambiar a regex `\r?\n`
 - [ ] Limitar el ancho de párrafos: `max-w-*` está redefinido en `@theme` (xs=425px, md=768px…), así que esas clases casi no limitan
 - [ ] Footer: link del autor sigue en `#` (Instagram y Facebook ya tienen URL real)
-- [ ] Title y meta del Home sin "Las Vegas"
+- [x] Title y meta del Home con "Taxes en Las Vegas" (628da2a)
 
 ## Comandos
 
