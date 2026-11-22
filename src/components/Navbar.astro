@@ -527,7 +527,7 @@ const {
         </a>
 
         <!-- Navegación desktop -->
-        <ul class="hidden items-center gap-1 lg:flex" role="list">
+        <ul class="hidden items-center gap-0 xl:gap-1 lg:flex" role="list">
           {
             items.map((item) => (
               <li class="relative">
@@ -544,7 +544,7 @@ const {
                 ) : (
                   <a
                     href={item.href}
-                    class="block rounded-md px-2.5 py-1.5 text-xs xl:text-sm font-medium text-neutral-grey transition-colors hover:cursor-pointer hover:text-brand-light"
+                    class="block whitespace-nowrap rounded-md px-2 xl:px-2.5 py-1.5 text-xs xl:text-sm font-medium text-neutral-grey transition-colors hover:cursor-pointer hover:text-brand-light"
                   >
                     {item.label}
                   </a>
