@@ -58,6 +58,8 @@
   /* Párrafos y texto de tarjeta: rango propio, 360px → 1280px */
   --text-fluid-body: clamp(0.75rem, 0.652rem + 0.4348vw, 1.125rem);    /* 12 · 14 · 16 → 18 */
   --text-fluid-card: clamp(0.8125rem, 0.7636rem + 0.2174vw, 0.9375rem); /* 13 · 14 · 15 */
+  --text-fluid-btn:  clamp(0.75rem, 0.6766rem + 0.3261vw, 0.9375rem);  /* 12 · 13.3 · 15 — todos los .btn */
+  --text-fluid-btn--line-height: 1.25;
   --text-fluid-sm:   clamp(0.875rem, 0.85rem + 0.125vw, 1rem);       /* 14 → 16 */
   --text-fluid-base: clamp(1rem, 0.975rem + 0.125vw, 1.125rem);      /* 16 → 18 */
   --text-fluid-lg:   clamp(1.0625rem, 1.025rem + 0.1875vw, 1.25rem); /* 17 → 20 */
@@ -124,6 +126,34 @@
 body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   text-rendering: optimizeLegibility;
+}
+
+/* BOTONES — esquinas de 8px (no píldora), semibold, área táctil 44px.
+   En @layer components para que las utilidades del componente (tamaño de
+   texto, padding, márgenes, color del outline de foco) puedan pisarlas.
+   Tamaño único fluido (text-fluid-btn, 12 → 15px entre 360 y 1280) y padding
+   en em para que crezca con el texto: alto 44px en mobile → ~49px en desktop.
+   Los componentes solo agregan márgenes/ancho. No aplica al "Llámanos" del
+   navbar superior.
+   - .btn-primary  vino sobre fondo claro (por defecto en todo el sitio)
+   - .btn-light    blanco con texto vino, sobre fondos de color (CtaSection)
+   - .btn-outline  borde fino translúcido sobre fondos oscuros (secundario) */
+@layer components {
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg font-semibold
+           text-fluid-btn px-[1.75em] py-[1em] [&_svg]:size-[1.2em]
+           transition-colors duration-200 cursor-pointer
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark;
+  }
+  .btn-primary {
+    @apply bg-brand text-white hover:bg-brand-dark;
+  }
+  .btn-light {
+    @apply bg-white text-brand hover:text-brand-dark;
+  }
+  .btn-outline {
+    @apply border border-white/30 bg-white/5 text-white hover:border-white/50 hover:bg-white/10;
+  }
 }
 
 /* CONTENEDOR */

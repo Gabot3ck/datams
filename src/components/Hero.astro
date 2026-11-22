@@ -302,7 +302,7 @@ const slides = await Promise.all(
             >
               <a
                 href={s.ctaHref}
-                class={` ${s.btnClass || "bg-brand hover:bg-brand-dark text-background-light"} inline-flex min-h-11 items-center text-xs px-[1.4em] py-[0.7em] sm:text-[length:clamp(0.8125rem,0.74rem_+_0.3vw,1.0625rem)] sm:px-[1.8em] sm:py-[0.9em] mx-auto sm:mx-0 rounded-md transition-colors ease-in duration-300`}
+                class={` btn ${s.btnClass || "btn-primary"} mx-auto sm:mx-0`}
               >
                 {s.ctaText}
               </a>
