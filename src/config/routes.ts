@@ -30,6 +30,10 @@ export const ROUTES: RoutePair[] = [
   { es: '/itin-ein/solicitar-itin',    en: '/en/itin-ein/itin-application',  enBuilt: false },
   { es: '/itin-ein/renovar-itin',      en: '/en/itin-ein/itin-renewal',      enBuilt: false },
   { es: '/itin-ein/solicitar-ein',     en: '/en/itin-ein/ein-application',   enBuilt: false },
+  // ── Real Estate ────────────────────────────────────────────────────
+  { es: '/bienes-raices/',              en: '/en/real-estate/',               enBuilt: false },
+  { es: '/bienes-raices/comprar-casa',  en: '/en/real-estate/buy-a-home',     enBuilt: false },
+  { es: '/bienes-raices/comprar-terreno', en: '/en/real-estate/buy-land',     enBuilt: false },
 ];
 
 /**

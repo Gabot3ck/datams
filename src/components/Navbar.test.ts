@@ -203,6 +203,28 @@ describe('Navbar — DMV: permisos de conducir con aviso de 3 meses para la cita
   });
 });
 
+describe('Navbar — categoría Real Estate entre Inmigración y Más Servicios (decisión 2026-11-22)', () => {
+  it('va después de Inmigración y antes de Más Servicios, en ES y EN', () => {
+    const es = [src.indexOf('label: "Inmigración"'), src.indexOf('href: "/bienes-raices/"'), src.indexOf('label: "Más Servicios"')];
+    const en = [src.indexOf('label: "Immigration"'), src.indexOf('href: "/en/real-estate/"'), src.indexOf('label: "More Services"')];
+    for (const [a, b, c] of [es, en]) {
+      expect(a).toBeGreaterThan(-1);
+      expect(b).toBeGreaterThan(a);
+      expect(c).toBeGreaterThan(b);
+    }
+  });
+  it('dos ítems de compra (casa y terreno), ES y EN', () => {
+    expect(src).toContain('{ label: "Compra de casa", href: "/bienes-raices/comprar-casa"');
+    expect(src).toContain('{ label: "Compra de terreno", href: "/bienes-raices/comprar-terreno"');
+    expect(src).toContain('{ label: "Buying a home", href: "/en/real-estate/buy-a-home"');
+    expect(src).toContain('{ label: "Buying land", href: "/en/real-estate/buy-land"');
+  });
+  it('se escribe "Real Estate" (no "Real State") y no usa "Realtor"', () => {
+    expect(src).not.toMatch(/Real State/i);
+    expect(src).not.toMatch(/Realtor/i);
+  });
+});
+
 describe('Navbar — Otros Servicios: Rompetiket, citas y copias (decisión 2026-10-17)', () => {
   // \r?\n: el archivo puede quedar con CRLF en Windows (core.autocrlf=true)
   const tabEs = src.slice(src.search(/label: "Otros Servicios",\r?\n\s+items: \[/), src.indexOf('{ label: "Nosotros"'));

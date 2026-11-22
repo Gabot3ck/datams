@@ -159,6 +159,21 @@ const data: Record<"es" | "en", NavData> = {
         ],
       },
       {
+        // [PLACEHOLDER: brokerage y número de licencia de la asesora] — NAC 645.610 exige el nombre
+        // del brokerage con prominencia en todo anuncio. Ver DECISIONES-NEGOCIO.md §3.15
+        label: "Real Estate",
+        href: "/bienes-raices/",
+        megaMenu: [
+          {
+            label: "Bienes Raíces",
+            items: [
+              { label: "Compra de casa", href: "/bienes-raices/comprar-casa", description: "Te acompañamos en todo el proceso para comprar tu casa" },
+              { label: "Compra de terreno", href: "/bienes-raices/comprar-terreno", description: "Te ayudamos a encontrar y comprar tu terreno" },
+            ],
+          },
+        ],
+      },
+      {
         label: "Más Servicios",
         href: "#",
         miniLinks: [
@@ -338,6 +353,20 @@ const data: Record<"es" | "en", NavData> = {
               { label: "Good moral character letters", href: "/en/immigration/good-moral-letter", description: "Character reference letters for immigration" },
               { label: "Certified translations", href: "/en/immigration/certified-translations", description: "Official translations for immigration use" },
               { label: "Other immigration forms", href: "/en/immigration/immigration-forms", description: "Help with USCIS forms and more" },
+            ],
+          },
+        ],
+      },
+      {
+        // [PLACEHOLDER: brokerage and license number] — see DECISIONES-NEGOCIO.md §3.15
+        label: "Real Estate",
+        href: "/en/real-estate/",
+        megaMenu: [
+          {
+            label: "Real Estate",
+            items: [
+              { label: "Buying a home", href: "/en/real-estate/buy-a-home", description: "We guide you through every step of buying your home" },
+              { label: "Buying land", href: "/en/real-estate/buy-land", description: "We help you find and buy your land" },
             ],
           },
         ],

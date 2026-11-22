@@ -387,6 +387,28 @@ Ordenado de mayor a menor urgencia para el visitante:
   - ¿Qué cubre "Permisos de conducir"? Según la respuesta, el ítem podría llamarse "Licencia de conducir" (que es lo que la gente busca), con una descripción de alcance como "Primera vez, renovación y Driver Authorization Card".
 - **Fuentes:** [Renew Your License or ID Card (NV DMV)](https://dmv.nv.gov/dlrenewal.htm), [Driver Authorization Card (NV DMV)](https://dmv.nv.gov/dac.htm), [Online Services (NV DMV)](https://dmv.nv.gov/onlineservices.htm).
 
+### 3.15 Nueva categoría "Real Estate" (compra de casas y terrenos)
+- **Pedido del cliente (2026-11-22):** se incorpora el servicio de bienes raíces. Va como categoría propia entre Inmigración y Más Servicios, con el texto "te ayudamos con la facilidad de venta de casas y terrenos".
+- **Lo que confirmó el cliente:** hay licencia de bienes raíces de Nevada y una asesora dedicada solo a este servicio (no hace Notary Public). El servicio es **sobre todo de compra**, de casas y terrenos. ✅
+- **Decisión:** ✅
+  - Navbar: **"Real Estate"** → `/bienes-raices/` (EN: "Real Estate" → `/en/real-estate/`), con la pestaña **"Bienes Raíces"** ("Real Estate").
+  - **"Compra de casa"**: "Te acompañamos en todo el proceso para comprar tu casa" · `/bienes-raices/comprar-casa` (EN: "Buying a home", "We guide you through every step of buying your home" · `/en/real-estate/buy-a-home`).
+  - **"Compra de terreno"**: "Te ayudamos a encontrar y comprar tu terreno" · `/bienes-raices/comprar-terreno` (EN: "Buying land", "We help you find and buy your land" · `/en/real-estate/buy-land`).
+  - También entra en el pie de página (9 links de categoría), el breadcrumb y el registro de rutas. La tarjeta de servicios del Home no cambia: sumar una séptima tarjeta es una decisión de diseño aparte.
+- **Por qué no "venta":** el cliente aclaró que la asesoría es generalmente para comprar. Si después quieren ofrecer la venta, se agrega un ítem "Venta de casas y terrenos". Ver pregunta 27.
+- **Por qué "Real Estate" en el menú y "bienes-raices" en la URL:** nuestro público dice "real estate", igual que "taxes" y "Notary Public". Pero en Google se busca más "bienes raíces", y la URL en español lo aprovecha. Se escribe "Real Estate", no "Real State".
+- **Por qué "te acompañamos / te ayudamos" y no "asesoría":** para que no se confunda con asesoría legal (ver 1.8).
+- **Lo que la ley exige en la publicidad (NRS 645.315, NAC 645.610 y 645.613):**
+  - El sitio web cuenta como anuncio. El **nombre del brokerage** con el que trabaja la asesora debe aparecer **con prominencia** en todo anuncio de bienes raíces.
+  - Si la asesora es salesperson o broker-salesperson, no puede anunciarse solo con su nombre ni con el de otro negocio: todo va bajo la supervisión y el nombre de su brokerage.
+  - ⏳ **Pendiente: nombre del brokerage y número de licencia.** Hay un `[PLACEHOLDER:` en el menú (`Navbar.astro`). **No publicar el sitio con esta categoría hasta tener el dato** y mostrarlo en las páginas de Real Estate. Ver pregunta 25.
+- **No usar "Realtor":** es una marca registrada de la National Association of Realtors y solo pueden usarla sus miembros.
+- **Para las páginas:**
+  - Nombre del brokerage visible y, si corresponde, el logo de Equal Housing Opportunity (vivienda justa). Sin lenguaje que excluya a personas por origen, familia, religión u otras categorías protegidas.
+  - No prometer aprobación de préstamos ni tasas.
+  - **Oportunidad SEO:** "comprar casa con ITIN" se busca mucho en la comunidad hispana y conecta con las páginas de ITIN. Si la asesora trabaja con compradores con ITIN, conviene darle una sección o una página propia. Ver pregunta 26.
+- **Fuentes:** [NAC 645.610](https://regulations.justia.com/states/nevada/chapter-645/standards-of-practice/section-645-610), [NAC 645.613](https://regulations.justia.com/states/nevada/chapter-645/standards-of-practice/section-645-613), [NRS 645.315](https://law.justia.com/codes/nevada/2022/chapter-645/statute-645-315/), [NAC 645 (Legislatura de Nevada)](https://www.leg.state.nv.us/NAC/NAC-645.html).
+
 ---
 
 ## 4. Menú Inmigración
@@ -523,6 +545,20 @@ Ordenado de mayor a menor urgencia para el visitante:
 
 > ¿De dónde sale la insignia "IRS Authorized CAA"? No los encontramos en la lista de agentes autorizados del IRS para Nevada. Si tienen el acuerdo, ¿bajo qué nombre aparecen? Para el ITIN: ¿cómo manejan hoy los documentos originales del cliente? Si alguien del equipo tiene la tarjeta de Enrolled Agent, por favor envíennos el número de enrolamiento. Y por último: ¿están registrados en la Secretaría de Estado de Nevada como Document Preparation Service, con fianza? Si es así, ¿cuál es el número de registro?
 
+**Para el próximo sprint con el cliente** (preguntas 21 a 27, cambios de menú del 2026-11-22):
+
+- **Real Estate (presentar la categoría nueva):**
+  - **25.** ¿Cuál es el nombre del brokerage con el que trabaja la asesora y su número de licencia? ¿El brokerage aprueba que el servicio aparezca en este sitio? *Obligatorio por ley para publicar la categoría.*
+  - **26.** ¿La asesora trabaja con compradores que tienen ITIN?
+  - **27.** ¿Les parecen bien "Compra de casa" y "Compra de terreno", o quieren sumar "Venta de casas y terrenos"?
+- **Notary Public:**
+  - **21.** Cuando dicen "título de trailer", ¿se refieren a la casa móvil (mobile home) o a un remolque de carga o de viaje? ¿Quieren seguir ofreciendo el trámite de pasar la mobile home a un living trust?
+- **Inmigración:**
+  - **22.** En las renovaciones de residencia y de permiso de trabajo pusimos el plazo oficial de USCIS ("desde 6 meses antes de que venza"). ¿Les sirve así, o prefieren "Ven 5 meses antes para renovar a tiempo"?
+- **DMV:**
+  - **23.** En "Permisos de conducir", ¿los 3 meses son por la espera de las citas del DMV? (El DMV deja renovar desde 60 días antes.)
+  - **24.** ¿Qué incluye "Permisos de conducir": licencia de primera vez, renovación, permiso de aprendiz, Driver Authorization Card?
+
 **Mensaje sugerido para las fotos** (cubre las preguntas 17 a 20):
 
 > Para mejorar la sección "Conoce nuestra oficina" necesitamos tres cosas: (1) la foto de la asesora sentada en su escritorio de la sesión de junio, como la que tienen del asesor; (2) una foto nueva del interior con el logo, de día, con la luz de la sala del fondo apagada para que no se refleje quien saca la foto en el vidrio; y (3) el link de su ficha de Google Maps. Por favor, envíen las fotos por WhatsApp "como documento", no como imagen, para que no pierdan calidad. Una consulta más: la placa en el retrato de la asesora dice "David Takamura · Tax Specialist". ¿Es la de ella? ¿Qué nombre y cargo podemos publicar?
@@ -553,6 +589,9 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 22 | Para las renovaciones de residencia y de permiso de trabajo pusimos el plazo oficial de USCIS: "Renuévala/Renuévalo desde 6 meses antes de que venza". ¿Les sirve así, o prefieren "Ven 5 meses antes para renovar a tiempo" como recomendación de la oficina? Ver 4.3 | Si prefieren los 5 meses: cambia la descripción de los dos ítems (ES/EN) |
 | 23 | En "Permisos de conducir" pusimos "¿Se vence tu licencia? Ven 3 meses antes a sacar tu cita". ¿Los 3 meses son por la espera de las citas del DMV? Ver 3.14 | Si creían que se puede renovar 3 meses antes: el DMV lo permite desde 60 días antes, y el texto se mantiene enfocado en la cita |
 | 24 | ¿Qué incluye "Permisos de conducir": licencia de primera vez, renovación, permiso de aprendiz, Driver Authorization Card? Ver 3.14 | Puede cambiar el nombre a "Licencia de conducir" y la descripción a una de alcance |
+| 25 | ¿Cuál es el nombre del brokerage con el que trabaja la asesora de Real Estate y su número de licencia? ¿El brokerage aprueba que el servicio aparezca en este sitio? Ver 3.15 | Es obligatorio por ley (NAC 645.610): sin este dato no se puede publicar la categoría Real Estate |
+| 26 | ¿La asesora de Real Estate trabaja con compradores que tienen ITIN (préstamos ITIN)? Ver 3.15 | Si es así: sección o página "Comprar casa con ITIN", enlazada con las páginas de ITIN |
+| 27 | ¿Les parecen bien "Compra de casa" y "Compra de terreno" en Real Estate, o quieren sumar "Venta de casas y terrenos"? Ver 3.15 | Si ofrecen la venta: nuevo ítem "Venta de casas y terrenos" en la pestaña Bienes Raíces |
 
 ---
 
@@ -595,3 +634,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-11-22 | Inmigración: "Renovación de residencia permanente" y "Renovación de permiso de trabajo" llevan el plazo oficial de USCIS ("desde 6 meses antes de que venza") en lugar de los 5 meses pedidos. La alternativa "Ven 5 meses antes para renovar a tiempo" queda como consulta (4.3, pregunta 22) |
 | 2026-11-22 | Negocio: "Renovación de licencia de negocio" lleva la descripción "Ven 1 mes antes y evita la multa por renovar tarde". La URL en inglés pasa de `/en/business/llc-renewal` a `/en/business/business-license-renewal` (3.13) |
 | 2026-11-22 | DMV: "Permisos de conducir" lleva la descripción "¿Se vence tu licencia? Ven 3 meses antes a sacar tu cita". Los 3 meses son para la cita, no para renovar (el DMV habilita la renovación 60 días antes) (3.14, preguntas 23 y 24) |
+| 2026-11-22 | Nueva categoría "Real Estate" entre Inmigración y Más Servicios: "Compra de casa" y "Compra de terreno" (`/bienes-raices/`, `/en/real-estate/`), también en el pie de página. Falta el nombre del brokerage, obligatorio antes de publicar (3.15, preguntas 25 a 27) |
