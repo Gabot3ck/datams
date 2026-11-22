@@ -173,6 +173,18 @@ describe('Navbar — Inmigración: Tarjeta de Social Security y Affidavit of Sup
   });
 });
 
+describe('Navbar — Inmigración: renovaciones con el plazo de 6 meses de USCIS (decisión 2026-11-22)', () => {
+  it('residencia y permiso de trabajo llevan el plazo oficial (6 meses), ES y EN', () => {
+    expect(src).toContain('href: "/inmigracion/renovacion-residencia", description: "Renuévala desde 6 meses antes de que venza"');
+    expect(src).toContain('href: "/inmigracion/renovacion-permiso-trabajo", description: "Renuévalo desde 6 meses antes de que venza"');
+    expect(src).toContain('href: "/en/immigration/residency-renewal", description: "Renew it up to 6 months before it expires"');
+    expect(src).toContain('href: "/en/immigration/work-permit-renewal", description: "Renew it up to 6 months before it expires"');
+  });
+  it('no presenta "5 meses" como plazo', () => {
+    expect(src).not.toMatch(/5 meses|5 months/);
+  });
+});
+
 describe('Navbar — Otros Servicios: Rompetiket, citas y copias (decisión 2026-10-17)', () => {
   // \r?\n: el archivo puede quedar con CRLF en Windows (core.autocrlf=true)
   const tabEs = src.slice(src.search(/label: "Otros Servicios",\r?\n\s+items: \[/), src.indexOf('{ label: "Nosotros"'));

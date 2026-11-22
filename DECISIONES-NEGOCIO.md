@@ -396,6 +396,20 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Resultado:** "Documentos y Apoyo Migratorio" pasa de 5 a 7 ítems. "Otros formularios migratorios" sigue al final, como opción para todo lo demás.
 - **Keywords:** los exports de Ads no tienen datos de "social security" ni de "affidavit". Hay que investigarlas aparte, igual que en Notary Public (ver 3.6). ⏳
 
+### 4.3 Renovaciones de residencia y permiso de trabajo: el plazo oficial es de 6 meses
+- **Pedido del cliente (2026-11-22):** agregar "Renovar con 5 meses de anticipación" a "Renovación de residencia permanente" y a "Renovación de permiso de trabajo".
+- **Decisión:** los dos ítems llevan como descripción el plazo oficial de USCIS, **6 meses**. ✅ La URL no cambia.
+  - Residencia: **"Renuévala desde 6 meses antes de que venza"** ("Renew it up to 6 months before it expires" en inglés).
+  - Permiso de trabajo: **"Renuévalo desde 6 meses antes de que venza"** ("Renew it up to 6 months before it expires" en inglés).
+- **Por qué 6 y no 5:**
+  - **Residencia (I-90):** se puede renovar cuando a la tarjeta le quedan 6 meses o menos. Si se pide antes, USCIS puede negarla.
+  - **Permiso de trabajo (I-765):** USCIS recomienda pedir la renovación hasta 180 días (6 meses) antes de que venza. Desde el **30 de octubre de 2025** ya no hay extensión automática para los permisos que se renuevan: si el trámite se demora, la persona puede quedarse sin poder trabajar legalmente. Por eso conviene pedirla lo antes posible.
+  - "5 meses" suena a regla oficial y no lo es. Quien tenga 6 meses por delante perdería un mes, y quien tenga 3 podría pensar que ya es tarde.
+- **Alternativa si el cliente quiere el mes de margen:** **"Ven 5 meses antes para renovar a tiempo"** ("Come in 5 months early to renew on time"). Funciona porque es una recomendación de la oficina para juntar documentos, no el plazo de USCIS. ❓ Ver pregunta 22.
+- **NRS 240A:** dar el plazo oficial de USCIS es información general, no asesoría legal.
+- **Para la página de residencia:** aclarar que la regla de 6 meses es para la green card de 10 años. La residencia condicional de 2 años no se renueva con el I-90: se quitan las condiciones con el **I-751** en los 90 días antes de que venza.
+- **Fuentes:** [DHS Ends Automatic Extension of Employment Authorization](https://www.uscis.gov/newsroom/news-releases/dhs-ends-automatic-extension-of-employment-authorization), [Replace Your Green Card](https://www.uscis.gov/green-card/after-we-grant-your-green-card/replace-your-green-card), [Policy Manual Vol. 11, Part B, Ch. 2](https://www.uscis.gov/policy-manual/volume-11-part-b-chapter-2).
+
 ---
 
 ## 5. Cómo cuidamos las keywords de Google Ads
@@ -514,6 +528,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 19 | La placa con el nombre que lleva la asesora en su retrato dice "Professional Multiservices · David Takamura · Tax Specialist". ¿Es la de ella? ¿Qué nombre y cargo podemos publicar? | Si no es su placa: se borra en la imagen antes de usar el retrato (página Nosotros, Google Business) |
 | 20 | ¿Nos pasan el link de su ficha de Google Business (Google Maps)? | Permite poner el mapa con su pin, estrellas y reseñas en "Conoce nuestra oficina" o en Contacto |
 | 21 | Cuando dicen "título de trailer" en Notary Public, ¿se refieren a la casa móvil (mobile home) o a un remolque de carga o de viaje? ¿Quieren seguir ofreciendo el trámite de pasar la mobile home a un living trust? Ver 3.12 | Si es mobile home: el ítem pasa a "Trámite de título de traila (Mobile Home)". Si es remolque: cambia la URL y se revisa el choque con "Duplicado de título" de DMV. Si sigue el living trust: vuelve en "Documentos Legales" |
+| 22 | Para las renovaciones de residencia y de permiso de trabajo pusimos el plazo oficial de USCIS: "Renuévala/Renuévalo desde 6 meses antes de que venza". ¿Les sirve así, o prefieren "Ven 5 meses antes para renovar a tiempo" como recomendación de la oficina? Ver 4.3 | Si prefieren los 5 meses: cambia la descripción de los dos ítems (ES/EN) |
 
 ---
 
@@ -553,3 +568,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-11-14 | Video real de la oficina en el Home (9 s, sin audio, en bucle). No se usa el Reel original porque el teléfono estaba mal escrito ("702-640-008"). El folleto que aparece en el video queda como pregunta 16 (1.10) |
 | 2026-11-21 | Título y descripción de la página de inicio con "Taxes en Las Vegas" y el nombre del negocio (ES: "Taxes en Las Vegas y Notary Public \| Data's & Multiservices"; EN: "Las Vegas Tax Preparation \| Data's & Multiservices"). Sin "100%" ni "servicios corporativos" (5.3) |
 | 2026-11-22 | Notary Public: sale la pestaña "Títulos de Traila" (con "Mobile Home en un Living Trust") y entra "Trámites de título de trailer" en Poderes y Autorizaciones, con la misma URL. Aplicado tal cual y pendiente de confirmar (3.12, pregunta 21) |
+| 2026-11-22 | Inmigración: "Renovación de residencia permanente" y "Renovación de permiso de trabajo" llevan el plazo oficial de USCIS ("desde 6 meses antes de que venza") en lugar de los 5 meses pedidos. La alternativa "Ven 5 meses antes para renovar a tiempo" queda como consulta (4.3, pregunta 22) |
