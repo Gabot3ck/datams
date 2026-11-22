@@ -73,18 +73,22 @@ const t = {
       </p>
     </div>
 
-    <!-- Medios: 2 imágenes apiladas · 1 imagen vertical · video.
+    <!-- Medios: video + 3 fotos (fachada · asesora · asesor).
          <990px (mobile y tablet): video arriba a todo el ancho + fila de 3
-         miniaturas (cuadradas en mobile, 4:3 desde 640px). La columna 1 pasa
-         a display:contents para que sus 2 fotos sean celdas de la grilla. -->
+         miniaturas (cuadradas en mobile, 4:3 desde 640px).
+         >=990px: video 16:9 en 3/4 del ancho + columna de 3 fotos apaisadas
+         iguales. Sin alto fijo: el video (aspect-video, 3 filas) define el
+         alto y las fotos van absolutas para no estirar las filas.
+         El wrapper de las 2 primeras fotos es display:contents en todos los
+         tamaños: cada foto es una celda de la grilla. -->
     <div
       class="mt-fluid-xl grid grid-cols-3 gap-3 sm:gap-4
-             lg:grid-cols-[1fr_1.1fr_2fr] lg:grid-rows-1 lg:h-[460px]"
+             lg:grid-cols-4 lg:grid-rows-3"
       data-reveal
       data-reveal-delay="1"
     >
-      <!-- Columna 1: dos imágenes apiladas -->
-      <div class="contents lg:flex lg:flex-col lg:gap-4 lg:h-full">
+      <!-- Fotos 1 y 2 -->
+      <div class="contents">
         {t.images.slice(0, 2).map(img => (
           <Picture
             src={img.src}
@@ -95,13 +99,13 @@ const t = {
             quality={75}
             loading="lazy"
             decoding="async"
-            pictureAttributes={{ class: 'block flex-1 min-h-0' }}
-            class:list={['w-full aspect-square sm:aspect-[4/3] lg:aspect-auto lg:h-full object-cover rounded-lg sm:rounded-xl', img.position]}
+            pictureAttributes={{ class: 'block lg:relative lg:col-start-4 lg:min-h-0' }}
+            class:list={['w-full aspect-square sm:aspect-[4/3] lg:absolute lg:inset-0 lg:aspect-auto lg:h-full object-cover rounded-lg sm:rounded-xl', img.position]}
           />
         ))}
       </div>
 
-      <!-- Columna 2: imagen vertical -->
+      <!-- Foto 3 (en desktop sube el encuadre: el retrato es un primer plano) -->
       <Picture
         src={t.images[2].src}
         alt={t.images[2].alt}
@@ -111,20 +115,20 @@ const t = {
         quality={75}
         loading="lazy"
         decoding="async"
-        pictureAttributes={{ class: 'block lg:h-full' }}
-        class:list={['w-full aspect-square sm:aspect-[4/3] lg:aspect-auto lg:h-full object-cover rounded-lg sm:rounded-xl', t.images[2].position]}
+        pictureAttributes={{ class: 'block lg:relative lg:col-start-4 lg:min-h-0' }}
+        class:list={['w-full aspect-square sm:aspect-[4/3] lg:absolute lg:inset-0 lg:aspect-auto lg:h-full object-cover rounded-lg sm:rounded-xl', t.images[2].position, 'lg:object-[50%_20%]']}
       />
 
-      <!-- Columna 3: video en bucle, sin audio. Se reproduce solo cuando está
+      <!-- Video en bucle, sin audio. Se reproduce solo cuando está
            en pantalla y nunca con prefers-reduced-motion. El botón de pausa
            cumple WCAG 2.2.2 (movimiento de más de 5 s). Fuente y proceso en
            reference-data/videos/ (gitignored). -->
       <figure
-        class="relative col-span-3 order-first lg:order-none lg:col-span-1 lg:h-full overflow-hidden rounded-xl bg-midnight"
+        class="relative col-span-3 order-first lg:order-none lg:col-start-1 lg:row-start-1 lg:row-span-3 overflow-hidden rounded-xl bg-midnight"
         data-office-video
       >
         <video
-          class="w-full aspect-video lg:aspect-auto lg:h-full object-cover"
+          class="w-full aspect-video object-cover"
           poster="/assets/video/datamultiservices-oficina-las-vegas-poster.webp"
           width="1920"
           height="1080"

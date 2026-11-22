@@ -29,8 +29,8 @@ describe('OfficeSection', () => {
 
   it('bajo 990px muestra el video arriba y una fila de 3 miniaturas', async () => {
     const html = await render('es');
-    expect(html).toMatch(/class="[^"]*\bgrid grid-cols-3\b[^"]*lg:grid-cols-\[/);
-    expect(html).toMatch(/class="contents lg:flex lg:flex-col[^"]*"/);
+    expect(html).toMatch(/class="[^"]*\bgrid grid-cols-3\b[^"]*lg:grid-cols-4/);
+    expect(html).toMatch(/<div class="contents"[\s>]/);
     const figure = html.match(/<figure[^>]*data-office-video[^>]*>/)?.[0] ?? '';
     expect(figure).toMatch(/\bcol-span-3\b/);
     expect(figure).toMatch(/\border-first\b/);
@@ -40,6 +40,22 @@ describe('OfficeSection', () => {
     expect(imgs.every((img) => img.includes('aspect-square sm:aspect-[4/3]'))).toBe(true);
     // las miniaturas piden 1/3 del ancho, no la pantalla completa
     expect(imgs.every((img) => img.includes('sizes="(min-width: 990px) 25vw, 33vw"'))).toBe(true);
+  });
+
+  it('desde 990px: video 16:9 en 3/4 + columna de 3 fotos, sin alto fijo', async () => {
+    const html = await render('es');
+    expect(html).toMatch(/class="[^"]*lg:grid-cols-4 lg:grid-rows-3[^"]*"/);
+    expect(html).not.toContain('lg:h-[460px]');
+    const figure = html.match(/<figure[^>]*data-office-video[^>]*>/)?.[0] ?? '';
+    expect(figure).toContain('lg:row-span-3');
+    // el video conserva 16:9 en todos los tamaños (antes se recortaba a ~1:1)
+    const video = html.match(/<video[^>]*>/)?.[0] ?? '';
+    expect(video).toContain('aspect-video');
+    expect(video).not.toContain('lg:aspect-auto');
+    // las 3 fotos van en la columna 4, absolutas para no estirar las filas
+    expect(html.match(/<picture[^>]*lg:col-start-4[^>]*>/g)).toHaveLength(3);
+    const imgs = html.match(/<img[^>]*>/g) ?? [];
+    expect(imgs.every((img) => img.includes('lg:absolute lg:inset-0'))).toBe(true);
   });
 
   it('el CTA abre Google Maps en pestaña nueva y segura', async () => {
