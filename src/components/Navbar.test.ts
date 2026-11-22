@@ -185,6 +185,16 @@ describe('Navbar — Inmigración: renovaciones con el plazo de 6 meses de USCIS
   });
 });
 
+describe('Navbar — Negocio: renovación de licencia con aviso de 1 mes (decisión 2026-11-22)', () => {
+  it('descripción "Ven 1 mes antes" en ES y EN', () => {
+    expect(src).toContain('href: "/negocio/renovacion-licencia", description: "Ven 1 mes antes y evita la multa por renovar tarde"');
+    expect(src).toContain('href: "/en/business/business-license-renewal", description: "Come in 1 month early and avoid the late fee"');
+  });
+  it('la URL en inglés ya no es llc-renewal', () => {
+    expect(src).not.toContain('/en/business/llc-renewal');
+  });
+});
+
 describe('Navbar — Otros Servicios: Rompetiket, citas y copias (decisión 2026-10-17)', () => {
   // \r?\n: el archivo puede quedar con CRLF en Windows (core.autocrlf=true)
   const tabEs = src.slice(src.search(/label: "Otros Servicios",\r?\n\s+items: \[/), src.indexOf('{ label: "Nosotros"'));

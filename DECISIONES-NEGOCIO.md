@@ -365,6 +365,17 @@ Ordenado de mayor a menor urgencia para el visitante:
   - **"Trailer" es un anglicismo.** En inglés se entiende como remolque. Si es casa móvil, la propuesta es "Trámite de título de traila (Mobile Home)" / "Mobile Home title services", con la descripción "Traspaso o duplicado del título de tu casa móvil".
   - **Living trust:** si el cliente quiere seguir ofreciéndolo, la propuesta es ponerlo en "Documentos Legales" con las reglas de 3.5. Ver pregunta 21.
 
+### 3.13 "Renovación de licencia de negocio": ven 1 mes antes y evita la multa
+- **Pedido del cliente (2026-11-22):** un texto como el de las renovaciones de Inmigración (ver 4.3), pero con 1 mes de anticipación.
+- **Decisión:** la descripción es **"Ven 1 mes antes y evita la multa por renovar tarde"** ("Come in 1 month early and avoid the late fee" en inglés). ✅
+- **Por qué aquí sí va "1 mes":** la licencia estatal de negocio de Nevada se puede renovar desde 90 días antes de que venza, así que 1 mes cae dentro del plazo oficial. Va redactado como recomendación de la oficina ("ven"), no como el plazo legal.
+- **Por qué mencionar la multa:** vence el último día del mes de aniversario (las LLC, junto con la Annual List; los sole proprietors, en la fecha que dice su licencia). No hay período de gracia: si se paga tarde, la multa es de $100 más la tarifa anual. Para las LLC hay además un recargo por la Annual List. La multa motiva más que el plazo.
+- **URL en inglés:** `/en/business/llc-renewal` pasa a **`/en/business/business-license-renewal`**, que es la gemela de `/negocio/renovacion-licencia`. El ítem también cubre a los sole proprietors, y "LLC renewal" suena a la Annual List. La página no existía, así que no queda ningún enlace roto. ✅
+- **Para la página:**
+  - Dejar claro que se trata de la licencia **estatal** (Secretaría de Estado). Las licencias de la ciudad de Las Vegas y del condado Clark tienen otras fechas y van en "Permisos del condado y la ciudad" (ver 3.11).
+  - Antes de publicar los montos, confirmarlos en nvsos.gov, y no prometer que se evitan multas que ya corren.
+- **Fuentes:** [State Business License – FAQ](https://www.nvsos.gov/licensing/state-business-license/state-business-license-faq), [Instrucciones de la Annual List y la State Business License](https://bizhub.nv.gov/cms-webhook-bff/uploads/bizhub/Annual_List_and_State_Business_License_Non_Corps_Final_6904713d13.pdf).
+
 ---
 
 ## 4. Menú Inmigración
@@ -569,3 +580,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-11-21 | Título y descripción de la página de inicio con "Taxes en Las Vegas" y el nombre del negocio (ES: "Taxes en Las Vegas y Notary Public \| Data's & Multiservices"; EN: "Las Vegas Tax Preparation \| Data's & Multiservices"). Sin "100%" ni "servicios corporativos" (5.3) |
 | 2026-11-22 | Notary Public: sale la pestaña "Títulos de Traila" (con "Mobile Home en un Living Trust") y entra "Trámites de título de trailer" en Poderes y Autorizaciones, con la misma URL. Aplicado tal cual y pendiente de confirmar (3.12, pregunta 21) |
 | 2026-11-22 | Inmigración: "Renovación de residencia permanente" y "Renovación de permiso de trabajo" llevan el plazo oficial de USCIS ("desde 6 meses antes de que venza") en lugar de los 5 meses pedidos. La alternativa "Ven 5 meses antes para renovar a tiempo" queda como consulta (4.3, pregunta 22) |
+| 2026-11-22 | Negocio: "Renovación de licencia de negocio" lleva la descripción "Ven 1 mes antes y evita la multa por renovar tarde". La URL en inglés pasa de `/en/business/llc-renewal` a `/en/business/business-license-renewal` (3.13) |
