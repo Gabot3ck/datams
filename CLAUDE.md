@@ -62,6 +62,7 @@ Al crear una página EN: crear el archivo + poner `enBuilt: true` en su entrada.
 | `/taxes/*` | `/en/taxes/*` |
 | `/notary-public/*` | `/en/notary-public/*` |
 | `/inmigracion/*` | `/en/immigration/*` |
+| `/bienes-raices/*` | `/en/real-estate/*` |
 | `/itin-ein/*` | `/en/itin-ein/*` |
 | `/irs/*` | `/en/irs/*` |
 | `/negocio/*` | `/en/business/*` |
@@ -158,7 +159,7 @@ La sección **Community & Stats** (ahora en `CommunitySection.astro`, después d
 
 ### Navbar.astro — menú de servicios reales
 
-5 items con mega menú + 3 links simples:
+6 items con mega menú + 3 links simples. A 990px van justos: los ítems llevan `whitespace-nowrap`, `px-2 xl:px-2.5` y la lista `gap-0 xl:gap-1`. Si se agrega otro ítem, revisar a 990px que no se salga del contenedor:
 
 | Label | Tabs del mega menú |
 |-------|--------------------|
@@ -166,6 +167,7 @@ La sección **Community & Stats** (ahora en `CommunitySection.astro`, después d
 | ITIN / EIN | ITIN & EIN (3 items) |
 | Notary Public | Poderes y Autorizaciones · Documentos Legales · Apostillas |
 | Inmigración | Trámites Migratorios · Documentos y Apoyo |
+| Real Estate | Bienes Raíces (Compra de casa · Compra de terreno) — brokerage pendiente: `[PLACEHOLDER:` en `Navbar.astro` |
 | Más Servicios | Business · DMV · Formularios Corte · Otros |
 | Nosotros / Blog / Contacto | — links simples |
 
@@ -215,9 +217,9 @@ interface NavItem {
 - Fondo `bg-midnight` con el perfil de Las Vegas como borde superior (`FooterSkyline.astro`, SVG decorativo `aria-hidden`)
 - Perfil en orden real del Strip: Luxor (haz amarillo claro) · Excalibur · NY-NY (Estatua + Empire + Chrysler) · Paris (Eiffel + globo) · High Roller · Wynn/Encore · Stratosphere · letrero "Welcome to Fabulous Las Vegas" (letras negras, sin estrella). Eiffel y Estatua = SVG de descarga libre en `src/assets/svg/` (importados `?raw`); el resto es dibujo propio
 - Animación GSAP + ScrollTrigger en el `<script>` de `Footer.astro`: parallax de 3 capas (`data-layer`), ventanas, haz, ampolletas del letrero, noria girando y entrada de columnas (`data-fx-col`). Respeta `prefers-reduced-motion`
-- 4 columnas: Nosotros · Contacto (dirección + teléfono, **sin WhatsApp**) · **Servicios** (8 links de categoría) · Horario (`buildHoursTable()` de `site.ts`, sale de `BUSINESS.seasons`) + "Cómo llegar"
+- 4 columnas: Nosotros · Contacto (dirección + teléfono, **sin WhatsApp**) · **Servicios** (9 links de categoría) · Horario (`buildHoursTable()` de `site.ts`, sale de `BUSINESS.seasons`) + "Cómo llegar"
 - Abajo, centrado: divisor con Instagram/Facebook · logo · aviso "No somos abogados" (NRS 240A.150) · copyright · autor. Instagram y Facebook con URLs reales; autor = `#` (pendiente)
-- Los 8 links de categoría son el interlinking SEO principal — siempre visibles sin JS
+- Los 9 links de categoría son el interlinking SEO principal — siempre visibles sin JS
 - Lang inferida desde `Astro.url.pathname`. Registrado en `BaseLayout.astro`
 
 ### Páginas de servicio (src/components/service/ + ServiceLayout.astro)
@@ -268,7 +270,7 @@ Todo centralizado en `src/config/site.ts`:
 | `OG_IMAGE`         | Crear `/public/assets/og-image.webp` 1200×675    |
 | `GSC_VERIFICATION` | Código de Google Search Console                |
 | `BUSINESS.email`   | Email de contacto real                         |
-| Placeholders de contenido | Buscar `[PLACEHOLDER:` en `src/` — precios, PTIN/EFIN, política de citas |
+| Placeholders de contenido | Buscar `[PLACEHOLDER:` en `src/` — precios, PTIN/EFIN, política de citas, brokerage de Real Estate (NAC 645.610) |
 
 También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto con `SITE_URL`.
 
