@@ -256,6 +256,7 @@ Utilidades globales:
 - `.container-custom` — max-w-7xl + padding; >1520px → 80dvw
 - `.title` — heading responsivo 1.6rem → 4rem
 - `.subtitle` — texto secundario con max-width centrado
+- `.btn` + `.btn-primary` (vino) / `.btn-light` (blanco, sobre fondo de color) / `.btn-outline` (borde translúcido, fondos oscuros; sin uso aún) — todos los botones salvo el "Llámanos" del navbar superior. Esquinas 8px, semibold, tamaño único `text-fluid-btn` (12 → 15px, 360→1280), padding e ícono en `em`, alto 44→49px. No poner tamaño/padding/`size-*` del ícono en el componente: solo márgenes y ancho
 
 ## Variables pendientes para producción
 
