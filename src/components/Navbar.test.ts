@@ -195,6 +195,14 @@ describe('Navbar — Negocio: renovación de licencia con aviso de 1 mes (decisi
   });
 });
 
+describe('Navbar — DMV: permisos de conducir con aviso de 3 meses para la cita (decisión 2026-11-22)', () => {
+  it('los 3 meses se refieren a sacar la cita, no al plazo de renovación (ES y EN)', () => {
+    expect(src).toContain('href: "/dmv/permiso-conducir", description: "¿Se vence tu licencia? Ven 3 meses antes a sacar tu cita"');
+    expect(src).toContain('href: "/en/dmv/drivers-permit", description: "License expiring? Come in 3 months early to book your appointment"');
+    expect(src).not.toMatch(/[Rr]enuévala 3 meses|[Rr]enew it 3 months/);
+  });
+});
+
 describe('Navbar — Otros Servicios: Rompetiket, citas y copias (decisión 2026-10-17)', () => {
   // \r?\n: el archivo puede quedar con CRLF en Windows (core.autocrlf=true)
   const tabEs = src.slice(src.search(/label: "Otros Servicios",\r?\n\s+items: \[/), src.indexOf('{ label: "Nosotros"'));

@@ -376,6 +376,17 @@ Ordenado de mayor a menor urgencia para el visitante:
   - Antes de publicar los montos, confirmarlos en nvsos.gov, y no prometer que se evitan multas que ya corren.
 - **Fuentes:** [State Business License – FAQ](https://www.nvsos.gov/licensing/state-business-license/state-business-license-faq), [Instrucciones de la Annual List y la State Business License](https://bizhub.nv.gov/cms-webhook-bff/uploads/bizhub/Annual_List_and_State_Business_License_Non_Corps_Final_6904713d13.pdf).
 
+### 3.14 "Permisos de conducir": ven 3 meses antes a sacar tu cita
+- **Pedido del cliente (2026-11-22):** un texto como el de las renovaciones (ver 3.13 y 4.3), con 3 meses de anticipación.
+- **Decisión:** la descripción es **"¿Se vence tu licencia? Ven 3 meses antes a sacar tu cita"** ("License expiring? Come in 3 months early to book your appointment" en inglés). ✅ La URL no cambia.
+- **Por qué los 3 meses son para la cita y no para renovar:** según la página actual del DMV de Nevada, la renovación de la licencia se habilita **60 días antes** del vencimiento. Hay páginas más viejas del mismo DMV que dicen 90 días o 6 meses, pero se contradicen, y se toma la actual. Si el mensaje dijera "renueva 3 meses antes", la persona podría llegar cuando el DMV todavía no la deja renovar. En cambio, las citas del DMV escasean, y la **Driver Authorization Card (DAC)** solo se renueva en persona: venir 3 meses antes para sacar la cita es una recomendación de la oficina, igual que en 3.13.
+- **Por qué "¿Se vence tu licencia?":** el ítem se llama "Permisos de conducir" y no dice "renovación". Sin esa pregunta, "3 meses antes" queda sin contexto. Además, el "permiso" de Nevada (instruction permit) es el de aprendiz, y a ese no le aplica el aviso.
+- **"Sacar tu cita":** respeta el criterio de 3.9, que no dice que nosotros damos la cita. El aviso de que no estamos afiliados al DMV va en la página (ver 1.8).
+- **Pendiente:** ❓ Ver preguntas 23 y 24.
+  - ¿Por qué 3 meses? Si es por la espera de las citas, queda así. Si el cliente cree que se puede renovar 3 meses antes, hay que explicarle que son 60 días.
+  - ¿Qué cubre "Permisos de conducir"? Según la respuesta, el ítem podría llamarse "Licencia de conducir" (que es lo que la gente busca), con una descripción de alcance como "Primera vez, renovación y Driver Authorization Card".
+- **Fuentes:** [Renew Your License or ID Card (NV DMV)](https://dmv.nv.gov/dlrenewal.htm), [Driver Authorization Card (NV DMV)](https://dmv.nv.gov/dac.htm), [Online Services (NV DMV)](https://dmv.nv.gov/onlineservices.htm).
+
 ---
 
 ## 4. Menú Inmigración
@@ -540,6 +551,8 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 20 | ¿Nos pasan el link de su ficha de Google Business (Google Maps)? | Permite poner el mapa con su pin, estrellas y reseñas en "Conoce nuestra oficina" o en Contacto |
 | 21 | Cuando dicen "título de trailer" en Notary Public, ¿se refieren a la casa móvil (mobile home) o a un remolque de carga o de viaje? ¿Quieren seguir ofreciendo el trámite de pasar la mobile home a un living trust? Ver 3.12 | Si es mobile home: el ítem pasa a "Trámite de título de traila (Mobile Home)". Si es remolque: cambia la URL y se revisa el choque con "Duplicado de título" de DMV. Si sigue el living trust: vuelve en "Documentos Legales" |
 | 22 | Para las renovaciones de residencia y de permiso de trabajo pusimos el plazo oficial de USCIS: "Renuévala/Renuévalo desde 6 meses antes de que venza". ¿Les sirve así, o prefieren "Ven 5 meses antes para renovar a tiempo" como recomendación de la oficina? Ver 4.3 | Si prefieren los 5 meses: cambia la descripción de los dos ítems (ES/EN) |
+| 23 | En "Permisos de conducir" pusimos "¿Se vence tu licencia? Ven 3 meses antes a sacar tu cita". ¿Los 3 meses son por la espera de las citas del DMV? Ver 3.14 | Si creían que se puede renovar 3 meses antes: el DMV lo permite desde 60 días antes, y el texto se mantiene enfocado en la cita |
+| 24 | ¿Qué incluye "Permisos de conducir": licencia de primera vez, renovación, permiso de aprendiz, Driver Authorization Card? Ver 3.14 | Puede cambiar el nombre a "Licencia de conducir" y la descripción a una de alcance |
 
 ---
 
@@ -581,3 +594,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-11-22 | Notary Public: sale la pestaña "Títulos de Traila" (con "Mobile Home en un Living Trust") y entra "Trámites de título de trailer" en Poderes y Autorizaciones, con la misma URL. Aplicado tal cual y pendiente de confirmar (3.12, pregunta 21) |
 | 2026-11-22 | Inmigración: "Renovación de residencia permanente" y "Renovación de permiso de trabajo" llevan el plazo oficial de USCIS ("desde 6 meses antes de que venza") en lugar de los 5 meses pedidos. La alternativa "Ven 5 meses antes para renovar a tiempo" queda como consulta (4.3, pregunta 22) |
 | 2026-11-22 | Negocio: "Renovación de licencia de negocio" lleva la descripción "Ven 1 mes antes y evita la multa por renovar tarde". La URL en inglés pasa de `/en/business/llc-renewal` a `/en/business/business-license-renewal` (3.13) |
+| 2026-11-22 | DMV: "Permisos de conducir" lleva la descripción "¿Se vence tu licencia? Ven 3 meses antes a sacar tu cita". Los 3 meses son para la cita, no para renovar (el DMV habilita la renovación 60 días antes) (3.14, preguntas 23 y 24) |
