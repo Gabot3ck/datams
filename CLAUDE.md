@@ -140,8 +140,8 @@ vitest.config.ts              # tests con Vitest + Container API de Astro
 4. <WhyUsSection lang={lang} />      ← imagen + checklist de 4 puntos (horizontal desde 640px; en mobile foto 200×250 recortada)
 5. <TestimonialsSection lang={lang} /> ← reseñas de Google (carrusel con dots en mobile)
 6. <OfficeSection lang={lang} />     ← video + 3 fotos + CTA "cómo llegar"
-7. <FaqSection lang={lang} faqs={faq} image={faqImage} /> ← acordeón
-8. <CtaSection lang={lang} />        ← fondo bg-brand, conversión final
+7. <FaqSection lang={lang} faqs={faq} image={faqImage} /> ← acordeón + foto con el patrón de WhyUs (200px en mobile, 34% al lado desde 640px; `image.src` es ImageMetadata de src/assets)
+8. <CtaSection lang={lang} />        ← fondo bg-brand, conversión final; foto arriba en mobile, al lado del texto desde 640px (40% tablet, 50% desktop)
 ```
 
 `HomePage.astro` quedó como orquestador: solo importa las 8 secciones, define
