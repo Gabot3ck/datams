@@ -82,7 +82,7 @@ src/
 │   ├── WhyUsSection.astro      # Home: imagen + checklist "por qué elegirnos"
 │   ├── TestimonialsSection.astro # Home: reseñas de Google (≥md: 2 cols escalonadas + fade inferior; mobile: carrusel scroll-snap + dots, texto a 5 líneas)
 │   ├── TestimonialCard.astro   # Card individual de reseña (usada por TestimonialsSection)
-│   ├── OfficeSection.astro     # Home: galería de oficina + video + CTA maps
+│   ├── OfficeSection.astro     # Home: video 16:9 + 3 fotos (<990: video arriba + fila de 3; ≥990: video 3/4 + columna de 3, sin alto fijo) + CTA maps
 │   ├── FaqSection.astro        # Acordeón de FAQ del home — NO es service/FaqSection (HomePage importa este)
 │   ├── CtaSection.astro        # Home: CTA final (bg-brand) — NO es service/CtaBanner
 │   ├── Navbar.astro          # Header sticky: idioma + megamenú + mobile
@@ -139,7 +139,7 @@ vitest.config.ts              # tests con Vitest + Container API de Astro
 3. <ServicesSection lang={lang} />   ← 6 tarjetas (Taxes, IRS, ITIN-EIN, Notary Public, Inmigración, DMV)
 4. <WhyUsSection lang={lang} />      ← imagen + checklist de 4 puntos (horizontal desde 640px; en mobile foto 200×250 recortada)
 5. <TestimonialsSection lang={lang} /> ← reseñas de Google (carrusel con dots en mobile)
-6. <OfficeSection lang={lang} />     ← galería 3 imágenes + video + CTA "cómo llegar"
+6. <OfficeSection lang={lang} />     ← video + 3 fotos + CTA "cómo llegar"
 7. <FaqSection lang={lang} faqs={faq} image={faqImage} /> ← acordeón
 8. <CtaSection lang={lang} />        ← fondo bg-brand, conversión final
 ```
