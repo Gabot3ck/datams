@@ -256,6 +256,8 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Resultado:** Notary Public queda con 4 pestañas: Poderes y Autorizaciones (4), Documentos Legales (6), Títulos de Traila (2) y Apostillas (2).
 
 ### 3.3 Pestaña propia "Títulos de Traila"
+> **Reemplazado el 2026-11-22:** la pestaña se eliminó a pedido del cliente (ver 3.12).
+
 - **Decisión:** los títulos de mobile home tienen su propia pestaña, **"Títulos de Traila"** ("Mobile Home Titles" en inglés), entre Documentos Legales y Apostillas. ✅
 - **Por qué pestaña y no grupo:** primero se probó como grupo con encabezado al final de "Documentos Legales", pero quedaba al fondo de una lista de 8. Como pestaña se ve apenas se abre el menú de Notary Public, las pestañas quedan equilibradas (Apostillas también tiene 2) y el menú mantiene su estructura simple de dos niveles, sin código extra.
 - **Por qué "traila":** es como habla el cliente real, así que se reconoce al instante. Como el nombre de la pestaña no es un enlace, no afecta al SEO. La palabra también irá en el título de la página ("Título de Mobile Home (Casa Móvil o Traila) en Las Vegas") para captar esa búsqueda.
@@ -268,6 +270,8 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Por qué reemplaza a "Títulos de casas móviles":** el ítem existente cubría el mismo servicio. Se renombró y **conserva su URL** (`/notary-public/titulos-casas-moviles`) para que no haya dos páginas compitiendo por la misma búsqueda (ver 5.1).
 
 ### 3.5 Living trust: solo para un trust que ya existe
+> **Reemplazado el 2026-11-22:** el ítem salió del menú junto con la pestaña "Títulos de Traila" (ver 3.12). Si vuelve, aplican estas mismas reglas.
+
 - **Decisión:** el ítem se llama **"Mobile Home en un Living Trust"**, con la descripción "Pasa tu traila a un trust ya existente". Tiene página propia: `/notary-public/mobile-home-living-trust`. ✅
 - **Por qué no "Living trust" a secas:** se leería como "hacemos living trusts". **Redactar** un trust es planificación patrimonial y, para quien no es abogado, práctica ilegal del derecho. Además choca con la prohibición de dar asesoría legal de NRS 240A (ver 1.8).
 - **Qué sí se puede ofrecer:** poner la mobile home a nombre de un trust **ya creado por un abogado**. El formulario oficial T1 de la Nevada Housing Division tiene una sección para trusts que firma el trustee **ante notary public**: es trabajo de Notary Public.
@@ -350,6 +354,17 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Nuevo "Copias, impresiones y fax".** ✅ Descripción: **"Directo en nuestra oficina"**. URL: `/otros/copias-impresiones-fax`. En inglés: "Copies, printing & fax", con la descripción "Right at our office" (`/en/other/copies-printing-fax`). La descripción calza con la atención por orden de llegada (ver 6.2). Una página corta con horario y precios sirve para quien busca "fax cerca de mí".
 - **Resultado:** la pestaña "Otros Servicios" pasa de 7 a 6 ítems.
 - **Estrategia de contenido actualizada (2026-10-17):** `CONTENT-STRATEGY.md` ya tiene las URLs y la metadata nuevas de Otros (árbol y tabla), y las filas de DMV de "Duplicado de título" (con remolque) y de la cita del DMV (sin "agendar"). ✅
+### 3.12 Notary Public queda con 3 pestañas: "Trámites de título de trailer" en Poderes
+- **Pedido del cliente (2026-11-22):** quitar la pestaña "Títulos de Traila" con todos sus enlaces y poner "Trámites de título de trailer" en "Poderes y Autorizaciones". ✅ Aplicado tal cual, y queda pendiente de revisar.
+- **Resultado:** Notary Public tiene 3 pestañas: Poderes y Autorizaciones (5), Documentos Legales (6) y Apostillas (4).
+  - Nuevo ítem: **"Trámites de título de trailer"**, con la descripción "Traspaso o duplicado del título". En inglés: "Trailer title services", "Title transfers and duplicates".
+  - **Se conserva la URL** del ítem anterior (`/notary-public/titulos-casas-moviles`, `/en/notary-public/mobile-home-titles`): es el mismo servicio de título y así no hay dos páginas compitiendo por la misma búsqueda (ver 5.1). Si se confirma que "trailer" es un remolque, la URL se cambia antes de crear la página.
+  - Sale **"Mobile Home en un Living Trust"** (`/notary-public/mobile-home-living-trust`). La página no existía, así que no queda ningún enlace roto.
+- **Pendiente:** ❓
+  - **¿"Trailer" es casa móvil o remolque?** Si es mobile home, el título lo maneja la Nevada Housing Division (ver 3.3). Si es un remolque (de carga, de viaje, de botes), lo titula el DMV y competiría con "Duplicado de título" de la pestaña DMV, que ya dice "remolques" (ver 3.7). Ver pregunta 21.
+  - **"Trailer" es un anglicismo.** En inglés se entiende como remolque. Si es casa móvil, la propuesta es "Trámite de título de traila (Mobile Home)" / "Mobile Home title services", con la descripción "Traspaso o duplicado del título de tu casa móvil".
+  - **Living trust:** si el cliente quiere seguir ofreciéndolo, la propuesta es ponerlo en "Documentos Legales" con las reglas de 3.5. Ver pregunta 21.
+
 ---
 
 ## 4. Menú Inmigración
@@ -498,6 +513,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 18 | ¿Pueden sacar de nuevo la foto del interior (el logo dorado y los escritorios)? De día, desde el mismo lugar, con la luz de la sala del fondo apagada o corriéndose un paso al costado para que no se refleje el fotógrafo en el vidrio, y enviada "como documento" | La foto actual es chica (1024×768) y sale el reflejo del fotógrafo bajo el logo. Con la foto nueva entra a la galería de la oficina |
 | 19 | La placa con el nombre que lleva la asesora en su retrato dice "Professional Multiservices · David Takamura · Tax Specialist". ¿Es la de ella? ¿Qué nombre y cargo podemos publicar? | Si no es su placa: se borra en la imagen antes de usar el retrato (página Nosotros, Google Business) |
 | 20 | ¿Nos pasan el link de su ficha de Google Business (Google Maps)? | Permite poner el mapa con su pin, estrellas y reseñas en "Conoce nuestra oficina" o en Contacto |
+| 21 | Cuando dicen "título de trailer" en Notary Public, ¿se refieren a la casa móvil (mobile home) o a un remolque de carga o de viaje? ¿Quieren seguir ofreciendo el trámite de pasar la mobile home a un living trust? Ver 3.12 | Si es mobile home: el ítem pasa a "Trámite de título de traila (Mobile Home)". Si es remolque: cambia la URL y se revisa el choque con "Duplicado de título" de DMV. Si sigue el living trust: vuelve en "Documentos Legales" |
 
 ---
 
@@ -536,3 +552,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-31 | Texto alternativo de la foto en "¿Por qué elegirnos?": "Notary Public certificado" → "Notary Public" (ES/EN) |
 | 2026-11-14 | Video real de la oficina en el Home (9 s, sin audio, en bucle). No se usa el Reel original porque el teléfono estaba mal escrito ("702-640-008"). El folleto que aparece en el video queda como pregunta 16 (1.10) |
 | 2026-11-21 | Título y descripción de la página de inicio con "Taxes en Las Vegas" y el nombre del negocio (ES: "Taxes en Las Vegas y Notary Public \| Data's & Multiservices"; EN: "Las Vegas Tax Preparation \| Data's & Multiservices"). Sin "100%" ni "servicios corporativos" (5.3) |
+| 2026-11-22 | Notary Public: sale la pestaña "Títulos de Traila" (con "Mobile Home en un Living Trust") y entra "Trámites de título de trailer" en Poderes y Autorizaciones, con la misma URL. Aplicado tal cual y pendiente de confirmar (3.12, pregunta 21) |

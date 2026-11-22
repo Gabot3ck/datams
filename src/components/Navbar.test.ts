@@ -92,7 +92,7 @@ describe('Navbar — acceso directo al pilar /irs/ (decisión 2026-10-10)', () =
   });
 });
 
-describe('Navbar — Notary Public: "Documentos Legales" + pestaña "Títulos de Traila" (decisión 2026-10-11)', () => {
+describe('Navbar — Notary Public: 3 pestañas y título de trailer en Poderes (pedido 2026-11-22)', () => {
   it('fusiona las dos pestañas de documentos en ES y EN', () => {
     expect(src).toContain('label: "Documentos Legales"');
     expect(src).toContain('label: "Legal Documents"');
@@ -100,22 +100,15 @@ describe('Navbar — Notary Public: "Documentos Legales" + pestaña "Títulos de
       expect(src).not.toContain(viejo);
     }
   });
-  it('"Títulos de Traila" / "Mobile Home Titles" es una pestaña propia (no un grupo)', () => {
-    expect(src).toMatch(/label: "Títulos de Traila",\s*items: \[/);
-    expect(src).toMatch(/label: "Mobile Home Titles",\s*items: \[/);
+  it('sin pestaña "Títulos de Traila" / "Mobile Home Titles" ni living trust', () => {
+    for (const viejo of ['Títulos de Traila', 'Mobile Home Titles', 'mobile-home-living-trust', 'Trámite de título de Mobile Home']) {
+      expect(src).not.toContain(viejo);
+    }
     expect(src).not.toContain('groups:');
-    expect(src).not.toContain('sub.groups');
   });
-  it('los dos ítems de la pestaña de trailas, ES y EN', () => {
-    expect(src).toContain('{ label: "Trámite de título de Mobile Home", href: "/notary-public/titulos-casas-moviles"');
-    expect(src).toContain('href: "/notary-public/mobile-home-living-trust"');
-    expect(src).toContain('href: "/en/notary-public/mobile-home-titles"');
-    expect(src).toContain('href: "/en/notary-public/mobile-home-living-trust"');
-    expect(src).not.toContain('Títulos de casas móviles');
-  });
-  it('living trust: solo trust ya existente, nunca "Living trust" a secas', () => {
-    expect(src).not.toMatch(/label: "Living trust"/i);
-    expect(src).toContain('trust ya existente');
+  it('"Trámites de título de trailer" va en Poderes y Autorizaciones, conservando la URL', () => {
+    expect(src).toMatch(/label: "Poderes y Autorizaciones",\s*items: \[[^\]]*label: "Trámites de título de trailer", href: "\/notary-public\/titulos-casas-moviles"/);
+    expect(src).toMatch(/label: "Powers & Authorizations",\s*items: \[[^\]]*label: "Trailer title services", href: "\/en\/notary-public\/mobile-home-titles"/);
   });
 });
 
