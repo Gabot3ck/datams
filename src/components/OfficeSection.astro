@@ -13,7 +13,8 @@ interface Props {
 const { lang } = Astro.props;
 
 // Columnas 1 y 2: 100% en mobile, 50% desde 640px, ~25% desde 990px.
-const SIZES = '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw';
+// <990px las fotos son miniaturas de 1/3 del ancho (debajo del video).
+const SIZES = '(min-width: 990px) 25vw, 33vw';
 
 const t = {
   es: {
@@ -72,14 +73,18 @@ const t = {
       </p>
     </div>
 
-    <!-- Medios: 2 imágenes apiladas · 1 imagen vertical · video -->
+    <!-- Medios: 2 imágenes apiladas · 1 imagen vertical · video.
+         <990px (mobile y tablet): video arriba a todo el ancho + fila de 3
+         miniaturas (cuadradas en mobile, 4:3 desde 640px). La columna 1 pasa
+         a display:contents para que sus 2 fotos sean celdas de la grilla. -->
     <div
-      class="mt-fluid-xl grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1.1fr_2fr] lg:grid-rows-1 lg:h-[460px]"
+      class="mt-fluid-xl grid grid-cols-3 gap-3 sm:gap-4
+             lg:grid-cols-[1fr_1.1fr_2fr] lg:grid-rows-1 lg:h-[460px]"
       data-reveal
       data-reveal-delay="1"
     >
       <!-- Columna 1: dos imágenes apiladas -->
-      <div class="flex flex-col gap-4 lg:h-full">
+      <div class="contents lg:flex lg:flex-col lg:gap-4 lg:h-full">
         {t.images.slice(0, 2).map(img => (
           <Picture
             src={img.src}
@@ -91,7 +96,7 @@ const t = {
             loading="lazy"
             decoding="async"
             pictureAttributes={{ class: 'block flex-1 min-h-0' }}
-            class:list={['w-full aspect-[4/3] lg:aspect-auto lg:h-full object-cover rounded-xl', img.position]}
+            class:list={['w-full aspect-square sm:aspect-[4/3] lg:aspect-auto lg:h-full object-cover rounded-lg sm:rounded-xl', img.position]}
           />
         ))}
       </div>
@@ -107,7 +112,7 @@ const t = {
         loading="lazy"
         decoding="async"
         pictureAttributes={{ class: 'block lg:h-full' }}
-        class:list={['w-full aspect-[3/4] lg:aspect-auto lg:h-full object-cover rounded-xl', t.images[2].position]}
+        class:list={['w-full aspect-square sm:aspect-[4/3] lg:aspect-auto lg:h-full object-cover rounded-lg sm:rounded-xl', t.images[2].position]}
       />
 
       <!-- Columna 3: video en bucle, sin audio. Se reproduce solo cuando está
@@ -115,7 +120,7 @@ const t = {
            cumple WCAG 2.2.2 (movimiento de más de 5 s). Fuente y proceso en
            reference-data/videos/ (gitignored). -->
       <figure
-        class="relative sm:col-span-2 lg:col-span-1 lg:h-full overflow-hidden rounded-xl bg-midnight"
+        class="relative col-span-3 order-first lg:order-none lg:col-span-1 lg:h-full overflow-hidden rounded-xl bg-midnight"
         data-office-video
       >
         <video

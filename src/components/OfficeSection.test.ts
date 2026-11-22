@@ -27,6 +27,21 @@ describe('OfficeSection', () => {
     expect(video).toContain('muted');
   });
 
+  it('bajo 990px muestra el video arriba y una fila de 3 miniaturas', async () => {
+    const html = await render('es');
+    expect(html).toMatch(/class="[^"]*\bgrid grid-cols-3\b[^"]*lg:grid-cols-\[/);
+    expect(html).toMatch(/class="contents lg:flex lg:flex-col[^"]*"/);
+    const figure = html.match(/<figure[^>]*data-office-video[^>]*>/)?.[0] ?? '';
+    expect(figure).toMatch(/\bcol-span-3\b/);
+    expect(figure).toMatch(/\border-first\b/);
+    expect(figure).toContain('lg:order-none');
+    const imgs = html.match(/<img[^>]*>/g) ?? [];
+    // cuadradas en mobile, 4:3 en tablet
+    expect(imgs.every((img) => img.includes('aspect-square sm:aspect-[4/3]'))).toBe(true);
+    // las miniaturas piden 1/3 del ancho, no la pantalla completa
+    expect(imgs.every((img) => img.includes('sizes="(min-width: 990px) 25vw, 33vw"'))).toBe(true);
+  });
+
   it('el CTA abre Google Maps en pestaña nueva y segura', async () => {
     const html = await render('es');
     // R2: renderToString HTML-escapes attribute values (& -> &#38;) and injects
