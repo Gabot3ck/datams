@@ -30,18 +30,20 @@ const telHref = `tel:${BUSINESS.phone}`;
 
 <section class="bg-background-light py-section" aria-labelledby="cta-heading">
   <div class="container-custom">
-    <div class="grid overflow-hidden rounded-[2.5rem] bg-brand shadow-xl lg:grid-cols-2" data-reveal>
+    <div class="grid overflow-hidden rounded-[2.5rem] bg-brand shadow-xl sm:grid-cols-[2fr_3fr] lg:grid-cols-2" data-reveal>
 
-      <!-- Imagen: 100% del ancho en mobile/tablet, mitad de la tarjeta desde 990px.
+      <!-- Imagen: arriba a todo el ancho en mobile (4:3); desde 640px al lado del
+           texto (40% en tablet, mitad desde 990px) y con el alto del texto.
+           Mismo criterio que FaqSection/WhyUs: en tablet no se apila.
            Solo WebP: la fuente ya es WebP con pérdida y el AVIF salía más pesado. -->
-      <div class="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto">
+      <div class="relative aspect-[4/3] sm:aspect-auto">
         <Picture
           src={imgCta}
           alt={t.imageAlt}
           formats={['webp']}
           fallbackFormat="webp"
           widths={[480, 768, 1024, 1440, 1840]}
-          sizes="(min-width: 990px) 50vw, 100vw"
+          sizes="(min-width: 990px) 50vw, (min-width: 640px) 40vw, 100vw"
           quality={75}
           loading="lazy"
           decoding="async"
