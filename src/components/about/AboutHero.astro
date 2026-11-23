@@ -1,0 +1,57 @@
+---
+// Hero de Nosotros: texto + foto grupal contenida (1024px máx., es una foto de WhatsApp).
+// Mobile: foto arriba. Desde lg (990px): texto | foto.
+import { Picture } from 'astro:assets';
+import { TEAM_GROUP_PHOTO } from '../../config/team';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = {
+  es: {
+    eyebrow: 'Nuestro equipo',
+    heading: 'Las personas que te atienden en Las Vegas',
+    body: 'Somos un equipo hispano que te recibe en nuestra oficina de Las Vegas, sin cita y en tu idioma. Más de 10 años ayudando a familias y negocios con sus taxes, trámites de notary public y documentos.',
+    alt: "Equipo de Data's & Multiservices en su oficina de Las Vegas, frente al logo de la empresa",
+  },
+  en: {
+    eyebrow: 'Our team',
+    heading: 'The people who serve you in Las Vegas',
+    body: 'We are a Hispanic team that welcomes you at our Las Vegas office, no appointment needed and in your language. More than 10 years helping families and businesses with their taxes, notary public services, and paperwork.',
+    alt: "The Data's & Multiservices team at their Las Vegas office, in front of the company logo",
+  },
+}[lang];
+---
+
+<section aria-labelledby="about-heading" class="bg-background-light">
+  <div class="container-custom py-fluid-xl lg:py-section grid gap-fluid-lg lg:grid-cols-[1fr_1.1fr] lg:items-center">
+    <div class="order-2 lg:order-1 min-w-0">
+      <div class="flex items-center gap-3 mb-fluid-md">
+        <span class="h-px w-10 bg-brand-light shrink-0" aria-hidden="true"></span>
+        <span class="text-xs font-bold tracking-widest text-brand-light uppercase">{t.eyebrow}</span>
+      </div>
+      <h1
+        id="about-heading"
+        class="font-display text-fluid-3xl md:text-fluid-4xl lg:text-fluid-5xl font-bold text-neutral-dark leading-[1.1] mb-fluid-md"
+      >
+        {t.heading}
+      </h1>
+      <p class="text-fluid-body text-neutral-grey leading-relaxed max-w-[520px]">{t.body}</p>
+    </div>
+
+    <div class="order-1 lg:order-2 min-w-0">
+      <Picture
+        src={TEAM_GROUP_PHOTO}
+        alt={t.alt}
+        widths={[480, 768, 1024]}
+        sizes="(min-width: 990px) 50vw, 100vw"
+        formats={['webp']}
+        loading="eager"
+        fetchpriority="high"
+        class="w-full max-w-[1024px] h-auto rounded-2xl shadow-sm"
+      />
+    </div>
+  </div>
+</section>

@@ -21,6 +21,12 @@ describe('Breadcrumb', () => {
     expect(html).toContain('href="/irs/"');
     expect(html).toContain('Solución de deudas');
   });
+  it('Real Estate: categoría en ES (/bienes-raices/) y en EN (/en/real-estate/)', async () => {
+    const es = await renderAt('/bienes-raices/comprar-casa', { lang: 'es', currentLabel: 'Compra de casa' });
+    expect(es).toContain('href="/bienes-raices/"');
+    const en = await renderAt('/en/real-estate/buy-a-home', { lang: 'en', currentLabel: 'Buying a home' });
+    expect(en).toContain('href="/en/real-estate/"');
+  });
   it('JSON-LD BreadcrumbList con URLs absolutas', async () => {
     const html = await renderAt('/itin-ein/renovar-itin', { lang: 'es', currentLabel: 'Renovar ITIN' });
     expect(html).toContain('"@type":"BreadcrumbList"');

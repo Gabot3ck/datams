@@ -9,6 +9,7 @@ export interface RoutePair {
 export const ROUTES: RoutePair[] = [
   { es: '/',                            en: '/en',                            enBuilt: true  },
   { es: '/contacto',                    en: '/en/contact',                    enBuilt: false },
+  { es: '/nosotros',                    en: '/en/about',                      enBuilt: true  },
   // ── Taxes ──────────────────────────────────────────────────────────
   { es: '/taxes/',                      en: '/en/taxes/',                     enBuilt: false },
   { es: '/taxes/declaracion-personal',  en: '/en/taxes/personal-tax-return',  enBuilt: false },
@@ -30,6 +31,10 @@ export const ROUTES: RoutePair[] = [
   { es: '/itin-ein/solicitar-itin',    en: '/en/itin-ein/itin-application',  enBuilt: false },
   { es: '/itin-ein/renovar-itin',      en: '/en/itin-ein/itin-renewal',      enBuilt: false },
   { es: '/itin-ein/solicitar-ein',     en: '/en/itin-ein/ein-application',   enBuilt: false },
+  // ── Real Estate ────────────────────────────────────────────────────
+  { es: '/bienes-raices/',              en: '/en/real-estate/',               enBuilt: false },
+  { es: '/bienes-raices/comprar-casa',  en: '/en/real-estate/buy-a-home',     enBuilt: false },
+  { es: '/bienes-raices/comprar-terreno', en: '/en/real-estate/buy-land',     enBuilt: false },
 ];
 
 /**
@@ -52,7 +57,11 @@ export function getAlternates(pathname: string): {
   const esPathname = isEn ? (pathname === '/en' ? '/' : pathname.slice(3)) : pathname;
   const key = stripTrailingSlash(esPathname);
 
-  const entry = ROUTES.find((r) => stripTrailingSlash(r.es) === key);
+  // EN con slug traducido (/en/about ↔ /nosotros): buscar por la ruta EN registrada.
+  const enKey = stripTrailingSlash(pathname);
+  const entry =
+    (isEn && ROUTES.find((r) => stripTrailingSlash(r.en) === enKey)) ||
+    ROUTES.find((r) => stripTrailingSlash(r.es) === key);
   const es = canonicalURL(entry ? entry.es : key);
   const en = entry && entry.enBuilt ? canonicalURL(entry.en) : null;
 

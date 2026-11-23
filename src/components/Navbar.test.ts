@@ -92,7 +92,7 @@ describe('Navbar — acceso directo al pilar /irs/ (decisión 2026-10-10)', () =
   });
 });
 
-describe('Navbar — Notary Public: "Documentos Legales" + pestaña "Títulos de Traila" (decisión 2026-10-11)', () => {
+describe('Navbar — Notary Public: 3 pestañas y título de trailer en Poderes (pedido 2026-11-22)', () => {
   it('fusiona las dos pestañas de documentos en ES y EN', () => {
     expect(src).toContain('label: "Documentos Legales"');
     expect(src).toContain('label: "Legal Documents"');
@@ -100,22 +100,15 @@ describe('Navbar — Notary Public: "Documentos Legales" + pestaña "Títulos de
       expect(src).not.toContain(viejo);
     }
   });
-  it('"Títulos de Traila" / "Mobile Home Titles" es una pestaña propia (no un grupo)', () => {
-    expect(src).toMatch(/label: "Títulos de Traila",\s*items: \[/);
-    expect(src).toMatch(/label: "Mobile Home Titles",\s*items: \[/);
+  it('sin pestaña "Títulos de Traila" / "Mobile Home Titles" ni living trust', () => {
+    for (const viejo of ['Títulos de Traila', 'Mobile Home Titles', 'mobile-home-living-trust', 'Trámite de título de Mobile Home']) {
+      expect(src).not.toContain(viejo);
+    }
     expect(src).not.toContain('groups:');
-    expect(src).not.toContain('sub.groups');
   });
-  it('los dos ítems de la pestaña de trailas, ES y EN', () => {
-    expect(src).toContain('{ label: "Trámite de título de Mobile Home", href: "/notary-public/titulos-casas-moviles"');
-    expect(src).toContain('href: "/notary-public/mobile-home-living-trust"');
-    expect(src).toContain('href: "/en/notary-public/mobile-home-titles"');
-    expect(src).toContain('href: "/en/notary-public/mobile-home-living-trust"');
-    expect(src).not.toContain('Títulos de casas móviles');
-  });
-  it('living trust: solo trust ya existente, nunca "Living trust" a secas', () => {
-    expect(src).not.toMatch(/label: "Living trust"/i);
-    expect(src).toContain('trust ya existente');
+  it('"Trámites de título de trailer" va en Poderes y Autorizaciones, conservando la URL', () => {
+    expect(src).toMatch(/label: "Poderes y Autorizaciones",\s*items: \[[^\]]*label: "Trámites de título de trailer", href: "\/notary-public\/titulos-casas-moviles"/);
+    expect(src).toMatch(/label: "Powers & Authorizations",\s*items: \[[^\]]*label: "Trailer title services", href: "\/en\/notary-public\/mobile-home-titles"/);
   });
 });
 
@@ -177,6 +170,58 @@ describe('Navbar — Inmigración: Tarjeta de Social Security y Affidavit of Sup
     const tab = src.slice(src.indexOf('label: "Documentos y Apoyo Migratorio"'), src.indexOf('Otros formularios migratorios'));
     expect(tab).toContain('Tarjeta de Social Security');
     expect(tab).toContain('Affidavit of Support (I-864)');
+  });
+});
+
+describe('Navbar — Inmigración: renovaciones con el plazo de 6 meses de USCIS (decisión 2026-11-22)', () => {
+  it('residencia y permiso de trabajo llevan el plazo oficial (6 meses), ES y EN', () => {
+    expect(src).toContain('href: "/inmigracion/renovacion-residencia", description: "Renuévala desde 6 meses antes de que venza"');
+    expect(src).toContain('href: "/inmigracion/renovacion-permiso-trabajo", description: "Renuévalo desde 6 meses antes de que venza"');
+    expect(src).toContain('href: "/en/immigration/residency-renewal", description: "Renew it up to 6 months before it expires"');
+    expect(src).toContain('href: "/en/immigration/work-permit-renewal", description: "Renew it up to 6 months before it expires"');
+  });
+  it('no presenta "5 meses" como plazo', () => {
+    expect(src).not.toMatch(/5 meses|5 months/);
+  });
+});
+
+describe('Navbar — Negocio: renovación de licencia con aviso de 1 mes (decisión 2026-11-22)', () => {
+  it('descripción "Ven 1 mes antes" en ES y EN', () => {
+    expect(src).toContain('href: "/negocio/renovacion-licencia", description: "Ven 1 mes antes y evita la multa por renovar tarde"');
+    expect(src).toContain('href: "/en/business/business-license-renewal", description: "Come in 1 month early and avoid the late fee"');
+  });
+  it('la URL en inglés ya no es llc-renewal', () => {
+    expect(src).not.toContain('/en/business/llc-renewal');
+  });
+});
+
+describe('Navbar — DMV: permisos de conducir con aviso de 3 meses para la cita (decisión 2026-11-22)', () => {
+  it('los 3 meses se refieren a sacar la cita, no al plazo de renovación (ES y EN)', () => {
+    expect(src).toContain('href: "/dmv/permiso-conducir", description: "¿Se vence tu licencia? Ven 3 meses antes a sacar tu cita"');
+    expect(src).toContain('href: "/en/dmv/drivers-permit", description: "License expiring? Come in 3 months early to book your appointment"');
+    expect(src).not.toMatch(/[Rr]enuévala 3 meses|[Rr]enew it 3 months/);
+  });
+});
+
+describe('Navbar — categoría Real Estate entre Inmigración y Más Servicios (decisión 2026-11-22)', () => {
+  it('va después de Inmigración y antes de Más Servicios, en ES y EN', () => {
+    const es = [src.indexOf('label: "Inmigración"'), src.indexOf('href: "/bienes-raices/"'), src.indexOf('label: "Más Servicios"')];
+    const en = [src.indexOf('label: "Immigration"'), src.indexOf('href: "/en/real-estate/"'), src.indexOf('label: "More Services"')];
+    for (const [a, b, c] of [es, en]) {
+      expect(a).toBeGreaterThan(-1);
+      expect(b).toBeGreaterThan(a);
+      expect(c).toBeGreaterThan(b);
+    }
+  });
+  it('dos ítems de compra (casa y terreno), ES y EN', () => {
+    expect(src).toContain('{ label: "Compra de casa", href: "/bienes-raices/comprar-casa"');
+    expect(src).toContain('{ label: "Compra de terreno", href: "/bienes-raices/comprar-terreno"');
+    expect(src).toContain('{ label: "Buying a home", href: "/en/real-estate/buy-a-home"');
+    expect(src).toContain('{ label: "Buying land", href: "/en/real-estate/buy-land"');
+  });
+  it('se escribe "Real Estate" (no "Real State") y no usa "Realtor"', () => {
+    expect(src).not.toMatch(/Real State/i);
+    expect(src).not.toMatch(/Realtor/i);
   });
 });
 

@@ -26,6 +26,14 @@ describe('CtaSection', () => {
     expect(await render('en')).toContain('aria-label="Call us at (702) 640-0088"');
   });
 
+  it('desde 640px la imagen va al lado del texto (40% tablet, 50% desktop)', async () => {
+    const html = await render('es');
+    expect(html).toMatch(/class="grid [^"]*sm:grid-cols-\[2fr_3fr\] lg:grid-cols-2"/);
+    // 4:3 solo en mobile; desde 640px toma el alto del texto
+    expect(html).toMatch(/class="relative aspect-\[4\/3\] sm:aspect-auto"/);
+    expect(html).toContain('sizes="(min-width: 990px) 50vw, (min-width: 640px) 40vw, 100vw"');
+  });
+
   it('la imagen usa el alt de imageAlt', async () => {
     // R2: renderToString HTML-escapes attribute values (& -> entity), so assert
     // the stable substrings of the alt without the ampersand.

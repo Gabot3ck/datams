@@ -24,6 +24,11 @@ describe('getAlternates', () => {
     expect(alt.en).toBe('https://tudominio.com/en/');
   });
 
+  it('/nosotros resuelve su gemela /en/about (y al revés)', () => {
+    expect(getAlternates('/nosotros').en).toBe('https://tudominio.com/en/about');
+    expect(getAlternates('/en/about').es).toBe('https://tudominio.com/nosotros');
+  });
+
   it('ruta no registrada: fallback es = url, en = null', () => {
     const alt = getAlternates('/pagina-inexistente');
     expect(alt.es).toBe('https://tudominio.com/pagina-inexistente');
@@ -35,7 +40,7 @@ describe('ROUTES', () => {
   it('incluye los 3 pilares y sus 14 hijas + home + contacto (18)', () => {
     expect(ROUTES.length).toBeGreaterThanOrEqual(18);
   });
-  it('solo la home tiene enBuilt=true en esta ronda', () => {
-    expect(ROUTES.filter((r) => r.enBuilt).map((r) => r.es)).toEqual(['/']);
+  it('solo la home y Nosotros tienen enBuilt=true', () => {
+    expect(ROUTES.filter((r) => r.enBuilt).map((r) => r.es)).toEqual(['/', '/nosotros']);
   });
 });

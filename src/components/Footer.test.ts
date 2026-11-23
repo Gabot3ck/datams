@@ -8,16 +8,16 @@ const render = async (path: string) =>
   });
 
 describe('Footer', () => {
-  it('enlaza las 8 categorías de servicio en ES (interlinking principal)', async () => {
+  it('enlaza las 9 categorías de servicio en ES (interlinking principal)', async () => {
     const html = await render('/');
-    for (const href of ['/taxes', '/itin-ein', '/notary-public', '/inmigracion', '/negocio', '/dmv', '/corte', '/otros']) {
+    for (const href of ['/taxes', '/itin-ein', '/notary-public', '/inmigracion', '/bienes-raices', '/negocio', '/dmv', '/corte', '/otros']) {
       expect(html).toContain(`href="${href}"`);
     }
   });
 
-  it('enlaza las 8 categorías de servicio en EN', async () => {
+  it('enlaza las 9 categorías de servicio en EN', async () => {
     const html = await render('/en');
-    for (const href of ['/en/taxes', '/en/itin-ein', '/en/notary-public', '/en/immigration', '/en/business', '/en/dmv', '/en/court', '/en/other']) {
+    for (const href of ['/en/taxes', '/en/itin-ein', '/en/notary-public', '/en/immigration', '/en/real-estate', '/en/business', '/en/dmv', '/en/court', '/en/other']) {
       expect(html).toContain(`href="${href}"`);
     }
   });

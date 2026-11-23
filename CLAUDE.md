@@ -48,7 +48,7 @@ const t = { es: { heading: "Español" }, en: { heading: "English" } }[lang];
 ROUTES mapea cada ruta ES a su gemela EN + flag `enBuilt`. getAlternates(pathname) alimenta:
 - hreflang en BaseLayout (solo emite `<link hreflang="en">` si enBuilt)
 - filtro del sitemap
-- switch de idioma del Navbar (cae a `/en` home si no hay gemela construida)
+- switch de idioma del Navbar (cae a `/en` home si no hay gemela construida). Los slugs EN pueden ser traducidos (`/nosotros` ↔ `/en/about`): nunca armar la URL EN como `/en` + ruta ES
 
 Al crear una página EN: crear el archivo + poner `enBuilt: true` en su entrada.
 
@@ -57,11 +57,11 @@ Al crear una página EN: crear el archivo + poner `enBuilt: true` en su entrada.
 | ES | EN |
 |----|----|
 | `/contacto` | `/en/contact` |
-| `/nosotros` | `/en/about` |
 | `/blog` | `/en/blog` |
 | `/taxes/*` | `/en/taxes/*` |
 | `/notary-public/*` | `/en/notary-public/*` |
 | `/inmigracion/*` | `/en/immigration/*` |
+| `/bienes-raices/*` | `/en/real-estate/*` |
 | `/itin-ein/*` | `/en/itin-ein/*` |
 | `/irs/*` | `/en/irs/*` |
 | `/negocio/*` | `/en/business/*` |
@@ -73,6 +73,7 @@ Al crear una página EN: crear el archivo + poner `enBuilt: true` en su entrada.
 
 ```
 src/
+├── assets/images/team/       # Nosotros: datamultiservices-asesor-{1..5}.webp (720×960) + datamultiservices-equipo-las-vegas.webp (1024×728). Se generan con scripts/build-team-photos.mjs desde ../datams/team
 ├── assets/images/banners/    # Slides hero: slide 1 = datamultiservices-taxes-nevada-1{m,t,d}.webp; slide 2 = datamultiservices-ayuda-irs-nevada-2{m,t,d}.webp; slide 3 = datamultiservices-notary-public-las-vegas-3{m,t,d}.webp; slide 4 = datamultiservices-ayuda-itin-ein-las-vegas-4{m,t,d}.webp
 ├── components/
 │   ├── Hero.astro            # Slider 4 slides (taxes · IRS · Notary Public · ITIN-EIN), GSAP, responsive images via astro:assets
@@ -85,6 +86,7 @@ src/
 │   ├── OfficeSection.astro     # Home: video 16:9 + 3 fotos (<990: video arriba + fila de 3; ≥990: video 3/4 + columna de 3, sin alto fijo) + CTA maps
 │   ├── FaqSection.astro        # Acordeón de FAQ del home — NO es service/FaqSection (HomePage importa este)
 │   ├── CtaSection.astro        # Home: CTA final (bg-brand) — NO es service/CtaBanner
+│   ├── about/                # Nosotros: AboutPage (orquestador + script data-reveal), AboutHero (foto grupal ≤1024px), AboutStats, TeamGrid + TeamCard, ValuesSection
 │   ├── Navbar.astro          # Header sticky: idioma + megamenú + mobile
 │   ├── MegaMenu.tsx          # React — portal a document.body, tabs por clic
 │   ├── MegaMenuPanel.tsx     # Panel del megamenú: grid 2 cols de items + imagen + footer link
@@ -96,6 +98,7 @@ src/
 │                              # DocsChecklist, InfoBlock, WhyUs, FaqSection, CtaBanner
 ├── config/
 │   ├── site.ts               # SITE_URL (única var de prod), SITE_NAME, OG_IMAGE, GSC, BUSINESS, helpers JSON-LD, canonicalURL
+│   ├── team.ts               # Equipo de Nosotros: TEAM ("Asesor 1…5" provisorios, cargo Tax Preparer), foto grupal, 10+ / 5,000+. Sin JSON-LD Person hasta tener nombres reales (pregunta 28)
 │   └── routes.ts             # registro ES↔EN + getAlternates() para hreflang/sitemap/switch de idioma
 ├── layouts/
 │   ├── BaseLayout.astro
@@ -111,6 +114,7 @@ public/
 └── scripts/
     └── hero-slider.js        # Lógica real del slider (prev/next/dots/autoplay/keyboard/swipe)
 scripts/
+├── build-team-photos.mjs     # Fotos de Nosotros (sharp): recorte 3:4 y parche sobre la placa ajena del asesor 3
 └── check-links.mjs           # verificador de enlaces internos post-build (+ check-links.test.ts)
 vitest.config.ts              # tests con Vitest + Container API de Astro
 ```
@@ -140,8 +144,8 @@ vitest.config.ts              # tests con Vitest + Container API de Astro
 4. <WhyUsSection lang={lang} />      ← imagen + checklist de 4 puntos (horizontal desde 640px; en mobile foto 200×250 recortada)
 5. <TestimonialsSection lang={lang} /> ← reseñas de Google (carrusel con dots en mobile)
 6. <OfficeSection lang={lang} />     ← video + 3 fotos + CTA "cómo llegar"
-7. <FaqSection lang={lang} faqs={faq} image={faqImage} /> ← acordeón
-8. <CtaSection lang={lang} />        ← fondo bg-brand, conversión final
+7. <FaqSection lang={lang} faqs={faq} image={faqImage} /> ← acordeón + foto con el patrón de WhyUs (200px en mobile, 34% al lado desde 640px; `image.src` es ImageMetadata de src/assets)
+8. <CtaSection lang={lang} />        ← fondo bg-brand, conversión final; foto arriba en mobile, al lado del texto desde 640px (40% tablet, 50% desktop)
 ```
 
 `HomePage.astro` quedó como orquestador: solo importa las 8 secciones, define
@@ -158,14 +162,15 @@ La sección **Community & Stats** (ahora en `CommunitySection.astro`, después d
 
 ### Navbar.astro — menú de servicios reales
 
-5 items con mega menú + 3 links simples:
+6 items con mega menú + 3 links simples. A 990px van justos: los ítems llevan `whitespace-nowrap`, `px-2 xl:px-2.5` y la lista `gap-0 xl:gap-1`. Si se agrega otro ítem, revisar a 990px que no se salga del contenedor:
 
 | Label | Tabs del mega menú |
 |-------|--------------------|
 | Taxes | Taxes Personales · Taxes de Negocio · Ayuda con el IRS |
 | ITIN / EIN | ITIN & EIN (3 items) |
-| Notary Public | Poderes y Autorizaciones · Documentos Legales · Títulos de Traila · Apostillas |
+| Notary Public | Poderes y Autorizaciones · Documentos Legales · Apostillas |
 | Inmigración | Trámites Migratorios · Documentos y Apoyo |
+| Real Estate | Bienes Raíces (Compra de casa · Compra de terreno) — brokerage pendiente: `[PLACEHOLDER:` en `Navbar.astro` |
 | Más Servicios | Business · DMV · Formularios Corte · Otros |
 | Nosotros / Blog / Contacto | — links simples |
 
@@ -215,9 +220,9 @@ interface NavItem {
 - Fondo `bg-midnight` con el perfil de Las Vegas como borde superior (`FooterSkyline.astro`, SVG decorativo `aria-hidden`)
 - Perfil en orden real del Strip: Luxor (haz amarillo claro) · Excalibur · NY-NY (Estatua + Empire + Chrysler) · Paris (Eiffel + globo) · High Roller · Wynn/Encore · Stratosphere · letrero "Welcome to Fabulous Las Vegas" (letras negras, sin estrella). Eiffel y Estatua = SVG de descarga libre en `src/assets/svg/` (importados `?raw`); el resto es dibujo propio
 - Animación GSAP + ScrollTrigger en el `<script>` de `Footer.astro`: parallax de 3 capas (`data-layer`), ventanas, haz, ampolletas del letrero, noria girando y entrada de columnas (`data-fx-col`). Respeta `prefers-reduced-motion`
-- 4 columnas: Nosotros · Contacto (dirección + teléfono, **sin WhatsApp**) · **Servicios** (8 links de categoría) · Horario (`buildHoursTable()` de `site.ts`, sale de `BUSINESS.seasons`) + "Cómo llegar"
+- 4 columnas: Nosotros · Contacto (dirección + teléfono, **sin WhatsApp**) · **Servicios** (9 links de categoría) · Horario (`buildHoursTable()` de `site.ts`, sale de `BUSINESS.seasons`) + "Cómo llegar"
 - Abajo, centrado: divisor con Instagram/Facebook · logo · aviso "No somos abogados" (NRS 240A.150) · copyright · autor. Instagram y Facebook con URLs reales; autor = `#` (pendiente)
-- Los 8 links de categoría son el interlinking SEO principal — siempre visibles sin JS
+- Los 9 links de categoría son el interlinking SEO principal — siempre visibles sin JS
 - Lang inferida desde `Astro.url.pathname`. Registrado en `BaseLayout.astro`
 
 ### Páginas de servicio (src/components/service/ + ServiceLayout.astro)
@@ -268,7 +273,7 @@ Todo centralizado en `src/config/site.ts`:
 | `OG_IMAGE`         | Crear `/public/assets/og-image.webp` 1200×675    |
 | `GSC_VERIFICATION` | Código de Google Search Console                |
 | `BUSINESS.email`   | Email de contacto real                         |
-| Placeholders de contenido | Buscar `[PLACEHOLDER:` en `src/` — precios, PTIN/EFIN, política de citas |
+| Placeholders de contenido | Buscar `[PLACEHOLDER:` en `src/` — precios, PTIN/EFIN, política de citas, brokerage de Real Estate (NAC 645.610) |
 
 También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto con `SITE_URL`.
 
@@ -294,6 +299,7 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [ ] `/taxes/extension` es enlace roto (página sin crear): `npm run check:links`
 - [x] `Navbar.test.ts` tolera CRLF (regex `\r?\n`); suite completa en verde
 - [ ] Limitar el ancho de párrafos: `max-w-*` está redefinido en `@theme` (xs=425px, md=768px…), así que esas clases casi no limitan
+- [ ] Nosotros: nombres y cargos reales en `config/team.ts`, retrato de la 6ª persona y foto grupal original (pregunta 28); con nombres reales, sumar JSON-LD `Person`
 - [ ] Footer: link del autor sigue en `#` (Instagram y Facebook ya tienen URL real)
 - [x] Title y meta del Home con "Taxes en Las Vegas" (628da2a)
 

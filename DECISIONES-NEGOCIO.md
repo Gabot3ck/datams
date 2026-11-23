@@ -256,6 +256,8 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Resultado:** Notary Public queda con 4 pestañas: Poderes y Autorizaciones (4), Documentos Legales (6), Títulos de Traila (2) y Apostillas (2).
 
 ### 3.3 Pestaña propia "Títulos de Traila"
+> **Reemplazado el 2026-11-22:** la pestaña se eliminó a pedido del cliente (ver 3.12).
+
 - **Decisión:** los títulos de mobile home tienen su propia pestaña, **"Títulos de Traila"** ("Mobile Home Titles" en inglés), entre Documentos Legales y Apostillas. ✅
 - **Por qué pestaña y no grupo:** primero se probó como grupo con encabezado al final de "Documentos Legales", pero quedaba al fondo de una lista de 8. Como pestaña se ve apenas se abre el menú de Notary Public, las pestañas quedan equilibradas (Apostillas también tiene 2) y el menú mantiene su estructura simple de dos niveles, sin código extra.
 - **Por qué "traila":** es como habla el cliente real, así que se reconoce al instante. Como el nombre de la pestaña no es un enlace, no afecta al SEO. La palabra también irá en el título de la página ("Título de Mobile Home (Casa Móvil o Traila) en Las Vegas") para captar esa búsqueda.
@@ -268,6 +270,8 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Por qué reemplaza a "Títulos de casas móviles":** el ítem existente cubría el mismo servicio. Se renombró y **conserva su URL** (`/notary-public/titulos-casas-moviles`) para que no haya dos páginas compitiendo por la misma búsqueda (ver 5.1).
 
 ### 3.5 Living trust: solo para un trust que ya existe
+> **Reemplazado el 2026-11-22:** el ítem salió del menú junto con la pestaña "Títulos de Traila" (ver 3.12). Si vuelve, aplican estas mismas reglas.
+
 - **Decisión:** el ítem se llama **"Mobile Home en un Living Trust"**, con la descripción "Pasa tu traila a un trust ya existente". Tiene página propia: `/notary-public/mobile-home-living-trust`. ✅
 - **Por qué no "Living trust" a secas:** se leería como "hacemos living trusts". **Redactar** un trust es planificación patrimonial y, para quien no es abogado, práctica ilegal del derecho. Además choca con la prohibición de dar asesoría legal de NRS 240A (ver 1.8).
 - **Qué sí se puede ofrecer:** poner la mobile home a nombre de un trust **ya creado por un abogado**. El formulario oficial T1 de la Nevada Housing Division tiene una sección para trusts que firma el trustee **ante notary public**: es trabajo de Notary Public.
@@ -350,6 +354,61 @@ Ordenado de mayor a menor urgencia para el visitante:
 - **Nuevo "Copias, impresiones y fax".** ✅ Descripción: **"Directo en nuestra oficina"**. URL: `/otros/copias-impresiones-fax`. En inglés: "Copies, printing & fax", con la descripción "Right at our office" (`/en/other/copies-printing-fax`). La descripción calza con la atención por orden de llegada (ver 6.2). Una página corta con horario y precios sirve para quien busca "fax cerca de mí".
 - **Resultado:** la pestaña "Otros Servicios" pasa de 7 a 6 ítems.
 - **Estrategia de contenido actualizada (2026-10-17):** `CONTENT-STRATEGY.md` ya tiene las URLs y la metadata nuevas de Otros (árbol y tabla), y las filas de DMV de "Duplicado de título" (con remolque) y de la cita del DMV (sin "agendar"). ✅
+### 3.12 Notary Public queda con 3 pestañas: "Trámites de título de trailer" en Poderes
+- **Pedido del cliente (2026-11-22):** quitar la pestaña "Títulos de Traila" con todos sus enlaces y poner "Trámites de título de trailer" en "Poderes y Autorizaciones". ✅ Aplicado tal cual, y queda pendiente de revisar.
+- **Resultado:** Notary Public tiene 3 pestañas: Poderes y Autorizaciones (5), Documentos Legales (6) y Apostillas (4).
+  - Nuevo ítem: **"Trámites de título de trailer"**, con la descripción "Traspaso o duplicado del título". En inglés: "Trailer title services", "Title transfers and duplicates".
+  - **Se conserva la URL** del ítem anterior (`/notary-public/titulos-casas-moviles`, `/en/notary-public/mobile-home-titles`): es el mismo servicio de título y así no hay dos páginas compitiendo por la misma búsqueda (ver 5.1). Si se confirma que "trailer" es un remolque, la URL se cambia antes de crear la página.
+  - Sale **"Mobile Home en un Living Trust"** (`/notary-public/mobile-home-living-trust`). La página no existía, así que no queda ningún enlace roto.
+- **Pendiente:** ❓
+  - **¿"Trailer" es casa móvil o remolque?** Si es mobile home, el título lo maneja la Nevada Housing Division (ver 3.3). Si es un remolque (de carga, de viaje, de botes), lo titula el DMV y competiría con "Duplicado de título" de la pestaña DMV, que ya dice "remolques" (ver 3.7). Ver pregunta 21.
+  - **"Trailer" es un anglicismo.** En inglés se entiende como remolque. Si es casa móvil, la propuesta es "Trámite de título de traila (Mobile Home)" / "Mobile Home title services", con la descripción "Traspaso o duplicado del título de tu casa móvil".
+  - **Living trust:** si el cliente quiere seguir ofreciéndolo, la propuesta es ponerlo en "Documentos Legales" con las reglas de 3.5. Ver pregunta 21.
+
+### 3.13 "Renovación de licencia de negocio": ven 1 mes antes y evita la multa
+- **Pedido del cliente (2026-11-22):** un texto como el de las renovaciones de Inmigración (ver 4.3), pero con 1 mes de anticipación.
+- **Decisión:** la descripción es **"Ven 1 mes antes y evita la multa por renovar tarde"** ("Come in 1 month early and avoid the late fee" en inglés). ✅
+- **Por qué aquí sí va "1 mes":** la licencia estatal de negocio de Nevada se puede renovar desde 90 días antes de que venza, así que 1 mes cae dentro del plazo oficial. Va redactado como recomendación de la oficina ("ven"), no como el plazo legal.
+- **Por qué mencionar la multa:** vence el último día del mes de aniversario (las LLC, junto con la Annual List; los sole proprietors, en la fecha que dice su licencia). No hay período de gracia: si se paga tarde, la multa es de $100 más la tarifa anual. Para las LLC hay además un recargo por la Annual List. La multa motiva más que el plazo.
+- **URL en inglés:** `/en/business/llc-renewal` pasa a **`/en/business/business-license-renewal`**, que es la gemela de `/negocio/renovacion-licencia`. El ítem también cubre a los sole proprietors, y "LLC renewal" suena a la Annual List. La página no existía, así que no queda ningún enlace roto. ✅
+- **Para la página:**
+  - Dejar claro que se trata de la licencia **estatal** (Secretaría de Estado). Las licencias de la ciudad de Las Vegas y del condado Clark tienen otras fechas y van en "Permisos del condado y la ciudad" (ver 3.11).
+  - Antes de publicar los montos, confirmarlos en nvsos.gov, y no prometer que se evitan multas que ya corren.
+- **Fuentes:** [State Business License – FAQ](https://www.nvsos.gov/licensing/state-business-license/state-business-license-faq), [Instrucciones de la Annual List y la State Business License](https://bizhub.nv.gov/cms-webhook-bff/uploads/bizhub/Annual_List_and_State_Business_License_Non_Corps_Final_6904713d13.pdf).
+
+### 3.14 "Permisos de conducir": ven 3 meses antes a sacar tu cita
+- **Pedido del cliente (2026-11-22):** un texto como el de las renovaciones (ver 3.13 y 4.3), con 3 meses de anticipación.
+- **Decisión:** la descripción es **"¿Se vence tu licencia? Ven 3 meses antes a sacar tu cita"** ("License expiring? Come in 3 months early to book your appointment" en inglés). ✅ La URL no cambia.
+- **Por qué los 3 meses son para la cita y no para renovar:** según la página actual del DMV de Nevada, la renovación de la licencia se habilita **60 días antes** del vencimiento. Hay páginas más viejas del mismo DMV que dicen 90 días o 6 meses, pero se contradicen, y se toma la actual. Si el mensaje dijera "renueva 3 meses antes", la persona podría llegar cuando el DMV todavía no la deja renovar. En cambio, las citas del DMV escasean, y la **Driver Authorization Card (DAC)** solo se renueva en persona: venir 3 meses antes para sacar la cita es una recomendación de la oficina, igual que en 3.13.
+- **Por qué "¿Se vence tu licencia?":** el ítem se llama "Permisos de conducir" y no dice "renovación". Sin esa pregunta, "3 meses antes" queda sin contexto. Además, el "permiso" de Nevada (instruction permit) es el de aprendiz, y a ese no le aplica el aviso.
+- **"Sacar tu cita":** respeta el criterio de 3.9, que no dice que nosotros damos la cita. El aviso de que no estamos afiliados al DMV va en la página (ver 1.8).
+- **Pendiente:** ❓ Ver preguntas 23 y 24.
+  - ¿Por qué 3 meses? Si es por la espera de las citas, queda así. Si el cliente cree que se puede renovar 3 meses antes, hay que explicarle que son 60 días.
+  - ¿Qué cubre "Permisos de conducir"? Según la respuesta, el ítem podría llamarse "Licencia de conducir" (que es lo que la gente busca), con una descripción de alcance como "Primera vez, renovación y Driver Authorization Card".
+- **Fuentes:** [Renew Your License or ID Card (NV DMV)](https://dmv.nv.gov/dlrenewal.htm), [Driver Authorization Card (NV DMV)](https://dmv.nv.gov/dac.htm), [Online Services (NV DMV)](https://dmv.nv.gov/onlineservices.htm).
+
+### 3.15 Nueva categoría "Real Estate" (compra de casas y terrenos)
+- **Pedido del cliente (2026-11-22):** se incorpora el servicio de bienes raíces. Va como categoría propia entre Inmigración y Más Servicios, con el texto "te ayudamos con la facilidad de venta de casas y terrenos".
+- **Lo que confirmó el cliente:** hay licencia de bienes raíces de Nevada y una asesora dedicada solo a este servicio (no hace Notary Public). El servicio es **sobre todo de compra**, de casas y terrenos. ✅
+- **Decisión:** ✅
+  - Navbar: **"Real Estate"** → `/bienes-raices/` (EN: "Real Estate" → `/en/real-estate/`), con la pestaña **"Bienes Raíces"** ("Real Estate").
+  - **"Compra de casa"**: "Te acompañamos en todo el proceso para comprar tu casa" · `/bienes-raices/comprar-casa` (EN: "Buying a home", "We guide you through every step of buying your home" · `/en/real-estate/buy-a-home`).
+  - **"Compra de terreno"**: "Te ayudamos a encontrar y comprar tu terreno" · `/bienes-raices/comprar-terreno` (EN: "Buying land", "We help you find and buy your land" · `/en/real-estate/buy-land`).
+  - También entra en el pie de página (9 links de categoría), el breadcrumb y el registro de rutas. La tarjeta de servicios del Home no cambia: sumar una séptima tarjeta es una decisión de diseño aparte.
+- **Por qué no "venta":** el cliente aclaró que la asesoría es generalmente para comprar. Si después quieren ofrecer la venta, se agrega un ítem "Venta de casas y terrenos". Ver pregunta 27.
+- **Por qué "Real Estate" en el menú y "bienes-raices" en la URL:** nuestro público dice "real estate", igual que "taxes" y "Notary Public". Pero en Google se busca más "bienes raíces", y la URL en español lo aprovecha. Se escribe "Real Estate", no "Real State".
+- **Por qué "te acompañamos / te ayudamos" y no "asesoría":** para que no se confunda con asesoría legal (ver 1.8).
+- **Lo que la ley exige en la publicidad (NRS 645.315, NAC 645.610 y 645.613):**
+  - El sitio web cuenta como anuncio. El **nombre del brokerage** con el que trabaja la asesora debe aparecer **con prominencia** en todo anuncio de bienes raíces.
+  - Si la asesora es salesperson o broker-salesperson, no puede anunciarse solo con su nombre ni con el de otro negocio: todo va bajo la supervisión y el nombre de su brokerage.
+  - ⏳ **Pendiente: nombre del brokerage y número de licencia.** Hay un `[PLACEHOLDER:` en el menú (`Navbar.astro`). **No publicar el sitio con esta categoría hasta tener el dato** y mostrarlo en las páginas de Real Estate. Ver pregunta 25.
+- **No usar "Realtor":** es una marca registrada de la National Association of Realtors y solo pueden usarla sus miembros.
+- **Para las páginas:**
+  - Nombre del brokerage visible y, si corresponde, el logo de Equal Housing Opportunity (vivienda justa). Sin lenguaje que excluya a personas por origen, familia, religión u otras categorías protegidas.
+  - No prometer aprobación de préstamos ni tasas.
+  - **Oportunidad SEO:** "comprar casa con ITIN" se busca mucho en la comunidad hispana y conecta con las páginas de ITIN. Si la asesora trabaja con compradores con ITIN, conviene darle una sección o una página propia. Ver pregunta 26.
+- **Fuentes:** [NAC 645.610](https://regulations.justia.com/states/nevada/chapter-645/standards-of-practice/section-645-610), [NAC 645.613](https://regulations.justia.com/states/nevada/chapter-645/standards-of-practice/section-645-613), [NRS 645.315](https://law.justia.com/codes/nevada/2022/chapter-645/statute-645-315/), [NAC 645 (Legislatura de Nevada)](https://www.leg.state.nv.us/NAC/NAC-645.html).
+
 ---
 
 ## 4. Menú Inmigración
@@ -380,6 +439,20 @@ Ordenado de mayor a menor urgencia para el visitante:
   - No: "te decimos si calificas como patrocinador", "te conseguimos un co-patrocinador" ni "te aseguramos que lo aprueben". La asesoría migratoria solo la pueden dar abogados o representantes acreditados.
 - **Resultado:** "Documentos y Apoyo Migratorio" pasa de 5 a 7 ítems. "Otros formularios migratorios" sigue al final, como opción para todo lo demás.
 - **Keywords:** los exports de Ads no tienen datos de "social security" ni de "affidavit". Hay que investigarlas aparte, igual que en Notary Public (ver 3.6). ⏳
+
+### 4.3 Renovaciones de residencia y permiso de trabajo: el plazo oficial es de 6 meses
+- **Pedido del cliente (2026-11-22):** agregar "Renovar con 5 meses de anticipación" a "Renovación de residencia permanente" y a "Renovación de permiso de trabajo".
+- **Decisión:** los dos ítems llevan como descripción el plazo oficial de USCIS, **6 meses**. ✅ La URL no cambia.
+  - Residencia: **"Renuévala desde 6 meses antes de que venza"** ("Renew it up to 6 months before it expires" en inglés).
+  - Permiso de trabajo: **"Renuévalo desde 6 meses antes de que venza"** ("Renew it up to 6 months before it expires" en inglés).
+- **Por qué 6 y no 5:**
+  - **Residencia (I-90):** se puede renovar cuando a la tarjeta le quedan 6 meses o menos. Si se pide antes, USCIS puede negarla.
+  - **Permiso de trabajo (I-765):** USCIS recomienda pedir la renovación hasta 180 días (6 meses) antes de que venza. Desde el **30 de octubre de 2025** ya no hay extensión automática para los permisos que se renuevan: si el trámite se demora, la persona puede quedarse sin poder trabajar legalmente. Por eso conviene pedirla lo antes posible.
+  - "5 meses" suena a regla oficial y no lo es. Quien tenga 6 meses por delante perdería un mes, y quien tenga 3 podría pensar que ya es tarde.
+- **Alternativa si el cliente quiere el mes de margen:** **"Ven 5 meses antes para renovar a tiempo"** ("Come in 5 months early to renew on time"). Funciona porque es una recomendación de la oficina para juntar documentos, no el plazo de USCIS. ❓ Ver pregunta 22.
+- **NRS 240A:** dar el plazo oficial de USCIS es información general, no asesoría legal.
+- **Para la página de residencia:** aclarar que la regla de 6 meses es para la green card de 10 años. La residencia condicional de 2 años no se renueva con el I-90: se quitan las condiciones con el **I-751** en los 90 días antes de que venza.
+- **Fuentes:** [DHS Ends Automatic Extension of Employment Authorization](https://www.uscis.gov/newsroom/news-releases/dhs-ends-automatic-extension-of-employment-authorization), [Replace Your Green Card](https://www.uscis.gov/green-card/after-we-grant-your-green-card/replace-your-green-card), [Policy Manual Vol. 11, Part B, Ch. 2](https://www.uscis.gov/policy-manual/volume-11-part-b-chapter-2).
 
 ---
 
@@ -472,6 +545,20 @@ Ordenado de mayor a menor urgencia para el visitante:
 
 > ¿De dónde sale la insignia "IRS Authorized CAA"? No los encontramos en la lista de agentes autorizados del IRS para Nevada. Si tienen el acuerdo, ¿bajo qué nombre aparecen? Para el ITIN: ¿cómo manejan hoy los documentos originales del cliente? Si alguien del equipo tiene la tarjeta de Enrolled Agent, por favor envíennos el número de enrolamiento. Y por último: ¿están registrados en la Secretaría de Estado de Nevada como Document Preparation Service, con fianza? Si es así, ¿cuál es el número de registro?
 
+**Para el próximo sprint con el cliente** (preguntas 21 a 27, cambios de menú del 2026-11-22):
+
+- **Real Estate (presentar la categoría nueva):**
+  - **25.** ¿Cuál es el nombre del brokerage con el que trabaja la asesora y su número de licencia? ¿El brokerage aprueba que el servicio aparezca en este sitio? *Obligatorio por ley para publicar la categoría.*
+  - **26.** ¿La asesora trabaja con compradores que tienen ITIN?
+  - **27.** ¿Les parecen bien "Compra de casa" y "Compra de terreno", o quieren sumar "Venta de casas y terrenos"?
+- **Notary Public:**
+  - **21.** Cuando dicen "título de trailer", ¿se refieren a la casa móvil (mobile home) o a un remolque de carga o de viaje? ¿Quieren seguir ofreciendo el trámite de pasar la mobile home a un living trust?
+- **Inmigración:**
+  - **22.** En las renovaciones de residencia y de permiso de trabajo pusimos el plazo oficial de USCIS ("desde 6 meses antes de que venza"). ¿Les sirve así, o prefieren "Ven 5 meses antes para renovar a tiempo"?
+- **DMV:**
+  - **23.** En "Permisos de conducir", ¿los 3 meses son por la espera de las citas del DMV? (El DMV deja renovar desde 60 días antes.)
+  - **24.** ¿Qué incluye "Permisos de conducir": licencia de primera vez, renovación, permiso de aprendiz, Driver Authorization Card?
+
 **Mensaje sugerido para las fotos** (cubre las preguntas 17 a 20):
 
 > Para mejorar la sección "Conoce nuestra oficina" necesitamos tres cosas: (1) la foto de la asesora sentada en su escritorio de la sesión de junio, como la que tienen del asesor; (2) una foto nueva del interior con el logo, de día, con la luz de la sala del fondo apagada para que no se refleje quien saca la foto en el vidrio; y (3) el link de su ficha de Google Maps. Por favor, envíen las fotos por WhatsApp "como documento", no como imagen, para que no pierdan calidad. Una consulta más: la placa en el retrato de la asesora dice "David Takamura · Tax Specialist". ¿Es la de ella? ¿Qué nombre y cargo podemos publicar?
@@ -498,6 +585,14 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 18 | ¿Pueden sacar de nuevo la foto del interior (el logo dorado y los escritorios)? De día, desde el mismo lugar, con la luz de la sala del fondo apagada o corriéndose un paso al costado para que no se refleje el fotógrafo en el vidrio, y enviada "como documento" | La foto actual es chica (1024×768) y sale el reflejo del fotógrafo bajo el logo. Con la foto nueva entra a la galería de la oficina |
 | 19 | La placa con el nombre que lleva la asesora en su retrato dice "Professional Multiservices · David Takamura · Tax Specialist". ¿Es la de ella? ¿Qué nombre y cargo podemos publicar? | Si no es su placa: se borra en la imagen antes de usar el retrato (página Nosotros, Google Business) |
 | 20 | ¿Nos pasan el link de su ficha de Google Business (Google Maps)? | Permite poner el mapa con su pin, estrellas y reseñas en "Conoce nuestra oficina" o en Contacto |
+| 21 | Cuando dicen "título de trailer" en Notary Public, ¿se refieren a la casa móvil (mobile home) o a un remolque de carga o de viaje? ¿Quieren seguir ofreciendo el trámite de pasar la mobile home a un living trust? Ver 3.12 | Si es mobile home: el ítem pasa a "Trámite de título de traila (Mobile Home)". Si es remolque: cambia la URL y se revisa el choque con "Duplicado de título" de DMV. Si sigue el living trust: vuelve en "Documentos Legales" |
+| 22 | Para las renovaciones de residencia y de permiso de trabajo pusimos el plazo oficial de USCIS: "Renuévala/Renuévalo desde 6 meses antes de que venza". ¿Les sirve así, o prefieren "Ven 5 meses antes para renovar a tiempo" como recomendación de la oficina? Ver 4.3 | Si prefieren los 5 meses: cambia la descripción de los dos ítems (ES/EN) |
+| 23 | En "Permisos de conducir" pusimos "¿Se vence tu licencia? Ven 3 meses antes a sacar tu cita". ¿Los 3 meses son por la espera de las citas del DMV? Ver 3.14 | Si creían que se puede renovar 3 meses antes: el DMV lo permite desde 60 días antes, y el texto se mantiene enfocado en la cita |
+| 24 | ¿Qué incluye "Permisos de conducir": licencia de primera vez, renovación, permiso de aprendiz, Driver Authorization Card? Ver 3.14 | Puede cambiar el nombre a "Licencia de conducir" y la descripción a una de alcance |
+| 25 | ¿Cuál es el nombre del brokerage con el que trabaja la asesora de Real Estate y su número de licencia? ¿El brokerage aprueba que el servicio aparezca en este sitio? Ver 3.15 | Es obligatorio por ley (NAC 645.610): sin este dato no se puede publicar la categoría Real Estate |
+| 26 | ¿La asesora de Real Estate trabaja con compradores que tienen ITIN (préstamos ITIN)? Ver 3.15 | Si es así: sección o página "Comprar casa con ITIN", enlazada con las páginas de ITIN |
+| 27 | ¿Les parecen bien "Compra de casa" y "Compra de terreno" en Real Estate, o quieren sumar "Venta de casas y terrenos"? Ver 3.15 | Si ofrecen la venta: nuevo ítem "Venta de casas y terrenos" en la pestaña Bienes Raíces |
+| 28 | Para la página Nosotros: ¿cuál es el nombre y el cargo de cada asesor? ¿Nos pueden enviar el retrato individual de la asesora que sale sentada a la derecha en la foto grupal, la foto grupal original ("como documento", no por WhatsApp) y sus valores, si tienen unos propios? | Hoy la página muestra "Asesor 1…5" y valores redactados por nosotros. Con la foto original, el hero puede pasar a ancho completo. Sin nombres reales no se publican datos estructurados de cada persona |
 
 ---
 
@@ -536,3 +631,9 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-10-31 | Texto alternativo de la foto en "¿Por qué elegirnos?": "Notary Public certificado" → "Notary Public" (ES/EN) |
 | 2026-11-14 | Video real de la oficina en el Home (9 s, sin audio, en bucle). No se usa el Reel original porque el teléfono estaba mal escrito ("702-640-008"). El folleto que aparece en el video queda como pregunta 16 (1.10) |
 | 2026-11-21 | Título y descripción de la página de inicio con "Taxes en Las Vegas" y el nombre del negocio (ES: "Taxes en Las Vegas y Notary Public \| Data's & Multiservices"; EN: "Las Vegas Tax Preparation \| Data's & Multiservices"). Sin "100%" ni "servicios corporativos" (5.3) |
+| 2026-11-22 | Notary Public: sale la pestaña "Títulos de Traila" (con "Mobile Home en un Living Trust") y entra "Trámites de título de trailer" en Poderes y Autorizaciones, con la misma URL. Aplicado tal cual y pendiente de confirmar (3.12, pregunta 21) |
+| 2026-11-22 | Inmigración: "Renovación de residencia permanente" y "Renovación de permiso de trabajo" llevan el plazo oficial de USCIS ("desde 6 meses antes de que venza") en lugar de los 5 meses pedidos. La alternativa "Ven 5 meses antes para renovar a tiempo" queda como consulta (4.3, pregunta 22) |
+| 2026-11-22 | Negocio: "Renovación de licencia de negocio" lleva la descripción "Ven 1 mes antes y evita la multa por renovar tarde". La URL en inglés pasa de `/en/business/llc-renewal` a `/en/business/business-license-renewal` (3.13) |
+| 2026-11-22 | DMV: "Permisos de conducir" lleva la descripción "¿Se vence tu licencia? Ven 3 meses antes a sacar tu cita". Los 3 meses son para la cita, no para renovar (el DMV habilita la renovación 60 días antes) (3.14, preguntas 23 y 24) |
+| 2026-11-22 | Nueva categoría "Real Estate" entre Inmigración y Más Servicios: "Compra de casa" y "Compra de terreno" (`/bienes-raices/`, `/en/real-estate/`), también en el pie de página. Falta el nombre del brokerage, obligatorio antes de publicar (3.15, preguntas 25 a 27) |
+| 2026-11-22 | Nueva página Nosotros (`/nosotros`, `/en/about`): foto grupal, 5 retratos con nombres provisorios ("Asesor 1…5", cargo Tax Preparer como en sus placas), 10+ años de servicio y 4 valores. En el retrato de la asesora de pelo claro se tapó la placa de "Professional Multiservices · David Takamura" (pregunta 19). La asesora sin retrato individual sale solo en la foto grupal (pregunta 28) |

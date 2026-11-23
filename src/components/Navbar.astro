@@ -2,14 +2,18 @@
 import MegaMenu from "./MegaMenu.tsx";
 import type { MegaSubcategory, MegaMiniLink } from "./MegaMenu.tsx";
 import { BUSINESS } from "../config/site";
+import { getAlternates } from "../config/routes";
 
 const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
 const currentPath = Astro.url.pathname;
 
+// Gemela registrada en routes.ts (slugs traducidos: /nosotros ↔ /en/about).
+// Si la EN no está construida, cae a la home EN.
+const alternates = getAlternates(currentPath);
 const altLangUrl =
   lang === "es"
-    ? `/en${currentPath === "/" ? "" : currentPath}`
-    : currentPath.replace(/^\/en/, "") || "/";
+    ? alternates.en ? new URL(alternates.en).pathname : "/en"
+    : new URL(alternates.es).pathname;
 
 interface NavItem {
   label: string;
@@ -102,6 +106,7 @@ const data: Record<"es" | "en", NavData> = {
               { label: "Carta poder", href: "/notary-public/carta-poder", description: "Para trámites dentro y fuera de EE.UU." },
               { label: "Permiso de salida para menores", href: "/notary-public/permiso-salida-menores", description: "Autorización para viajar con menores de edad" },
               { label: "Autorización retiro de vehículo", href: "/notary-public/autorizacion-vehiculo-corralon", description: "Carta para retirar vehículo en corralón" },
+              { label: "Trámites de título de trailer", href: "/notary-public/titulos-casas-moviles", description: "Traspaso o duplicado del título" },
             ],
           },
           {
@@ -113,13 +118,6 @@ const data: Record<"es" | "en", NavData> = {
               { label: "Testamentos", href: "/notary-public/testamentos", description: "Redacción y firma de testamentos ante notary public" },
               { label: "Quit Claim Deed", href: "/notary-public/quit-claim-deed", description: "Transferencia de propiedad entre personas" },
               { label: "Corrección de nombre en acta", href: "/notary-public/correccion-nombre", description: "Corrección de errores en certificado de nacimiento" },
-            ],
-          },
-          {
-            label: "Títulos de Traila",
-            items: [
-              { label: "Trámite de título de Mobile Home", href: "/notary-public/titulos-casas-moviles", description: "Traspaso o duplicado del título de tu traila" },
-              { label: "Mobile Home en un Living Trust", href: "/notary-public/mobile-home-living-trust", description: "Pasa tu traila a un trust ya existente" },
             ],
           },
           {
@@ -144,9 +142,9 @@ const data: Record<"es" | "en", NavData> = {
               { label: "Ciudadanía americana", href: "/inmigracion/ciudadania-americana", description: "Proceso de naturalización paso a paso" },
               { label: "Renovación de DACA", href: "/inmigracion/renovacion-daca", description: "Renovamos tu permiso DACA a tiempo" },
               { label: "Solicitud de residencia permanente", href: "/inmigracion/residencia-permanente", description: "Green Card — solicitud inicial" },
-              { label: "Renovación de residencia permanente", href: "/inmigracion/renovacion-residencia" },
+              { label: "Renovación de residencia permanente", href: "/inmigracion/renovacion-residencia", description: "Renuévala desde 6 meses antes de que venza" },
               { label: "Solicitud de permiso de trabajo", href: "/inmigracion/permiso-trabajo", description: "Employment Authorization Document (EAD)" },
-              { label: "Renovación de permiso de trabajo", href: "/inmigracion/renovacion-permiso-trabajo" },
+              { label: "Renovación de permiso de trabajo", href: "/inmigracion/renovacion-permiso-trabajo", description: "Renuévalo desde 6 meses antes de que venza" },
               { label: "Solicitud de asilo", href: "/inmigracion/asilo", description: "Asistencia en solicitudes de asilo político" },
             ],
           },
@@ -165,6 +163,21 @@ const data: Record<"es" | "en", NavData> = {
         ],
       },
       {
+        // [PLACEHOLDER: brokerage y número de licencia de la asesora] — NAC 645.610 exige el nombre
+        // del brokerage con prominencia en todo anuncio. Ver DECISIONES-NEGOCIO.md §3.15
+        label: "Real Estate",
+        href: "/bienes-raices/",
+        megaMenu: [
+          {
+            label: "Bienes Raíces",
+            items: [
+              { label: "Compra de casa", href: "/bienes-raices/comprar-casa", description: "Te acompañamos en todo el proceso para comprar tu casa" },
+              { label: "Compra de terreno", href: "/bienes-raices/comprar-terreno", description: "Te ayudamos a encontrar y comprar tu terreno" },
+            ],
+          },
+        ],
+      },
+      {
         label: "Más Servicios",
         href: "#",
         miniLinks: [
@@ -178,7 +191,7 @@ const data: Record<"es" | "en", NavData> = {
             label: "Business Services",
             items: [
               { label: "Creación de licencia LLC / Sole Proprietor", href: "/negocio/creacion-licencia", description: "Constituimos tu negocio legalmente" },
-              { label: "Renovación de licencia de negocio", href: "/negocio/renovacion-licencia" },
+              { label: "Renovación de licencia de negocio", href: "/negocio/renovacion-licencia", description: "Ven 1 mes antes y evita la multa por renovar tarde" },
               { label: "Permisos del condado y la ciudad", href: "/negocio/permisos-ciudad-condado", description: "Licencias y permisos locales para operar tu negocio" },
             ],
           },
@@ -189,7 +202,7 @@ const data: Record<"es" | "en", NavData> = {
               { label: "Formularios DMV", href: "/dmv/formularios-dmv" },
               { label: "Registración de vehículo", href: "/dmv/registracion-vehiculo", description: "Registramos tu vehículo ante el DMV" },
               { label: "Duplicado de título", href: "/dmv/duplicado-titulo", description: "Para vehículos particulares y remolques" },
-              { label: "Permisos de conducir", href: "/dmv/permiso-conducir" },
+              { label: "Permisos de conducir", href: "/dmv/permiso-conducir", description: "¿Se vence tu licencia? Ven 3 meses antes a sacar tu cita" },
               { label: "Traducciones para DMV", href: "/dmv/traducciones-dmv", description: "Traducciones certificadas de documentos para el DMV" },
             ],
           },
@@ -292,6 +305,7 @@ const data: Record<"es" | "en", NavData> = {
               { label: "Letter of attorney", href: "/en/notary-public/letter-of-attorney", description: "For transactions inside and outside the U.S." },
               { label: "Minor travel permit", href: "/en/notary-public/minor-travel-permit", description: "Notarized authorization for minors to travel" },
               { label: "Vehicle release authorization", href: "/en/notary-public/vehicle-release-authorization", description: "Authorization to retrieve a vehicle from impound" },
+              { label: "Trailer title services", href: "/en/notary-public/mobile-home-titles", description: "Title transfers and duplicates" },
             ],
           },
           {
@@ -303,13 +317,6 @@ const data: Record<"es" | "en", NavData> = {
               { label: "Wills", href: "/en/notary-public/wills", description: "Drafting and notarization of last will and testament" },
               { label: "Quit Claim Deed", href: "/en/notary-public/quit-claim-deed", description: "Transfer of property between parties" },
               { label: "Birth certificate name correction", href: "/en/notary-public/name-correction", description: "Correcting errors on birth certificates" },
-            ],
-          },
-          {
-            label: "Mobile Home Titles",
-            items: [
-              { label: "Mobile Home title services", href: "/en/notary-public/mobile-home-titles", description: "Title transfers and duplicates for your mobile home" },
-              { label: "Mobile Home into a Living Trust", href: "/en/notary-public/mobile-home-living-trust", description: "Move your mobile home into an existing trust" },
             ],
           },
           {
@@ -334,9 +341,9 @@ const data: Record<"es" | "en", NavData> = {
               { label: "U.S. citizenship", href: "/en/immigration/us-citizenship", description: "Naturalization process step by step" },
               { label: "DACA renewal", href: "/en/immigration/daca-renewal", description: "We renew your DACA permit on time" },
               { label: "Permanent residency", href: "/en/immigration/permanent-residency", description: "Green Card — initial application" },
-              { label: "Residency renewal", href: "/en/immigration/residency-renewal" },
+              { label: "Residency renewal", href: "/en/immigration/residency-renewal", description: "Renew it up to 6 months before it expires" },
               { label: "Work permit application", href: "/en/immigration/work-permit", description: "Employment Authorization Document (EAD)" },
-              { label: "Work permit renewal", href: "/en/immigration/work-permit-renewal" },
+              { label: "Work permit renewal", href: "/en/immigration/work-permit-renewal", description: "Renew it up to 6 months before it expires" },
               { label: "Asylum application", href: "/en/immigration/asylum", description: "Assistance with political asylum applications" },
             ],
           },
@@ -355,6 +362,20 @@ const data: Record<"es" | "en", NavData> = {
         ],
       },
       {
+        // [PLACEHOLDER: brokerage and license number] — see DECISIONES-NEGOCIO.md §3.15
+        label: "Real Estate",
+        href: "/en/real-estate/",
+        megaMenu: [
+          {
+            label: "Real Estate",
+            items: [
+              { label: "Buying a home", href: "/en/real-estate/buy-a-home", description: "We guide you through every step of buying your home" },
+              { label: "Buying land", href: "/en/real-estate/buy-land", description: "We help you find and buy your land" },
+            ],
+          },
+        ],
+      },
+      {
         label: "More Services",
         href: "#",
         miniLinks: [
@@ -368,7 +389,7 @@ const data: Record<"es" | "en", NavData> = {
             label: "Business Services",
             items: [
               { label: "LLC / Sole Proprietor formation", href: "/en/business/llc-formation", description: "We form your business legally" },
-              { label: "Business license renewal", href: "/en/business/llc-renewal" },
+              { label: "Business license renewal", href: "/en/business/business-license-renewal", description: "Come in 1 month early and avoid the late fee" },
               { label: "County & city permits", href: "/en/business/business-permits", description: "Local licenses and permits to operate your business" },
             ],
           },
@@ -379,7 +400,7 @@ const data: Record<"es" | "en", NavData> = {
               { label: "DMV forms", href: "/en/dmv/dmv-forms" },
               { label: "Vehicle registration", href: "/en/dmv/vehicle-registration", description: "We register your vehicle with the DMV" },
               { label: "Title duplicate", href: "/en/dmv/title-duplicate", description: "For personal vehicles and trailers" },
-              { label: "Driver's permit", href: "/en/dmv/drivers-permit" },
+              { label: "Driver's permit", href: "/en/dmv/drivers-permit", description: "License expiring? Come in 3 months early to book your appointment" },
               { label: "DMV certified translations", href: "/en/dmv/dmv-translations", description: "Certified document translations for the DMV" },
             ],
           },
@@ -539,7 +560,7 @@ const {
         </a>
 
         <!-- Navegación desktop -->
-        <ul class="hidden items-center gap-1 lg:flex" role="list">
+        <ul class="hidden items-center gap-0 xl:gap-1 lg:flex" role="list">
           {
             items.map((item) => (
               <li class="relative">
@@ -556,7 +577,7 @@ const {
                 ) : (
                   <a
                     href={item.href}
-                    class="block rounded-md px-2.5 py-1.5 text-xs xl:text-sm font-medium text-neutral-grey transition-colors hover:cursor-pointer hover:text-brand-light"
+                    class="block whitespace-nowrap rounded-md px-2 xl:px-2.5 py-1.5 text-xs xl:text-sm font-medium text-neutral-grey transition-colors hover:cursor-pointer hover:text-brand-light"
                   >
                     {item.label}
                   </a>

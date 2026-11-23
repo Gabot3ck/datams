@@ -1,0 +1,41 @@
+---
+// Franja de datos bajo el hero: años de servicio · familias · oficina en Las Vegas.
+import { YEARS_LABEL, FAMILIES_SERVED_LABEL } from '../../config/team';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = {
+  es: {
+    aria: 'Nuestra trayectoria',
+    stats: [
+      { value: YEARS_LABEL, label: 'Años de servicio' },
+      { value: FAMILIES_SERVED_LABEL, label: 'Familias atendidas' },
+      { value: 'Las Vegas', label: 'Oficina física, atención en español' },
+    ],
+  },
+  en: {
+    aria: 'Our track record',
+    stats: [
+      { value: YEARS_LABEL, label: 'Years of service' },
+      { value: FAMILIES_SERVED_LABEL, label: 'Families served' },
+      { value: 'Las Vegas', label: 'Walk-in office, service in Spanish' },
+    ],
+  },
+}[lang];
+---
+
+<section aria-label={t.aria} class="border-y border-background-muted bg-white">
+  <dl class="container-custom grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-background-muted">
+    {t.stats.map((stat) => (
+      <div class="min-w-0 flex flex-col items-center text-center py-fluid-md sm:px-fluid-sm">
+        <dt class="order-2 text-fluid-card text-neutral-grey mt-1 leading-snug break-words">{stat.label}</dt>
+        <dd class="order-1 font-display text-fluid-2xl md:text-fluid-3xl font-bold text-brand leading-none break-words">
+          {stat.value}
+        </dd>
+      </div>
+    ))}
+  </dl>
+</section>

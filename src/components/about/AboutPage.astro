@@ -1,0 +1,42 @@
+---
+// Orquestador de Nosotros (/nosotros ↔ /en/about): solo compone las secciones.
+import Breadcrumb from '../Breadcrumb.astro';
+import AboutHero from './AboutHero.astro';
+import AboutStats from './AboutStats.astro';
+import TeamGrid from './TeamGrid.astro';
+import ValuesSection from './ValuesSection.astro';
+import CtaSection from '../CtaSection.astro';
+
+interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+---
+
+<main>
+  <div class="container-custom pt-6">
+    <Breadcrumb lang={lang} currentLabel={lang === 'es' ? 'Nosotros' : 'About us'} />
+  </div>
+  <AboutHero lang={lang} />
+  <AboutStats lang={lang} />
+  <TeamGrid lang={lang} />
+  <ValuesSection lang={lang} />
+  <CtaSection lang={lang} />
+</main>
+
+<!-- Mismo observer que HomePage: CtaSection usa data-reveal y sin esto queda invisible. -->
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+</script>
