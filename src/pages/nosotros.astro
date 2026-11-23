@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AboutPage from '../components/about/AboutPage.astro';
+import { buildLocalBusinessJsonLd } from '@config/site';
+
+const title = "Nuestro equipo de taxes en Las Vegas | Data's & Multiservices";
+const description =
+  "Conoce al equipo hispano de Data's & Multiservices: preparadores de taxes con PTIN que te atienden en español, sin cita, en nuestra oficina de Las Vegas.";
+
+// Sin JSON-LD Person mientras los nombres del equipo sean provisorios.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: title,
+  inLanguage: 'es',
+  about: buildLocalBusinessJsonLd('es'),
+};
+---
+
+<BaseLayout {title} {description} lang="es" {jsonLd}>
+  <AboutPage lang="es" />
+</BaseLayout>

@@ -1,0 +1,49 @@
+---
+// Grilla de asesores. flex-wrap + justify-center: la última fila incompleta queda centrada.
+// Desde xl: 5 en una fila; con 6 pasa a 3+3 (con 5 columnas quedaría 5+1).
+import TeamCard from './TeamCard.astro';
+import { TEAM, type TeamMember } from '../../config/team';
+
+interface Props {
+  lang: 'es' | 'en';
+  members?: TeamMember[];
+}
+const { lang, members = TEAM } = Astro.props;
+
+// Clases literales para que Tailwind las detecte.
+const xlBasis =
+  members.length === 6
+    ? 'xl:basis-[calc((100%-2*var(--spacing-fluid-sm))/3)]'
+    : 'xl:basis-[calc((100%-4*var(--spacing-fluid-sm))/5)]';
+
+const t = {
+  es: {
+    heading: 'Conoce a nuestros asesores',
+    sub: 'Preparadores de taxes con PTIN que te explican cada paso.',
+  },
+  en: {
+    heading: 'Meet our advisors',
+    sub: 'Tax preparers with a PTIN who walk you through every step.',
+  },
+}[lang];
+---
+
+<section aria-labelledby="team-heading" class="py-section">
+  <div class="container-custom">
+    <h2
+      id="team-heading"
+      class="font-display text-fluid-2xl md:text-fluid-3xl lg:text-fluid-4xl font-bold text-neutral-grey leading-[1.1] text-center"
+    >
+      {t.heading}
+    </h2>
+    <p class="text-fluid-body text-neutral-grey leading-relaxed text-center mt-fluid-sm mb-fluid-lg">{t.sub}</p>
+
+    <ul class="flex flex-wrap justify-center gap-fluid-sm" role="list">
+      {members.map((member) => (
+        <li class:list={['min-w-0 basis-[calc((100%-var(--spacing-fluid-sm))/2)] md:basis-[calc((100%-2*var(--spacing-fluid-sm))/3)]', xlBasis]}>
+          <TeamCard member={member} lang={lang} />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+import type { TeamMember } from '../../config/team';
+
+interface Props {
+  member: TeamMember;
+  lang: 'es' | 'en';
+}
+const { member, lang } = Astro.props;
+const name = member.name[lang];
+const alt =
+  lang === 'es'
+    ? `${name} de Data's & Multiservices, ${member.role} en Las Vegas`
+    : `${name} at Data's & Multiservices, ${member.role} in Las Vegas`;
+---
+
+<article class="h-full bg-white rounded-2xl border border-background-muted shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+  <Image
+    src={member.photo}
+    alt={alt}
+    widths={[240, 360, 480]}
+    sizes="(min-width: 1280px) 20vw, (min-width: 768px) 33vw, 50vw"
+    loading="lazy"
+    class="w-full aspect-[3/4] object-cover object-top"
+  />
+  <div class="p-fluid-sm text-center">
+    <h3 class="font-display text-fluid-lg font-bold text-neutral-dark leading-tight">{name}</h3>
+    <p class="text-fluid-card text-neutral-grey mt-1">{member.role}</p>
+  </div>
+</article>
