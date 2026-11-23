@@ -2,14 +2,18 @@
 import MegaMenu from "./MegaMenu.tsx";
 import type { MegaSubcategory, MegaMiniLink } from "./MegaMenu.tsx";
 import { BUSINESS } from "../config/site";
+import { getAlternates } from "../config/routes";
 
 const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
 const currentPath = Astro.url.pathname;
 
+// Gemela registrada en routes.ts (slugs traducidos: /nosotros ↔ /en/about).
+// Si la EN no está construida, cae a la home EN.
+const alternates = getAlternates(currentPath);
 const altLangUrl =
   lang === "es"
-    ? `/en${currentPath === "/" ? "" : currentPath}`
-    : currentPath.replace(/^\/en/, "") || "/";
+    ? alternates.en ? new URL(alternates.en).pathname : "/en"
+    : new URL(alternates.es).pathname;
 
 interface NavItem {
   label: string;
