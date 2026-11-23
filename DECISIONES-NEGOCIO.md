@@ -592,6 +592,7 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 25 | ¿Cuál es el nombre del brokerage con el que trabaja la asesora de Real Estate y su número de licencia? ¿El brokerage aprueba que el servicio aparezca en este sitio? Ver 3.15 | Es obligatorio por ley (NAC 645.610): sin este dato no se puede publicar la categoría Real Estate |
 | 26 | ¿La asesora de Real Estate trabaja con compradores que tienen ITIN (préstamos ITIN)? Ver 3.15 | Si es así: sección o página "Comprar casa con ITIN", enlazada con las páginas de ITIN |
 | 27 | ¿Les parecen bien "Compra de casa" y "Compra de terreno" en Real Estate, o quieren sumar "Venta de casas y terrenos"? Ver 3.15 | Si ofrecen la venta: nuevo ítem "Venta de casas y terrenos" en la pestaña Bienes Raíces |
+| 28 | Para la página Nosotros: ¿cuál es el nombre y el cargo de cada asesor? ¿Nos pueden enviar el retrato individual de la asesora que sale sentada a la derecha en la foto grupal, la foto grupal original ("como documento", no por WhatsApp) y sus valores, si tienen unos propios? | Hoy la página muestra "Asesor 1…5" y valores redactados por nosotros. Con la foto original, el hero puede pasar a ancho completo. Sin nombres reales no se publican datos estructurados de cada persona |
 
 ---
 
@@ -635,3 +636,4 @@ Ordenado de mayor a menor urgencia para el visitante:
 | 2026-11-22 | Negocio: "Renovación de licencia de negocio" lleva la descripción "Ven 1 mes antes y evita la multa por renovar tarde". La URL en inglés pasa de `/en/business/llc-renewal` a `/en/business/business-license-renewal` (3.13) |
 | 2026-11-22 | DMV: "Permisos de conducir" lleva la descripción "¿Se vence tu licencia? Ven 3 meses antes a sacar tu cita". Los 3 meses son para la cita, no para renovar (el DMV habilita la renovación 60 días antes) (3.14, preguntas 23 y 24) |
 | 2026-11-22 | Nueva categoría "Real Estate" entre Inmigración y Más Servicios: "Compra de casa" y "Compra de terreno" (`/bienes-raices/`, `/en/real-estate/`), también en el pie de página. Falta el nombre del brokerage, obligatorio antes de publicar (3.15, preguntas 25 a 27) |
+| 2026-11-22 | Nueva página Nosotros (`/nosotros`, `/en/about`): foto grupal, 5 retratos con nombres provisorios ("Asesor 1…5", cargo Tax Preparer como en sus placas), 10+ años de servicio y 4 valores. En el retrato de la asesora de pelo claro se tapó la placa de "Professional Multiservices · David Takamura" (pregunta 19). La asesora sin retrato individual sale solo en la foto grupal (pregunta 28) |

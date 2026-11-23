@@ -48,7 +48,7 @@ const t = { es: { heading: "Español" }, en: { heading: "English" } }[lang];
 ROUTES mapea cada ruta ES a su gemela EN + flag `enBuilt`. getAlternates(pathname) alimenta:
 - hreflang en BaseLayout (solo emite `<link hreflang="en">` si enBuilt)
 - filtro del sitemap
-- switch de idioma del Navbar (cae a `/en` home si no hay gemela construida)
+- switch de idioma del Navbar (cae a `/en` home si no hay gemela construida). Los slugs EN pueden ser traducidos (`/nosotros` ↔ `/en/about`): nunca armar la URL EN como `/en` + ruta ES
 
 Al crear una página EN: crear el archivo + poner `enBuilt: true` en su entrada.
 
@@ -57,7 +57,6 @@ Al crear una página EN: crear el archivo + poner `enBuilt: true` en su entrada.
 | ES | EN |
 |----|----|
 | `/contacto` | `/en/contact` |
-| `/nosotros` | `/en/about` |
 | `/blog` | `/en/blog` |
 | `/taxes/*` | `/en/taxes/*` |
 | `/notary-public/*` | `/en/notary-public/*` |
@@ -74,6 +73,7 @@ Al crear una página EN: crear el archivo + poner `enBuilt: true` en su entrada.
 
 ```
 src/
+├── assets/images/team/       # Nosotros: datamultiservices-asesor-{1..5}.webp (720×960) + datamultiservices-equipo-las-vegas.webp (1024×728). Se generan con scripts/build-team-photos.mjs desde ../datams/team
 ├── assets/images/banners/    # Slides hero: slide 1 = datamultiservices-taxes-nevada-1{m,t,d}.webp; slide 2 = datamultiservices-ayuda-irs-nevada-2{m,t,d}.webp; slide 3 = datamultiservices-notary-public-las-vegas-3{m,t,d}.webp; slide 4 = datamultiservices-ayuda-itin-ein-las-vegas-4{m,t,d}.webp
 ├── components/
 │   ├── Hero.astro            # Slider 4 slides (taxes · IRS · Notary Public · ITIN-EIN), GSAP, responsive images via astro:assets
@@ -86,6 +86,7 @@ src/
 │   ├── OfficeSection.astro     # Home: video 16:9 + 3 fotos (<990: video arriba + fila de 3; ≥990: video 3/4 + columna de 3, sin alto fijo) + CTA maps
 │   ├── FaqSection.astro        # Acordeón de FAQ del home — NO es service/FaqSection (HomePage importa este)
 │   ├── CtaSection.astro        # Home: CTA final (bg-brand) — NO es service/CtaBanner
+│   ├── about/                # Nosotros: AboutPage (orquestador + script data-reveal), AboutHero (foto grupal ≤1024px), AboutStats, TeamGrid + TeamCard, ValuesSection
 │   ├── Navbar.astro          # Header sticky: idioma + megamenú + mobile
 │   ├── MegaMenu.tsx          # React — portal a document.body, tabs por clic
 │   ├── MegaMenuPanel.tsx     # Panel del megamenú: grid 2 cols de items + imagen + footer link
@@ -97,6 +98,7 @@ src/
 │                              # DocsChecklist, InfoBlock, WhyUs, FaqSection, CtaBanner
 ├── config/
 │   ├── site.ts               # SITE_URL (única var de prod), SITE_NAME, OG_IMAGE, GSC, BUSINESS, helpers JSON-LD, canonicalURL
+│   ├── team.ts               # Equipo de Nosotros: TEAM ("Asesor 1…5" provisorios, cargo Tax Preparer), foto grupal, 10+ / 5,000+. Sin JSON-LD Person hasta tener nombres reales (pregunta 28)
 │   └── routes.ts             # registro ES↔EN + getAlternates() para hreflang/sitemap/switch de idioma
 ├── layouts/
 │   ├── BaseLayout.astro
@@ -112,6 +114,7 @@ public/
 └── scripts/
     └── hero-slider.js        # Lógica real del slider (prev/next/dots/autoplay/keyboard/swipe)
 scripts/
+├── build-team-photos.mjs     # Fotos de Nosotros (sharp): recorte 3:4 y parche sobre la placa ajena del asesor 3
 └── check-links.mjs           # verificador de enlaces internos post-build (+ check-links.test.ts)
 vitest.config.ts              # tests con Vitest + Container API de Astro
 ```
@@ -296,6 +299,7 @@ También: `public/robots.txt` tiene el dominio hardcodeado — cambiarlo junto c
 - [ ] `/taxes/extension` es enlace roto (página sin crear): `npm run check:links`
 - [x] `Navbar.test.ts` tolera CRLF (regex `\r?\n`); suite completa en verde
 - [ ] Limitar el ancho de párrafos: `max-w-*` está redefinido en `@theme` (xs=425px, md=768px…), así que esas clases casi no limitan
+- [ ] Nosotros: nombres y cargos reales en `config/team.ts`, retrato de la 6ª persona y foto grupal original (pregunta 28); con nombres reales, sumar JSON-LD `Person`
 - [ ] Footer: link del autor sigue en `#` (Instagram y Facebook ya tienen URL real)
 - [x] Title y meta del Home con "Taxes en Las Vegas" (628da2a)
 
